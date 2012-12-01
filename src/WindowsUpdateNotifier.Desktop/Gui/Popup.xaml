@@ -1,0 +1,31 @@
+﻿<Window x:Class="WindowsUpdateNotifier.Desktop.Popup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" WindowStartupLocation="Manual"
+        Height="100" Width="300" ShowInTaskbar="False" Topmost="True"
+        Background="#FF7C7C7C" WindowStyle="None" AllowsTransparency="True">
+    
+    <Border BorderBrush="#585757" BorderThickness="3" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+        
+            <DockPanel Grid.Row="0">
+                <Button DockPanel.Dock="Right" Background="#00DDDDDD" Width="30" Height="30" 
+                        Command="{Binding OnCloseCommand}" Margin="0,0,5,0">
+                
+                    <Image Source="/WindowsUpdateNotifier.Desktop;component/Resources/close.png" Width="16" Height="16"  />
+                </Button>
+            
+                <Label Content="{Binding Title}" Foreground="#FFEDEDED" FontSize="17" FontWeight="Bold" Margin="5,5,0,0" FontFamily="Calibri"  />
+            
+            </DockPanel>
+
+            <DockPanel Grid.Row="1">
+                <Label Content="{Binding Message}" Foreground="#FFEDEDED" Margin="5,5,0,0" FontFamily="Calibri" FontSize="16"  />
+            </DockPanel>
+        </Grid>
+    </Border>
+</Window>
