@@ -39,7 +39,7 @@ namespace WindowsUpdateNotifier.Desktop
             {
                 message = _GetMessage(updateCount);
 
-                var popup = new Popup();
+                var popup = new PopupView();
                 popup.DataContext = new PopupViewModel(TextResources.Popup_Title, message, popup.Close, this);
                 popup.Show();
             }

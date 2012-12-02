@@ -55,9 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Gui\Behavior\WindowBehavior.cs" />
     <Compile Include="Gui\Command\SimpleCommand.cs" />
     <Compile Include="Model\PopupViewModel.cs" />
-    <Page Include="Gui\Popup.xaml">
+    <Page Include="Gui\PopupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -67,8 +68,8 @@
     </Compile>
     <Compile Include="Gui\WindowsUpdateTrayIcon.cs" />
     <Compile Include="EntryPoint\ApplicationHandler.cs" />
-    <Compile Include="Gui\Popup.xaml.cs">
-      <DependentUpon>Popup.xaml</DependentUpon>
+    <Compile Include="Gui\PopupView.xaml.cs">
+      <DependentUpon>PopupView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

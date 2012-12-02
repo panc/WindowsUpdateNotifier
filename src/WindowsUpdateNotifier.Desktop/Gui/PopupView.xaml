@@ -1,11 +1,13 @@
-﻿<Window x:Class="WindowsUpdateNotifier.Desktop.Popup"
+﻿<Window x:Class="WindowsUpdateNotifier.Desktop.PopupView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:WindowsUpdateNotifier.Desktop" 
         Title="MainWindow" WindowStartupLocation="Manual"
         Height="100" Width="300" ShowInTaskbar="False" Topmost="True"
-        Background="#FF7C7C7C" WindowStyle="None" AllowsTransparency="True">
+        Background="#FF7C7C7C" WindowStyle="None" AllowsTransparency="True"
+        local:WindowBehavior.BackgroundClickCommand="{Binding OnOpenWindowsUpdateControlPanelCommand}">
     
-    <Border BorderBrush="#585757" BorderThickness="3" >
+    <Border BorderBrush="#585757" BorderThickness="3">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"></RowDefinition>

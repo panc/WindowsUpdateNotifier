@@ -2,9 +2,9 @@
 
 namespace WindowsUpdateNotifier.Desktop
 {
-    public partial class Popup : Window
+    public partial class PopupView : Window
     {
-        public Popup()
+        public PopupView()
         {
             InitializeComponent();
 

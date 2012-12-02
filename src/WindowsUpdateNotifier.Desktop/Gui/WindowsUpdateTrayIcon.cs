@@ -9,7 +9,7 @@ namespace WindowsUpdateNotifier
     public class WindowsUpdateTrayIcon : IDisposable
     {
         private readonly NotifyIcon mNotifyIcon;
-        private MenuItem mInfoMenuItem;
+        private readonly MenuItem mInfoMenuItem;
         private readonly MenuItem mStartMenuItem;
 
         public WindowsUpdateTrayIcon(IApplication application)
