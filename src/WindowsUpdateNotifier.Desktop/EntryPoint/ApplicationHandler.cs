@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using WindowsUpdateNotifier.Core;
 using WindowsUpdateNotifier.Core.Resources;
 
@@ -34,7 +35,7 @@ namespace WindowsUpdateNotifier.Desktop
         {
             var message = TextResources.ToolTip_NothingFound;
 
-            if(updateCount > 0)
+            if (updateCount > 0)
             {
                 message = _GetMessage(updateCount);
 
@@ -65,7 +66,7 @@ namespace WindowsUpdateNotifier.Desktop
 
         public void OpenWindowsUpdateControlPanel()
         {
-            //throw new NotImplementedException();
+            Process.Start("control.exe", "/name Microsoft.WindowsUpdate");
         }
     }
 }
