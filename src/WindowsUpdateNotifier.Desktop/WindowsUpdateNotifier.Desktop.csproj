@@ -51,22 +51,22 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="Gui\App.xaml">
+    <ApplicationDefinition Include="EntryPoint\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Common\Command.cs" />
+    <Compile Include="Gui\Command\SimpleCommand.cs" />
     <Compile Include="Model\PopupViewModel.cs" />
     <Page Include="Gui\Popup.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Gui\App.xaml.cs">
+    <Compile Include="EntryPoint\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Gui\WindowsUpdateTrayIcon.cs" />
-    <Compile Include="MainThread.cs" />
+    <Compile Include="EntryPoint\ApplicationHandler.cs" />
     <Compile Include="Gui\Popup.xaml.cs">
       <DependentUpon>Popup.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -117,28 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Exit" xml:space="preserve">
+  <data name="Menu_Exit" xml:space="preserve">
     <value>Exit</value>
   </data>
-  <data name="NothingFound" xml:space="preserve">
-    <value>No updates available .</value>
-  </data>
-  <data name="OneUpdateAvailableMessage" xml:space="preserve">
-    <value>One update is available...</value>
-  </data>
-  <data name="Searching" xml:space="preserve">
-    <value>Searching for updates ...</value>
-  </data>
-  <data name="Settings" xml:space="preserve">
+  <data name="Menu_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="ToolTip" xml:space="preserve">
-    <value>Windows Update Notifyer</value>
+  <data name="Menu_StartSearch" xml:space="preserve">
+    <value>Start searching for updates.</value>
   </data>
-  <data name="UpdatesAvailable" xml:space="preserve">
+  <data name="Menu_WindowsUpdates" xml:space="preserve">
+    <value>Windows Updates Control Panel</value>
+  </data>
+  <data name="Popup_OneUpdateAvailableMessage" xml:space="preserve">
+    <value>One update is available...</value>
+  </data>
+  <data name="Popup_Title" xml:space="preserve">
     <value>Updates Available</value>
   </data>
-  <data name="UpdatesAvailableMessage" xml:space="preserve">
+  <data name="Popup_UpdatesAvailableMessage" xml:space="preserve">
     <value>{0} updates are available...</value>
+  </data>
+  <data name="ToolTip_NothingFound" xml:space="preserve">
+    <value>No updates available .</value>
+  </data>
+  <data name="ToolTip_Searching" xml:space="preserve">
+    <value>Searching for updates ...</value>
   </data>
 </root>

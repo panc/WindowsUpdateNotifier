@@ -63,72 +63,81 @@ namespace WindowsUpdateNotifier.Core.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
-        public static string Exit {
+        public static string Menu_Exit {
             get {
-                return ResourceManager.GetString("Exit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No updates available ..
-        /// </summary>
-        public static string NothingFound {
-            get {
-                return ResourceManager.GetString("NothingFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to One update is available....
-        /// </summary>
-        public static string OneUpdateAvailableMessage {
-            get {
-                return ResourceManager.GetString("OneUpdateAvailableMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Searching for updates ....
-        /// </summary>
-        public static string Searching {
-            get {
-                return ResourceManager.GetString("Searching", resourceCulture);
+                return ResourceManager.GetString("Menu_Exit", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        public static string Settings {
+        public static string Menu_Settings {
             get {
-                return ResourceManager.GetString("Settings", resourceCulture);
+                return ResourceManager.GetString("Menu_Settings", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows Update Notifyer.
+        ///   Looks up a localized string similar to Start searching for updates..
         /// </summary>
-        public static string ToolTip {
+        public static string Menu_StartSearch {
             get {
-                return ResourceManager.GetString("ToolTip", resourceCulture);
+                return ResourceManager.GetString("Menu_StartSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Updates Control Panel.
+        /// </summary>
+        public static string Menu_WindowsUpdates {
+            get {
+                return ResourceManager.GetString("Menu_WindowsUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One update is available....
+        /// </summary>
+        public static string Popup_OneUpdateAvailableMessage {
+            get {
+                return ResourceManager.GetString("Popup_OneUpdateAvailableMessage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Updates Available.
         /// </summary>
-        public static string UpdatesAvailable {
+        public static string Popup_Title {
             get {
-                return ResourceManager.GetString("UpdatesAvailable", resourceCulture);
+                return ResourceManager.GetString("Popup_Title", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to {0} updates are available....
         /// </summary>
-        public static string UpdatesAvailableMessage {
+        public static string Popup_UpdatesAvailableMessage {
             get {
-                return ResourceManager.GetString("UpdatesAvailableMessage", resourceCulture);
+                return ResourceManager.GetString("Popup_UpdatesAvailableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No updates available ..
+        /// </summary>
+        public static string ToolTip_NothingFound {
+            get {
+                return ResourceManager.GetString("ToolTip_NothingFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Searching for updates ....
+        /// </summary>
+        public static string ToolTip_Searching {
+            get {
+                return ResourceManager.GetString("ToolTip_Searching", resourceCulture);
             }
         }
     }

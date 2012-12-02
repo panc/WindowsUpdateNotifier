@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using WindowsUpdateNotifier.Core.Resources;
+using WindowsUpdateNotifier.Desktop;
 using WindowsUpdateNotifier.Desktop.Properties;
 
 namespace WindowsUpdateNotifier
@@ -9,24 +10,24 @@ namespace WindowsUpdateNotifier
     {
         private readonly NotifyIcon mNotifyIcon;
 
-        public WindowsUpdateTrayIcon(Action onOpenSettingsClicked)
+        public WindowsUpdateTrayIcon(IApplication application)
         {
             var contextMenu = new ContextMenu(new[]
             {
-                new MenuItem(TextResources.Settings, (s, e) => onOpenSettingsClicked()),
-                new MenuItem(TextResources.Exit, _OnExitClicked)
+                new MenuItem(TextResources.Menu_StartSearch, (s, e) => application.SearchForUpdates()),
+                new MenuItem("-"),
+                new MenuItem(TextResources.Menu_WindowsUpdates, (s, e) => application.OpenWindowsUpdateControlPanel()),
+                //new MenuItem(TextResources.Settings, (s, e) => application.OpenSettingsView()),
+                new MenuItem("-"),
+                new MenuItem(TextResources.Menu_Exit, _OnExitClicked)
             });
 
             mNotifyIcon = new NotifyIcon
             {
                 ContextMenu = contextMenu,
                 Icon = Resources.WindowsUpdate,
-                Text = TextResources.ToolTip,
                 Visible = true,
             };
-
-            // temp
-            mNotifyIcon.Click += (x, y) => onOpenSettingsClicked();
         }
 
         public void Dispose()

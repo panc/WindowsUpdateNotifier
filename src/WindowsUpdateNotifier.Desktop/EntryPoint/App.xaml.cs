@@ -4,16 +4,16 @@ namespace WindowsUpdateNotifier.Desktop
 {
     public partial class App : Application
     {
-        private MainThread mMainThread;
+        private ApplicationHandler mApplicationHandler;
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            mMainThread = new MainThread();
+            mApplicationHandler = new ApplicationHandler();
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
-            mMainThread.Dispose();
+            mApplicationHandler.Dispose();
         }
     }
 }

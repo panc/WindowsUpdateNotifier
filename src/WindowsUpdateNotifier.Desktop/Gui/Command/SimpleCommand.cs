@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace WindowsUpdateNotifier.Desktop.Common
+namespace WindowsUpdateNotifier.Desktop
 {
-    public class Command : ICommand
+    public class SimpleCommand : ICommand
     {
         private readonly Action mExecuteCallback;
         private readonly Func<bool> mCanExecuteCallback;
 
-        public Command(Action executeCallback)
+        public SimpleCommand(Action executeCallback)
         {
             mExecuteCallback = executeCallback;
         }
 
-        public Command(Action executeCallback, Func<bool> canExecuteCallback)
+        public SimpleCommand(Action executeCallback, Func<bool> canExecuteCallback)
         {
             mExecuteCallback = executeCallback;
             mCanExecuteCallback = canExecuteCallback;
