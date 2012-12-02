@@ -79,7 +79,7 @@ namespace WindowsUpdateNotifier.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start searching for updates..
+        ///   Looks up a localized string similar to Search for updates.
         /// </summary>
         public static string Menu_StartSearch {
             get {

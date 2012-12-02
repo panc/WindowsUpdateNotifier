@@ -124,7 +124,7 @@
     <value>Settings</value>
   </data>
   <data name="Menu_StartSearch" xml:space="preserve">
-    <value>Start searching for updates.</value>
+    <value>Search for updates</value>
   </data>
   <data name="Menu_WindowsUpdates" xml:space="preserve">
     <value>Windows Updates Control Panel</value>

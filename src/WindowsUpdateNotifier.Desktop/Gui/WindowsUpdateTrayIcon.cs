@@ -9,15 +9,21 @@ namespace WindowsUpdateNotifier
     public class WindowsUpdateTrayIcon : IDisposable
     {
         private readonly NotifyIcon mNotifyIcon;
+        private MenuItem mInfoMenuItem;
+        private readonly MenuItem mStartMenuItem;
 
         public WindowsUpdateTrayIcon(IApplication application)
         {
+            mInfoMenuItem = new MenuItem("") {Enabled = false};
+            mStartMenuItem = new MenuItem(TextResources.Menu_StartSearch, (s, e) => application.SearchForUpdates());
+
             var contextMenu = new ContextMenu(new[]
             {
-                new MenuItem(TextResources.Menu_StartSearch, (s, e) => application.SearchForUpdates()),
+                mInfoMenuItem, 
                 new MenuItem("-"),
+                mStartMenuItem,
                 new MenuItem(TextResources.Menu_WindowsUpdates, (s, e) => application.OpenWindowsUpdateControlPanel()),
-                //new MenuItem(TextResources.Settings, (s, e) => application.OpenSettingsView()),
+                new MenuItem(TextResources.Menu_Settings, (s, e) => application.OpenSettingsView()),
                 new MenuItem("-"),
                 new MenuItem(TextResources.Menu_Exit, _OnExitClicked)
             });
@@ -36,9 +42,11 @@ namespace WindowsUpdateNotifier
             mNotifyIcon.Dispose();
         }
 
-        public void SetToolTip(string text)
+        public void SetToolTipAndMenuItems(string text, bool isStartEntryEnabled)
         {
             mNotifyIcon.Text = text;
+            mInfoMenuItem.Text = text;
+            mStartMenuItem.Enabled = isStartEntryEnabled;
         }
 
         private void _OnExitClicked(object sender, EventArgs e)

@@ -27,7 +27,7 @@ namespace WindowsUpdateNotifier.Desktop
         public void SearchForUpdates()
         {
             mUpdateManager.StartSearchForUpdates();
-            mTrayIcon.SetToolTip(TextResources.ToolTip_Searching);
+            mTrayIcon.SetToolTipAndMenuItems(TextResources.ToolTip_Searching, false);
         }
 
         private void _OnSearchFinished(int updateCount)
@@ -43,7 +43,7 @@ namespace WindowsUpdateNotifier.Desktop
                 popup.Show();
             }
 
-            mTrayIcon.SetToolTip(message);
+            mTrayIcon.SetToolTipAndMenuItems(message, true);
         }
 
         private string _GetMessage(int updateCount)
@@ -60,12 +60,12 @@ namespace WindowsUpdateNotifier.Desktop
 
         public void OpenSettingsView()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void OpenWindowsUpdateControlPanel()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
