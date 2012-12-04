@@ -42,6 +42,9 @@ namespace WindowsUpdateNotifier.Desktop
                 var popup = new PopupView();
                 popup.DataContext = new PopupViewModel(TextResources.Popup_Title, message, popup.Close, this);
                 popup.Show();
+
+                // todo
+                // change icon...
             }
 
             mTrayIcon.SetToolTipAndMenuItems(message, true);

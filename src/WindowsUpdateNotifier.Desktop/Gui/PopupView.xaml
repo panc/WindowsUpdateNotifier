@@ -7,6 +7,19 @@
         Background="#FF7C7C7C" WindowStyle="None" AllowsTransparency="True"
         local:WindowBehavior.BackgroundClickCommand="{Binding OnOpenWindowsUpdateControlPanelCommand}">
     
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard TargetProperty="Opacity" local:DataTriggerBehavior.StoryCompletedCommand="{Binding OnCloseCommand}">
+                        <DoubleAnimation From="0" To="0.97" Duration="0:0:2"/>
+                        <DoubleAnimation From="0.97" To="0" Duration="0:0:2" BeginTime="0:0:15"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+    
     <Border BorderBrush="#585757" BorderThickness="3">
         <Grid>
             <Grid.RowDefinitions>

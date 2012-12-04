@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace WindowsUpdateNotifier.Desktop
 {
@@ -13,15 +12,6 @@ namespace WindowsUpdateNotifier.Desktop
             OnCloseCommand = new SimpleCommand(onCloseCallback);
             OnOpenSettingsViewCommand = new SimpleCommand(application.OpenSettingsView);
             OnOpenWindowsUpdateControlPanelCommand= new SimpleCommand(application.OpenWindowsUpdateControlPanel);
-
-            var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(20) };
-            timer.Tick += (s, e) =>
-            {
-                onCloseCallback();
-                timer.Stop();
-            };
-
-            timer.Start();
         }
 
         public ICommand OnCloseCommand { get; set; }
@@ -33,5 +23,7 @@ namespace WindowsUpdateNotifier.Desktop
         public string Title { get; set; }
 
         public string Message { get; set; }
+
+        public Boolean StartHiding { get; set; }
     }
 }
