@@ -23,7 +23,7 @@ namespace WindowsUpdateNotifier
                 new MenuItem("-"),
                 mStartMenuItem,
                 new MenuItem(TextResources.Menu_WindowsUpdates, (s, e) => application.OpenWindowsUpdateControlPanel()),
-                new MenuItem(TextResources.Menu_Settings, (s, e) => application.OpenSettingsView()),
+                //new MenuItem(TextResources.Menu_Settings, (s, e) => application.OpenSettingsView()),
                 new MenuItem("-"),
                 new MenuItem(TextResources.Menu_Exit, _OnExitClicked)
             });
