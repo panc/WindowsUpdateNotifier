@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Windows.Threading;
 using WindowsUpdateNotifier.Core;
 using WindowsUpdateNotifier.Core.Resources;
 
@@ -7,7 +8,6 @@ namespace WindowsUpdateNotifier.Desktop
 {
     public interface IApplication
     {
-        void OpenSettingsView();
         void OpenWindowsUpdateControlPanel();
         void SearchForUpdates();
     }
@@ -16,6 +16,7 @@ namespace WindowsUpdateNotifier.Desktop
     {
         private readonly WindowsUpdateTrayIcon mTrayIcon;
         private readonly WindowsUpdateManager mUpdateManager;
+        private readonly DispatcherTimer mTimer;
 
         public ApplicationHandler()
         {
@@ -23,6 +24,10 @@ namespace WindowsUpdateNotifier.Desktop
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
 
             SearchForUpdates();
+
+            mTimer = new DispatcherTimer { Interval = TimeSpan.FromHours(1) };
+            mTimer.Tick += (e, s) => SearchForUpdates();
+            mTimer.Start();
         }
 
         public void SearchForUpdates()
@@ -60,11 +65,6 @@ namespace WindowsUpdateNotifier.Desktop
         public void Dispose()
         {
             mTrayIcon.Dispose();
-        }
-
-        public void OpenSettingsView()
-        {
-            //throw new NotImplementedException();
         }
 
         public void OpenWindowsUpdateControlPanel()

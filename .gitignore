@@ -4,3 +4,4 @@
 /src/WindowsUpdateNotifier.Core/bin
 /src/WindowsUpdateNotifier.Core/obj
 *.suo
+/bin

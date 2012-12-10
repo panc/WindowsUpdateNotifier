@@ -10,14 +10,11 @@ namespace WindowsUpdateNotifier.Desktop
             Title = title;
             Message = message;
             OnCloseCommand = new SimpleCommand(onCloseCallback);
-            OnOpenSettingsViewCommand = new SimpleCommand(application.OpenSettingsView);
             OnOpenWindowsUpdateControlPanelCommand= new SimpleCommand(application.OpenWindowsUpdateControlPanel);
         }
 
         public ICommand OnCloseCommand { get; set; }
         
-        public ICommand OnOpenSettingsViewCommand { get; set; }
-
         public ICommand OnOpenWindowsUpdateControlPanelCommand { get; set; }
 
         public string Title { get; set; }
