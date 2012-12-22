@@ -97,7 +97,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to One update is available....
+        ///   Looks up a localized string similar to One update is available..
         /// </summary>
         public static string Popup_OneUpdateAvailableMessage {
             get {
@@ -115,7 +115,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} updates are available....
+        ///   Looks up a localized string similar to {0} updates are available..
         /// </summary>
         public static string Popup_UpdatesAvailableMessage {
             get {
@@ -124,7 +124,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No updates available ..
+        ///   Looks up a localized string similar to No updates available..
         /// </summary>
         public static string ToolTip_NothingFound {
             get {
@@ -133,7 +133,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Searching for updates ....
+        ///   Looks up a localized string similar to Searching for updates..
         /// </summary>
         public static string ToolTip_Searching {
             get {
