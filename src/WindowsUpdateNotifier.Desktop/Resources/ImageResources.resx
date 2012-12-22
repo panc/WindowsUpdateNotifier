@@ -124,7 +124,16 @@
   <data name="WindowsUpdateNo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WindowsUpdateNo.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="WindowsUpdateSearching" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WindowsUpdateSearching.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="WindowsUpdateSearching1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>WindowsUpdateSearching1.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WindowsUpdateSearching2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>WindowsUpdateSearching2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WindowsUpdateSearching3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>WindowsUpdateSearching3.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WindowsUpdateSearching4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>WindowsUpdateSearching4.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

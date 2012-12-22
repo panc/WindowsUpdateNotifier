@@ -83,9 +83,39 @@ namespace WindowsUpdateNotifier.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon WindowsUpdateSearching {
+        internal static System.Drawing.Icon WindowsUpdateSearching1 {
             get {
-                object obj = ResourceManager.GetObject("WindowsUpdateSearching", resourceCulture);
+                object obj = ResourceManager.GetObject("WindowsUpdateSearching1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon WindowsUpdateSearching2 {
+            get {
+                object obj = ResourceManager.GetObject("WindowsUpdateSearching2", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon WindowsUpdateSearching3 {
+            get {
+                object obj = ResourceManager.GetObject("WindowsUpdateSearching3", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon WindowsUpdateSearching4 {
+            get {
+                object obj = ResourceManager.GetObject("WindowsUpdateSearching4", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

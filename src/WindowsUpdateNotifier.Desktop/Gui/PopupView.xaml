@@ -16,7 +16,7 @@
                 <BeginStoryboard>
                     <Storyboard TargetProperty="Opacity" local:DataTriggerBehavior.StoryCompletedCommand="{Binding OnCloseCommand}">
                         <DoubleAnimation From="0" To="0.98" Duration="0:0:2"/>
-                        <DoubleAnimation From="0.97" To="0" Duration="0:0:2" BeginTime="0:1:15"/>
+                        <DoubleAnimation From="0.97" To="0" Duration="0:0:2" BeginTime="0:0:15"/>
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger.Actions>

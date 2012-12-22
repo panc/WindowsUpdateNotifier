@@ -35,7 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\WindowsUpdate.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -68,6 +69,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="WindowsUpdate\UpdateState.cs" />
     <Compile Include="WindowsUpdate\WindowsUpdateManager.cs" />
     <Page Include="Gui\PopupView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -96,9 +98,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\WindowsUpdate.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="WUApiLib">
       <Guid>{B596CC9F-56E5-419E-A622-E01BB457431E}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -123,12 +122,6 @@
       <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\WindowsUpdateNo.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\WindowsUpdateSearching.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Refresh.png" />

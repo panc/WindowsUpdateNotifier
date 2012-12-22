@@ -22,9 +22,8 @@ namespace WindowsUpdateNotifier
             mTrayIcon = new WindowsUpdateTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
 
-            //SearchForUpdates();
-            _OnSearchFinished(3);
-
+            SearchForUpdates();
+            
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromHours(1) };
             mTimer.Tick += (e, s) => SearchForUpdates();
             mTimer.Start();
@@ -33,15 +32,15 @@ namespace WindowsUpdateNotifier
         public void SearchForUpdates()
         {
             mUpdateManager.StartSearchForUpdates();
-            mTrayIcon.SetToolTipAndMenuItems(TextResources.ToolTip_Searching, false, false);
+            mTrayIcon.SetToolTipAndMenuItems(TextResources.ToolTip_Searching, UpdateState.Searching);
         }
 
         private void _OnSearchFinished(int updateCount)
         {
             var message = TextResources.ToolTip_NothingFound;
-            var updatesAvailable = updateCount > 0;
+            var state = updateCount.GetUpdateState();
 
-            if (updatesAvailable)
+            if (state == UpdateState.UpdatesAvailable)
             {
                 message = _GetMessage(updateCount);
 
@@ -50,7 +49,7 @@ namespace WindowsUpdateNotifier
                 popup.Show();
             }
 
-            mTrayIcon.SetToolTipAndMenuItems(message, true, updatesAvailable);
+            mTrayIcon.SetToolTipAndMenuItems(message, state);
         }
 
         private string _GetMessage(int updateCount)
