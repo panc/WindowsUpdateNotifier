@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using WindowsUpdateNotifier.Core.Resources;
-using WindowsUpdateNotifier.Desktop;
-using WindowsUpdateNotifier.Desktop.Resources;
+using WindowsUpdateNotifier.Resources;
 
 namespace WindowsUpdateNotifier
 {

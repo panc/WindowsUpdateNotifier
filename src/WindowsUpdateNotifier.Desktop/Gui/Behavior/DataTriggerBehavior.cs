@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 
-namespace WindowsUpdateNotifier.Desktop
+namespace WindowsUpdateNotifier
 {
     public static class DataTriggerBehavior
     {

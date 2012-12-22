@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace WindowsUpdateNotifier.Desktop
+namespace WindowsUpdateNotifier
 {
     public static class WindowBehavior
     {

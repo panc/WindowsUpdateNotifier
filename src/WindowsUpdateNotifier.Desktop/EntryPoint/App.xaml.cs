@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 
-namespace WindowsUpdateNotifier.Desktop
+namespace WindowsUpdateNotifier
 {
-    public partial class App : Application
+    public partial class App
     {
         private ApplicationHandler mApplicationHandler;
 

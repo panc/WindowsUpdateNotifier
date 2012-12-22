@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Threading;
-using WindowsUpdateNotifier.Core;
-using WindowsUpdateNotifier.Core.Resources;
+using WindowsUpdateNotifier.Resources;
 
-namespace WindowsUpdateNotifier.Desktop
+namespace WindowsUpdateNotifier
 {
     public interface IApplication
     {

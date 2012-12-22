@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WindowsUpdateNotifier.Desktop
+namespace WindowsUpdateNotifier
 {
     public partial class PopupView : Window
     {

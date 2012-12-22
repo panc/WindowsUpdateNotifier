@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsUpdateNotifier.Desktop.Resources {
+namespace WindowsUpdateNotifier.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WindowsUpdateNotifier.Desktop.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WindowsUpdateNotifier.Desktop.Resources.ImageResources", typeof(ImageResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WindowsUpdateNotifier.Resources.ImageResources", typeof(ImageResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

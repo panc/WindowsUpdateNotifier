@@ -1,7 +1,7 @@
-﻿<Window x:Class="WindowsUpdateNotifier.Desktop.PopupView"
+﻿<Window x:Class="WindowsUpdateNotifier.PopupView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:WindowsUpdateNotifier.Desktop" 
+        xmlns:local="clr-namespace:WindowsUpdateNotifier" 
         Title="MainWindow" WindowStartupLocation="Manual"
         Height="100" Width="300" ShowInTaskbar="False" Topmost="True"
         Background="#FF7C7C7C" WindowStyle="None" AllowsTransparency="True"
@@ -31,7 +31,7 @@
                 <Button DockPanel.Dock="Right" Background="#00DDDDDD" Width="30" Height="30" 
                         Command="{Binding OnCloseCommand}" Margin="0,0,5,0">
                 
-                    <Image Source="/WindowsUpdateNotifier.Desktop;component/Resources/close.png" Width="16" Height="16"  />
+                    <Image Source="/WindowsUpdateNotifier;component/Resources/close.png" Width="16" Height="16"  />
                 </Button>
             
                 <Label Content="{Binding Title}" Foreground="#FFEDEDED" FontSize="17" FontWeight="Bold" Margin="5,5,0,0" FontFamily="Calibri"  />

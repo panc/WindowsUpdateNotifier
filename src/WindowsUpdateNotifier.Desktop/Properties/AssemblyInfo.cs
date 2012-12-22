@@ -1,14 +1,12 @@
 ﻿using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
-[assembly: AssemblyTitle("WindowsUpdateNotifier.Desktop")]
+[assembly: AssemblyTitle("WindowsUpdateNotifier")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Christoph Pangerl")]
-[assembly: AssemblyProduct("WindowsUpdateNotifier.Desktop")]
+[assembly: AssemblyProduct("WindowsUpdateNotifier")]
 [assembly: AssemblyCopyright("Copyright © Christoph Pangerl 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
