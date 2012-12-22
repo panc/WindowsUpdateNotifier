@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsUpdateNotifier.Desktop", "src\WindowsUpdateNotifier.Desktop\WindowsUpdateNotifier.Desktop.csproj", "{3D42E664-60FD-45FF-B17D-4C5D5346FE83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsUpdateNotifier.Core", "src\WindowsUpdateNotifier.Core\WindowsUpdateNotifier.Core.csproj", "{49BF91F8-B104-4320-84A4-0726E13883F0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,10 +13,6 @@ Global
 		{3D42E664-60FD-45FF-B17D-4C5D5346FE83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D42E664-60FD-45FF-B17D-4C5D5346FE83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D42E664-60FD-45FF-B17D-4C5D5346FE83}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49BF91F8-B104-4320-84A4-0726E13883F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49BF91F8-B104-4320-84A4-0726E13883F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49BF91F8-B104-4320-84A4-0726E13883F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49BF91F8-B104-4320-84A4-0726E13883F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using WindowsUpdateNotifier.Core.Resources;
 using WindowsUpdateNotifier.Desktop;
-using WindowsUpdateNotifier.Desktop.Properties;
+using WindowsUpdateNotifier.Desktop.Resources;
 
 namespace WindowsUpdateNotifier
 {
@@ -30,7 +30,7 @@ namespace WindowsUpdateNotifier
             mNotifyIcon = new NotifyIcon
             {
                 ContextMenu = contextMenu,
-                Icon = Resources.WindowsUpdateNo,
+                Icon = ImageResources.WindowsUpdateNo,
                 Visible = true,
             };
         }
@@ -48,11 +48,11 @@ namespace WindowsUpdateNotifier
             mStartMenuItem.Enabled = isStartEntryEnabled;
 
             if (isStartEntryEnabled == false)
-                mNotifyIcon.Icon = Resources.WindowsUpdateSearching;
+                mNotifyIcon.Icon = ImageResources.WindowsUpdateSearching;
             else if (updatesAvailable)
-                mNotifyIcon.Icon = Resources.WindowsUpdate;
+                mNotifyIcon.Icon = ImageResources.WindowsUpdate;
             else
-                mNotifyIcon.Icon = Resources.WindowsUpdateNo;
+                mNotifyIcon.Icon = ImageResources.WindowsUpdateNo;
         }
 
         private void _OnExitClicked(object sender, EventArgs e)

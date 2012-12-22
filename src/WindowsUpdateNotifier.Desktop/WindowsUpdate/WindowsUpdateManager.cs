@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using WUApiLib;
 
-namespace WindowsUpdateNotifier.Core
+namespace WindowsUpdateNotifier
 {
     public class WindowsUpdateManager
     {
