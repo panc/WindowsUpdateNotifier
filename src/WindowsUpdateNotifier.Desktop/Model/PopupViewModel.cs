@@ -5,6 +5,10 @@ namespace WindowsUpdateNotifier
 {
     public class PopupViewModel
     {
+        public PopupViewModel()
+        {
+        }
+
         public PopupViewModel(string title, string message, Action onCloseCallback, IApplication application)
         {
             Title = title;

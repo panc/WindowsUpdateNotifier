@@ -4,42 +4,53 @@
         xmlns:local="clr-namespace:WindowsUpdateNotifier" 
         Title="MainWindow" WindowStartupLocation="Manual"
         Height="100" Width="300" ShowInTaskbar="False" Topmost="True"
-        Background="#FF7C7C7C" WindowStyle="None" AllowsTransparency="True"
+        Background="#FEFAF9F9" WindowStyle="None" AllowsTransparency="True"
         local:WindowBehavior.BackgroundClickCommand="{Binding OnOpenWindowsUpdateControlPanelCommand}">
-    
+    <Window.DataContext>
+        <local:PopupViewModel Title="Updates Available" Message="3 Updates are available..."/>
+    </Window.DataContext>
+
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <EventTrigger.Actions>
                 <BeginStoryboard>
                     <Storyboard TargetProperty="Opacity" local:DataTriggerBehavior.StoryCompletedCommand="{Binding OnCloseCommand}">
-                        <DoubleAnimation From="0" To="0.97" Duration="0:0:2"/>
-                        <DoubleAnimation From="0.97" To="0" Duration="0:0:2" BeginTime="0:0:15"/>
+                        <DoubleAnimation From="0" To="0.98" Duration="0:0:2"/>
+                        <DoubleAnimation From="0.97" To="0" Duration="0:0:2" BeginTime="0:1:15"/>
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger.Actions>
         </EventTrigger>
     </Window.Triggers>
-    
-    <Border BorderBrush="#585757" BorderThickness="3">
+
+    <Border BorderBrush="#6badf6" BorderThickness="3">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="35"></RowDefinition>
+                <RowDefinition Height="3"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
         
             <DockPanel Grid.Row="0">
-                <Button DockPanel.Dock="Right" Background="#00DDDDDD" Width="30" Height="30" 
+                <Image Source="/WindowsUpdateNotifier;component/Resources/Refresh.png" 
+                       Width="20" Height="20" Margin="5,0,0,0"
+                       DockPanel.Dock="Left"/>
+
+                <Button DockPanel.Dock="Right" Background="#00DDDDDD" Width="30" Height="30" BorderThickness="0"
                         Command="{Binding OnCloseCommand}" Margin="0,0,5,0">
                 
                     <Image Source="/WindowsUpdateNotifier;component/Resources/close.png" Width="16" Height="16"  />
                 </Button>
-            
-                <Label Content="{Binding Title}" Foreground="#FFEDEDED" FontSize="17" FontWeight="Bold" Margin="5,5,0,0" FontFamily="Calibri"  />
-            
+
+                <Label Content="{Binding Title}" Foreground="#707070" FontSize="17" FontWeight="Normal" Margin="5,2,0,0" FontFamily="Calibri"  />
             </DockPanel>
 
             <DockPanel Grid.Row="1">
-                <Label Content="{Binding Message}" Foreground="#FFEDEDED" Margin="5,5,0,0" FontFamily="Calibri" FontSize="16"  />
+                <Separator Margin="0,0,0,0" Background="#ccd9ea" />
+            </DockPanel>
+
+            <DockPanel Grid.Row="2" Background="#f6f6f6">
+                <Label Content="{Binding Message}" Foreground="#8c8c8c" Margin="30,13,5,5" FontFamily="Calibri" FontSize="14"  />
             </DockPanel>
         </Grid>
     </Border>

@@ -9,8 +9,8 @@ namespace WindowsUpdateNotifier
             InitializeComponent();
 
             var workingArea = SystemParameters.WorkArea;
-            Left = workingArea.Width + workingArea.Left - Width;
-            Top = workingArea.Height + workingArea.Top - Height;
+            Left = workingArea.Width + workingArea.Left - Width - 10;
+            Top = workingArea.Height + workingArea.Top - Height - 10;
         }
     }
 }
