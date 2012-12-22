@@ -1,8 +1,5 @@
-/src/WindowsUpdateNotifier.Desktop/bin
-/src/WindowsUpdateNotifier.Desktop/obj
-*.DotSettings
-/src/WindowsUpdateNotifier.Core/bin
-/src/WindowsUpdateNotifier.Core/obj
-*.suo
 /bin
-/src/WindowsUpdateNotifier.Desktop/*.user
+/src/WindowsUpdateNotifier/obj
+*.DotSettings
+*.suo
+*.user
