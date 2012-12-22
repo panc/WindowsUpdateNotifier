@@ -33,26 +33,24 @@ namespace WindowsUpdateNotifier.Desktop
         public void SearchForUpdates()
         {
             mUpdateManager.StartSearchForUpdates();
-            mTrayIcon.SetToolTipAndMenuItems(TextResources.ToolTip_Searching, false);
+            mTrayIcon.SetToolTipAndMenuItems(TextResources.ToolTip_Searching, false, false);
         }
 
         private void _OnSearchFinished(int updateCount)
         {
             var message = TextResources.ToolTip_NothingFound;
+            var updatesAvailable = updateCount > 0;
 
-            if (updateCount > 0)
+            if (updatesAvailable)
             {
                 message = _GetMessage(updateCount);
 
                 var popup = new PopupView();
                 popup.DataContext = new PopupViewModel(TextResources.Popup_Title, message, popup.Close, this);
                 popup.Show();
-
-                // todo
-                // change icon...
             }
 
-            mTrayIcon.SetToolTipAndMenuItems(message, true);
+            mTrayIcon.SetToolTipAndMenuItems(message, true, updatesAvailable);
         }
 
         private string _GetMessage(int updateCount)

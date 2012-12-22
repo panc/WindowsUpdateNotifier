@@ -5,3 +5,4 @@
 /src/WindowsUpdateNotifier.Core/obj
 *.suo
 /bin
+/src/WindowsUpdateNotifier.Desktop/*.user

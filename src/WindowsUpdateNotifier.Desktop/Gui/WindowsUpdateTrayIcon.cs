@@ -23,7 +23,6 @@ namespace WindowsUpdateNotifier
                 new MenuItem("-"),
                 mStartMenuItem,
                 new MenuItem(TextResources.Menu_WindowsUpdates, (s, e) => application.OpenWindowsUpdateControlPanel()),
-                //new MenuItem(TextResources.Menu_Settings, (s, e) => application.OpenSettingsView()),
                 new MenuItem("-"),
                 new MenuItem(TextResources.Menu_Exit, _OnExitClicked)
             });
@@ -31,7 +30,7 @@ namespace WindowsUpdateNotifier
             mNotifyIcon = new NotifyIcon
             {
                 ContextMenu = contextMenu,
-                Icon = Resources.WindowsUpdate,
+                Icon = Resources.WindowsUpdateNo,
                 Visible = true,
             };
         }
@@ -42,11 +41,18 @@ namespace WindowsUpdateNotifier
             mNotifyIcon.Dispose();
         }
 
-        public void SetToolTipAndMenuItems(string text, bool isStartEntryEnabled)
+        public void SetToolTipAndMenuItems(string text, bool isStartEntryEnabled, bool updatesAvailable)
         {
             mNotifyIcon.Text = text;
             mInfoMenuItem.Text = text;
             mStartMenuItem.Enabled = isStartEntryEnabled;
+
+            if (isStartEntryEnabled == false)
+                mNotifyIcon.Icon = Resources.WindowsUpdateSearching;
+            else if (updatesAvailable)
+                mNotifyIcon.Icon = Resources.WindowsUpdate;
+            else
+                mNotifyIcon.Icon = Resources.WindowsUpdateNo;
         }
 
         private void _OnExitClicked(object sender, EventArgs e)
