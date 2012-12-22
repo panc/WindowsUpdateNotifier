@@ -36,10 +36,23 @@
                        Width="20" Height="20" Margin="5,0,0,0"
                        DockPanel.Dock="Left"/>
 
-                <Button DockPanel.Dock="Right" Background="#00DDDDDD" Width="30" Height="30" BorderThickness="0"
+                <Button DockPanel.Dock="Right" Width="30" Height="30" BorderThickness="0"
                         Command="{Binding OnCloseCommand}" Margin="0,0,5,0">
                 
                     <Image Source="/WindowsUpdateNotifier;component/Resources/close.png" Width="16" Height="16"  />
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border" BorderThickness="0" Background="#00000000">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Content" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#B0B0B0" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
                 </Button>
 
                 <Label Content="{Binding Title}" Foreground="#707070" FontSize="17" FontWeight="Normal" Margin="5,2,0,0" FontFamily="Calibri"  />
