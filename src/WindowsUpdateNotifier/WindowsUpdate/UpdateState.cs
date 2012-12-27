@@ -7,7 +7,8 @@ namespace WindowsUpdateNotifier
     {
         Searching,
         UpdatesAvailable,
-        NoUpdatesAvailable
+        NoUpdatesAvailable,
+        Failure
     }
 
     public static class UpdateStateExtensions
@@ -16,7 +17,9 @@ namespace WindowsUpdateNotifier
         {
             return updateCount > 0
                 ? UpdateState.UpdatesAvailable
-                : UpdateState.NoUpdatesAvailable;
+                : updateCount == 0
+                    ? UpdateState.NoUpdatesAvailable
+                    : UpdateState.Failure;
         }
 
         public static Icon GetIcon(this UpdateState state)
@@ -27,8 +30,10 @@ namespace WindowsUpdateNotifier
                     return ImageResources.WindowsUpdateSearching1;
                 case UpdateState.UpdatesAvailable:
                     return ImageResources.WindowsUpdate;
+                case UpdateState.Failure:
+                    return ImageResources.WindowsUpdateNoConnection;
                 default:
-                    return ImageResources.WindowsUpdateNo;
+                    return ImageResources.WindowsUpdateNothing;
             }
         }
     }

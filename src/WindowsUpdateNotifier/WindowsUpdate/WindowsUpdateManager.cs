@@ -19,12 +19,19 @@ namespace WindowsUpdateNotifier
 
             Task.Factory.StartNew(() =>
             {
-                var session = new UpdateSession();
-                var searcher = session.CreateUpdateSearcher();
-                searcher.Online = true;
-                var result = searcher.Search("IsInstalled=0");
+                try
+                {
+                    var session = new UpdateSession();
+                    var searcher = session.CreateUpdateSearcher();
+                    searcher.Online = true;
+                    var result = searcher.Search("IsInstalled=0");
 
-                return result.Updates.Count;
+                    return result.Updates.Count;
+                }
+                catch
+                {
+                    return -1;
+                }
             })
             .ContinueWith(task => mOnSearchFinished(task.Result), scheduler);
         }

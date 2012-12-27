@@ -32,24 +32,30 @@ namespace WindowsUpdateNotifier
         public void SearchForUpdates()
         {
             mUpdateManager.StartSearchForUpdates();
-            mTrayIcon.SetToolTipAndMenuItems(TextResources.ToolTip_Searching, UpdateState.Searching);
+            mTrayIcon.SetToolTipAndMenuItems(TextResources.ToolTip_Searching, TextResources.ToolTip_Searching, UpdateState.Searching);
         }
 
         private void _OnSearchFinished(int updateCount)
         {
             var message = TextResources.ToolTip_NothingFound;
+            var toolTip = TextResources.ToolTip_NothingFound;
             var state = updateCount.GetUpdateState();
 
             if (state == UpdateState.UpdatesAvailable)
             {
-                message = _GetMessage(updateCount);
+                toolTip = message = _GetMessage(updateCount);
 
                 var popup = new PopupView();
                 popup.DataContext = new PopupViewModel(TextResources.Popup_Title, message, popup.Close, this);
                 popup.Show();
             }
+            else if (state == UpdateState.Failure)
+            {
+                message = TextResources.Menu_NoConnection;
+                toolTip = TextResources.ToolTip_NoConnection;
+            }
 
-            mTrayIcon.SetToolTipAndMenuItems(message, state);
+            mTrayIcon.SetToolTipAndMenuItems(toolTip, message, state);
         }
 
         private string _GetMessage(int updateCount)

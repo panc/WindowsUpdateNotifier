@@ -70,6 +70,15 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Internet-Connection..
+        /// </summary>
+        public static string Menu_NoConnection {
+            get {
+                return ResourceManager.GetString("Menu_NoConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Menu_Settings {
@@ -120,6 +129,15 @@ namespace WindowsUpdateNotifier.Resources {
         public static string Popup_UpdatesAvailableMessage {
             get {
                 return ResourceManager.GetString("Popup_UpdatesAvailableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A Connection to the WindowsUpdate-Service can&apos;t be established..
+        /// </summary>
+        public static string ToolTip_NoConnection {
+            get {
+                return ResourceManager.GetString("ToolTip_NoConnection", resourceCulture);
             }
         }
         

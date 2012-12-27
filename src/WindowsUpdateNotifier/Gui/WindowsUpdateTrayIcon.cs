@@ -31,7 +31,7 @@ namespace WindowsUpdateNotifier
             mNotifyIcon = new NotifyIcon
             {
                 ContextMenu = contextMenu,
-                Icon = ImageResources.WindowsUpdateNo,
+                Icon = UpdateState.NoUpdatesAvailable.GetIcon(),
                 Visible = true,
             };
 
@@ -48,13 +48,13 @@ namespace WindowsUpdateNotifier
             mAnimationTimer.Dispose();
         }
 
-        public void SetToolTipAndMenuItems(string text, UpdateState state)
+        public void SetToolTipAndMenuItems(string toolTip, string menuText, UpdateState state)
         {
-            mNotifyIcon.Text = text;
+            mNotifyIcon.Text = toolTip;
             mNotifyIcon.Icon = state.GetIcon();
             mSearchIconIndex = 1;
 
-            mInfoMenuItem.Text = text;
+            mInfoMenuItem.Text = menuText;
             mStartMenuItem.Enabled = state != UpdateState.Searching;
             mAnimationTimer.Enabled = state == UpdateState.Searching;
         }

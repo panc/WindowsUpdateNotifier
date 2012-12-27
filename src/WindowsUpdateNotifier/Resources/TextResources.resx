@@ -120,6 +120,9 @@
   <data name="Menu_Exit" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="Menu_NoConnection" xml:space="preserve">
+    <value>No Internet-Connection.</value>
+  </data>
   <data name="Menu_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="Popup_UpdatesAvailableMessage" xml:space="preserve">
     <value>{0} updates are available.</value>
+  </data>
+  <data name="ToolTip_NoConnection" xml:space="preserve">
+    <value>A Connection to the WindowsUpdate-Service can't be established.</value>
   </data>
   <data name="ToolTip_NothingFound" xml:space="preserve">
     <value>No updates available.</value>

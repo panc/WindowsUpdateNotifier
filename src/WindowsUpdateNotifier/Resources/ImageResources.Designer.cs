@@ -73,9 +73,19 @@ namespace WindowsUpdateNotifier.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon WindowsUpdateNo {
+        internal static System.Drawing.Icon WindowsUpdateNoConnection {
             get {
-                object obj = ResourceManager.GetObject("WindowsUpdateNo", resourceCulture);
+                object obj = ResourceManager.GetObject("WindowsUpdateNoConnection", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon WindowsUpdateNothing {
+            get {
+                object obj = ResourceManager.GetObject("WindowsUpdateNothing", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
