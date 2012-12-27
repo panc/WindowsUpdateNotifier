@@ -16,21 +16,22 @@ namespace WindowsUpdateNotifier
         private readonly WindowsUpdateTrayIcon mTrayIcon;
         private readonly WindowsUpdateManager mUpdateManager;
         private readonly DispatcherTimer mTimer;
+        private int mFailureCount;
 
         public ApplicationHandler()
         {
             mTrayIcon = new WindowsUpdateTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
 
-            SearchForUpdates();
-            
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromHours(1) };
             mTimer.Tick += (e, s) => SearchForUpdates();
-            mTimer.Start();
+            
+            SearchForUpdates();
         }
 
         public void SearchForUpdates()
         {
+            mTimer.Stop();
             mUpdateManager.StartSearchForUpdates();
             mTrayIcon.SetToolTipAndMenuItems(TextResources.ToolTip_Searching, TextResources.ToolTip_Searching, UpdateState.Searching);
         }
@@ -56,6 +57,20 @@ namespace WindowsUpdateNotifier
             }
 
             mTrayIcon.SetToolTipAndMenuItems(toolTip, message, state);
+            _StartTimer(state);
+        }
+
+        private void _StartTimer(UpdateState state)
+        {
+            mTimer.Interval = state == UpdateState.Failure && mFailureCount < 10
+                ? TimeSpan.FromSeconds(30)
+                : TimeSpan.FromHours(1);
+
+            mFailureCount = state == UpdateState.Failure 
+                ? mFailureCount + 1 
+                : 0;
+
+            mTimer.Start();
         }
 
         private string _GetMessage(int updateCount)
