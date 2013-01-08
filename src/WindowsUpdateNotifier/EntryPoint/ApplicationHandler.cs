@@ -9,6 +9,8 @@ namespace WindowsUpdateNotifier
     {
         void OpenWindowsUpdateControlPanel();
         void SearchForUpdates();
+        
+        bool NotificationsDisabled { get; set; }
     }
 
     public class ApplicationHandler : IApplication, IDisposable
@@ -36,6 +38,8 @@ namespace WindowsUpdateNotifier
             mTrayIcon.SetToolTipAndMenuItems(TextResources.ToolTip_Searching, TextResources.ToolTip_Searching, UpdateState.Searching);
         }
 
+        public bool NotificationsDisabled { get; set; }
+
         private void _OnSearchFinished(int updateCount)
         {
             var message = TextResources.ToolTip_NothingFound;
@@ -46,9 +50,12 @@ namespace WindowsUpdateNotifier
             {
                 toolTip = message = _GetMessage(updateCount);
 
-                var popup = new PopupView();
-                popup.DataContext = new PopupViewModel(TextResources.Popup_Title, message, popup.Close, this);
-                popup.Show();
+                if (NotificationsDisabled == false)
+                {
+                    var popup = new PopupView();
+                    popup.DataContext = new PopupViewModel(TextResources.Popup_Title, message, popup.Close, this);
+                    popup.Show();
+                }
             }
             else if (state == UpdateState.Failure)
             {

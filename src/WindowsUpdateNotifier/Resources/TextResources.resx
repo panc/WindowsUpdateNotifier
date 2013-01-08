@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Menu_DisableNotification" xml:space="preserve">
+    <value>Disable Notification</value>
+  </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Exit</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Popup_UpdatesAvailableMessage" xml:space="preserve">
     <value>{0} updates are available.</value>
+  </data>
+  <data name="ToolTip_DisableNotification" xml:space="preserve">
+    <value>Disable popup-notification (e.g. for presentations)</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
     <value>A Connection to the WindowsUpdate-Service can't be established.</value>

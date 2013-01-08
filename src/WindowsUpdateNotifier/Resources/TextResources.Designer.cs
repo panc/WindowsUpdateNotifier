@@ -61,6 +61,15 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disable Notification.
+        /// </summary>
+        public static string Menu_DisableNotification {
+            get {
+                return ResourceManager.GetString("Menu_DisableNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         public static string Menu_Exit {
@@ -129,6 +138,15 @@ namespace WindowsUpdateNotifier.Resources {
         public static string Popup_UpdatesAvailableMessage {
             get {
                 return ResourceManager.GetString("Popup_UpdatesAvailableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable popup-notification (e.g. for presentations).
+        /// </summary>
+        public static string ToolTip_DisableNotification {
+            get {
+                return ResourceManager.GetString("ToolTip_DisableNotification", resourceCulture);
             }
         }
         
