@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 using WindowsUpdateNotifier.Resources;
 
@@ -37,6 +38,8 @@ namespace WindowsUpdateNotifier
                 Icon = UpdateState.NoUpdatesAvailable.GetIcon(),
                 Visible = true,
             };
+
+            mNotifyIcon.MouseUp += _OnMouseUp;
 
             mAnimationTimer = new Timer { Interval = 250 };
             mAnimationTimer.Tick += (x, y) => _OnRefreshSearchIcon();
@@ -81,6 +84,15 @@ namespace WindowsUpdateNotifier
             mDisableNotificationsMenuItem.Checked = disabled;
 
             application.NotificationsDisabled = disabled;
+        }
+
+        private void _OnMouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                var mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
+                mi.Invoke(mNotifyIcon, null);
+            }
         }
     }
 }
