@@ -59,6 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Gui\BalloonTipHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Gui\Behavior\DataTriggerBehavior.cs" />
     <Compile Include="Gui\Behavior\WindowBehavior.cs" />
     <Compile Include="Gui\Command\SimpleCommand.cs" />
