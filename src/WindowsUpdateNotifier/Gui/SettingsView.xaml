@@ -1,0 +1,45 @@
+﻿<Window x:Class="WindowsUpdateNotifier.SettingsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" 
+        Title="Settings" ResizeMode="CanMinimize" SizeToContent="Height" Width="400">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel>
+        <Border 
+            x:Name="BottomArea" 
+            DockPanel.Dock="Bottom" 
+            VerticalAlignment="Bottom" 
+            Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" 
+            BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" 
+            BorderThickness="0,1,0,0">
+
+            <DockPanel LastChildFill="False">
+                <Button x:Name="CancelButton" Content="{x:Static p:TextResources.Button_Cancel}" DockPanel.Dock="Right" IsCancel="True" 
+                    Margin="0,10,10,10" MinWidth="75" MinHeight="25" Padding="5,2"/>
+
+                <Button x:Name="SaveButton" Content="{x:Static p:TextResources.Button_Ok}" DockPanel.Dock="Right"
+                    Margin="0,10,10,10" MinWidth="75" MinHeight="25" Padding="5,2" Command="{Binding SaveAndCloseCommand}"/>
+            </DockPanel>
+        </Border>
+
+        <StackPanel VerticalAlignment="Top" Margin="10">
+            <CheckBox Content="{x:Static p:TextResources.Menu_NoConnection}" Margin="0,0,0,10" 
+                      IsChecked="{Binding HideIcon}" />
+
+            <DockPanel Margin="0,10,0,0">
+                <TextBlock Text="{x:Static p:TextResources.Menu_NoConnection}" Width="100"/>
+                <TextBox Text="{Binding RefreshInterval, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" IsEnabled="{Binding UseProxyForOnlineSearch }" />
+            </DockPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>

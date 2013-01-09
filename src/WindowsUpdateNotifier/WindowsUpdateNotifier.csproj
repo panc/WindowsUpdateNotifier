@@ -59,10 +59,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EntryPoint\AppSettings.cs" />
     <Compile Include="Gui\Behavior\DataTriggerBehavior.cs" />
     <Compile Include="Gui\Behavior\WindowBehavior.cs" />
     <Compile Include="Gui\Command\SimpleCommand.cs" />
+    <Compile Include="Gui\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\PopupViewModel.cs" />
+    <Compile Include="Model\SettingsViewModel.cs" />
     <Compile Include="Resources\TextResources.Designer.cs">
       <DependentUpon>TextResources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -70,6 +75,10 @@
     </Compile>
     <Compile Include="WindowsUpdate\UpdateState.cs" />
     <Compile Include="WindowsUpdate\WindowsUpdateManager.cs" />
+    <Page Include="Gui\SettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Gui\PopupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

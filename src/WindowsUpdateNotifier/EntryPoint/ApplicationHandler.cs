@@ -8,6 +8,7 @@ namespace WindowsUpdateNotifier
     public interface IApplication
     {
         void OpenWindowsUpdateControlPanel();
+        void OpenSettings();
         void SearchForUpdates();
         
         bool NotificationsDisabled { get; set; }
@@ -29,6 +30,13 @@ namespace WindowsUpdateNotifier
             mTimer.Tick += (e, s) => SearchForUpdates();
             
             SearchForUpdates();
+        }
+
+        public void OpenSettings()
+        {
+            var view = new SettingsView();
+            view.DataContext = new SettingsViewModel(view.Close);
+            view.ShowDialog();
         }
 
         public void SearchForUpdates()
