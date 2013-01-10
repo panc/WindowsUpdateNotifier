@@ -133,7 +133,7 @@
     <value>Search for updates</value>
   </data>
   <data name="Menu_WindowsUpdates" xml:space="preserve">
-    <value>Windows Updates Control Panel</value>
+    <value>Windows-Updates Control-Panel</value>
   </data>
   <data name="Popup_OneUpdateAvailableMessage" xml:space="preserve">
     <value>One update is available.</value>
@@ -143,9 +143,6 @@
   </data>
   <data name="Popup_UpdatesAvailableMessage" xml:space="preserve">
     <value>{0} updates are available.</value>
-  </data>
-  <data name="ToolTip_DisableNotification" xml:space="preserve">
-    <value>Disable popup-notification (e.g. for presentations)</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
     <value>A Connection to the WindowsUpdate-Service can't be established.</value>
