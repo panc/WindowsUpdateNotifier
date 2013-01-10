@@ -118,39 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Menu_DisableNotification" xml:space="preserve">
-    <value>Disable Notification</value>
+    <value>Benachrichtigung deaktivieren</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
-    <value>Exit</value>
+    <value>Beenden</value>
   </data>
   <data name="Menu_NoConnection" xml:space="preserve">
-    <value>No Internet-Connection.</value>
+    <value>Keine Internetverbindung</value>
   </data>
   <data name="Menu_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Einstellungen</value>
   </data>
   <data name="Menu_StartSearch" xml:space="preserve">
-    <value>Search for updates</value>
+    <value>Nach Updates suchen</value>
   </data>
   <data name="Menu_WindowsUpdates" xml:space="preserve">
-    <value>Windows-Update Control-Panel</value>
+    <value>Windows-Update Dialog</value>
   </data>
   <data name="Popup_OneUpdateAvailableMessage" xml:space="preserve">
-    <value>One update is available.</value>
+    <value>Ein Update ist verfügbar.</value>
   </data>
   <data name="Popup_Title" xml:space="preserve">
-    <value>Updates Available</value>
+    <value>Updates verfügbar</value>
   </data>
   <data name="Popup_UpdatesAvailableMessage" xml:space="preserve">
-    <value>{0} updates are available.</value>
+    <value>{0} Updates sind verfügbar.</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
-    <value>A Connection to the WindowsUpdate-Service can't be established.</value>
+    <value>Es konnte keine Verbindung zum Windows-Update-Service hergestellt werden.</value>
   </data>
   <data name="ToolTip_NothingFound" xml:space="preserve">
-    <value>No updates available.</value>
+    <value>Keine Updates verfügbar.</value>
   </data>
   <data name="ToolTip_Searching" xml:space="preserve">
-    <value>Searching for updates ...</value>
+    <value>Suche nach Updates ...</value>
   </data>
 </root>

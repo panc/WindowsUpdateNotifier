@@ -106,7 +106,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows-Updates Control-Panel.
+        ///   Looks up a localized string similar to Windows-Update Control-Panel.
         /// </summary>
         public static string Menu_WindowsUpdates {
             get {
@@ -160,7 +160,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Searching for updates..
+        ///   Looks up a localized string similar to Searching for updates ....
         /// </summary>
         public static string ToolTip_Searching {
             get {
