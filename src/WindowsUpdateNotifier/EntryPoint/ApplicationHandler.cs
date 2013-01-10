@@ -26,10 +26,20 @@ namespace WindowsUpdateNotifier
             mTrayIcon = new WindowsUpdateTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
 
+            AppSettings.Instance.OnSettingsChanged = _OnSettingsChanged;
+
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromHours(1) };
             mTimer.Tick += (e, s) => SearchForUpdates();
             
             SearchForUpdates();
+            _OnSettingsChanged();
+        }
+
+        private void _OnSettingsChanged()
+        {
+            mTimer.Interval = TimeSpan.FromMinutes(AppSettings.Instance.RefreshInterval);
+            
+            // todo hide icon
         }
 
         public void OpenSettings()

@@ -17,9 +17,9 @@ namespace WindowsUpdateNotifier
             SaveAndCloseCommand = new SimpleCommand(() => _SaveAndClose(closeWindowCallback));
         }
 
-        public bool HideIcon { get; set; }
-
         public ICommand SaveAndCloseCommand { get; set; }
+
+        public bool HideIcon { get; set; }
 
         public int RefreshInterval
         {
@@ -33,12 +33,7 @@ namespace WindowsUpdateNotifier
 
         private void _SaveAndClose(Action close)
         {
-            var settings = AppSettings.Instance;
-            settings.RefreshInterval = RefreshInterval;
-            settings.HideIcon = HideIcon;
-
-            settings.Save();
-
+            AppSettings.Instance.Save(RefreshInterval, HideIcon);
             close();
         }
 
