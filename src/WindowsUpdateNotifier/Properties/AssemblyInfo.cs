@@ -7,7 +7,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Christoph Pangerl")]
 [assembly: AssemblyProduct("WindowsUpdateNotifier")]
-[assembly: AssemblyCopyright("Copyright © Christoph Pangerl 2012")]
+[assembly: AssemblyCopyright("Copyright © Christoph Pangerl 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -15,4 +15,4 @@ using System.Windows;
 
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
-[assembly: AssemblyVersion("0.3.2.4")]
+[assembly: AssemblyVersion("0.4.1.1")]
