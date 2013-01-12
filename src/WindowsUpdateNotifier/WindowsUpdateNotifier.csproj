@@ -35,7 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\WindowsUpdate.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -119,7 +120,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Close.png" />
+    <Resource Include="Resources\Images\Close.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\ImageResources.resx">
@@ -134,10 +135,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Refresh.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\WindowsUpdate.ico" />
+    <Resource Include="Resources\Images\Update.png" />
+    <Resource Include="Resources\Images\WindowsUpdate.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -32,14 +32,14 @@
             </Grid.RowDefinitions>
         
             <DockPanel Grid.Row="0">
-                <Image Source="/WindowsUpdateNotifier;component/Resources/Refresh.png" 
+                <Image Source="/WindowsUpdateNotifier;component/Resources/Images/update.png" 
                        Width="20" Height="20" Margin="5,0,0,0"
                        DockPanel.Dock="Left"/>
 
-                <Button DockPanel.Dock="Right" Width="30" Height="30" BorderThickness="0"
+                <Button DockPanel.Dock="Right" Width="20" Height="20" BorderThickness="0"
                         Command="{Binding OnCloseCommand}" Margin="0,0,5,0">
                 
-                    <Image Source="/WindowsUpdateNotifier;component/Resources/close.png" Width="16" Height="16"  />
+                    <Image Source="/WindowsUpdateNotifier;component/Resources/Images/Close.png" Width="16" Height="16"  />
 
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">

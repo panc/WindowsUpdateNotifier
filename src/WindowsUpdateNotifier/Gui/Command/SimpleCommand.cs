@@ -7,6 +7,7 @@ namespace WindowsUpdateNotifier
     {
         private readonly Action mExecuteCallback;
         private readonly Func<bool> mCanExecuteCallback;
+        private bool mCanExecute;
 
         public SimpleCommand(Action executeCallback)
         {
@@ -17,6 +18,7 @@ namespace WindowsUpdateNotifier
         {
             mExecuteCallback = executeCallback;
             mCanExecuteCallback = canExecuteCallback;
+            mCanExecute = false;
         }
 
         public void Execute(object parameter)
@@ -26,7 +28,17 @@ namespace WindowsUpdateNotifier
 
         public bool CanExecute(object parameter)
         {
-            return mCanExecuteCallback == null || mCanExecuteCallback();
+            var canExecute = mCanExecuteCallback == null || mCanExecuteCallback();
+
+            if(canExecute != mCanExecute)
+            {
+                mCanExecute = canExecute;
+
+                if (CanExecuteChanged != null)
+                    CanExecuteChanged(this, EventArgs.Empty);
+            }
+
+            return canExecute;
         }
 
         public event EventHandler CanExecuteChanged;
