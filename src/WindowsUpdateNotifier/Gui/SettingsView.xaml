@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" 
         Title="Settings" ResizeMode="CanMinimize" SizeToContent="Height" Width="400"
-         Icon="/WindowsUpdateNotifier;component/Resources\WindowsUpdate.ico">
+        Icon="/WindowsUpdateNotifier;component/Resources\Images\WindowsUpdate.ico"
+        WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <Style TargetType="{x:Type TextBox}">

@@ -12,10 +12,11 @@ namespace WindowsUpdateNotifier
         private readonly WindowsUpdateManager mUpdateManager;
         private readonly DispatcherTimer mTimer;
         private int mFailureCount;
+        private SettingsView mSettingsView;
 
         public ApplicationHandler()
         {
-            AppSettings.Initialize(_CheckWithDefaultSettings());
+            AppSettings.Initialize(_CheckUseDefaultSettings());
 
             mTrayIcon = new WindowsUpdateTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
@@ -24,21 +25,26 @@ namespace WindowsUpdateNotifier
 
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromHours(1) };
             mTimer.Tick += (e, s) => SearchForUpdates();
-            
+
             _OnSettingsChanged();
         }
 
-        private void _OnSettingsChanged()
-        {
-            mTimer.Interval = TimeSpan.FromMinutes(AppSettings.Instance.RefreshInterval);
-            SearchForUpdates();
-        }
+        public bool NotificationsDisabled { get; set; }
 
         public void OpenSettings()
         {
-            var view = new SettingsView();
-            view.DataContext = new SettingsViewModel(view.Close);
-            view.ShowDialog();
+            if (mSettingsView != null)
+            {
+                mSettingsView.BringIntoView();
+                mSettingsView.Focus();
+
+                return;
+            }
+
+            mSettingsView = new SettingsView();
+            mSettingsView.DataContext = new SettingsViewModel(mSettingsView.Close);
+            mSettingsView.Closed += (s, e) => mSettingsView = null;
+            mSettingsView.ShowDialog();
         }
 
         public void SearchForUpdates()
@@ -49,7 +55,21 @@ namespace WindowsUpdateNotifier
             mTrayIcon.SetIcon(UpdateState.Searching);
         }
 
-        public bool NotificationsDisabled { get; set; }
+        public void Dispose()
+        {
+            mTrayIcon.Dispose();
+        }
+
+        public void OpenWindowsUpdateControlPanel()
+        {
+            Process.Start("control.exe", "/name Microsoft.WindowsUpdate");
+        }
+
+        private void _OnSettingsChanged()
+        {
+            mTimer.Interval = TimeSpan.FromMinutes(AppSettings.Instance.RefreshInterval);
+            SearchForUpdates();
+        }
 
         private void _OnSearchFinished(int updateCount)
         {
@@ -66,6 +86,9 @@ namespace WindowsUpdateNotifier
                     var popup = new PopupView();
                     popup.DataContext = new PopupViewModel(TextResources.Popup_Title, message, popup.Close, this);
                     popup.Show();
+
+                    if (mSettingsView != null)
+                        mSettingsView.Focus();
                 }
             }
             else if (state == UpdateState.Failure)
@@ -76,6 +99,7 @@ namespace WindowsUpdateNotifier
 
             mTrayIcon.SetupToolTipAndMenuItems(toolTip, message, state);
             mTrayIcon.SetIcon(state);
+
             _StartTimer(state);
         }
 
@@ -85,8 +109,8 @@ namespace WindowsUpdateNotifier
                 ? TimeSpan.FromSeconds(30)
                 : TimeSpan.FromHours(1);
 
-            mFailureCount = state == UpdateState.Failure 
-                ? mFailureCount + 1 
+            mFailureCount = state == UpdateState.Failure
+                ? mFailureCount + 1
                 : 0;
 
             mTimer.Start();
@@ -99,19 +123,9 @@ namespace WindowsUpdateNotifier
                 : TextResources.Popup_OneUpdateAvailableMessage;
         }
 
-        public void Dispose()
+        private bool _CheckUseDefaultSettings()
         {
-            mTrayIcon.Dispose();
-        }
-
-        public void OpenWindowsUpdateControlPanel()
-        {
-            Process.Start("control.exe", "/name Microsoft.WindowsUpdate");
-        }
-
-        private bool _CheckWithDefaultSettings()
-        {
-            return Environment.GetCommandLineArgs().Any(x => x == "-withDefaultSettings");
+            return Environment.GetCommandLineArgs().Any(x => x == "-useDefaultSettings");
         }
     }
 }

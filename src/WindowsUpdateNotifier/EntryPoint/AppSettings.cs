@@ -12,22 +12,22 @@ namespace WindowsUpdateNotifier
 
         public static AppSettings Instance { get; private set; }
 
-        public static void Initialize(bool withDefaultSettings)
+        public static void Initialize(bool useDefaultSettings)
         {
             if (Instance != null)
                 throw new InvalidOperationException("AppSettings are already initialzed!");
 
-            Instance = new AppSettings(withDefaultSettings);
+            Instance = new AppSettings(useDefaultSettings);
         }
 
 
         private readonly Configuration mConfig;
 
-        private AppSettings(bool withDefaultSettings)
+        private AppSettings(bool useDefaultSettings)
         {
             mConfig = _LoadConfigurationFile();
 
-            _AddDefaultValues(withDefaultSettings);
+            _AddDefaultValues(useDefaultSettings);
 
             RefreshInterval = int.Parse(mConfig.AppSettings.Settings[REFRESH_INTERVAL].Value);
             HideIcon = bool.Parse(mConfig.AppSettings.Settings[HIDE_ICON].Value);
@@ -77,9 +77,9 @@ namespace WindowsUpdateNotifier
             return ConfigurationManager.OpenMappedExeConfiguration(c, ConfigurationUserLevel.None);
         }
 
-        private void _AddDefaultValues(bool withDefaultSettings)
+        private void _AddDefaultValues(bool useDefaultSettings)
         {
-            if (withDefaultSettings)
+            if (useDefaultSettings)
                 mConfig.AppSettings.Settings.Clear();
 
             if (mConfig.AppSettings.Contains(REFRESH_INTERVAL) == false)
