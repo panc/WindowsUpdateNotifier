@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" 
-        Title="Settings" ResizeMode="CanMinimize" SizeToContent="Height" Width="400">
+        Title="Settings" ResizeMode="CanMinimize" SizeToContent="Height" Width="400"
+         Icon="/WindowsUpdateNotifier;component/Resources\WindowsUpdate.ico">
 
     <Window.Resources>
         <Style TargetType="{x:Type TextBox}">
@@ -25,22 +26,35 @@
 
             <DockPanel LastChildFill="False">
                 <Button x:Name="CancelButton" Content="{x:Static p:TextResources.Button_Cancel}" DockPanel.Dock="Right" IsCancel="True" 
-                    Margin="0,10,10,10" MinWidth="75" MinHeight="25" Padding="5,2"/>
+                    Margin="0,5,5,5" MinWidth="75" MinHeight="25" Padding="5,2"/>
 
                 <Button x:Name="SaveButton" Content="{x:Static p:TextResources.Button_Ok}" DockPanel.Dock="Right"
-                    Margin="0,10,10,10" MinWidth="75" MinHeight="25" Padding="5,2" Command="{Binding SaveAndCloseCommand}"/>
+                    Margin="0,5,5,5" MinWidth="75" MinHeight="25" Padding="5,2" Command="{Binding SaveAndCloseCommand}"/>
             </DockPanel>
         </Border>
 
-        <StackPanel VerticalAlignment="Top" Margin="10" IsEnabled="{Binding SettingsCanBeChanged}">
-            <CheckBox Content="{x:Static p:TextResources.Menu_NoConnection}" 
-                      Margin="0,0,0,10" 
-                      IsChecked="{Binding HideIcon}" />
+        <GroupBox Margin="10" Header="{x:Static p:TextResources.Label_CommonSettings}" DockPanel.Dock="Top">
+            <StackPanel VerticalAlignment="Top" Margin="10,20,10,10" IsEnabled="{Binding SettingsCanBeChanged}">
+                <CheckBox Content="{x:Static p:TextResources.Label_HideIcon}" 
+                          Margin="0,0,0,10" 
+                          IsChecked="{Binding HideIcon}" UseLayoutRounding="False" />
 
-            <DockPanel Margin="0,10,0,0">
-                <TextBlock Text="{x:Static p:TextResources.Menu_NoConnection}" Width="100"/>
-                <TextBox Text="{Binding RefreshInterval, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" IsEnabled="{Binding UseProxyForOnlineSearch }" />
+                <DockPanel Margin="0,10,0,0">
+                    <TextBlock Text="{x:Static p:TextResources.Label_RefreshInterval}"/>
+                    <TextBox Text="{Binding RefreshInterval, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" IsEnabled="{Binding UseProxyForOnlineSearch }" Width="40" Margin="10,0,0,0" HorizontalContentAlignment="Right" />
+                    <TextBlock Text="{x:Static p:TextResources.Label_Minutes}" Margin="10,0,0,0"/>
+                </DockPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Margin="10" Header="{x:Static p:TextResources.Label_AutoStartSettings}">
+            <DockPanel Margin="10,20,10,10" IsEnabled="{Binding SettingsCanBeChanged}" LastChildFill="False">
+                <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+                    <Button Content="Set as AutoStart" MinWidth="120" DockPanel.Dock="Left"/>
+                </DockPanel>
+                
+                <TextBlock Text="{x:Static p:TextResources.Label_RefreshInterval}" Margin="0,0,0,10"/>
             </DockPanel>
-        </StackPanel>
+        </GroupBox>
     </DockPanel>
 </Window>

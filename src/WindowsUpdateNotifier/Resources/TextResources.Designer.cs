@@ -79,6 +79,51 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Autostart Settings.
+        /// </summary>
+        public static string Label_AutoStartSettings {
+            get {
+                return ResourceManager.GetString("Label_AutoStartSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Common Settings.
+        /// </summary>
+        public static string Label_CommonSettings {
+            get {
+                return ResourceManager.GetString("Label_CommonSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide trayicon when no updates are available..
+        /// </summary>
+        public static string Label_HideIcon {
+            get {
+                return ResourceManager.GetString("Label_HideIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minutes..
+        /// </summary>
+        public static string Label_Minutes {
+            get {
+                return ResourceManager.GetString("Label_Minutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search for updates every.
+        /// </summary>
+        public static string Label_RefreshInterval {
+            get {
+                return ResourceManager.GetString("Label_RefreshInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disable Notification.
         /// </summary>
         public static string Menu_DisableNotification {
