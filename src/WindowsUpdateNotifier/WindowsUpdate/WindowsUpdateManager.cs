@@ -24,7 +24,7 @@ namespace WindowsUpdateNotifier
                     var session = new UpdateSession();
                     var searcher = session.CreateUpdateSearcher();
                     searcher.Online = true;
-                    var result = searcher.Search("IsInstalled=0");
+                    var result = searcher.Search("IsInstalled=0 AND IsHidden=0");
 
                     return result.Updates.Count;
                 }

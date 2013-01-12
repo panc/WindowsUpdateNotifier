@@ -26,9 +26,9 @@ namespace WindowsUpdateNotifier
                 mInfoMenuItem, 
                 new MenuItem("-"),
                 mStartMenuItem,
+                mDisableNotificationsMenuItem, 
                 new MenuItem("Settings", (s, e) => application.OpenSettings()),
                 new MenuItem(TextResources.Menu_WindowsUpdates, (s, e) => application.OpenWindowsUpdateControlPanel()),
-                mDisableNotificationsMenuItem, 
                 new MenuItem("-"),
                 new MenuItem(TextResources.Menu_Exit, _OnExitClicked)
             });
