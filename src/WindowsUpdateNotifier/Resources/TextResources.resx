@@ -123,8 +123,11 @@
   <data name="Button_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
-  <data name="Label_AutoStartSettings" xml:space="preserve">
-    <value>Autostart Settings</value>
+  <data name="Label_CanCreateStartupShortcut" xml:space="preserve">
+    <value>Some Info whther you can add a short cut...</value>
+  </data>
+  <data name="Label_CanNotCreateStartupShortcut" xml:space="preserve">
+    <value>blalba</value>
   </data>
   <data name="Label_CommonSettings" xml:space="preserve">
     <value>Common Settings</value>
@@ -137,6 +140,9 @@
   </data>
   <data name="Label_RefreshInterval" xml:space="preserve">
     <value>Search for updates every</value>
+  </data>
+  <data name="Label_StartupSettings" xml:space="preserve">
+    <value>Start-up Settings</value>
   </data>
   <data name="Menu_DisableNotification" xml:space="preserve">
     <value>Disable Notification</value>

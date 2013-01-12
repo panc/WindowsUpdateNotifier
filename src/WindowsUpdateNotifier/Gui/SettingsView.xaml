@@ -48,13 +48,14 @@
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Margin="10" Header="{x:Static p:TextResources.Label_AutoStartSettings}">
+        <GroupBox Margin="10" Header="{x:Static p:TextResources.Label_StartupSettings}">
             <DockPanel Margin="10,20,10,10" IsEnabled="{Binding SettingsCanBeChanged}" LastChildFill="False">
                 <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
-                    <Button Content="Set as AutoStart" MinWidth="120" DockPanel.Dock="Left"/>
+                    <Button Command="{Binding CreateStartupShortcutCommand}" Content="Set as AutoStart" 
+                            MinWidth="120" DockPanel.Dock="Left"/>
                 </DockPanel>
-                
-                <TextBlock Text="{x:Static p:TextResources.Label_RefreshInterval}" Margin="0,0,0,10"/>
+
+                <TextBlock Text="{Binding StartupShortcutInfo}" Margin="0,0,0,10"/>
             </DockPanel>
         </GroupBox>
     </DockPanel>

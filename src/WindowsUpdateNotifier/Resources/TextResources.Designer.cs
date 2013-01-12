@@ -79,11 +79,20 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Autostart Settings.
+        ///   Looks up a localized string similar to Some Info whther you can add a short cut....
         /// </summary>
-        public static string Label_AutoStartSettings {
+        public static string Label_CanCreateStartupShortcut {
             get {
-                return ResourceManager.GetString("Label_AutoStartSettings", resourceCulture);
+                return ResourceManager.GetString("Label_CanCreateStartupShortcut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to blalba.
+        /// </summary>
+        public static string Label_CanNotCreateStartupShortcut {
+            get {
+                return ResourceManager.GetString("Label_CanNotCreateStartupShortcut", resourceCulture);
             }
         }
         
@@ -120,6 +129,15 @@ namespace WindowsUpdateNotifier.Resources {
         public static string Label_RefreshInterval {
             get {
                 return ResourceManager.GetString("Label_RefreshInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start-up Settings.
+        /// </summary>
+        public static string Label_StartupSettings {
+            get {
+                return ResourceManager.GetString("Label_StartupSettings", resourceCulture);
             }
         }
         

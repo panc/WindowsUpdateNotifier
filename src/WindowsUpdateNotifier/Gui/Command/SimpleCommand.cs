@@ -33,12 +33,16 @@ namespace WindowsUpdateNotifier
             if(canExecute != mCanExecute)
             {
                 mCanExecute = canExecute;
-
-                if (CanExecuteChanged != null)
-                    CanExecuteChanged(this, EventArgs.Empty);
+                OnCanExecuteChanged();
             }
 
             return canExecute;
+        }
+
+        public void OnCanExecuteChanged()
+        {
+            if (CanExecuteChanged != null)
+                CanExecuteChanged(this, EventArgs.Empty);
         }
 
         public event EventHandler CanExecuteChanged;
