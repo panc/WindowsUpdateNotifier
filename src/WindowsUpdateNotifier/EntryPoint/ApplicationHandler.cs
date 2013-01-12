@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Threading;
 using WindowsUpdateNotifier.Resources;
 
 namespace WindowsUpdateNotifier
 {
-    public interface IApplication
-    {
-        void OpenWindowsUpdateControlPanel();
-        void OpenSettings();
-        void SearchForUpdates();
-        
-        bool NotificationsDisabled { get; set; }
-    }
-
     public class ApplicationHandler : IApplication, IDisposable
     {
         private readonly WindowsUpdateTrayIcon mTrayIcon;
@@ -23,6 +15,8 @@ namespace WindowsUpdateNotifier
 
         public ApplicationHandler()
         {
+            AppSettings.Initialize(_CheckWithDefaultSettings());
+
             mTrayIcon = new WindowsUpdateTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
 
@@ -31,15 +25,13 @@ namespace WindowsUpdateNotifier
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromHours(1) };
             mTimer.Tick += (e, s) => SearchForUpdates();
             
-            SearchForUpdates();
             _OnSettingsChanged();
         }
 
         private void _OnSettingsChanged()
         {
             mTimer.Interval = TimeSpan.FromMinutes(AppSettings.Instance.RefreshInterval);
-            
-            // todo hide icon
+            SearchForUpdates();
         }
 
         public void OpenSettings()
@@ -53,7 +45,8 @@ namespace WindowsUpdateNotifier
         {
             mTimer.Stop();
             mUpdateManager.StartSearchForUpdates();
-            mTrayIcon.SetToolTipAndMenuItems(TextResources.ToolTip_Searching, TextResources.ToolTip_Searching, UpdateState.Searching);
+            mTrayIcon.SetupToolTipAndMenuItems(TextResources.ToolTip_Searching, TextResources.ToolTip_Searching, UpdateState.Searching);
+            mTrayIcon.SetIcon(UpdateState.Searching);
         }
 
         public bool NotificationsDisabled { get; set; }
@@ -81,7 +74,8 @@ namespace WindowsUpdateNotifier
                 toolTip = TextResources.ToolTip_NoConnection;
             }
 
-            mTrayIcon.SetToolTipAndMenuItems(toolTip, message, state);
+            mTrayIcon.SetupToolTipAndMenuItems(toolTip, message, state);
+            mTrayIcon.SetIcon(state);
             _StartTimer(state);
         }
 
@@ -113,6 +107,11 @@ namespace WindowsUpdateNotifier
         public void OpenWindowsUpdateControlPanel()
         {
             Process.Start("control.exe", "/name Microsoft.WindowsUpdate");
+        }
+
+        private bool _CheckWithDefaultSettings()
+        {
+            return Environment.GetCommandLineArgs().Any(x => x == "-withDefaultSettings");
         }
     }
 }

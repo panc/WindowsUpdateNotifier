@@ -26,8 +26,10 @@ namespace WindowsUpdateNotifier
                 mInfoMenuItem, 
                 new MenuItem("-"),
                 mStartMenuItem,
-                mDisableNotificationsMenuItem, 
+                new MenuItem("-"),
                 new MenuItem("Settings", (s, e) => application.OpenSettings()),
+                mDisableNotificationsMenuItem, 
+                new MenuItem("-"),
                 new MenuItem(TextResources.Menu_WindowsUpdates, (s, e) => application.OpenWindowsUpdateControlPanel()),
                 new MenuItem("-"),
                 new MenuItem(TextResources.Menu_Exit, _OnExitClicked)
@@ -55,15 +57,20 @@ namespace WindowsUpdateNotifier
             mAnimationTimer.Dispose();
         }
 
-        public void SetToolTipAndMenuItems(string toolTip, string menuText, UpdateState state)
+        public void SetupToolTipAndMenuItems(string toolTip, string menuText, UpdateState state)
         {
             mNotifyIcon.Text = toolTip;
-            mNotifyIcon.Icon = state.GetIcon();
-            mSearchIconIndex = 1;
-
             mInfoMenuItem.Text = menuText;
             mStartMenuItem.Enabled = state != UpdateState.Searching;
-            mAnimationTimer.Enabled = state == UpdateState.Searching;
+        }
+
+        public void SetIcon(UpdateState state)
+        {
+            mSearchIconIndex = 1;
+            mNotifyIcon.Icon = state.GetIcon();
+
+            mNotifyIcon.Visible = (state != UpdateState.UpdatesAvailable && AppSettings.Instance.HideIcon) == false;
+            mAnimationTimer.Enabled = state == UpdateState.Searching && AppSettings.Instance.HideIcon == false;
         }
 
         private void _OnRefreshSearchIcon()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Globalization;
 using System.IO;
 
 namespace WindowsUpdateNotifier
@@ -9,19 +10,24 @@ namespace WindowsUpdateNotifier
         private const string REFRESH_INTERVAL = "RefreshInterval";
         private const string HIDE_ICON = "HideIcon";
 
-        private static AppSettings sInstance;
-        private readonly Configuration mConfig;
+        public static AppSettings Instance { get; private set; }
 
-        public static AppSettings Instance
+        public static void Initialize(bool withDefaultSettings)
         {
-            get { return sInstance ?? (sInstance = new AppSettings()); }
+            if (Instance != null)
+                throw new InvalidOperationException("AppSettings are already initialzed!");
+
+            Instance = new AppSettings(withDefaultSettings);
         }
 
-        private AppSettings()
+
+        private readonly Configuration mConfig;
+
+        private AppSettings(bool withDefaultSettings)
         {
             mConfig = _LoadConfigurationFile();
 
-            _AddDefaultValues();
+            _AddDefaultValues(withDefaultSettings);
 
             RefreshInterval = int.Parse(mConfig.AppSettings.Settings[REFRESH_INTERVAL].Value);
             HideIcon = bool.Parse(mConfig.AppSettings.Settings[HIDE_ICON].Value);
@@ -35,16 +41,30 @@ namespace WindowsUpdateNotifier
 
         public void Save(int refreshInterval, bool hideIcon)
         {
-            mConfig.AppSettings.Settings[REFRESH_INTERVAL].Value = refreshInterval.ToString();
-            mConfig.AppSettings.Settings[HIDE_ICON].Value = hideIcon.ToString();
+            var hasIntervalChanged = _SetSetting(REFRESH_INTERVAL, refreshInterval.ToString(CultureInfo.InvariantCulture));
+            var hasHideIconChanged = _SetSetting(HIDE_ICON, hideIcon.ToString());
 
-            mConfig.Save();
+            if (hasIntervalChanged || hasHideIconChanged)
+            {
+                mConfig.Save();
 
-            RefreshInterval = refreshInterval;
-            HideIcon = hideIcon;
+                RefreshInterval = refreshInterval;
+                HideIcon = hideIcon;
 
-            if (OnSettingsChanged != null)
-                OnSettingsChanged();
+                if (OnSettingsChanged != null)
+                    OnSettingsChanged();
+            }
+        }
+
+        private bool _SetSetting(string key, string value)
+        {
+            if (mConfig.AppSettings.Settings[key].Value != value)
+            {
+                mConfig.AppSettings.Settings[key].Value = value;
+                return true;
+            }
+
+            return false;
         }
 
         private Configuration _LoadConfigurationFile()
@@ -57,8 +77,11 @@ namespace WindowsUpdateNotifier
             return ConfigurationManager.OpenMappedExeConfiguration(c, ConfigurationUserLevel.None);
         }
 
-        private void _AddDefaultValues()
+        private void _AddDefaultValues(bool withDefaultSettings)
         {
+            if (withDefaultSettings)
+                mConfig.AppSettings.Settings.Clear();
+
             if (mConfig.AppSettings.Contains(REFRESH_INTERVAL) == false)
                 mConfig.AppSettings.Settings.Add(REFRESH_INTERVAL, "60");
 
@@ -67,7 +90,7 @@ namespace WindowsUpdateNotifier
         }
     }
 
-    public static class  AppSettingsExtensions
+    public static class AppSettingsExtensions
     {
         public static bool Contains(this AppSettingsSection config, string key)
         {
