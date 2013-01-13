@@ -77,6 +77,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Shortcut\StartupShortcutHelper.cs" />
     <Compile Include="WindowsUpdate\UpdateState.cs" />
     <Compile Include="WindowsUpdate\WindowsUpdateManager.cs" />
     <Page Include="Gui\SettingsView.xaml">
@@ -138,6 +139,9 @@
   <ItemGroup>
     <Resource Include="Resources\Images\Update.png" />
     <Resource Include="Resources\Images\WindowsUpdate.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Help.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

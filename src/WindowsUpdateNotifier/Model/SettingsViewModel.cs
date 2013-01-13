@@ -1,33 +1,35 @@
 ﻿using System;
 using System.ComponentModel;
-using System.IO;
-using System.Reflection;
+using System.Diagnostics;
 using System.Windows.Input;
-using WindowsUpdateNotifier.Resources;
 
 namespace WindowsUpdateNotifier
 {
     public class SettingsViewModel : IDataErrorInfo, INotifyPropertyChanged
     {
         private int mRefreshInterval;
-        private string mStartupShortcutInfo;
 
         public SettingsViewModel(Action closeWindowCallback)
         {
             var settings = AppSettings.Instance;
             RefreshInterval = settings.RefreshInterval;
             HideIcon = settings.HideIcon;
-            StartupShortcutInfo = TextResources.Label_CanCreateStartupShortcut;
+            IsSetAsAutoStartup = StartupShortcutHelper.IsSetAsAutoStartup();
+            HelpLink = "http://wun.codeplex.com/";
 
             SaveAndCloseCommand = new SimpleCommand(() => _SaveAndClose(closeWindowCallback));
-            CreateStartupShortcutCommand = new SimpleCommand(_CreateStartupShortcut, _CanCreateStartupShortcut);
+            ShowHelpCommand = new SimpleCommand(_ShowHelp);
         }
 
         public ICommand SaveAndCloseCommand { get; set; }
 
-        public SimpleCommand CreateStartupShortcutCommand { get; set; }
+        public ICommand ShowHelpCommand { get; set; }
+
+        public bool IsSetAsAutoStartup { get; set; }
 
         public bool HideIcon { get; set; }
+
+        public string HelpLink { get; set; }
 
         public int RefreshInterval
         {
@@ -39,60 +41,24 @@ namespace WindowsUpdateNotifier
             }
         }
 
-        public string StartupShortcutInfo
-        {
-            get { return mStartupShortcutInfo; }
-            set
-            {
-                mStartupShortcutInfo = value;
-                OnPropertyChanged("StartupShortcutInfo");
-            }
-        }
-
         private void _SaveAndClose(Action close)
         {
             AppSettings.Instance.Save(RefreshInterval, HideIcon);
+
+            if (IsSetAsAutoStartup)
+                StartupShortcutHelper.CreateStartupShortcut();
+            else
+                StartupShortcutHelper.DeleteStartupShortcut();
+
             close();
         }
 
-        private bool _CanCreateStartupShortcut()
+        private void _ShowHelp()
         {
-            var canCreate = _CheckForShotcut() == false;
-
-            StartupShortcutInfo = canCreate
-                ? TextResources.Label_CanCreateStartupShortcut
-                : TextResources.Label_CanNotCreateStartupShortcut;
-
-            return canCreate;
+            Process.Start(HelpLink);
         }
 
-        private void _CreateStartupShortcut()
-        {
-            var link = new ShellLink { Target = Assembly.GetExecutingAssembly().Location };
-
-            link.Save(Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.Startup), 
-                Path.GetFileNameWithoutExtension(link.Target) + ".lnk"));
-
-            CreateStartupShortcutCommand.OnCanExecuteChanged();
-        }
-
-        private bool _CheckForShotcut()
-        {
-            var exePath = Assembly.GetExecutingAssembly().Location;
-
-            foreach (var file in Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.Startup)))
-            {
-                if (file.EndsWith("lnk") == false)
-                    continue;
-
-                var link = new ShellLink(file);
-                if (link.Target == exePath)
-                    return true;
-            }
-
-            return false;
-        }
+        #region IDataError interface
 
         public string this[string columnName]
         {
@@ -108,5 +74,7 @@ namespace WindowsUpdateNotifier
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #endregion
     }
 }

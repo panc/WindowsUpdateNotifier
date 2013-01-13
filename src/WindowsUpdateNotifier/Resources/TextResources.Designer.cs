@@ -79,25 +79,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Some Info whther you can add a short cut....
-        /// </summary>
-        public static string Label_CanCreateStartupShortcut {
-            get {
-                return ResourceManager.GetString("Label_CanCreateStartupShortcut", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to blalba.
-        /// </summary>
-        public static string Label_CanNotCreateStartupShortcut {
-            get {
-                return ResourceManager.GetString("Label_CanNotCreateStartupShortcut", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Common Settings.
+        ///   Looks up a localized string similar to General.
         /// </summary>
         public static string Label_CommonSettings {
             get {
@@ -106,7 +88,16 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hide trayicon when no updates are available..
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string Label_Help {
+            get {
+                return ResourceManager.GetString("Label_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide trayicon when no updates are available.
         /// </summary>
         public static string Label_HideIcon {
             get {
@@ -133,11 +124,11 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start-up Settings.
+        ///   Looks up a localized string similar to Start Windows Update Notifier on system startup.
         /// </summary>
-        public static string Label_StartupSettings {
+        public static string Label_SetAsAutoStartup {
             get {
-                return ResourceManager.GetString("Label_StartupSettings", resourceCulture);
+                return ResourceManager.GetString("Label_SetAsAutoStartup", resourceCulture);
             }
         }
         
@@ -246,6 +237,15 @@ namespace WindowsUpdateNotifier.Resources {
         public static string ToolTip_Searching {
             get {
                 return ResourceManager.GetString("ToolTip_Searching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Update Notifier.
+        /// </summary>
+        public static string WindowTitle_Settings {
+            get {
+                return ResourceManager.GetString("WindowTitle_Settings", resourceCulture);
             }
         }
     }
