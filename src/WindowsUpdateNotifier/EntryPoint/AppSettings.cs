@@ -9,6 +9,7 @@ namespace WindowsUpdateNotifier
     {
         private const string REFRESH_INTERVAL = "RefreshInterval";
         private const string HIDE_ICON = "HideIcon";
+        private const string USE_METRO_STYLE = "UseMetroStyle";
 
         public static AppSettings Instance { get; private set; }
 
@@ -31,25 +32,30 @@ namespace WindowsUpdateNotifier
 
             RefreshInterval = int.Parse(mConfig.AppSettings.Settings[REFRESH_INTERVAL].Value);
             HideIcon = bool.Parse(mConfig.AppSettings.Settings[HIDE_ICON].Value);
+            UseMetroStyle = bool.Parse(mConfig.AppSettings.Settings[USE_METRO_STYLE].Value);
         }
 
         public int RefreshInterval { get; private set; }
 
         public bool HideIcon { get; private set; }
 
+        public bool UseMetroStyle { get; private set; }
+
         public Action OnSettingsChanged { get; set; }
 
-        public void Save(int refreshInterval, bool hideIcon)
+        public void Save(int refreshInterval, bool hideIcon, bool useMetroStyle)
         {
             var hasIntervalChanged = _SetSetting(REFRESH_INTERVAL, refreshInterval.ToString(CultureInfo.InvariantCulture));
             var hasHideIconChanged = _SetSetting(HIDE_ICON, hideIcon.ToString());
+            var hasUseMetroStyleChanged = _SetSetting(USE_METRO_STYLE, useMetroStyle.ToString());
 
-            if (hasIntervalChanged || hasHideIconChanged)
+            if (hasIntervalChanged || hasHideIconChanged || hasUseMetroStyleChanged)
             {
                 mConfig.Save();
 
                 RefreshInterval = refreshInterval;
                 HideIcon = hideIcon;
+                UseMetroStyle = useMetroStyle;
 
                 if (OnSettingsChanged != null)
                     OnSettingsChanged();
@@ -87,6 +93,9 @@ namespace WindowsUpdateNotifier
 
             if (mConfig.AppSettings.Contains(HIDE_ICON) == false)
                 mConfig.AppSettings.Settings.Add(HIDE_ICON, "False");
+
+            if (mConfig.AppSettings.Contains(USE_METRO_STYLE) == false)
+                mConfig.AppSettings.Settings.Add(USE_METRO_STYLE, "TRUE");
         }
     }
 

@@ -14,6 +14,7 @@ namespace WindowsUpdateNotifier
             var settings = AppSettings.Instance;
             RefreshInterval = settings.RefreshInterval;
             HideIcon = settings.HideIcon;
+            UseMetroStyle = settings.UseMetroStyle;
             IsSetAsAutoStartup = StartupShortcutHelper.IsSetAsAutoStartup();
             HelpLink = "http://wun.codeplex.com/";
 
@@ -29,6 +30,8 @@ namespace WindowsUpdateNotifier
 
         public bool HideIcon { get; set; }
 
+        public bool UseMetroStyle { get; set; }
+
         public string HelpLink { get; set; }
 
         public int RefreshInterval
@@ -43,7 +46,7 @@ namespace WindowsUpdateNotifier
 
         private void _SaveAndClose(Action close)
         {
-            AppSettings.Instance.Save(RefreshInterval, HideIcon);
+            AppSettings.Instance.Save(RefreshInterval, HideIcon, UseMetroStyle);
 
             if (IsSetAsAutoStartup)
                 StartupShortcutHelper.CreateStartupShortcut();

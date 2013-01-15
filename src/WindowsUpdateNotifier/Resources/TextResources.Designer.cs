@@ -133,6 +133,15 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use metro-style  for notification popup..
+        /// </summary>
+        public static string Label_UseMetroStyleForPopup {
+            get {
+                return ResourceManager.GetString("Label_UseMetroStyleForPopup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disable Notification.
         /// </summary>
         public static string Menu_DisableNotification {
@@ -187,7 +196,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to One update is available..
+        ///   Looks up a localized string similar to One update is available. Click to open Update Panel..
         /// </summary>
         public static string Popup_OneUpdateAvailableMessage {
             get {
@@ -196,7 +205,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updates Available.
+        ///   Looks up a localized string similar to Windows Updates Available.
         /// </summary>
         public static string Popup_Title {
             get {
@@ -205,7 +214,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} updates are available..
+        ///   Looks up a localized string similar to {0} updates are available. Click to open Update Panel..
         /// </summary>
         public static string Popup_UpdatesAvailableMessage {
             get {
@@ -237,6 +246,16 @@ namespace WindowsUpdateNotifier.Resources {
         public static string ToolTip_Searching {
             get {
                 return ResourceManager.GetString("ToolTip_Searching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If checked, a metro-style popop will be used for update notifications.
+        ///Otherwise a Windows 7 like balloontip will be used..
+        /// </summary>
+        public static string ToolTip_UseMetroStyleForPopup {
+            get {
+                return ResourceManager.GetString("ToolTip_UseMetroStyleForPopup", resourceCulture);
             }
         }
         

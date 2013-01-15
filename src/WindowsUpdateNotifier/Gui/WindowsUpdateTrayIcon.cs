@@ -14,6 +14,7 @@ namespace WindowsUpdateNotifier
         private readonly Timer mAnimationTimer;
         private readonly MenuItem mDisableNotificationsMenuItem;
         private int mSearchIconIndex;
+        private readonly BalloonTipHelper mBallonTipHelper;
 
         public WindowsUpdateTrayIcon(IApplication application)
         {
@@ -43,9 +44,12 @@ namespace WindowsUpdateNotifier
             };
 
             mNotifyIcon.MouseUp += _OnMouseUp;
+            mNotifyIcon.BalloonTipClicked += (s, e) => application.OpenWindowsUpdateControlPanel();
 
             mAnimationTimer = new Timer { Interval = 250 };
             mAnimationTimer.Tick += (x, y) => _OnRefreshSearchIcon();
+
+            mBallonTipHelper = new BalloonTipHelper(mNotifyIcon);
         }
 
         public void Dispose()
@@ -71,6 +75,11 @@ namespace WindowsUpdateNotifier
 
             mNotifyIcon.Visible = (state != UpdateState.UpdatesAvailable && AppSettings.Instance.HideIcon) == false;
             mAnimationTimer.Enabled = state == UpdateState.Searching && AppSettings.Instance.HideIcon == false;
+        }
+
+        public void ShowBallonTip(string title, string message)
+        {
+            mBallonTipHelper.ShowBalloon(1, title, message, 15000);
         }
 
         private void _OnRefreshSearchIcon()

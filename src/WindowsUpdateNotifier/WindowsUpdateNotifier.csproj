@@ -61,11 +61,19 @@
     </ApplicationDefinition>
     <Compile Include="EntryPoint\AppSettings.cs" />
     <Compile Include="EntryPoint\IApplication.cs" />
+    <Compile Include="Gui\BalloonTipHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Gui\Behavior\DataTriggerBehavior.cs" />
     <Compile Include="Gui\Behavior\WindowBehavior.cs" />
     <Compile Include="Gui\Command\SimpleCommand.cs" />
     <Compile Include="Gui\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ImageResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImageResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Shortcut\FileIcon.cs" />
     <Compile Include="Model\PopupViewModel.cs" />
@@ -102,11 +110,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Resources\ImageResources.Designer.cs">
-      <DependentUpon>ImageResources.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
@@ -126,8 +129,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\ImageResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\TextResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -141,6 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Win7Update.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

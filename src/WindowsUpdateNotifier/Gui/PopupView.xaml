@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:WindowsUpdateNotifier" 
         Title="MainWindow" WindowStartupLocation="Manual"
-        Height="100" Width="300" ShowInTaskbar="False" Topmost="True"
+        Height="100" Width="352" ShowInTaskbar="False" Topmost="True"
         Background="#FEFAF9F9" WindowStyle="None" AllowsTransparency="True"
         local:WindowBehavior.BackgroundClickCommand="{Binding OnOpenWindowsUpdateControlPanelCommand}">
     <Window.DataContext>
-        <local:PopupViewModel Title="Updates Available" Message="3 Updates are available..."/>
+        <local:PopupViewModel Title="Windows Updates Available" Message="33 updates are available. Click to open Update Panel."/>
     </Window.DataContext>
 
     <Window.Triggers>
