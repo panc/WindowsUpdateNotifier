@@ -133,7 +133,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use metro-style  for notification popup..
+        ///   Looks up a localized string similar to Use metro-style for notification popup.
         /// </summary>
         public static string Label_UseMetroStyleForPopup {
             get {

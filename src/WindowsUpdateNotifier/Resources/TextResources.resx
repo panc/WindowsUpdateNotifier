@@ -142,7 +142,7 @@
     <value>Start Windows Update Notifier on system startup</value>
   </data>
   <data name="Label_UseMetroStyleForPopup" xml:space="preserve">
-    <value>Use metro-style  for notification popup.</value>
+    <value>Use metro-style for notification popup</value>
   </data>
   <data name="Menu_DisableNotification" xml:space="preserve">
     <value>Disable Notification</value>
