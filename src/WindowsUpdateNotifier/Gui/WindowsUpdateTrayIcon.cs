@@ -21,7 +21,7 @@ namespace WindowsUpdateNotifier
             mInfoMenuItem = new MenuItem("") { Enabled = false };
             mStartMenuItem = new MenuItem(TextResources.Menu_StartSearch, (s, e) => application.SearchForUpdates());
             mDisableNotificationsMenuItem = new MenuItem(TextResources.Menu_DisableNotification, (e, s) => _DisableNotifications(application));
-            
+
             var contextMenu = new ContextMenu(new[]
             {
                 mInfoMenuItem, 
