@@ -66,6 +66,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="EntryPoint\AppSettings.cs" />
+    <Compile Include="EntryPoint\CommandLineHelper.cs" />
     <Compile Include="EntryPoint\IApplication.cs" />
     <Compile Include="EntryPoint\ISingleInstance.cs" />
     <Compile Include="EntryPoint\SingleInstanceHelper.cs" />

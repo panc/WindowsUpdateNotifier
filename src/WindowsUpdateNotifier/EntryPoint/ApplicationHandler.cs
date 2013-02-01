@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Windows.Threading;
 using WindowsUpdateNotifier.Resources;
 
@@ -8,25 +7,26 @@ namespace WindowsUpdateNotifier
 {
     public class ApplicationHandler : IApplication, IDisposable
     {
+        private readonly bool mCloseAfterCheck;
         private readonly WindowsUpdateTrayIcon mTrayIcon;
         private readonly WindowsUpdateManager mUpdateManager;
         private readonly DispatcherTimer mTimer;
         private int mFailureCount;
         private SettingsView mSettingsView;
 
-        public ApplicationHandler()
+        public ApplicationHandler(bool closeAfterCheck)
         {
-            AppSettings.Initialize(_CheckUseDefaultSettings());
+            mCloseAfterCheck = closeAfterCheck;
 
             mTrayIcon = new WindowsUpdateTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
-
+            
             AppSettings.Instance.OnSettingsChanged = _OnSettingsChanged;
 
-            mTimer = new DispatcherTimer { Interval = TimeSpan.FromHours(1) };
+            mTimer = new DispatcherTimer { Interval = TimeSpan.FromMinutes(AppSettings.Instance.RefreshInterval) };
             mTimer.Tick += (e, s) => SearchForUpdates();
 
-            _OnSettingsChanged();
+            SearchForUpdates();
         }
 
         public bool NotificationsDisabled { get; set; }
@@ -57,6 +57,7 @@ namespace WindowsUpdateNotifier
 
         public void Dispose()
         {
+            mTimer.Stop();
             mTrayIcon.Dispose();
         }
 
@@ -93,7 +94,20 @@ namespace WindowsUpdateNotifier
             mTrayIcon.SetupToolTipAndMenuItems(toolTip, message, state);
             mTrayIcon.SetIcon(state);
 
-            _StartTimer(state);
+            if (mCloseAfterCheck)
+                _CloseAfterCheck(state);
+            else
+                _StartTimer(state);
+        }
+
+        private void _CloseAfterCheck(UpdateState state)
+        {
+            // wait for the popup to be shown
+            var interval = state == UpdateState.UpdatesAvailable ? 15 : 1;
+
+            var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(interval) };
+            timer.Tick += (s, e) => System.Windows.Application.Current.Shutdown();            
+            timer.Start();
         }
 
         private void _ShowPopup(string title, string message)
@@ -131,11 +145,6 @@ namespace WindowsUpdateNotifier
             return updateCount > 1
                 ? string.Format(TextResources.Popup_UpdatesAvailableMessage, updateCount)
                 : TextResources.Popup_OneUpdateAvailableMessage;
-        }
-
-        private bool _CheckUseDefaultSettings()
-        {
-            return Environment.GetCommandLineArgs().Any(x => x == "-useDefaultSettings");
         }
     }
 }
