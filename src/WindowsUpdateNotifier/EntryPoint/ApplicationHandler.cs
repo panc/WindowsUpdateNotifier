@@ -103,7 +103,7 @@ namespace WindowsUpdateNotifier
         private void _CloseAfterCheck(UpdateState state)
         {
             // wait for the popup to be shown
-            var interval = state == UpdateState.UpdatesAvailable ? 15 : 1;
+            var interval = state == UpdateState.UpdatesAvailable ? 20 : 1;
 
             var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(interval) };
             timer.Tick += (s, e) => System.Windows.Application.Current.Shutdown();            
