@@ -20,7 +20,7 @@ namespace WindowsUpdateNotifier
 
             mTrayIcon = new WindowsUpdateTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
-            
+
             AppSettings.Instance.OnSettingsChanged = _OnSettingsChanged;
 
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromMinutes(AppSettings.Instance.RefreshInterval) };
@@ -50,7 +50,7 @@ namespace WindowsUpdateNotifier
         public void SearchForUpdates()
         {
             mTimer.Stop();
-            mUpdateManager.StartSearchForUpdates();
+            mUpdateManager.StartSearchForUpdates("2267602");
             mTrayIcon.SetupToolTipAndMenuItems(TextResources.ToolTip_Searching, TextResources.ToolTip_Searching, UpdateState.Searching);
             mTrayIcon.SetIcon(UpdateState.Searching);
         }
@@ -76,32 +76,35 @@ namespace WindowsUpdateNotifier
         {
             var message = TextResources.ToolTip_NothingFound;
             var toolTip = TextResources.ToolTip_NothingFound;
-            var state = result.UpdateState;
 
-            if (state == UpdateState.UpdatesAvailable)
+            if (result.UpdateState == UpdateState.UpdatesAvailable)
             {
-                toolTip = message = _GetMessage(result.AvailableUpdates);
+                // UpdateAvailable doesn't give any information about how many updates where installed
+                // but we ignore this case an only show the information that update are available
                 
-                if (NotificationsDisabled == false)
-                    _ShowPopup(TextResources.Popup_Title, string.Format("{0} {1}", message, TextResources.Popup_ClickToOpen));
+                toolTip = message = _GetMessage(result.AvailableUpdates);
+                var msg = string.Format("{0} {1}", message, TextResources.Popup_ClickToOpen);
+
+                _ShowPopup(TextResources.Popup_UpdatesAvailableTitle, msg);
             }
-            else if (state == UpdateState.UpdatesInstalled)
+            else if (result.UpdateState == UpdateState.UpdatesInstalled)
             {
-                // todo
+                var msg = string.Format("{0} {1}", TextResources.Popup_UpdatesInstalledMessage, TextResources.Popup_ClickToOpen);
+                _ShowPopup(TextResources.Popup_UpdatesInstalledTitle, msg);
             }
-            else if (state == UpdateState.Failure)
+            else if (result.UpdateState == UpdateState.Failure)
             {
                 message = TextResources.Menu_NoConnection;
                 toolTip = TextResources.ToolTip_NoConnection;
             }
 
-            mTrayIcon.SetupToolTipAndMenuItems(toolTip, message, state);
-            mTrayIcon.SetIcon(state);
+            mTrayIcon.SetupToolTipAndMenuItems(toolTip, message, result.UpdateState);
+            mTrayIcon.SetIcon(result.UpdateState);
 
             if (mCloseAfterCheck)
-                _CloseAfterCheck(state);
+                _CloseAfterCheck(result.UpdateState);
             else
-                _StartTimer(state);
+                _StartTimer(result.UpdateState);
         }
 
         private void _CloseAfterCheck(UpdateState state)
@@ -110,12 +113,15 @@ namespace WindowsUpdateNotifier
             var interval = state == UpdateState.UpdatesAvailable ? 20 : 1;
 
             var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(interval) };
-            timer.Tick += (s, e) => System.Windows.Application.Current.Shutdown();            
+            timer.Tick += (s, e) => System.Windows.Application.Current.Shutdown();
             timer.Start();
         }
 
         private void _ShowPopup(string title, string message)
         {
+            if (NotificationsDisabled)
+                return;
+
             if (AppSettings.Instance.UseMetroStyle)
             {
                 var popup = new PopupView();

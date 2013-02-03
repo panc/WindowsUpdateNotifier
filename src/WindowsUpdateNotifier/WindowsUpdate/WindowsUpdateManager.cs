@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using WUApiLib;
 
@@ -13,7 +14,7 @@ namespace WindowsUpdateNotifier
             mOnSearchFinished = onSearchFinished;
         }
 
-        public void StartSearchForUpdates()
+        public void StartSearchForUpdates(params string[] kbIdsToInstall)
         {
             var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
 
@@ -26,11 +27,12 @@ namespace WindowsUpdateNotifier
                     searcher.Online = true;
                     var result = searcher.Search("IsInstalled=0 AND IsHidden=0");
 
-                    var installedUpdates = _InstallUpdates(session, result.Updates);
+                    var updatesToInstall = _GetUpdatesToInstall(kbIdsToInstall, result.Updates);
+                    var installedUpdates = _InstallUpdates(session, updatesToInstall);
 
                     return new UpdateResult(result.Updates.Count, installedUpdates);
                 }
-                catch
+                catch (Exception ex)
                 {
                     return new UpdateResult();
                 }
@@ -38,8 +40,28 @@ namespace WindowsUpdateNotifier
             .ContinueWith(task => mOnSearchFinished(task.Result), scheduler);
         }
 
+        private UpdateCollection _GetUpdatesToInstall(string[] kbIdsToInstall, UpdateCollection updates)
+        {
+            var updatesToInstall = new UpdateCollection();
+
+            foreach (IUpdate update in updates)
+            {
+                foreach (var id in update.KBArticleIDs)
+                {
+                    if (kbIdsToInstall.Any(x => Equals(id, x)))
+                        updatesToInstall.Add(update);
+                }
+            }
+
+
+            return updatesToInstall;
+        }
+
         private int _InstallUpdates(UpdateSession session, UpdateCollection updates)
         {
+            if (updates.Count < 1)
+                return 0;
+
             var downloader = session.CreateUpdateDownloader();
             downloader.Updates = updates;
             downloader.Download();
@@ -53,20 +75,16 @@ namespace WindowsUpdateNotifier
             var installer = session.CreateUpdateInstaller();
             installer.Updates = updatesToInstall;
 
-            var installationRes = installer.Install();
-            for (int i = 0; i < updatesToInstall.Count; i++)
+            var result = installer.Install();
+            var numberOfInstalledUpdates = 0;
+
+            for (var i = 0; i < updatesToInstall.Count; i++)
             {
-                if (installationRes.GetUpdateResult(i).HResult == 0)
-                {
-                    Console.WriteLine("Installed : " + updatesToInstall[i].Title);
-                }
-                else
-                {
-                    Console.WriteLine("Failed : " + updatesToInstall[i].Title);
-                }
+                if (result.GetUpdateResult(i).HResult == 0)
+                    numberOfInstalledUpdates++;
             }
 
-            return -1;
+            return numberOfInstalledUpdates;
         }
     }
 }

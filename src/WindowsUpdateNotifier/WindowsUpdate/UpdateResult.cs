@@ -27,10 +27,13 @@
 
         private UpdateState _GetUpdateState()
         {
-            if (AvailableUpdates > 0)
-                return UpdateState.UpdatesAvailable;
+            // UpdateAvailable doesn't give any information about how many updates where installed
+            // but we ignore this case an only show the information that update are available
 
-            if (InstalledUpdates > 0)
+            if (AvailableUpdates > 0)
+//                return UpdateState.UpdatesAvailable;
+//
+//            if (InstalledUpdates > 0)
                 return UpdateState.UpdatesInstalled;
 
             if (AvailableUpdates < 0)

@@ -214,20 +214,38 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows Updates Available.
-        /// </summary>
-        public static string Popup_Title {
-            get {
-                return ResourceManager.GetString("Popup_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} updates are available..
         /// </summary>
         public static string Popup_UpdatesAvailableMessage {
             get {
                 return ResourceManager.GetString("Popup_UpdatesAvailableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Updates Available.
+        /// </summary>
+        public static string Popup_UpdatesAvailableTitle {
+            get {
+                return ResourceManager.GetString("Popup_UpdatesAvailableTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Windows Updates have been installed..
+        /// </summary>
+        public static string Popup_UpdatesInstalledMessage {
+            get {
+                return ResourceManager.GetString("Popup_UpdatesInstalledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Updates Installed.
+        /// </summary>
+        public static string Popup_UpdatesInstalledTitle {
+            get {
+                return ResourceManager.GetString("Popup_UpdatesInstalledTitle", resourceCulture);
             }
         }
         

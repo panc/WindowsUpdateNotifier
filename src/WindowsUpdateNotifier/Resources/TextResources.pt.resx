@@ -168,11 +168,17 @@
   <data name="Popup_OneUpdateAvailableMessage" xml:space="preserve">
     <value>Uma atualização está disponível.</value>
   </data>
-  <data name="Popup_Title" xml:space="preserve">
-    <value>Atualizações disponíveis</value>
-  </data>
   <data name="Popup_UpdatesAvailableMessage" xml:space="preserve">
     <value>{0} atualizações disponíveis.</value>
+  </data>
+  <data name="Popup_UpdatesAvailableTitle" xml:space="preserve">
+    <value>Atualizações disponíveis</value>
+  </data>
+  <data name="Popup_UpdatesInstalledMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Popup_UpdatesInstalledTitle" xml:space="preserve">
+    <value />
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
     <value>Não foi possível conectar ao serviço do Windows Update.</value>
