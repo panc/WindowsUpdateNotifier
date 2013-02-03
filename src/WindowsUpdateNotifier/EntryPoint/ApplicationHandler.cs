@@ -81,9 +81,9 @@ namespace WindowsUpdateNotifier
             if (state == UpdateState.UpdatesAvailable)
             {
                 toolTip = message = _GetMessage(updateCount);
-
+                
                 if (NotificationsDisabled == false)
-                    _ShowPopup(TextResources.Popup_Title, message);
+                    _ShowPopup(TextResources.Popup_Title, string.Format("{0} {1}", message, TextResources.Popup_ClickToOpen));
             }
             else if (state == UpdateState.Failure)
             {

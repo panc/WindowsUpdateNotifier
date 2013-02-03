@@ -196,7 +196,16 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to One update is available. Click to open Update Panel..
+        ///   Looks up a localized string similar to Click to open Update Panel..
+        /// </summary>
+        public static string Popup_ClickToOpen {
+            get {
+                return ResourceManager.GetString("Popup_ClickToOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One update is available..
         /// </summary>
         public static string Popup_OneUpdateAvailableMessage {
             get {
@@ -214,7 +223,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} updates are available. Click to open Update Panel..
+        ///   Looks up a localized string similar to {0} updates are available..
         /// </summary>
         public static string Popup_UpdatesAvailableMessage {
             get {

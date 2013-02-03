@@ -63,8 +63,8 @@ namespace WindowsUpdateNotifier
 
         public void SetupToolTipAndMenuItems(string toolTip, string menuText, UpdateState state)
         {
-            mNotifyIcon.Text = toolTip;
-            mInfoMenuItem.Text = menuText;
+            mNotifyIcon.Text = _GetStringWithMaxLength(toolTip, 60);
+            mInfoMenuItem.Text = _GetStringWithMaxLength(menuText, 60);
             mStartMenuItem.Enabled = state != UpdateState.Searching;
         }
 
@@ -110,6 +110,11 @@ namespace WindowsUpdateNotifier
                 var mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
                 mi.Invoke(mNotifyIcon, null);
             }
+        }
+
+        private string _GetStringWithMaxLength(string text, int length)
+        {
+            return text.Length > length ? text.Substring(0, length) : text;
         }
     }
 }
