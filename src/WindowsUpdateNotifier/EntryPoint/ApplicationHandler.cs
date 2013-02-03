@@ -76,7 +76,7 @@ namespace WindowsUpdateNotifier
         {
             var message = TextResources.ToolTip_NothingFound;
             var toolTip = TextResources.ToolTip_NothingFound;
-            var state = result.AvailableUpdates.GetUpdateState(); // todo
+            var state = result.UpdateState;
 
             if (state == UpdateState.UpdatesAvailable)
             {
@@ -84,6 +84,10 @@ namespace WindowsUpdateNotifier
                 
                 if (NotificationsDisabled == false)
                     _ShowPopup(TextResources.Popup_Title, string.Format("{0} {1}", message, TextResources.Popup_ClickToOpen));
+            }
+            else if (state == UpdateState.UpdatesInstalled)
+            {
+                // todo
             }
             else if (state == UpdateState.Failure)
             {

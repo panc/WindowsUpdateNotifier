@@ -8,20 +8,12 @@ namespace WindowsUpdateNotifier
         Searching,
         UpdatesAvailable,
         NoUpdatesAvailable,
+        UpdatesInstalled,
         Failure
     }
 
     public static class UpdateStateExtensions
     {
-        public static UpdateState GetUpdateState(this int updateCount)
-        {
-            return updateCount > 0
-                ? UpdateState.UpdatesAvailable
-                : updateCount == 0
-                    ? UpdateState.NoUpdatesAvailable
-                    : UpdateState.Failure;
-        }
-
         public static Icon GetIcon(this UpdateState state)
         {
             switch (state)
