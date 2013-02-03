@@ -63,7 +63,9 @@
             </DockPanel>
 
             <DockPanel Grid.Row="2" Background="#f6f6f6">
-                <Label Content="{Binding Message}" Foreground="#8c8c8c" Margin="30,13,5,5" FontFamily="Calibri" FontSize="14"  />
+                <Label Foreground="#8c8c8c" Margin="30,5,5,5" FontFamily="Calibri" FontSize="14" VerticalContentAlignment="Center">
+                    <TextBlock Text="{Binding Message}" TextWrapping="Wrap" />
+                </Label>
             </DockPanel>
         </Grid>
     </Border>
