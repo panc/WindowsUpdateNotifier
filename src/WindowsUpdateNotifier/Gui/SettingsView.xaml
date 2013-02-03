@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" 
-        Title="{x:Static p:TextResources.WindowTitle_Settings}" ResizeMode="NoResize" SizeToContent="Height" Width="400"
+        Title="{x:Static p:TextResources.WindowTitle_Settings}" ResizeMode="NoResize" SizeToContent="WidthAndHeight" MinWidth="400"
         Icon="/WindowsUpdateNotifier;component/Resources\Images\WindowsUpdate.ico"
         WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
 

@@ -118,74 +118,74 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="Button_Ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
   </data>
   <data name="Label_CommonSettings" xml:space="preserve">
-    <value>General</value>
+    <value>Geral</value>
   </data>
   <data name="Label_Help" xml:space="preserve">
-    <value>Help</value>
+    <value>Ajuda</value>
   </data>
   <data name="Label_HideIcon" xml:space="preserve">
-    <value>Hide trayicon when no updates are available</value>
+    <value>Ocultar ícone quando não há atualizações disponíveis</value>
   </data>
   <data name="Label_Minutes" xml:space="preserve">
-    <value>minutes.</value>
+    <value>minutos.</value>
   </data>
   <data name="Label_RefreshInterval" xml:space="preserve">
-    <value>Search for updates every</value>
+    <value>Verificar atualizações a cada</value>
   </data>
   <data name="Label_SetAsAutoStartup" xml:space="preserve">
-    <value>Start Windows Update Notifier on system startup</value>
+    <value>Iniciar o Windows Update Notifier com o sistema</value>
   </data>
   <data name="Label_UseMetroStyleForPopup" xml:space="preserve">
-    <value>Use metro-style for notification popup</value>
+    <value>Usar estilo Metro nas notificações</value>
   </data>
   <data name="Menu_DisableNotification" xml:space="preserve">
-    <value>Disable Notification</value>
+    <value>Desativar notificações</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
-    <value>Exit</value>
+    <value>Sair</value>
   </data>
   <data name="Menu_NoConnection" xml:space="preserve">
-    <value>No Internet-Connection.</value>
+    <value>Sem conexão com a Internet.</value>
   </data>
   <data name="Menu_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Configurações</value>
   </data>
   <data name="Menu_StartSearch" xml:space="preserve">
-    <value>Search for updates</value>
+    <value>Verificar atualizações</value>
   </data>
   <data name="Menu_WindowsUpdates" xml:space="preserve">
-    <value>Windows-Update Control-Panel</value>
+    <value>Diálogo do Windows Update</value>
   </data>
   <data name="Popup_ClickToOpen" xml:space="preserve">
-    <value>Click to open Update Panel.</value>
+    <value>Clique para abrir Painel de Atualização.</value>
   </data>
   <data name="Popup_OneUpdateAvailableMessage" xml:space="preserve">
-    <value>One update is available.</value>
+    <value>Uma atualização está disponível.</value>
   </data>
   <data name="Popup_Title" xml:space="preserve">
-    <value>Windows Updates Available</value>
+    <value>Atualizações disponíveis</value>
   </data>
   <data name="Popup_UpdatesAvailableMessage" xml:space="preserve">
-    <value>{0} updates are available.</value>
+    <value>{0} atualizações disponíveis.</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
-    <value>A Connection to the WindowsUpdate-Service can't be established.</value>
+    <value>Não foi possível conectar ao serviço do Windows Update.</value>
   </data>
   <data name="ToolTip_NothingFound" xml:space="preserve">
-    <value>No updates available.</value>
+    <value>Não há atualizações disponíveis.</value>
   </data>
   <data name="ToolTip_Searching" xml:space="preserve">
-    <value>Searching for updates ...</value>
+    <value>Verificando atualizações ...</value>
   </data>
   <data name="ToolTip_UseMetroStyleForPopup" xml:space="preserve">
-    <value>If checked, a metro-style popop will be used for update notifications.
-Otherwise a Windows 7 like balloontip will be used.</value>
+    <value>Se marcado, uma notificação no estilo Metro será usada.
+Caso contrário, o balão de notificação do Windows 7 será usado.</value>
   </data>
   <data name="WindowTitle_Settings" xml:space="preserve">
     <value>Windows Update Notifier</value>

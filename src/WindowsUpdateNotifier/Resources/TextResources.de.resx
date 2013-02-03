@@ -162,6 +162,9 @@
   <data name="Menu_WindowsUpdates" xml:space="preserve">
     <value>Windows-Update Dialog</value>
   </data>
+  <data name="Popup_ClickToOpen" xml:space="preserve">
+    <value>Klicke hier um den Updates-Dialog zu öffnen.</value>
+  </data>
   <data name="Popup_OneUpdateAvailableMessage" xml:space="preserve">
     <value>Ein Update ist verfügbar.</value>
   </data>
