@@ -118,76 +118,75 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Cancel" xml:space="preserve">
-    <value>Abbrechen</value>
+    <value>Annuleren</value>
   </data>
   <data name="Button_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="Label_CommonSettings" xml:space="preserve">
-    <value>Allgemein</value>
+    <value>Algemeen</value>
   </data>
   <data name="Label_Help" xml:space="preserve">
-    <value>Hilfe</value>
+    <value>Help</value>
   </data>
   <data name="Label_HideIcon" xml:space="preserve">
-    <value>Verstecke Icon wenn keine Updates verfügbar sind</value>
+    <value>Systeemvakpictogram verbergen wanneer er geen updates beschikbaar zijn.</value>
   </data>
   <data name="Label_Minutes" xml:space="preserve">
-    <value>Minuten.</value>
+    <value>minuten.</value>
   </data>
   <data name="Label_RefreshInterval" xml:space="preserve">
-    <value>Suche nach Updates alle</value>
+    <value>Controleer updates elke</value>
   </data>
   <data name="Label_SetAsAutoStartup" xml:space="preserve">
-    <value>Windows Update Notifier beim Systemstart laden</value>
+    <value>Windows Update waarschuwingen starten bij systeemstart.</value>
   </data>
   <data name="Label_UseMetroStyleForPopup" xml:space="preserve">
-    <value>Verwende ein Metro-Style Popup</value>
+    <value>Gebruik de metro stijl voor het waarschuwingsvenster</value>
   </data>
   <data name="Menu_DisableNotification" xml:space="preserve">
-    <value>Benachrichtigung deaktivieren</value>
+    <value>Waarschuwingen uitschakelen</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
-    <value>Beenden</value>
+    <value>Afsluiten</value>
   </data>
   <data name="Menu_NoConnection" xml:space="preserve">
-    <value>Keine Internetverbindung</value>
+    <value>Geen internetverbinding</value>
   </data>
   <data name="Menu_Settings" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>Instellingen</value>
   </data>
   <data name="Menu_StartSearch" xml:space="preserve">
-    <value>Nach Updates suchen</value>
+    <value>Zoek updates</value>
   </data>
   <data name="Menu_WindowsUpdates" xml:space="preserve">
-    <value>Windows-Update Dialog</value>
+    <value>Venster voor Windows Update instellingen.</value>
   </data>
   <data name="Popup_ClickToOpen" xml:space="preserve">
-    <value>Klicke hier um den Updates-Dialog zu öffnen.</value>
+    <value>Klik om het update venster te openen.</value>
   </data>
   <data name="Popup_OneUpdateAvailableMessage" xml:space="preserve">
-    <value>Ein Update ist verfügbar.</value>
+    <value>Een update is beschikbaar.</value>
   </data>
   <data name="Popup_Title" xml:space="preserve">
-    <value>Updates verfügbar</value>
+    <value>Er zijn Windows updates beschikbaar.</value>
   </data>
   <data name="Popup_UpdatesAvailableMessage" xml:space="preserve">
-    <value>{0} Updates sind verfügbar.</value>
+    <value>{0} updates zijn beschikbaar.</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
-    <value>Es konnte keine Verbindung zum Windows-Update-Service hergestellt werden.</value>
+    <value>Er kan geen verbinding worden gemaakt met de Windows Update Service.</value>
   </data>
   <data name="ToolTip_NothingFound" xml:space="preserve">
-    <value>Keine Updates verfügbar.</value>
+    <value>Er zijn geen Windows updates beschikbaar.</value>
   </data>
   <data name="ToolTip_Searching" xml:space="preserve">
-    <value>Suche nach Updates ...</value>
+    <value>Updates zoeken ...</value>
   </data>
   <data name="ToolTip_UseMetroStyleForPopup" xml:space="preserve">
-    <value>Wenn aktiviert, dann wird ein Metro-Style Popup verwendet.
-Andernfalls wird der Ballon-Toolip aus Windows 7 verwendet.</value>
+    <value>Indien aangevinkt wordt een venster in metro stijl gebruikt voor update waarschuwingen. Anders zal een Windows 7 ballontip gebruikt worden.</value>
   </data>
   <data name="WindowTitle_Settings" xml:space="preserve">
-    <value>Windows Update Notifier</value>
+    <value>Windows Update waarschuwingen</value>
   </data>
 </root>

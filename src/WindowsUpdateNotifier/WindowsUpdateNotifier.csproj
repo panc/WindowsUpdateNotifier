@@ -79,6 +79,11 @@
     <Compile Include="Gui\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\TextResources.nl.Designer.cs">
+      <DependentUpon>TextResources.nl.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\TextResources.pt.Designer.cs">
       <DependentUpon>TextResources.pt.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -146,6 +151,11 @@
     <Resource Include="Resources\Images\Close.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\TextResources.nl.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextResources.nl.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\TextResources.pt.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TextResources.pt.Designer.cs</LastGenOutput>
