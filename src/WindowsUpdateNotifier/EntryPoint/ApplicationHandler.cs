@@ -72,15 +72,15 @@ namespace WindowsUpdateNotifier
             SearchForUpdates();
         }
 
-        private void _OnSearchFinished(int updateCount)
+        private void _OnSearchFinished(UpdateResult result)
         {
             var message = TextResources.ToolTip_NothingFound;
             var toolTip = TextResources.ToolTip_NothingFound;
-            var state = updateCount.GetUpdateState();
+            var state = result.AvailableUpdates.GetUpdateState(); // todo
 
             if (state == UpdateState.UpdatesAvailable)
             {
-                toolTip = message = _GetMessage(updateCount);
+                toolTip = message = _GetMessage(result.AvailableUpdates);
 
                 if (NotificationsDisabled == false)
                     _ShowPopup(TextResources.Popup_Title, message);

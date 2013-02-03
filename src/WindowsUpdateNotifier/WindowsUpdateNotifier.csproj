@@ -99,6 +99,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Shortcut\StartupShortcutHelper.cs" />
+    <Compile Include="WindowsUpdate\UpdateResult.cs" />
     <Compile Include="WindowsUpdate\UpdateState.cs" />
     <Compile Include="WindowsUpdate\WindowsUpdateManager.cs" />
     <Page Include="Gui\SettingsView.xaml">
