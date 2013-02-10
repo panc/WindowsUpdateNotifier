@@ -123,6 +123,15 @@
   <data name="Button_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="Label_AutoInstallComment" xml:space="preserve">
+    <value>To automatically  install the updates for the Windows Defender, the Winows Update Notifier must be setup to run as an administrator. How this can be achieved, can be found here:</value>
+  </data>
+  <data name="Label_AutoInstallSettings" xml:space="preserve">
+    <value>Automatic Installation</value>
+  </data>
+  <data name="Label_AutoInstallWindowsDefenderUpdates" xml:space="preserve">
+    <value>Install Windows Defender updates automatically</value>
+  </data>
   <data name="Label_CommonSettings" xml:space="preserve">
     <value>General</value>
   </data>

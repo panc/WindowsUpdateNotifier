@@ -8,13 +8,20 @@ namespace WindowsUpdateNotifier
     public class SettingsViewModel : IDataErrorInfo, INotifyPropertyChanged
     {
         private int mRefreshInterval;
-
+        
+        public SettingsViewModel()
+        {
+        }
+        
         public SettingsViewModel(Action closeWindowCallback)
         {
             var settings = AppSettings.Instance;
             RefreshInterval = settings.RefreshInterval;
             HideIcon = settings.HideIcon;
             UseMetroStyle = settings.UseMetroStyle;
+            InstallUpdates = settings.InstallUpdates;
+            CanInstallUpdates = UacHelper.IsRunningAsAdmin();
+
             IsSetAsAutoStartup = StartupShortcutHelper.IsSetAsAutoStartup();
             HelpLink = "http://wun.codeplex.com/";
 
@@ -33,6 +40,10 @@ namespace WindowsUpdateNotifier
         public bool UseMetroStyle { get; set; }
 
         public string HelpLink { get; set; }
+        
+        public bool InstallUpdates { get; set; }
+
+        public bool CanInstallUpdates { get; set; }
 
         public int RefreshInterval
         {
@@ -46,7 +57,7 @@ namespace WindowsUpdateNotifier
 
         private void _SaveAndClose(Action close)
         {
-            AppSettings.Instance.Save(RefreshInterval, HideIcon, UseMetroStyle);
+            AppSettings.Instance.Save(RefreshInterval, HideIcon, UseMetroStyle, InstallUpdates);
 
             if (IsSetAsAutoStartup)
                 StartupShortcutHelper.CreateStartupShortcut();

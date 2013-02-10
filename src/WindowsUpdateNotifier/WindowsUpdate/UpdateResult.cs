@@ -31,9 +31,9 @@
             // but we ignore this case an only show the information that update are available
 
             if (AvailableUpdates > 0)
-//                return UpdateState.UpdatesAvailable;
-//
-//            if (InstalledUpdates > 0)
+                return UpdateState.UpdatesAvailable;
+
+            if (InstalledUpdates > 0)
                 return UpdateState.UpdatesInstalled;
 
             if (AvailableUpdates < 0)

@@ -79,6 +79,33 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To automatically  install the updates for the Windows Defender, the Winows Update Notifier must be setup to run as an administrator. How this can be achieved, can be found here:.
+        /// </summary>
+        public static string Label_AutoInstallComment {
+            get {
+                return ResourceManager.GetString("Label_AutoInstallComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatic Installation.
+        /// </summary>
+        public static string Label_AutoInstallSettings {
+            get {
+                return ResourceManager.GetString("Label_AutoInstallSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install Windows Defender updates automatically.
+        /// </summary>
+        public static string Label_AutoInstallWindowsDefenderUpdates {
+            get {
+                return ResourceManager.GetString("Label_AutoInstallWindowsDefenderUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General.
         /// </summary>
         public static string Label_CommonSettings {

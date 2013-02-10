@@ -1,7 +1,8 @@
 ﻿<Window x:Class="WindowsUpdateNotifier.SettingsView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" 
+        xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources"
+        xmlns:WindowsUpdateNotifier="clr-namespace:WindowsUpdateNotifier"
         Title="{x:Static p:TextResources.WindowTitle_Settings}" ResizeMode="NoResize" SizeToContent="WidthAndHeight" MinWidth="400"
         Icon="/WindowsUpdateNotifier;component/Resources\Images\WindowsUpdate.ico"
         WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
@@ -14,7 +15,18 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style TargetType="{x:Type CheckBox}">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="#848484" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
+    
+    <Window.DataContext>
+        <WindowsUpdateNotifier:SettingsViewModel></WindowsUpdateNotifier:SettingsViewModel>
+    </Window.DataContext>
 
     <DockPanel>
         <Border 
@@ -44,7 +56,7 @@
         </Border>
 
         <GroupBox Margin="10" Header="{x:Static p:TextResources.Label_CommonSettings}" DockPanel.Dock="Top">
-            <StackPanel VerticalAlignment="Top" Margin="10,20,10,10" IsEnabled="{Binding SettingsCanBeChanged}">
+            <StackPanel VerticalAlignment="Top" Margin="10,20,10,10">
                 <CheckBox Content="{x:Static p:TextResources.Label_SetAsAutoStartup}" 
                           IsChecked="{Binding IsSetAsAutoStartup}" UseLayoutRounding="False" Margin="0,0,0,10"/>
                 
@@ -60,6 +72,16 @@
                     <TextBox Text="{Binding RefreshInterval, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" IsEnabled="{Binding UseProxyForOnlineSearch }" Width="40" Margin="10,0,0,0" HorizontalContentAlignment="Right" />
                     <TextBlock Text="{x:Static p:TextResources.Label_Minutes}" Margin="10,0,0,0"/>
                 </DockPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Margin="10,10,10,10" Header="{x:Static p:TextResources.Label_AutoInstallSettings}" DockPanel.Dock="Top">
+            <StackPanel VerticalAlignment="Top" Margin="10,10,10,10" IsEnabled="{Binding CanInstallUpdates}">
+                <TextBlock Margin="0, 0, 0, 20" MaxWidth="400" TextWrapping="WrapWithOverflow"
+                           Text="{x:Static p:TextResources.Label_AutoInstallComment}" />
+
+                <CheckBox Content="{x:Static p:TextResources.Label_AutoInstallWindowsDefenderUpdates}" 
+                          IsChecked="{Binding InstallUpdates}" UseLayoutRounding="False" Margin="0,0,0,10"/>
             </StackPanel>
         </GroupBox>
     </DockPanel>

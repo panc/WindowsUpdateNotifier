@@ -49,7 +49,7 @@ namespace WindowsUpdateNotifier
 
         public void SearchForUpdates()
         {
-            var ids = AppSettings.Instance.InstallUpdates 
+            var ids = AppSettings.Instance.InstallUpdates && UacHelper.IsRunningAsAdmin()
                 ? AppSettings.Instance.KbIdsToInstall 
                 : new string[0];
 
