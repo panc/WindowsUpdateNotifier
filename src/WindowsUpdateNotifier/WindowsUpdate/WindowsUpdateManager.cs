@@ -27,12 +27,16 @@ namespace WindowsUpdateNotifier
                     searcher.Online = true;
                     var result = searcher.Search("IsInstalled=0 AND IsHidden=0");
 
-                    var updatesToInstall = _GetUpdatesToInstall(kbIdsToInstall, result.Updates);
-                    var installedUpdates = _InstallUpdates(session, updatesToInstall);
+                    var installedUpdates = 0;
+                    if (kbIdsToInstall.Length > 0)
+                    {
+                        var updatesToInstall = _GetUpdatesToInstall(kbIdsToInstall, result.Updates);
+                        installedUpdates = _InstallUpdates(session, updatesToInstall);
+                    }
 
                     return new UpdateResult(result.Updates.Count, installedUpdates);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return new UpdateResult();
                 }
@@ -59,32 +63,39 @@ namespace WindowsUpdateNotifier
 
         private int _InstallUpdates(UpdateSession session, UpdateCollection updates)
         {
-            if (updates.Count < 1)
+            if (updates.Count < 1 || UacHelper.IsRunningAsAdmin() == false)
                 return 0;
 
-            var downloader = session.CreateUpdateDownloader();
-            downloader.Updates = updates;
-            downloader.Download();
-
-            var updatesToInstall = new UpdateCollection();
-            foreach (IUpdate update in updates)
+            try
             {
-                if (update.IsDownloaded) updatesToInstall.Add(update);
+                var downloader = session.CreateUpdateDownloader();
+                downloader.Updates = updates;
+                downloader.Download();
+
+                var updatesToInstall = new UpdateCollection();
+                foreach (IUpdate update in updates)
+                {
+                    if (update.IsDownloaded) updatesToInstall.Add(update);
+                }
+
+                var installer = session.CreateUpdateInstaller();
+                installer.Updates = updatesToInstall;
+
+                var result = installer.Install();
+                var numberOfInstalledUpdates = 0;
+
+                for (var i = 0; i < updatesToInstall.Count; i++)
+                {
+                    if (result.GetUpdateResult(i).HResult == 0)
+                        numberOfInstalledUpdates++;
+                }
+
+                return numberOfInstalledUpdates;
             }
-
-            var installer = session.CreateUpdateInstaller();
-            installer.Updates = updatesToInstall;
-
-            var result = installer.Install();
-            var numberOfInstalledUpdates = 0;
-
-            for (var i = 0; i < updatesToInstall.Count; i++)
+            catch (Exception)
             {
-                if (result.GetUpdateResult(i).HResult == 0)
-                    numberOfInstalledUpdates++;
+                return 0;
             }
-
-            return numberOfInstalledUpdates;
         }
     }
 }

@@ -49,8 +49,12 @@ namespace WindowsUpdateNotifier
 
         public void SearchForUpdates()
         {
+            var ids = AppSettings.Instance.InstallUpdates 
+                ? AppSettings.Instance.KbIdsToInstall 
+                : new string[0];
+
             mTimer.Stop();
-            mUpdateManager.StartSearchForUpdates("2267602");
+            mUpdateManager.StartSearchForUpdates(ids);
             mTrayIcon.SetupToolTipAndMenuItems(TextResources.ToolTip_Searching, TextResources.ToolTip_Searching, UpdateState.Searching);
             mTrayIcon.SetIcon(UpdateState.Searching);
         }
