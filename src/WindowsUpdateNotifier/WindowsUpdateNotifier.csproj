@@ -66,10 +66,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="EntryPoint\AppSettings.cs" />
-    <Compile Include="EntryPoint\CommandLineHelper.cs" />
+    <Compile Include="Helper\UacHelper.cs" />
+    <Compile Include="Helper\CommandLineHelper.cs" />
     <Compile Include="EntryPoint\IApplication.cs" />
     <Compile Include="EntryPoint\ISingleInstance.cs" />
-    <Compile Include="EntryPoint\SingleInstanceHelper.cs" />
+    <Compile Include="Helper\SingleInstanceHelper.cs" />
     <Compile Include="Gui\BalloonTipHelper.cs">
       <SubType>Code</SubType>
     </Compile>
