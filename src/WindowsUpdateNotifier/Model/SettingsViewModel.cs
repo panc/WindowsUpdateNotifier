@@ -8,30 +8,36 @@ namespace WindowsUpdateNotifier
     public class SettingsViewModel : IDataErrorInfo, INotifyPropertyChanged
     {
         private int mRefreshInterval;
-        
+
         public SettingsViewModel()
         {
         }
-        
+
         public SettingsViewModel(Action closeWindowCallback)
         {
+            CanInstallUpdates = UacHelper.IsRunningAsAdmin();
+            CanNotInstallUpdates = !CanInstallUpdates;
+
             var settings = AppSettings.Instance;
             RefreshInterval = settings.RefreshInterval;
             HideIcon = settings.HideIcon;
             UseMetroStyle = settings.UseMetroStyle;
-            InstallUpdates = settings.InstallUpdates;
-            CanInstallUpdates = UacHelper.IsRunningAsAdmin();
+            InstallUpdates = settings.InstallUpdates && CanInstallUpdates;
 
             IsSetAsAutoStartup = StartupShortcutHelper.IsSetAsAutoStartup();
             HelpLink = "http://wun.codeplex.com/";
+            HowToStartAsAdminLink = "http://wun.codeplex.com/HowToStartAsAdmin";
 
             SaveAndCloseCommand = new SimpleCommand(() => _SaveAndClose(closeWindowCallback));
             ShowHelpCommand = new SimpleCommand(_ShowHelp);
+            ShowHowToStartAsAdminCommand = new SimpleCommand(_ShowHowToStartAsAdmin);
         }
 
         public ICommand SaveAndCloseCommand { get; set; }
 
         public ICommand ShowHelpCommand { get; set; }
+
+        public ICommand ShowHowToStartAsAdminCommand { get; set; }
 
         public bool IsSetAsAutoStartup { get; set; }
 
@@ -40,10 +46,14 @@ namespace WindowsUpdateNotifier
         public bool UseMetroStyle { get; set; }
 
         public string HelpLink { get; set; }
-        
+
+        public string HowToStartAsAdminLink { get; set; }
+
         public bool InstallUpdates { get; set; }
 
         public bool CanInstallUpdates { get; set; }
+
+        public bool CanNotInstallUpdates { get; set; }
 
         public int RefreshInterval
         {
@@ -70,6 +80,11 @@ namespace WindowsUpdateNotifier
         private void _ShowHelp()
         {
             Process.Start(HelpLink);
+        }
+
+        private void _ShowHowToStartAsAdmin()
+        {
+            Process.Start(HowToStartAsAdminLink);
         }
 
         #region IDataError interface

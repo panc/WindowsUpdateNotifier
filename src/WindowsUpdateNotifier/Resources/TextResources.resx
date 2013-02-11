@@ -124,7 +124,10 @@
     <value>Ok</value>
   </data>
   <data name="Label_AutoInstallComment" xml:space="preserve">
-    <value>To automatically  install the updates for the Windows Defender, the Winows Update Notifier must be setup to run as an administrator. How this can be achieved, can be found here:</value>
+    <value>This feature automatically downloads and installs the updates for the Windows Defender (updates for KB2267602). No other update will be affected by enabeling this feature.</value>
+  </data>
+  <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
+    <value>To automatically install the updates for the Windows Defender, the Winows Update Notifier must be setup to run as an administrator. </value>
   </data>
   <data name="Label_AutoInstallSettings" xml:space="preserve">
     <value>Automatic Installation</value>
@@ -140,6 +143,9 @@
   </data>
   <data name="Label_HideIcon" xml:space="preserve">
     <value>Hide trayicon when no updates are available</value>
+  </data>
+  <data name="Label_HowToStartAsAdmin" xml:space="preserve">
+    <value>See here, how to achieve this.</value>
   </data>
   <data name="Label_Minutes" xml:space="preserve">
     <value>minutes.</value>

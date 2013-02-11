@@ -79,11 +79,20 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To automatically  install the updates for the Windows Defender, the Winows Update Notifier must be setup to run as an administrator. How this can be achieved, can be found here:.
+        ///   Looks up a localized string similar to This feature automatically downloads and installs the updates for the Windows Defender (updates for KB2267602). No other update will be affected by enabeling this feature..
         /// </summary>
         public static string Label_AutoInstallComment {
             get {
                 return ResourceManager.GetString("Label_AutoInstallComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To automatically install the updates for the Windows Defender, the Winows Update Notifier must be setup to run as an administrator. .
+        /// </summary>
+        public static string Label_AutoInstallNotAvailable {
+            get {
+                return ResourceManager.GetString("Label_AutoInstallNotAvailable", resourceCulture);
             }
         }
         
@@ -129,6 +138,15 @@ namespace WindowsUpdateNotifier.Resources {
         public static string Label_HideIcon {
             get {
                 return ResourceManager.GetString("Label_HideIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to See here, how to achieve this..
+        /// </summary>
+        public static string Label_HowToStartAsAdmin {
+            get {
+                return ResourceManager.GetString("Label_HowToStartAsAdmin", resourceCulture);
             }
         }
         

@@ -15,6 +15,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
         <Style TargetType="{x:Type CheckBox}">
             <Style.Triggers>
                 <Trigger Property="IsEnabled" Value="False">
@@ -22,10 +23,20 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style TargetType="{x:Type TextBlock}">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="#848484" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <BooleanToVisibilityConverter x:Key="BooleanConverter" />
     </Window.Resources>
     
     <Window.DataContext>
-        <WindowsUpdateNotifier:SettingsViewModel></WindowsUpdateNotifier:SettingsViewModel>
+        <WindowsUpdateNotifier:SettingsViewModel CanNotInstallUpdates="True" CanInstallUpdates="False" />
     </Window.DataContext>
 
     <DockPanel>
@@ -75,13 +86,35 @@
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Margin="10,10,10,10" Header="{x:Static p:TextResources.Label_AutoInstallSettings}" DockPanel.Dock="Top">
-            <StackPanel VerticalAlignment="Top" Margin="10,10,10,10" IsEnabled="{Binding CanInstallUpdates}">
-                <TextBlock Margin="0, 0, 0, 20" MaxWidth="400" TextWrapping="WrapWithOverflow"
-                           Text="{x:Static p:TextResources.Label_AutoInstallComment}" />
+        <GroupBox Margin="10,0,10,10" Header="{x:Static p:TextResources.Label_AutoInstallSettings}" DockPanel.Dock="Top">
+            <StackPanel VerticalAlignment="Top" Margin="10,10,10,10">
+                <DockPanel Margin="0,0,0,10" Visibility="{Binding CanNotInstallUpdates, Converter={StaticResource BooleanConverter}}">
+                    
+                    <Image Source="/WindowsUpdateNotifier;component/Resources/Images/warning.png" 
+                        Width="20" Height="20" Margin="5,5,15,0" VerticalAlignment="Top"
+                        DockPanel.Dock="Left"/>
 
+                    <StackPanel>
+                        <TextBlock MaxWidth="410" TextWrapping="WrapWithOverflow" TextAlignment="Justify"
+                            Text="{x:Static p:TextResources.Label_AutoInstallNotAvailable}" />
+
+                        <TextBlock MaxWidth="410" ToolTip="{Binding HowToStartAsAdminLink}" Margin="0,10,0,0">
+                            <Hyperlink Command="{Binding ShowHowToStartAsAdminCommand}">
+                                <TextBlock Text="{x:Static p:TextResources.Label_HowToStartAsAdmin}"/>
+                            </Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+
+                </DockPanel>
+                
                 <CheckBox Content="{x:Static p:TextResources.Label_AutoInstallWindowsDefenderUpdates}" 
-                          IsChecked="{Binding InstallUpdates}" UseLayoutRounding="False" Margin="0,0,0,10"/>
+                    UseLayoutRounding="False" Margin="0,10,0,10"
+                    IsChecked="{Binding InstallUpdates}" 
+                    IsEnabled="{Binding CanInstallUpdates}" />
+
+                <TextBlock MaxWidth="420" TextWrapping="WrapWithOverflow" Margin="21,0,0,0" TextAlignment="Justify"
+                    IsEnabled="{Binding CanInstallUpdates}"
+                    Text="{x:Static p:TextResources.Label_AutoInstallComment}" />
             </StackPanel>
         </GroupBox>
     </DockPanel>

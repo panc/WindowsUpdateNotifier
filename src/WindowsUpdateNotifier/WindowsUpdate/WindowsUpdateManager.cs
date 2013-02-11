@@ -34,7 +34,7 @@ namespace WindowsUpdateNotifier
                         installedUpdates = _InstallUpdates(session, updatesToInstall);
                     }
 
-                    return new UpdateResult(result.Updates.Count, installedUpdates);
+                    return new UpdateResult(result.Updates.Count  - installedUpdates, installedUpdates);
                 }
                 catch (Exception)
                 {
