@@ -123,6 +123,18 @@
   <data name="Button_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="Label_AutoInstallComment" xml:space="preserve">
+    <value>Dieses Feature installiert automatisch die Updates für den Windows Defender (Updates für KB2267602). Kein anderes Update ist durch die Aktivierung dieses Features betroffen</value>
+  </data>
+  <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
+    <value>Um die Updates für den Windows Defender automatisch installieren zu können, muss der Winows Update Notifier als Administrator gestartet werden.</value>
+  </data>
+  <data name="Label_AutoInstallSettings" xml:space="preserve">
+    <value>Automatische Installation</value>
+  </data>
+  <data name="Label_AutoInstallWindowsDefenderUpdates" xml:space="preserve">
+    <value>Windows Defender automatisch installieren</value>
+  </data>
   <data name="Label_CommonSettings" xml:space="preserve">
     <value>Allgemein</value>
   </data>
@@ -131,6 +143,9 @@
   </data>
   <data name="Label_HideIcon" xml:space="preserve">
     <value>Verstecke Icon wenn keine Updates verfügbar sind</value>
+  </data>
+  <data name="Label_HowToStartAsAdmin" xml:space="preserve">
+    <value>Sehen Sie hier, wie dies erreicht werden kann.</value>
   </data>
   <data name="Label_Minutes" xml:space="preserve">
     <value>Minuten.</value>
