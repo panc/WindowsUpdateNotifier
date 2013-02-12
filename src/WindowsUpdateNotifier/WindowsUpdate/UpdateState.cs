@@ -73,7 +73,7 @@ namespace WindowsUpdateNotifier
         {
             if (sShieldIcon == null)
             {
-                sShieldIcon = new BitmapImage(new Uri(@"pack://application:,,,/Resources/Images/ShieldGreen.ico", UriKind.RelativeOrAbsolute));
+                sShieldIcon = new BitmapImage(new Uri(@"pack://application:,,,/Resources/Images/SecurityShieldGreen.png", UriKind.RelativeOrAbsolute));
                 sShieldIcon.Freeze();
             }
 

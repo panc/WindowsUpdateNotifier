@@ -35,8 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\Images\WindowsUpdate.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -194,10 +193,7 @@
     <Resource Include="Resources\Images\Warning.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\ShieldYellow.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\ShieldGreen.ico" />
+    <Resource Include="Resources\Images\SecurityShieldGreen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
