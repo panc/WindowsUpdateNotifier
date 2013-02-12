@@ -77,9 +77,9 @@ namespace WindowsUpdateNotifier
             mAnimationTimer.Enabled = state == UpdateState.Searching && AppSettings.Instance.HideIcon == false;
         }
 
-        public void ShowBallonTip(string title, string message)
+        public void ShowBallonTip(string title, string message, UpdateState state)
         {
-            mBallonTipHelper.ShowBalloon(1, title, message, 15000);
+            mBallonTipHelper.ShowBalloon(1, title, message, 15000, state.GetPopupIcon());
         }
 
         private void _OnRefreshSearchIcon()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -25,7 +26,7 @@ namespace WindowsUpdateNotifier
                 : nativeWindow.Handle;
         }
 
-        public void ShowBalloon(uint iconId, string title, string text, uint timeout)
+        public void ShowBalloon(uint iconId, string title, string text, uint timeout, Icon icon)
         {
             // show the balloon
             var data = new NotifyIconData
@@ -33,7 +34,7 @@ namespace WindowsUpdateNotifier
                 cbSize = (UInt32)Marshal.SizeOf(typeof(NotifyIconData)),
                 hWnd = mNotifyIconHWnd,
                 uID = 1,
-                hIcon = ImageResources.Win7Update.Handle,
+                hIcon = icon.Handle,
                 uFlags = NotifyFlags.Info | NotifyFlags.Icon | NotifyFlags.Message | NotifyFlags.Tip,
                 uTimeoutOrVersion = timeout,
                 szInfo = text,

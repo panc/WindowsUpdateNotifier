@@ -63,9 +63,19 @@ namespace WindowsUpdateNotifier.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon Win7Update {
+        internal static System.Drawing.Icon ShieldGreen {
             get {
-                object obj = ResourceManager.GetObject("Win7Update", resourceCulture);
+                object obj = ResourceManager.GetObject("ShieldGreen", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon ShieldYellow {
+            get {
+                object obj = ResourceManager.GetObject("ShieldYellow", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

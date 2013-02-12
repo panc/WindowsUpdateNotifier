@@ -35,7 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Images\WindowsUpdate.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -80,6 +81,11 @@
     <Compile Include="Gui\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\ImageResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImageResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\TextResources.nl.Designer.cs">
       <DependentUpon>TextResources.nl.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -89,11 +95,6 @@
       <DependentUpon>TextResources.pt.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Resources\ImageResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ImageResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Shortcut\FileIcon.cs" />
     <Compile Include="Model\PopupViewModel.cs" />
@@ -151,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Close.png" />
+    <Resource Include="Resources\Images\WindowsUpdate.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\TextResources.nl.resx">
@@ -181,17 +183,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Update.png" />
-    <Resource Include="Resources\Images\WindowsUpdate.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Help.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Win7Update.ico" />
     <None Include="WindowsUpdateNotifier.snk" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ShieldYellow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ShieldGreen.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

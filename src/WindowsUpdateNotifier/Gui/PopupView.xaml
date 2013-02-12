@@ -7,7 +7,8 @@
         Background="#FEFAF9F9" WindowStyle="None" AllowsTransparency="True"
         local:WindowBehavior.BackgroundClickCommand="{Binding OnOpenWindowsUpdateControlPanelCommand}">
     <Window.DataContext>
-        <local:PopupViewModel Title="Windows Updates Available" Message="33 updates are available. Click to open Update Panel."/>
+        <local:PopupViewModel Title="Windows Updates Available" 
+            Message="33 updates are available. Click to open Update Panel."/>
     </Window.DataContext>
 
     <Window.Triggers>
@@ -32,7 +33,7 @@
             </Grid.RowDefinitions>
         
             <DockPanel Grid.Row="0">
-                <Image Source="/WindowsUpdateNotifier;component/Resources/Images/update.png" 
+                <Image Source="{Binding Image}" 
                        Width="20" Height="20" Margin="5,0,0,0"
                        DockPanel.Dock="Left"/>
 
