@@ -26,7 +26,7 @@ namespace WindowsUpdateNotifier
 
             IsSetAsAutoStartup = StartupShortcutHelper.IsSetAsAutoStartup();
             HelpLink = "http://wun.codeplex.com/";
-            HowToStartAsAdminLink = "http://wun.codeplex.com/HowToStartAsAdmin";
+            HowToStartAsAdminLink = "http://wun.codeplex.com/wikipage?title=HowToStartAsAdmin";
 
             SaveAndCloseCommand = new SimpleCommand(() => _SaveAndClose(closeWindowCallback));
             ShowHelpCommand = new SimpleCommand(_ShowHelp);
