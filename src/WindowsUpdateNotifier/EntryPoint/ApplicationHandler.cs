@@ -89,12 +89,12 @@ namespace WindowsUpdateNotifier
                 toolTip = message = _GetMessage(result.AvailableUpdates);
                 var msg = string.Format("{0} {1}", message, TextResources.Popup_ClickToOpen);
 
-                _ShowPopup(TextResources.Popup_UpdatesAvailableTitle, msg);
+                _ShowPopup(TextResources.Popup_UpdatesAvailableTitle, msg, result.UpdateState);
             }
             else if (result.UpdateState == UpdateState.UpdatesInstalled)
             {
                 var msg = string.Format("{0} {1}", TextResources.Popup_UpdatesInstalledMessage, TextResources.Popup_ClickToOpen);
-                _ShowPopup(TextResources.Popup_UpdatesInstalledTitle, msg);
+                _ShowPopup(TextResources.Popup_UpdatesInstalledTitle, msg, result.UpdateState);
             }
             else if (result.UpdateState == UpdateState.Failure)
             {
@@ -121,7 +121,7 @@ namespace WindowsUpdateNotifier
             timer.Start();
         }
 
-        private void _ShowPopup(string title, string message)
+        private void _ShowPopup(string title, string message, UpdateState state)
         {
             if (NotificationsDisabled)
                 return;
@@ -129,7 +129,7 @@ namespace WindowsUpdateNotifier
             if (AppSettings.Instance.UseMetroStyle)
             {
                 var popup = new PopupView();
-                popup.DataContext = new PopupViewModel(title, message, popup.Close, this);
+                popup.DataContext = new PopupViewModel(title, message, state, popup.Close, OpenWindowsUpdateControlPanel);
                 popup.Show();
 
                 if (mSettingsView != null)
@@ -137,7 +137,7 @@ namespace WindowsUpdateNotifier
             }
             else
             {
-                mTrayIcon.ShowBallonTip(title, message);
+                mTrayIcon.ShowBallonTip(title, message, state);
             }
         }
 
