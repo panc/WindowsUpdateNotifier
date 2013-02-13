@@ -123,6 +123,18 @@
   <data name="Button_Ok" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="Label_AutoInstallComment" xml:space="preserve">
+    <value>Este recurso automaticamente baixa e instala as atualizações do Windows Defender (atualizações para KB2267602). Nenhuma outra atualização é afetada ao habilitar esta função.</value>
+  </data>
+  <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
+    <value>Para automaticamente instalar as atualizações do Windows Defender, o Windows Update Notifier deve estar configurado para ser executado como administrador.</value>
+  </data>
+  <data name="Label_AutoInstallSettings" xml:space="preserve">
+    <value>Instalação Automática</value>
+  </data>
+  <data name="Label_AutoInstallWindowsDefenderUpdates" xml:space="preserve">
+    <value>Instalar atualizações do Windows Defender automaticamente</value>
+  </data>
   <data name="Label_CommonSettings" xml:space="preserve">
     <value>Geral</value>
   </data>
@@ -131,6 +143,9 @@
   </data>
   <data name="Label_HideIcon" xml:space="preserve">
     <value>Ocultar ícone quando não há atualizações disponíveis</value>
+  </data>
+  <data name="Label_HowToStartAsAdmin" xml:space="preserve">
+    <value>Veja aqui como fazer isto.</value>
   </data>
   <data name="Label_Minutes" xml:space="preserve">
     <value>minutos.</value>
@@ -175,10 +190,10 @@
     <value>Atualizações disponíveis</value>
   </data>
   <data name="Popup_UpdatesInstalledMessage" xml:space="preserve">
-    <value />
+    <value>Novas Atualizações do Windows foram instaladas.</value>
   </data>
   <data name="Popup_UpdatesInstalledTitle" xml:space="preserve">
-    <value />
+    <value>Atualizações do Windows Instaladas</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
     <value>Não foi possível conectar ao serviço do Windows Update.</value>
