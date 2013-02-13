@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace WindowsUpdateNotifier
 {
-    public static class StartupShortcutHelper
+    public static class ShortcutHelper
     {
         public static bool IsSetAsAutoStartup()
         {

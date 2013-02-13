@@ -16,7 +16,7 @@ namespace WindowsUpdateNotifier
 
         public void StartSearchForUpdates(params string[] kbIdsToInstall)
         {
-            var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+            var scheduler = System.Threading.Tasks.TaskScheduler.FromCurrentSynchronizationContext();
 
             Task.Factory.StartNew(() =>
             {
