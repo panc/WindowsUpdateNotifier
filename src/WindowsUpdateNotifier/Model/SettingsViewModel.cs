@@ -24,7 +24,7 @@ namespace WindowsUpdateNotifier
             UseMetroStyle = settings.UseMetroStyle;
             InstallUpdates = settings.InstallUpdates && CanInstallUpdates;
 
-            IsSetAsAutoStartup = ShortcutHelper.IsSetAsAutoStartup();
+            IsSetAsAutoStartup = StartupHelper.IsSetAsAutoStartup();
             HelpLink = "http://wun.codeplex.com/";
             HowToStartAsAdminLink = "http://wun.codeplex.com/wikipage?title=HowToStartAsAdmin";
 
@@ -68,12 +68,8 @@ namespace WindowsUpdateNotifier
         private void _SaveAndClose(Action close)
         {
             AppSettings.Instance.Save(RefreshInterval, HideIcon, UseMetroStyle, InstallUpdates);
-
-            if (IsSetAsAutoStartup)
-                ShortcutHelper.CreateStartupShortcut();
-            else
-                ShortcutHelper.DeleteStartupShortcut();
-
+            StartupHelper.UpdateStartupSettings(IsSetAsAutoStartup);
+            
             close();
         }
 

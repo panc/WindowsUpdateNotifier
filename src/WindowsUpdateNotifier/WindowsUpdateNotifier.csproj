@@ -111,7 +111,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="AutoStartup\ShortcutHelper.cs" />
-    <Compile Include="AutoStartup\TaskSchedulerAdapter.cs" />
+    <Compile Include="AutoStartup\TaskSchedulerWrapper.cs" />
     <Compile Include="WindowsUpdate\UpdateResult.cs" />
     <Compile Include="WindowsUpdate\UpdateState.cs" />
     <Compile Include="WindowsUpdate\WindowsUpdateManager.cs" />
