@@ -55,9 +55,7 @@ namespace WindowsUpdateNotifier
 
         public void DeleteTaskIfNeeded()
         {
-            var task = mRootFolder.GetTask(APP_NAME);
-
-            if (task != null)
+            if (CheckTaskExists())
                 mRootFolder.DeleteTask(APP_NAME, 0);
         }
 
