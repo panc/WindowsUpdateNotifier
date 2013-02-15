@@ -36,9 +36,9 @@
     </Window.Resources>
     
     <Window.DataContext>
-        <WindowsUpdateNotifier:SettingsViewModel CanNotInstallUpdates="True" CanInstallUpdates="False" />
+        <WindowsUpdateNotifier:SettingsViewModel CanNotInstallUpdates="True" CanInstallUpdates="False" Version="Version 9.9.9.9  © Christoph Pangerl"/>
     </Window.DataContext>
-
+    
     <DockPanel>
         <Border 
             x:Name="BottomArea" 
@@ -56,19 +56,29 @@
                     Margin="0,5,10,5" MinWidth="75" MinHeight="25" Padding="5,2" Command="{Binding SaveAndCloseCommand}"/>
 
                 <Image Source="/WindowsUpdateNotifier;component/Resources/Images/Help.png" 
-                       Width="20" Height="20" Margin="10,0,0,0" DockPanel.Dock="Left"/>
+                       Width="20" Height="20" Margin="10,0,0,0" DockPanel.Dock="Left" x:Name="HelpIcon"/>
 
                 <TextBlock Margin="5, 10" HorizontalAlignment="Center" ToolTip="{Binding HelpLink}">
                     <Hyperlink Command="{Binding ShowHelpCommand}">
                         <TextBlock Text="{x:Static p:TextResources.Label_Help}"/>
                     </Hyperlink>
                 </TextBlock>
+
+                <Popup IsOpen="{Binding ElementName=HelpIcon,Path=IsMouseOver, Mode=OneWay}"
+                       PlacementTarget="{Binding ElementName=HelpIcon}"           
+                       AllowsTransparency="True"
+                       PopupAnimation="Fade"
+                       HorizontalOffset="80"
+                       VerticalOffset="-20">
+
+                    <TextBlock Text="{Binding Version}" Margin="25, 10, 0, 0" Foreground="#919191" />
+                </Popup>
             </DockPanel>
         </Border>
 
         <GroupBox Margin="10" Header="{x:Static p:TextResources.Label_CommonSettings}" DockPanel.Dock="Top">
             <StackPanel VerticalAlignment="Top" Margin="10,20,10,10">
-                <CheckBox Content="{x:Static p:TextResources.Label_SetAsAutoStartup}" 
+                <CheckBox Content="{x:Static p:TextResources.Label_SetAsAutoStartup}" x:Name="check"
                           IsChecked="{Binding IsSetAsAutoStartup}" UseLayoutRounding="False" Margin="0,0,0,10"/>
                 
                 <CheckBox Content="{x:Static p:TextResources.Label_HideIcon}" 
@@ -112,8 +122,8 @@
                     IsChecked="{Binding InstallUpdates}" 
                     IsEnabled="{Binding CanInstallUpdates}" />
 
-                <TextBlock MaxWidth="420" TextWrapping="WrapWithOverflow" Margin="21,0,0,0" TextAlignment="Justify"
-                    IsEnabled="{Binding CanInstallUpdates}"
+                <TextBlock MaxWidth="418" TextWrapping="WrapWithOverflow" Margin="21,0,0,0" TextAlignment="Justify"
+                    IsEnabled="{Binding CanInstallUpdates}" HorizontalAlignment="Left"
                     Text="{x:Static p:TextResources.Label_AutoInstallComment}" />
             </StackPanel>
         </GroupBox>

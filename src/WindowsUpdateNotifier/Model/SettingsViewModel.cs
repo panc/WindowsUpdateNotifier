@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Reflection;
 using System.Windows.Input;
 
 namespace WindowsUpdateNotifier
@@ -28,10 +29,14 @@ namespace WindowsUpdateNotifier
             HelpLink = "http://wun.codeplex.com/";
             HowToStartAsAdminLink = "http://wun.codeplex.com/wikipage?title=HowToStartAsAdmin";
 
+            Version = string.Format("Version {0}  © Christoph Pangerl", _GetVersion());
+
             SaveAndCloseCommand = new SimpleCommand(() => _SaveAndClose(closeWindowCallback));
             ShowHelpCommand = new SimpleCommand(_ShowHelp);
             ShowHowToStartAsAdminCommand = new SimpleCommand(_ShowHowToStartAsAdmin);
         }
+
+        #region Properties
 
         public ICommand SaveAndCloseCommand { get; set; }
 
@@ -46,6 +51,8 @@ namespace WindowsUpdateNotifier
         public bool UseMetroStyle { get; set; }
 
         public string HelpLink { get; set; }
+
+        public string Version { get; set; }
 
         public string HowToStartAsAdminLink { get; set; }
 
@@ -65,6 +72,8 @@ namespace WindowsUpdateNotifier
             }
         }
 
+        #endregion 
+
         private void _SaveAndClose(Action close)
         {
             AppSettings.Instance.Save(RefreshInterval, HideIcon, UseMetroStyle, InstallUpdates);
@@ -81,6 +90,11 @@ namespace WindowsUpdateNotifier
         private void _ShowHowToStartAsAdmin()
         {
             Process.Start(HowToStartAsAdminLink);
+        }
+
+        private string _GetVersion()
+        {
+            return FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         }
 
         #region IDataError interface
