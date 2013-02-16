@@ -81,11 +81,11 @@
 
                 <Popup IsOpen="{Binding ElementName=HelpIcon,Path=IsMouseOver, Mode=OneWay}"
                        PlacementTarget="{Binding ElementName=HelpIcon}"
-                       Placement="Top"
+                       Placement="Relative"
                        AllowsTransparency="True"
                        PopupAnimation="Fade"
-                       HorizontalOffset="60"
-                       VerticalOffset="10">
+                       HorizontalOffset="80"
+                       VerticalOffset="1">
 
                     <TextBlock Text="{Binding Version}" Margin="25, 10, 0, 0" Foreground="#919191" />
                 </Popup>
