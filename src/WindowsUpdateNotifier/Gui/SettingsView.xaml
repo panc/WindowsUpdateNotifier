@@ -31,15 +31,30 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
+        
         <BooleanToVisibilityConverter x:Key="BooleanConverter" />
     </Window.Resources>
     
     <Window.DataContext>
-        <WindowsUpdateNotifier:SettingsViewModel CanNotInstallUpdates="True" CanInstallUpdates="False" Version="Version 9.9.9.9  © Christoph Pangerl"/>
+        <WindowsUpdateNotifier:SettingsViewModel CanNotInstallUpdates="True" CanInstallUpdates="False" Version="Version 9.9.9.9  © Christoph Pangerl"
+                                                 SaveFailed="True"/>
     </Window.DataContext>
     
-    <DockPanel>
+    <DockPanel x:Name="MainContent">
+        
+        <Popup IsOpen="{Binding SaveFailed}"
+            PlacementTarget="{Binding ElementName=MainContent}"
+            Placement="Relative" 
+            AllowsTransparency="True"
+            PopupAnimation="Fade"
+            HorizontalOffset="140">
+
+            <Border Canvas.Left="200" Background="#E14C4C" CornerRadius="0,0,5,5">
+                <TextBlock Text="{x:Static p:TextResources.Label_SavingSettingsFailed}" Margin="5,2"
+                           Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </Popup>
+
         <Border 
             x:Name="BottomArea" 
             DockPanel.Dock="Bottom" 
@@ -65,11 +80,12 @@
                 </TextBlock>
 
                 <Popup IsOpen="{Binding ElementName=HelpIcon,Path=IsMouseOver, Mode=OneWay}"
-                       PlacementTarget="{Binding ElementName=HelpIcon}"           
+                       PlacementTarget="{Binding ElementName=HelpIcon}"
+                       Placement="Top"
                        AllowsTransparency="True"
                        PopupAnimation="Fade"
-                       HorizontalOffset="80"
-                       VerticalOffset="-20">
+                       HorizontalOffset="60"
+                       VerticalOffset="10">
 
                     <TextBlock Text="{Binding Version}" Margin="25, 10, 0, 0" Foreground="#919191" />
                 </Popup>
@@ -90,7 +106,7 @@
                 
                 <DockPanel Margin="0,10,0,0">
                     <TextBlock Text="{x:Static p:TextResources.Label_RefreshInterval}"/>
-                    <TextBox Text="{Binding RefreshInterval, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" IsEnabled="{Binding UseProxyForOnlineSearch }" Width="40" Margin="10,0,0,0" HorizontalContentAlignment="Right" />
+                    <TextBox Text="{Binding RefreshInterval, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="40" Margin="10,0,0,0" HorizontalContentAlignment="Right" />
                     <TextBlock Text="{x:Static p:TextResources.Label_Minutes}" Margin="10,0,0,0"/>
                 </DockPanel>
             </StackPanel>

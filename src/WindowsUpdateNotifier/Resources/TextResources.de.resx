@@ -138,6 +138,10 @@
   <data name="Label_RefreshInterval" xml:space="preserve">
     <value>Suche nach Updates alle</value>
   </data>
+  <data name="Label_SavingSettingsFailed" xml:space="preserve">
+    <value>Speichern fehlgeschlagen!
+Bitte als Administrator starten und erneut versuchen.</value>
+  </data>
   <data name="Label_SetAsAutoStartup" xml:space="preserve">
     <value>Windows Update Notifier beim Systemstart laden</value>
   </data>

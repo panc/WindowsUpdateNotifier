@@ -9,6 +9,7 @@ namespace WindowsUpdateNotifier
     public class SettingsViewModel : IDataErrorInfo, INotifyPropertyChanged
     {
         private int mRefreshInterval;
+        private bool mSaveFailed;
 
         public SettingsViewModel()
         {
@@ -72,14 +73,33 @@ namespace WindowsUpdateNotifier
             }
         }
 
-        #endregion 
+        public bool SaveFailed
+        {
+            get { return mSaveFailed; }
+            set
+            {
+                mSaveFailed = value;
+                OnPropertyChanged("SaveFailed");
+            }
+        }
+
+
+        #endregion
 
         private void _SaveAndClose(Action close)
         {
-            AppSettings.Instance.Save(RefreshInterval, HideIcon, UseMetroStyle, InstallUpdates);
-            StartupHelper.UpdateStartupSettings(IsSetAsAutoStartup);
-            
-            close();
+            try
+            {
+                SaveFailed = false;
+                AppSettings.Instance.Save(RefreshInterval, HideIcon, UseMetroStyle, InstallUpdates);
+                StartupHelper.UpdateStartupSettings(IsSetAsAutoStartup);
+
+                close();
+            }
+            catch (Exception)
+            {
+                SaveFailed = true;
+            }
         }
 
         private void _ShowHelp()
@@ -104,7 +124,7 @@ namespace WindowsUpdateNotifier
             get { return columnName == "RefreshInterval" ? Error : string.Empty; }
         }
 
-        public string Error { get; private set; }
+        public string Error { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -169,6 +169,16 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Saving failed!
+        ///Start with admin privilegs and try again..
+        /// </summary>
+        public static string Label_SavingSettingsFailed {
+            get {
+                return ResourceManager.GetString("Label_SavingSettingsFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start Windows Update Notifier on system startup.
         /// </summary>
         public static string Label_SetAsAutoStartup {

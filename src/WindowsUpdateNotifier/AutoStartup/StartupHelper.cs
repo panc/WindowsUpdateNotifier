@@ -49,14 +49,12 @@
             // remove shortcut if needed
             ShortcutHelper.DeleteStartupShortcut();
 
-            // try to remove the task from the task scheduler if needed
-            // (is only possible if admin rights are present)
-            if (UacHelper.IsRunningAsAdmin())
+            // Try to remove the task from the task scheduler if needed.
+            // This is only possible if admin rights are present. Otherwise an exception
+            // will be thrown which is catched in the settingsview model.
+            using (var adapter = new TaskSchedulerWrapper())
             {
-                using (var adapter = new TaskSchedulerWrapper())
-                {
-                    adapter.DeleteTaskIfNeeded();
-                }
+                adapter.DeleteTaskIfNeeded();
             }
         }
     }
