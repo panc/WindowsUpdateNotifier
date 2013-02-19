@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Reflection;
 using System.Windows.Input;
 
 namespace WindowsUpdateNotifier
@@ -8,6 +9,7 @@ namespace WindowsUpdateNotifier
     public class SettingsViewModel : IDataErrorInfo, INotifyPropertyChanged
     {
         private int mRefreshInterval;
+        private bool mSaveFailed;
 
         public SettingsViewModel()
         {
@@ -24,14 +26,18 @@ namespace WindowsUpdateNotifier
             UseMetroStyle = settings.UseMetroStyle;
             InstallUpdates = settings.InstallUpdates && CanInstallUpdates;
 
-            IsSetAsAutoStartup = StartupShortcutHelper.IsSetAsAutoStartup();
+            IsSetAsAutoStartup = StartupHelper.IsSetAsAutoStartup();
             HelpLink = "http://wun.codeplex.com/";
             HowToStartAsAdminLink = "http://wun.codeplex.com/wikipage?title=HowToStartAsAdmin";
+
+            Version = string.Format("Version {0}  © Christoph Pangerl", _GetVersion());
 
             SaveAndCloseCommand = new SimpleCommand(() => _SaveAndClose(closeWindowCallback));
             ShowHelpCommand = new SimpleCommand(_ShowHelp);
             ShowHowToStartAsAdminCommand = new SimpleCommand(_ShowHowToStartAsAdmin);
         }
+
+        #region Properties
 
         public ICommand SaveAndCloseCommand { get; set; }
 
@@ -46,6 +52,8 @@ namespace WindowsUpdateNotifier
         public bool UseMetroStyle { get; set; }
 
         public string HelpLink { get; set; }
+
+        public string Version { get; set; }
 
         public string HowToStartAsAdminLink { get; set; }
 
@@ -65,16 +73,33 @@ namespace WindowsUpdateNotifier
             }
         }
 
+        public bool SaveFailed
+        {
+            get { return mSaveFailed; }
+            set
+            {
+                mSaveFailed = value;
+                OnPropertyChanged("SaveFailed");
+            }
+        }
+
+
+        #endregion
+
         private void _SaveAndClose(Action close)
         {
-            AppSettings.Instance.Save(RefreshInterval, HideIcon, UseMetroStyle, InstallUpdates);
+            try
+            {
+                SaveFailed = false;
+                AppSettings.Instance.Save(RefreshInterval, HideIcon, UseMetroStyle, InstallUpdates);
+                StartupHelper.UpdateStartupSettings(IsSetAsAutoStartup);
 
-            if (IsSetAsAutoStartup)
-                StartupShortcutHelper.CreateStartupShortcut();
-            else
-                StartupShortcutHelper.DeleteStartupShortcut();
-
-            close();
+                close();
+            }
+            catch (Exception)
+            {
+                SaveFailed = true;
+            }
         }
 
         private void _ShowHelp()
@@ -87,6 +112,11 @@ namespace WindowsUpdateNotifier
             Process.Start(HowToStartAsAdminLink);
         }
 
+        private string _GetVersion()
+        {
+            return FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        }
+
         #region IDataError interface
 
         public string this[string columnName]
@@ -94,7 +124,7 @@ namespace WindowsUpdateNotifier
             get { return columnName == "RefreshInterval" ? Error : string.Empty; }
         }
 
-        public string Error { get; private set; }
+        public string Error { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
