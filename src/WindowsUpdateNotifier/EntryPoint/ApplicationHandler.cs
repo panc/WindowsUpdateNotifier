@@ -23,10 +23,10 @@ namespace WindowsUpdateNotifier
 
             AppSettings.Instance.OnSettingsChanged = _OnSettingsChanged;
 
-            mTimer = new DispatcherTimer { Interval = TimeSpan.FromMinutes(AppSettings.Instance.RefreshInterval) };
+            // wait for 10 seconds (to finish startup), then search for updates
+            mTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
             mTimer.Tick += (e, s) => SearchForUpdates();
-
-            SearchForUpdates();
+            mTimer.Start();
         }
 
         public bool NotificationsDisabled { get; set; }
@@ -49,11 +49,13 @@ namespace WindowsUpdateNotifier
 
         public void SearchForUpdates()
         {
-            var ids = AppSettings.Instance.InstallUpdates && UacHelper.IsRunningAsAdmin()
-                ? AppSettings.Instance.KbIdsToInstall 
-                : new string[0];
 
             mTimer.Stop();
+
+            var ids = AppSettings.Instance.InstallUpdates && UacHelper.IsRunningAsAdmin()
+                ? AppSettings.Instance.KbIdsToInstall
+                : new string[0];
+
             mUpdateManager.StartSearchForUpdates(ids);
             mTrayIcon.SetupToolTipAndMenuItems(TextResources.ToolTip_Searching, TextResources.ToolTip_Searching, UpdateState.Searching);
             mTrayIcon.SetIcon(UpdateState.Searching);
@@ -72,8 +74,8 @@ namespace WindowsUpdateNotifier
 
         private void _OnSettingsChanged()
         {
-            mTimer.Interval = TimeSpan.FromMinutes(AppSettings.Instance.RefreshInterval);
-            SearchForUpdates();
+            if (mTimer.IsEnabled)
+                SearchForUpdates();
         }
 
         private void _OnSearchFinished(UpdateResult result)
@@ -84,8 +86,8 @@ namespace WindowsUpdateNotifier
             if (result.UpdateState == UpdateState.UpdatesAvailable)
             {
                 // UpdateAvailable doesn't give any information about how many updates where installed
-                // but we ignore this case an only show the information that update are available
-                
+                // but we ignore this case and only show the information that updates are available
+
                 toolTip = message = _GetMessage(result.AvailableUpdates);
                 var msg = string.Format("{0} {1}", message, TextResources.Popup_ClickToOpen);
 
@@ -121,6 +123,19 @@ namespace WindowsUpdateNotifier
             timer.Start();
         }
 
+        private void _StartTimer(UpdateState state)
+        {
+            mTimer.Interval = state == UpdateState.Failure && mFailureCount < 10
+                ? TimeSpan.FromSeconds(30)
+                : TimeSpan.FromMinutes(AppSettings.Instance.RefreshInterval);
+
+            mFailureCount = state == UpdateState.Failure
+                ? mFailureCount + 1
+                : 0;
+
+            mTimer.Start();
+        }
+
         private void _ShowPopup(string title, string message, UpdateState state)
         {
             if (NotificationsDisabled)
@@ -139,19 +154,6 @@ namespace WindowsUpdateNotifier
             {
                 mTrayIcon.ShowBallonTip(title, message, state);
             }
-        }
-
-        private void _StartTimer(UpdateState state)
-        {
-            mTimer.Interval = state == UpdateState.Failure && mFailureCount < 10
-                ? TimeSpan.FromSeconds(30)
-                : TimeSpan.FromHours(1);
-
-            mFailureCount = state == UpdateState.Failure
-                ? mFailureCount + 1
-                : 0;
-
-            mTimer.Start();
         }
 
         private string _GetMessage(int updateCount)
