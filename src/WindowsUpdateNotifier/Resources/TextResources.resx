@@ -127,7 +127,7 @@
     <value>This feature automatically downloads and installs the updates for the Windows Defender (updates for KB2267602). No other update will be affected by enabeling this feature.</value>
   </data>
   <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
-    <value>To automatically install the updates for the Windows Defender, the Winows Update Notifier must be setup to run as an administrator. </value>
+    <value>To automatically install the updates for the Windows Defender, the Windows Update Notifier must be setup to run as an administrator. </value>
   </data>
   <data name="Label_AutoInstallSettings" xml:space="preserve">
     <value>Automatic Installation</value>
@@ -155,7 +155,7 @@
   </data>
   <data name="Label_SavingSettingsFailed" xml:space="preserve">
     <value>Saving failed!
-Start with admin privilegs and try again.</value>
+Start with admin privileges and try again.</value>
   </data>
   <data name="Label_SetAsAutoStartup" xml:space="preserve">
     <value>Start Windows Update Notifier on system startup</value>

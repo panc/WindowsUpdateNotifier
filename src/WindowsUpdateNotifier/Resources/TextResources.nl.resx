@@ -123,6 +123,18 @@
   <data name="Button_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="Label_AutoInstallComment" xml:space="preserve">
+    <value>Deze functie downloadt automatisch en installeert de updates voor de Windows Defender (updates voor KB2267602). Geen enkele andere update zal worden beïnvloed door enabeling deze functie.</value>
+  </data>
+  <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
+    <value>Om automatische installatie van de updates voor de Windows Defender, moet de Windows Update Notifier worden ingesteld om te draaien als beheerder.</value>
+  </data>
+  <data name="Label_AutoInstallSettings" xml:space="preserve">
+    <value>Automatische Installatie</value>
+  </data>
+  <data name="Label_AutoInstallWindowsDefenderUpdates" xml:space="preserve">
+    <value>Automatisch installeren updates voor Windows Defender</value>
+  </data>
   <data name="Label_CommonSettings" xml:space="preserve">
     <value>Algemeen</value>
   </data>
@@ -132,11 +144,18 @@
   <data name="Label_HideIcon" xml:space="preserve">
     <value>Systeemvakpictogram verbergen wanneer er geen updates beschikbaar zijn.</value>
   </data>
+  <data name="Label_HowToStartAsAdmin" xml:space="preserve">
+    <value>Zie hier, hoe dit te bereiken.</value>
+  </data>
   <data name="Label_Minutes" xml:space="preserve">
     <value>minuten.</value>
   </data>
   <data name="Label_RefreshInterval" xml:space="preserve">
     <value>Controleer updates elke</value>
+  </data>
+  <data name="Label_SavingSettingsFailed" xml:space="preserve">
+    <value>Opslaan mislukt!
+Begin met admin privileges en probeer het opnieuw.</value>
   </data>
   <data name="Label_SetAsAutoStartup" xml:space="preserve">
     <value>Windows Update waarschuwingen starten bij systeemstart.</value>
@@ -175,7 +194,10 @@
     <value>Er zijn Windows updates beschikbaar</value>
   </data>
   <data name="Popup_UpdatesInstalledMessage" xml:space="preserve">
-    <value />
+    <value>Nieuwe Windows Updates zijn geïnstalleerd.</value>
+  </data>
+  <data name="Popup_UpdatesInstalledTitle" xml:space="preserve">
+    <value>Windows-updates geïnstalleerd</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
     <value>Er kan geen verbinding worden gemaakt met de Windows Update Service.</value>

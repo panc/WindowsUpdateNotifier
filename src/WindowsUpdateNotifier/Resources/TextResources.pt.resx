@@ -153,6 +153,10 @@
   <data name="Label_RefreshInterval" xml:space="preserve">
     <value>Verificar atualizações a cada</value>
   </data>
+  <data name="Label_SavingSettingsFailed" xml:space="preserve">
+    <value>Salvando falhou!
+Comece com privilégios de administrador e tente novamente.</value>
+  </data>
   <data name="Label_SetAsAutoStartup" xml:space="preserve">
     <value>Iniciar o Windows Update Notifier com o sistema</value>
   </data>

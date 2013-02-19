@@ -88,7 +88,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To automatically install the updates for the Windows Defender, the Winows Update Notifier must be setup to run as an administrator. .
+        ///   Looks up a localized string similar to To automatically install the updates for the Windows Defender, the Windows Update Notifier must be setup to run as an administrator. .
         /// </summary>
         public static string Label_AutoInstallNotAvailable {
             get {
@@ -170,7 +170,7 @@ namespace WindowsUpdateNotifier.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Saving failed!
-        ///Start with admin privilegs and try again..
+        ///Start with admin privileges and try again..
         /// </summary>
         public static string Label_SavingSettingsFailed {
             get {
