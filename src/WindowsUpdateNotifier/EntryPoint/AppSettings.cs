@@ -69,6 +69,8 @@ namespace WindowsUpdateNotifier
                 RefreshInterval = refreshInterval;
                 HideIcon = hideIcon;
                 UseMetroStyle = useMetroStyle;
+                InstallUpdates = installUpdates;
+                //KbIdsToInstall = kbIdsToInstall;
 
                 if (OnSettingsChanged != null)
                     OnSettingsChanged();
