@@ -72,7 +72,7 @@
     <Compile Include="EntryPoint\IApplication.cs" />
     <Compile Include="EntryPoint\ISingleInstance.cs" />
     <Compile Include="Helper\SingleInstanceHelper.cs" />
-    <Compile Include="Gui\BalloonTipHelper.cs">
+    <Compile Include="Helper\BalloonTipHelper.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Gui\Behavior\DataTriggerBehavior.cs" />
@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="AutoStartup\ShortcutHelper.cs" />
     <Compile Include="AutoStartup\TaskSchedulerWrapper.cs" />
+    <Compile Include="Versioning\RssVersionReader.cs" />
     <Compile Include="WindowsUpdate\UpdateResult.cs" />
     <Compile Include="WindowsUpdate\UpdateState.cs" />
     <Compile Include="WindowsUpdate\WindowsUpdateManager.cs" />

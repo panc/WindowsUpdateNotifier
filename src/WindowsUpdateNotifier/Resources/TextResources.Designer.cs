@@ -160,6 +160,15 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Version {0} availabel!.
+        /// </summary>
+        public static string Label_NewVersion {
+            get {
+                return ResourceManager.GetString("Label_NewVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search for updates every.
         /// </summary>
         public static string Label_RefreshInterval {

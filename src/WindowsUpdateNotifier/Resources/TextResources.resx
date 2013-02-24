@@ -150,6 +150,9 @@
   <data name="Label_Minutes" xml:space="preserve">
     <value>minutes.</value>
   </data>
+  <data name="Label_NewVersion" xml:space="preserve">
+    <value>Version {0} availabel!</value>
+  </data>
   <data name="Label_RefreshInterval" xml:space="preserve">
     <value>Search for updates every</value>
   </data>

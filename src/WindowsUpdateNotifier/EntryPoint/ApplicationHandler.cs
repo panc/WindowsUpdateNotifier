@@ -72,6 +72,11 @@ namespace WindowsUpdateNotifier
             Process.Start("control.exe", "/name Microsoft.WindowsUpdate");
         }
 
+        public void GoToDownloadPage()
+        {
+            Process.Start("http://wun.codeplex.com/releases");
+        }
+
         private void _OnSettingsChanged()
         {
             if (mTimer.IsEnabled)
