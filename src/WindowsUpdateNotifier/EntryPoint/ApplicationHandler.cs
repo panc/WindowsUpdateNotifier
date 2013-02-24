@@ -16,6 +16,7 @@ namespace WindowsUpdateNotifier
         
         private int mFailureCount;
         private SettingsView mSettingsView;
+        private AboutView mAboutview;
 
         public ApplicationHandler(bool closeAfterCheck)
         {
@@ -29,15 +30,13 @@ namespace WindowsUpdateNotifier
 
             AppSettings.Instance.OnSettingsChanged = _OnSettingsChanged;
 
-            Application.Current.Deactivated += (s, e) =>
-                                               {
-
-                                               };
-
             // wait for 10 seconds (to finish startup), then search for updates
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
             mTimer.Tick += (e, s) => SearchForUpdates();
             //mTimer.Start();
+
+            Application.Current.Deactivated += (s, e) => _OnApplicationDeactivated();
+            Application.Current.Activated += (s, e) => _OnApplicationActivated();
         }
 
         public bool NotificationsDisabled { get; set; }
@@ -90,9 +89,16 @@ namespace WindowsUpdateNotifier
 
         public void OpenAboutDialog()
         {
-            var view = new AboutView();
-            view.DataContext = new AboutViewModel(mVersionHelper, view.Close, GoToDownloadPage);
-            view.Show();
+            if (mAboutview != null)
+            {
+                mAboutview.Activate();
+                return;
+            }
+
+            mAboutview = new AboutView();
+            mAboutview.DataContext = new AboutViewModel(mVersionHelper, GoToDownloadPage);
+            mAboutview.Activate();
+            mAboutview.Show();
         }
 
         private void _OnSettingsChanged()
@@ -104,6 +110,21 @@ namespace WindowsUpdateNotifier
         private void _OnNewVersionAvailable(string newVersion)
         {
             // todo
+        }
+
+        private void _OnApplicationActivated()
+        {
+            if (mAboutview != null)
+                mAboutview.Activate();
+        }
+
+        private void _OnApplicationDeactivated()
+        {
+            if (mAboutview == null)
+                return;
+
+            mAboutview.Close();
+            mAboutview = null;
         }
 
         private void _OnSearchFinished(UpdateResult result)

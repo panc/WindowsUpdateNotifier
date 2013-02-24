@@ -82,8 +82,7 @@ namespace WindowsUpdateNotifier
                 OnPropertyChanged("SaveFailed");
             }
         }
-
-
+        
         #endregion
 
         private void _SaveAndClose(Action close)

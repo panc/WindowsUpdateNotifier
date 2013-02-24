@@ -3,14 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:WindowsUpdateNotifier"
         xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" Title="MainWindow" WindowStartupLocation="Manual"
-        Height="130" Width="300" ShowInTaskbar="False" 
+        Height="130" Width="300" ShowInTaskbar="False" Topmost="True"
         Background="#FEFAF9F9" WindowStyle="None" AllowsTransparency="True">
     
     <Window.DataContext>
-        <local:AboutViewModel VersionLabel="Version 1.1.0" CopyrightLabel="Copyright © Christoph Pangerl 2013" />
+        <local:AboutViewModel VersionLabel="Version 1.1.0" CopyrightLabel="Copyright © Christoph Pangerl 2013" HomepageLink="wun.codeplex.com"/>
     </Window.DataContext>
 
-    <Border BorderBrush="#78B5F9" BorderThickness="5">
+    <Border BorderBrush="#78B5F9" BorderThickness="6">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"></RowDefinition>
@@ -31,13 +31,19 @@
             </DockPanel>
 
             <DockPanel Grid.Row="2" Background="#EFF3FD">
-                <DockPanel Margin="40, 0, 0, 0">
+                <DockPanel Margin="45, 5, 0, 0">
                     <StackPanel>
-                        <Label Foreground="#8c8c8c" Margin="0" FontFamily="Calibri" FontSize="13" VerticalContentAlignment="Center" 
+                        <Label Foreground="#8c8c8c" Margin="0" FontFamily="Calibri" FontSize="14" Padding="0" 
                                Content="{Binding VersionLabel}"/>
 
-                        <Label Foreground="#8c8c8c" Margin="0" FontFamily="Calibri" FontSize="13" VerticalContentAlignment="Center" 
+                        <Label Foreground="#8c8c8c" Margin="0" FontFamily="Calibri" FontSize="14" Padding="0"
                                Content="{Binding CopyrightLabel}"/>
+
+                        <TextBlock Margin="0,5,0,0">
+                            <Hyperlink Command="{Binding OpenHomepageCommand}">
+                                <TextBlock Text="{Binding HomepageLink}" />
+                            </Hyperlink>
+                        </TextBlock>
                     </StackPanel>
                 </DockPanel>
             </DockPanel>
