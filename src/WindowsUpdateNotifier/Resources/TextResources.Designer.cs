@@ -79,7 +79,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This feature automatically downloads and installs the updates for the Windows Defender (updates for KB2267602). No other update will be affected by enabeling this feature..
+        ///   Looks up a localized string similar to This feature automatically downloads and installs the updates for the Windows Defender (updates for KB2267602). No other update will be affected by enabling this feature..
         /// </summary>
         public static string Label_AutoInstallComment {
             get {
@@ -156,6 +156,15 @@ namespace WindowsUpdateNotifier.Resources {
         public static string Label_Minutes {
             get {
                 return ResourceManager.GetString("Label_Minutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version {0} available!.
+        /// </summary>
+        public static string Label_NewVersion {
+            get {
+                return ResourceManager.GetString("Label_NewVersion", resourceCulture);
             }
         }
         

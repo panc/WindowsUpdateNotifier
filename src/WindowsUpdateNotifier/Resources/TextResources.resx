@@ -124,7 +124,7 @@
     <value>Ok</value>
   </data>
   <data name="Label_AutoInstallComment" xml:space="preserve">
-    <value>This feature automatically downloads and installs the updates for the Windows Defender (updates for KB2267602). No other update will be affected by enabeling this feature.</value>
+    <value>This feature automatically downloads and installs the updates for the Windows Defender (updates for KB2267602). No other update will be affected by enabling this feature.</value>
   </data>
   <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
     <value>To automatically install the updates for the Windows Defender, the Windows Update Notifier must be setup to run as an administrator. </value>
@@ -149,6 +149,9 @@
   </data>
   <data name="Label_Minutes" xml:space="preserve">
     <value>minutes.</value>
+  </data>
+  <data name="Label_NewVersion" xml:space="preserve">
+    <value>Version {0} available!</value>
   </data>
   <data name="Label_RefreshInterval" xml:space="preserve">
     <value>Search for updates every</value>

@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using WindowsUpdateNotifier.Resources;
 
 namespace WindowsUpdateNotifier
 {

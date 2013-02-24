@@ -9,7 +9,6 @@ namespace WindowsUpdateNotifier
     public class WindowsUpdateTrayIcon : IDisposable
     {
         private readonly NotifyIcon mNotifyIcon;
-        private readonly MenuItem mVersionMenuItem;
         private readonly MenuItem mInfoMenuItem;
         private readonly MenuItem mStartMenuItem;
         private readonly Timer mAnimationTimer;
@@ -19,14 +18,12 @@ namespace WindowsUpdateNotifier
 
         public WindowsUpdateTrayIcon(IApplication application)
         {
-            mVersionMenuItem = new MenuItem("", (s, e) => application.GoToDownloadPage()) { DefaultItem = true, Visible = false };
             mInfoMenuItem = new MenuItem("") { Enabled = false };
             mStartMenuItem = new MenuItem(TextResources.Menu_StartSearch, (s, e) => application.SearchForUpdates());
             mDisableNotificationsMenuItem = new MenuItem(TextResources.Menu_DisableNotification, (e, s) => _DisableNotifications(application));
 
             var contextMenu = new ContextMenu(new[]
             {
-                mVersionMenuItem, 
                 mInfoMenuItem, 
                 new MenuItem("-"),
                 mStartMenuItem,
@@ -83,12 +80,6 @@ namespace WindowsUpdateNotifier
         public void ShowBallonTip(string title, string message, UpdateState state)
         {
             mBallonTipHelper.ShowBalloon(1, title, message, 15000, state.GetPopupIcon());
-        }
-
-        public void SetVersionMenuItem(string version)
-        {
-            mVersionMenuItem.Text = string.Format(TextResources.Label_NewVersion, version);
-            mVersionMenuItem.Visible = true;
         }
 
         private void _OnRefreshSearchIcon()
