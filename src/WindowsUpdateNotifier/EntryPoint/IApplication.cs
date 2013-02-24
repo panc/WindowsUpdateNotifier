@@ -8,5 +8,6 @@ namespace WindowsUpdateNotifier
         
         bool NotificationsDisabled { get; set; }
         void GoToDownloadPage();
+        void OpenAboutDialog();
     }
 }

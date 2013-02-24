@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Windows;
 using System.Windows.Threading;
 using WindowsUpdateNotifier.Resources;
 
@@ -10,7 +11,9 @@ namespace WindowsUpdateNotifier
         private readonly bool mCloseAfterCheck;
         private readonly WindowsUpdateTrayIcon mTrayIcon;
         private readonly WindowsUpdateManager mUpdateManager;
+        private readonly VersionHelper mVersionHelper;
         private readonly DispatcherTimer mTimer;
+        
         private int mFailureCount;
         private SettingsView mSettingsView;
 
@@ -20,13 +23,21 @@ namespace WindowsUpdateNotifier
 
             mTrayIcon = new WindowsUpdateTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
+            mVersionHelper = new VersionHelper();
+
+            mVersionHelper.RegisterForNotification(_OnNewVersionAvailable);
 
             AppSettings.Instance.OnSettingsChanged = _OnSettingsChanged;
+
+            Application.Current.Deactivated += (s, e) =>
+                                               {
+
+                                               };
 
             // wait for 10 seconds (to finish startup), then search for updates
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
             mTimer.Tick += (e, s) => SearchForUpdates();
-            mTimer.Start();
+            //mTimer.Start();
         }
 
         public bool NotificationsDisabled { get; set; }
@@ -77,10 +88,22 @@ namespace WindowsUpdateNotifier
             Process.Start("http://wun.codeplex.com/releases");
         }
 
+        public void OpenAboutDialog()
+        {
+            var view = new AboutView();
+            view.DataContext = new AboutViewModel(mVersionHelper, view.Close, GoToDownloadPage);
+            view.Show();
+        }
+
         private void _OnSettingsChanged()
         {
             if (mTimer.IsEnabled)
                 SearchForUpdates();
+        }
+
+        private void _OnNewVersionAvailable(string newVersion)
+        {
+            // todo
         }
 
         private void _OnSearchFinished(UpdateResult result)

@@ -46,7 +46,7 @@ namespace WindowsUpdateNotifier
                 Visible = true,
             };
 
-            mNotifyIcon.MouseUp += _OnMouseUp;
+            mNotifyIcon.Click += (s, e) => application.OpenAboutDialog();
             mNotifyIcon.BalloonTipClicked += (s, e) => application.OpenWindowsUpdateControlPanel();
 
             mAnimationTimer = new Timer { Interval = 250 };
@@ -110,15 +110,6 @@ namespace WindowsUpdateNotifier
             mDisableNotificationsMenuItem.Checked = disabled;
 
             application.NotificationsDisabled = disabled;
-        }
-
-        private void _OnMouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                var mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
-                mi.Invoke(mNotifyIcon, null);
-            }
         }
 
         private string _GetStringWithMaxLength(string text, int length)
