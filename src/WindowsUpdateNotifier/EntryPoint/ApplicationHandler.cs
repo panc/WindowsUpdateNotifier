@@ -22,6 +22,12 @@ namespace WindowsUpdateNotifier
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
 
             AppSettings.Instance.OnSettingsChanged = _OnSettingsChanged;
+            
+            var reader = new RssVersionReader("http://wun.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fwun");
+            var items = reader.Execute();
+
+
+            mTrayIcon.SetVersionMenuItem("1.2.0");
 
             // wait for 10 seconds (to finish startup), then search for updates
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
@@ -70,6 +76,11 @@ namespace WindowsUpdateNotifier
         public void OpenWindowsUpdateControlPanel()
         {
             Process.Start("control.exe", "/name Microsoft.WindowsUpdate");
+        }
+
+        public void GoToDownloadPage()
+        {
+            Process.Start("http://wun.codeplex.com/releases");
         }
 
         private void _OnSettingsChanged()
