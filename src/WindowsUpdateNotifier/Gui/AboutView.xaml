@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:WindowsUpdateNotifier"
         xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" Title="MainWindow" WindowStartupLocation="Manual"
-        Height="130" Width="300" ShowInTaskbar="False" Topmost="True"
-        Background="#FEFAF9F9" WindowStyle="None" AllowsTransparency="True">
+        Height="130" Width="300" Left="0" Top="0" ShowInTaskbar="False" Topmost="True"
+        Background="#FEFAF9F9" WindowStyle="None" AllowsTransparency="True" Loaded="_OnWindowLoaded">
     
     <Window.DataContext>
         <local:AboutViewModel VersionLabel="Version 1.1.0" CopyrightLabel="Copyright © Christoph Pangerl 2013" HomepageLink="wun.codeplex.com"/>

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Drawing;
-using System.Reflection;
 using System.Windows.Forms;
 using WindowsUpdateNotifier.Resources;
 
 namespace WindowsUpdateNotifier
 {
-    public class WindowsUpdateTrayIcon : IDisposable
+    public class SystemTrayIcon : IDisposable
     {
         private readonly NotifyIcon mNotifyIcon;
         private readonly MenuItem mVersionMenuItem;
@@ -17,7 +16,7 @@ namespace WindowsUpdateNotifier
         private int mSearchIconIndex;
         private readonly BalloonTipHelper mBallonTipHelper;
 
-        public WindowsUpdateTrayIcon(IApplication application)
+        public SystemTrayIcon(IApplication application)
         {
             mVersionMenuItem = new MenuItem("", (s, e) => application.GoToDownloadPage()) { DefaultItem = true, Visible = false };
             mInfoMenuItem = new MenuItem("") { Enabled = false };
@@ -46,7 +45,7 @@ namespace WindowsUpdateNotifier
                 Visible = true,
             };
 
-            mNotifyIcon.Click += (s, e) => application.OpenAboutDialog();
+            mNotifyIcon.MouseUp += (s, e) => _OnMouseUp(application, e);
             mNotifyIcon.BalloonTipClicked += (s, e) => application.OpenWindowsUpdateControlPanel();
 
             mAnimationTimer = new Timer { Interval = 250 };
@@ -99,6 +98,12 @@ namespace WindowsUpdateNotifier
             mSearchIconIndex = mSearchIconIndex == 4 ? 1 : ++mSearchIconIndex;
         }
 
+        private void _OnMouseUp(IApplication application, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                application.OpenAboutDialog();
+        }
+        
         private void _OnExitClicked(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();

@@ -9,7 +9,7 @@ namespace WindowsUpdateNotifier
     public class ApplicationHandler : IApplication, IDisposable
     {
         private readonly bool mCloseAfterCheck;
-        private readonly WindowsUpdateTrayIcon mTrayIcon;
+        private readonly SystemTrayIcon mTrayIcon;
         private readonly WindowsUpdateManager mUpdateManager;
         private readonly VersionHelper mVersionHelper;
         private readonly DispatcherTimer mTimer;
@@ -22,7 +22,7 @@ namespace WindowsUpdateNotifier
         {
             mCloseAfterCheck = closeAfterCheck;
 
-            mTrayIcon = new WindowsUpdateTrayIcon(this);
+            mTrayIcon = new SystemTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
             mVersionHelper = new VersionHelper();
 

@@ -138,7 +138,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Gui\WindowsUpdateTrayIcon.cs" />
+    <Compile Include="Gui\SystemTrayIcon.cs" />
     <Compile Include="EntryPoint\ApplicationHandler.cs" />
     <Compile Include="Gui\PopupView.xaml.cs">
       <DependentUpon>PopupView.xaml</DependentUpon>
