@@ -3,50 +3,67 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:WindowsUpdateNotifier"
         xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" Title="MainWindow" WindowStartupLocation="Manual"
-        Height="130" Width="300" Left="0" Top="0" ShowInTaskbar="False" Topmost="True"
+        Height="160" Width="300" Left="0" Top="0" ShowInTaskbar="False" Topmost="True"
         Background="#FEFAF9F9" WindowStyle="None" AllowsTransparency="True" Loaded="_OnWindowLoaded">
-    
+
     <Window.DataContext>
-        <local:AboutViewModel VersionLabel="Version 1.1.0" CopyrightLabel="Copyright © Christoph Pangerl 2013" HomepageLink="wun.codeplex.com"/>
+        <local:AboutViewModel VersionLabel="Version 1.1.0" 
+                              CopyrightLabel="Copyright © Christoph Pangerl 2013" 
+                              HomepageLink="wun.codeplex.com"
+                              NewVersionLabel="(Latest Version)"/>
     </Window.DataContext>
 
-    <Border BorderBrush="#78B5F9" BorderThickness="6">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="3"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-        
-            <DockPanel Grid.Row="0">
-                <Image Source="../Resources/Images/WindowsUpdate.ico" 
-                       Width="32" Height="32" Margin="5,5,0,0"
-                       DockPanel.Dock="Left"/>
+    <Border BorderBrush="#5284BC" BorderThickness="1">
+        <Border BorderBrush="#6BADF6" BorderThickness="5">
+            <Border BorderBrush="#5B93D1" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
 
-                <Label Content="{x:Static p:TextResources.WindowTitle_Settings}" Foreground="#707070" FontSize="17" FontWeight="Light" Margin="1,5,0,0" FontFamily="Calibri" Height="32" />
-            </DockPanel>
+                    <DockPanel Grid.Row="0">
+                        <Image Source="../Resources/Images/WindowsUpdate.ico" 
+                               Width="32" Height="32" Margin="10,5,0,0"
+                               DockPanel.Dock="Left"/>
 
-            <DockPanel Grid.Row="1">
-                <Separator Margin="0,0,0,0" Background="#E3EAF2" />
-            </DockPanel>
+                        <Label Content="{x:Static p:TextResources.WindowTitle_Settings}" Foreground="#707070" FontSize="17" FontWeight="Light" Margin="5,5,0,0" FontFamily="Calibri" Height="32" />
+                    </DockPanel>
 
-            <DockPanel Grid.Row="2" Background="#EFF3FD">
-                <DockPanel Margin="45, 5, 0, 0">
-                    <StackPanel>
-                        <Label Foreground="#8c8c8c" Margin="0" FontFamily="Calibri" FontSize="14" Padding="0" 
-                               Content="{Binding VersionLabel}"/>
+                    <DockPanel Grid.Row="1">
+                        <DockPanel.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FFCCD9EA"/>
+                                <GradientStop Color="#FFF1F5FB" Offset="1"/>
+                            </LinearGradientBrush>
+                        </DockPanel.Background>
+                    </DockPanel>
 
-                        <Label Foreground="#8c8c8c" Margin="0" FontFamily="Calibri" FontSize="14" Padding="0"
-                               Content="{Binding CopyrightLabel}"/>
+                    <DockPanel Grid.Row="2" Background="#EFF3FD">
+                        <DockPanel Margin="45, 10, 0, 0">
+                            <StackPanel>
+                                <DockPanel>
+                                    <Label Foreground="#8c8c8c" Margin="0" FontFamily="Calibri" FontSize="14" Padding="0" 
+                                           Content="{Binding VersionLabel}"/>
+                                    
+                                    <Label Foreground="#8c8c8c" Margin="10,0,0,0" FontFamily="Calibri" FontSize="14" Padding="0" 
+                                           Content="{Binding NewVersionLabel}"/>
+                                </DockPanel>
+                                
+                                <Label Foreground="#8c8c8c" Margin="0,2,0,0" FontFamily="Calibri" FontSize="14" Padding="0"
+                                       Content="{Binding CopyrightLabel}"/>
 
-                        <TextBlock Margin="0,5,0,0">
-                            <Hyperlink Command="{Binding OpenHomepageCommand}">
-                                <TextBlock Text="{Binding HomepageLink}" />
-                            </Hyperlink>
-                        </TextBlock>
-                    </StackPanel>
-                </DockPanel>
-            </DockPanel>
-        </Grid>
+                                <TextBlock Margin="0,10,0,0">
+                                    <Hyperlink Command="{Binding OpenHomepageCommand}">
+                                        <TextBlock Text="{Binding HomepageLink}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </StackPanel>
+                        </DockPanel>
+                    </DockPanel>
+                </Grid>
+            </Border>
+        </Border>
     </Border>
 </Window>

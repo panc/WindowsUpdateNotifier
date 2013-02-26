@@ -116,7 +116,7 @@
     </Compile>
     <Compile Include="AutoStartup\ShortcutHelper.cs" />
     <Compile Include="AutoStartup\TaskSchedulerWrapper.cs" />
-    <Compile Include="Versioning\RssItem.cs" />
+    <Compile Include="Versioning\RssVersionItem.cs" />
     <Compile Include="Versioning\RssVersionReader.cs" />
     <Compile Include="Versioning\VersionHelper.cs" />
     <Compile Include="WindowsUpdate\UpdateResult.cs" />

@@ -7,9 +7,9 @@ namespace WindowsUpdateNotifier.Versioning
 {
     public class RssVersionReader
     {
-        private const string FEED_URL = "";
+        private const string FEED_URL = "http://wun.codeplex.com/project/feeds/rss?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fwun";
 
-        public List<RssItem> Execute()
+        public List<RssVersionItem> Execute()
         {
             using (var reader = XmlReader.Create(FEED_URL))
             {
@@ -20,18 +20,16 @@ namespace WindowsUpdateNotifier.Versioning
             }
         }
 
-        private IEnumerable<RssItem> _ParseItems(XmlNode doc)
+        private IEnumerable<RssVersionItem> _ParseItems(XmlNode doc)
         {
             var nodes = doc.SelectNodes("rss/channel/item");
 
             foreach (XmlNode node in nodes)
             {
-                yield return new RssItem
-                {
-                    Title = _ParseElement(node, "title"),
-                    Link = _ParseElement(node, "link"),
-                    Date = _ParseDateTimeElement(node, "pubDate")
-                };
+                yield return new RssVersionItem (
+                    _ParseElement(node, "title"),
+                    _ParseElement(node, "link"), 
+                    _ParseDateTimeElement(node, "pubDate"));
             }
         }
 

@@ -24,9 +24,9 @@ namespace WindowsUpdateNotifier
 
             mTrayIcon = new SystemTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
+            
             mVersionHelper = new VersionHelper();
-
-            mVersionHelper.RegisterForNotification(_OnNewVersionAvailable);
+            mVersionHelper.SearchForNewVersion(_OnNewVersionAvailable);
 
             AppSettings.Instance.OnSettingsChanged = _OnSettingsChanged;
 
@@ -107,9 +107,10 @@ namespace WindowsUpdateNotifier
                 SearchForUpdates();
         }
 
-        private void _OnNewVersionAvailable(string newVersion)
+        private void _OnNewVersionAvailable()
         {
-            // todo
+            if (mVersionHelper.IsNewVersionAvailable)
+                mTrayIcon.SetVersionMenuItem(mVersionHelper.LatestVersion.Version);
         }
 
         private void _OnApplicationActivated()
@@ -168,7 +169,7 @@ namespace WindowsUpdateNotifier
             var interval = state == UpdateState.UpdatesAvailable ? 20 : 1;
 
             var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(interval) };
-            timer.Tick += (s, e) => System.Windows.Application.Current.Shutdown();
+            timer.Tick += (s, e) => Application.Current.Shutdown();
             timer.Start();
         }
 

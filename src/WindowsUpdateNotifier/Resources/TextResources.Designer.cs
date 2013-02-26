@@ -151,6 +151,15 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (Latest Version).
+        /// </summary>
+        public static string Label_IsLatestVersion {
+            get {
+                return ResourceManager.GetString("Label_IsLatestVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to minutes..
         /// </summary>
         public static string Label_Minutes {

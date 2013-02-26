@@ -16,7 +16,7 @@ namespace WindowsUpdateNotifier
             var location = PointFromScreen(new Point(l.X, l.Y));
 
             Left = location.X - (Width / 2);
-            Top = location.Y - Height - 20;
+            Top = location.Y - Height - 25;
         }
     }
 }

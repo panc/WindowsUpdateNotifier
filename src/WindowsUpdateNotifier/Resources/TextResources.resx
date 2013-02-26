@@ -147,6 +147,9 @@
   <data name="Label_HowToStartAsAdmin" xml:space="preserve">
     <value>See here, how to achieve this.</value>
   </data>
+  <data name="Label_IsLatestVersion" xml:space="preserve">
+    <value>(Latest Version)</value>
+  </data>
   <data name="Label_Minutes" xml:space="preserve">
     <value>minutes.</value>
   </data>
