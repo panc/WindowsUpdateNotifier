@@ -86,7 +86,7 @@ namespace WindowsUpdateNotifier
 
         public void SetVersionMenuItem(string version)
         {
-            mVersionMenuItem.Text = string.Format(TextResources.Label_NewVersion, version);
+            mVersionMenuItem.Text = string.Format(TextResources.Menu_NewVersion, version);
             mVersionMenuItem.Visible = true;
         }
 

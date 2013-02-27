@@ -15,7 +15,7 @@ namespace WindowsUpdateNotifier
         {
         }
 
-        public SettingsViewModel(Action closeWindowCallback)
+        public SettingsViewModel(Action closeWindowCallback, VersionHelper versionHelper)
         {
             CanInstallUpdates = UacHelper.IsRunningAsAdmin();
             CanNotInstallUpdates = !CanInstallUpdates;
@@ -30,7 +30,7 @@ namespace WindowsUpdateNotifier
             HelpLink = "http://wun.codeplex.com/";
             HowToStartAsAdminLink = "http://wun.codeplex.com/wikipage?title=HowToStartAsAdmin";
 
-            Version = string.Format("Version {0}  © Christoph Pangerl", _GetVersion());
+            Version = string.Format("Version {0}  © Christoph Pangerl", versionHelper.CurrentVersion);
 
             SaveAndCloseCommand = new SimpleCommand(() => _SaveAndClose(closeWindowCallback));
             ShowHelpCommand = new SimpleCommand(_ShowHelp);
@@ -109,11 +109,6 @@ namespace WindowsUpdateNotifier
         private void _ShowHowToStartAsAdmin()
         {
             Process.Start(HowToStartAsAdminLink);
-        }
-
-        private string _GetVersion()
-        {
-            return FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         }
 
         #region IDataError interface

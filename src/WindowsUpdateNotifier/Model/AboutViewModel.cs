@@ -13,14 +13,13 @@ namespace WindowsUpdateNotifier
 
         public AboutViewModel(VersionHelper versionHelper, Action openUpdatePage)
         {
-            var version = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            
             HomepageLink = "http://wun.codeplex.com";
-            CopyrightLabel = version.LegalCopyright;
-            VersionLabel = string.Format("Version {0}", version.ProductVersion);
-            
+            CopyrightLabel = versionHelper.Copyright;
+            VersionLabel = string.Format("Version {0}", versionHelper.CurrentVersion);
+
+            IsNewVersionAvailable = versionHelper.IsNewVersionAvailable;
             NewVersionLabel = versionHelper.IsNewVersionAvailable
-                ? versionHelper.LatestVersion.Version
+                ? string.Format(TextResources.Label_NewVersion, versionHelper.LatestVersion.Version)
                 : TextResources.Label_IsLatestVersion;
 
             OpenUpdatePageCommand = new SimpleCommand(openUpdatePage);
@@ -32,11 +31,6 @@ namespace WindowsUpdateNotifier
             Process.Start(HomepageLink);
         }
 
-        private void _OnNewVersionAvailable(RssVersionItem newVersion)
-        {
-            NewVersionLabel = string.Format(TextResources.Label_NewVersion, newVersion.Title);
-        }
-
         public ICommand OpenUpdatePageCommand { get; set; }
 
         public ICommand OpenHomepageCommand { get; set; }
@@ -44,6 +38,8 @@ namespace WindowsUpdateNotifier
         public string VersionLabel { get; set; }
 
         public string NewVersionLabel { get; set; }
+        
+        public bool IsNewVersionAvailable { get; set; }
 
         public string CopyrightLabel { get; set; }
 

@@ -33,7 +33,7 @@ namespace WindowsUpdateNotifier
             // wait for 10 seconds (to finish startup), then search for updates
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
             mTimer.Tick += (e, s) => SearchForUpdates();
-            //mTimer.Start();
+            mTimer.Start();
 
             Application.Current.Deactivated += (s, e) => _OnApplicationDeactivated();
             Application.Current.Activated += (s, e) => _OnApplicationActivated();
@@ -52,7 +52,7 @@ namespace WindowsUpdateNotifier
             }
 
             mSettingsView = new SettingsView();
-            mSettingsView.DataContext = new SettingsViewModel(mSettingsView.Close);
+            mSettingsView.DataContext = new SettingsViewModel(mSettingsView.Close, mVersionHelper);
             mSettingsView.Closed += (s, e) => mSettingsView = null;
             mSettingsView.ShowDialog();
         }
