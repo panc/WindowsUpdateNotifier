@@ -18,7 +18,7 @@ namespace WindowsUpdateNotifier
 
         public SystemTrayIcon(IApplication application)
         {
-            mVersionMenuItem = new MenuItem("", (s, e) => application.GoToDownloadPage()) { DefaultItem = true, Visible = false };
+            mVersionMenuItem = new MenuItem("", (s, e) => application.OpenDownloadPage()) { DefaultItem = true, Visible = false };
             mInfoMenuItem = new MenuItem("") { Enabled = false };
             mStartMenuItem = new MenuItem(TextResources.Menu_StartSearch, (s, e) => application.SearchForUpdates());
             mDisableNotificationsMenuItem = new MenuItem(TextResources.Menu_DisableNotification, (e, s) => _DisableNotifications(application));

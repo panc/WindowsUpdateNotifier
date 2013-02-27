@@ -4,10 +4,10 @@ namespace WindowsUpdateNotifier
     {
         void OpenWindowsUpdateControlPanel();
         void OpenSettings();
+        void OpenDownloadPage();
+        void OpenAboutDialog(); 
         void SearchForUpdates();
         
         bool NotificationsDisabled { get; set; }
-        void GoToDownloadPage();
-        void OpenAboutDialog();
     }
 }

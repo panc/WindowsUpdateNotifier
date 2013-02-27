@@ -82,7 +82,7 @@ namespace WindowsUpdateNotifier
             Process.Start("control.exe", "/name Microsoft.WindowsUpdate");
         }
 
-        public void GoToDownloadPage()
+        public void OpenDownloadPage()
         {
             Process.Start("http://wun.codeplex.com/releases");
         }
@@ -96,7 +96,7 @@ namespace WindowsUpdateNotifier
             }
 
             mAboutview = new AboutView();
-            mAboutview.DataContext = new AboutViewModel(mVersionHelper, GoToDownloadPage);
+            mAboutview.DataContext = new AboutViewModel(mVersionHelper, OpenDownloadPage);
             mAboutview.Activate();
             mAboutview.Show();
         }
