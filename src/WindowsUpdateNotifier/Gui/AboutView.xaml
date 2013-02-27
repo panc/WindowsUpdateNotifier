@@ -8,14 +8,15 @@
         Background="#FEFAF9F9" WindowStyle="None" AllowsTransparency="True" Loaded="_OnWindowLoaded">
 
     <Window.Resources>
-        <Converter:BooleanToFontWeightConverter x:Key="BooleanToFontWeightConverter"/>
+        <Converter:BooleanToVisibilityConverter x:Key="BooleanConverter"/>
     </Window.Resources>
 
     <Window.DataContext>
         <local:AboutViewModel VersionLabel="Version 1.1.0" 
                               CopyrightLabel="Copyright © Christoph Pangerl 2013" 
                               HomepageLink="wun.codeplex.com"
-                              NewVersionLabel="(Latest Version)"/>
+                              NewVersionLabel="(Version 9.9.9 available)"
+                              IsNewVersionAvailable="True"/>
     </Window.DataContext>
 
     <Border BorderBrush="#5284BC" BorderThickness="1">
@@ -53,17 +54,27 @@
                                     <Label Foreground="#8c8c8c" Margin="0" FontFamily="Segoe UI" FontSize="13" FontWeight="Light" Padding="0" 
 										Content="{Binding VersionLabel}"/>
 
-                                    <Label Foreground="#8c8c8c" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" Padding="0" 
-										FontWeight="{Binding IsNewVersionAvailable, Converter={StaticResource BooleanToFontWeightConverter}}"
+                                    <Label Foreground="#8c8c8c" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" Padding="0" FontWeight="Light"
+                                        Visibility="{Binding IsLatestVersion, Converter={StaticResource BooleanConverter}}"
 										Content="{Binding NewVersionLabel}"/>
+
+                                    <TextBlock Foreground="#8c8c8c" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" FontWeight="Medium" Padding="0"
+										Visibility="{Binding IsNewVersionAvailable, Converter={StaticResource BooleanConverter}}">
+                                        
+                                        <Hyperlink Command="{Binding OpenUpdatePageCommand}" Foreground="#8c8c8c">
+										    <TextBlock Text="{Binding NewVersionLabel}" />
+                                        </Hyperlink>
+                                    </TextBlock>
                                 </DockPanel>
 
                                 <Label Foreground="#8c8c8c" Margin="0,2,0,0" FontFamily="Segoe UI" FontSize="13" FontWeight="Light" Padding="0"
 									Content="{Binding CopyrightLabel}"/>
 
-                                <TextBlock Margin="0,10,0,0"><Hyperlink Command="{Binding OpenHomepageCommand}"><InlineUIContainer>
-											<TextBlock Text="{Binding HomepageLink}" />
-										</InlineUIContainer></Hyperlink></TextBlock>
+                                <TextBlock Margin="0,10,0,0">
+                                    <Hyperlink Command="{Binding OpenHomepageCommand}">
+										<TextBlock Text="{Binding HomepageLink}" />
+                                    </Hyperlink>
+                                </TextBlock>
                             </StackPanel>
                         </DockPanel>
                     </DockPanel>

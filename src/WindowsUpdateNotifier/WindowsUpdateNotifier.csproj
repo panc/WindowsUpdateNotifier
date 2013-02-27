@@ -70,7 +70,7 @@
     <Compile Include="Gui\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Converter\BooleanToFontWeightConverter.cs" />
+    <Compile Include="Gui\Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Helper\UacHelper.cs" />
     <Compile Include="Helper\CommandLineHelper.cs" />
     <Compile Include="EntryPoint\IApplication.cs" />

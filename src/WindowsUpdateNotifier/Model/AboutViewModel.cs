@@ -18,6 +18,8 @@ namespace WindowsUpdateNotifier
             VersionLabel = string.Format("Version {0}", versionHelper.CurrentVersion);
 
             IsNewVersionAvailable = versionHelper.IsNewVersionAvailable;
+            IsLatestVersion = !IsNewVersionAvailable;
+
             NewVersionLabel = versionHelper.IsNewVersionAvailable
                 ? string.Format(TextResources.Label_NewVersion, versionHelper.LatestVersion.Version)
                 : TextResources.Label_IsLatestVersion;
@@ -34,12 +36,14 @@ namespace WindowsUpdateNotifier
         public ICommand OpenUpdatePageCommand { get; set; }
 
         public ICommand OpenHomepageCommand { get; set; }
-
+        
         public string VersionLabel { get; set; }
 
         public string NewVersionLabel { get; set; }
         
         public bool IsNewVersionAvailable { get; set; }
+
+        public bool IsLatestVersion { get; set; }
 
         public string CopyrightLabel { get; set; }
 
