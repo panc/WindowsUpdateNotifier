@@ -16,7 +16,11 @@ namespace WindowsUpdateNotifier
             Title = title;
             Message = message;
             OnCloseCommand = new SimpleCommand(onCloseCallback);
-            OnOpenWindowsUpdateControlPanelCommand= new SimpleCommand(openWindowsUpdateControlPanel);
+            OnOpenWindowsUpdateControlPanelCommand= new SimpleCommand(() =>
+            {
+                openWindowsUpdateControlPanel();
+                onCloseCallback();
+            });
         }
 
         public ICommand OnCloseCommand { get; set; }
