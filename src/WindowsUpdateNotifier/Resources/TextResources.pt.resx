@@ -147,8 +147,14 @@
   <data name="Label_HowToStartAsAdmin" xml:space="preserve">
     <value>Veja aqui como fazer isto.</value>
   </data>
+  <data name="Label_IsLatestVersion" xml:space="preserve">
+    <value>(Última versão)</value>
+  </data>
   <data name="Label_Minutes" xml:space="preserve">
     <value>minutos.</value>
+  </data>
+  <data name="Label_NewVersion" xml:space="preserve">
+    <value>(Versão {0} disponível)</value>
   </data>
   <data name="Label_RefreshInterval" xml:space="preserve">
     <value>Verificar atualizações a cada</value>
@@ -168,6 +174,9 @@ Comece com privilégios de administrador e tente novamente.</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Sair</value>
+  </data>
+  <data name="Menu_NewVersion" xml:space="preserve">
+    <value>Versão {0} disponível!</value>
   </data>
   <data name="Menu_NoConnection" xml:space="preserve">
     <value>Sem conexão com a Internet.</value>

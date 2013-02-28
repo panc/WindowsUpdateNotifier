@@ -147,8 +147,14 @@
   <data name="Label_HowToStartAsAdmin" xml:space="preserve">
     <value>Sehen Sie hier, wie dies erreicht werden kann.</value>
   </data>
+  <data name="Label_IsLatestVersion" xml:space="preserve">
+    <value>(Aktuelle Version)</value>
+  </data>
   <data name="Label_Minutes" xml:space="preserve">
     <value>Minuten.</value>
+  </data>
+  <data name="Label_NewVersion" xml:space="preserve">
+    <value>(Version {0} verfügbar)</value>
   </data>
   <data name="Label_RefreshInterval" xml:space="preserve">
     <value>Suche nach Updates alle</value>
@@ -168,6 +174,9 @@ Bitte als Administrator starten und erneut versuchen.</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Beenden</value>
+  </data>
+  <data name="Menu_NewVersion" xml:space="preserve">
+    <value>Version {0} verfügbar!</value>
   </data>
   <data name="Menu_NoConnection" xml:space="preserve">
     <value>Keine Internetverbindung</value>

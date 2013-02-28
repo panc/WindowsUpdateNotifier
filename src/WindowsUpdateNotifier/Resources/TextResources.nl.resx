@@ -147,8 +147,14 @@
   <data name="Label_HowToStartAsAdmin" xml:space="preserve">
     <value>Zie hier, hoe dit te bereiken.</value>
   </data>
+  <data name="Label_IsLatestVersion" xml:space="preserve">
+    <value>(Laatste versie)</value>
+  </data>
   <data name="Label_Minutes" xml:space="preserve">
     <value>minuten.</value>
+  </data>
+  <data name="Label_NewVersion" xml:space="preserve">
+    <value>(Versie {0} beschikbaar)</value>
   </data>
   <data name="Label_RefreshInterval" xml:space="preserve">
     <value>Controleer updates elke</value>
@@ -168,6 +174,9 @@ Begin met admin privileges en probeer het opnieuw.</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Afsluiten</value>
+  </data>
+  <data name="Menu_NewVersion" xml:space="preserve">
+    <value>Versie {0} beschikbaar!</value>
   </data>
   <data name="Menu_NoConnection" xml:space="preserve">
     <value>Geen internetverbinding</value>
