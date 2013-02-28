@@ -97,7 +97,6 @@ namespace WindowsUpdateNotifier
 
             mAboutview = new AboutView();
             mAboutview.DataContext = new AboutViewModel(mVersionHelper, OpenDownloadPage);
-            mAboutview.Deactivated += (s, e) => _OnApplicationDeactivated();
             mAboutview.Show();
         }
 
