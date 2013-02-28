@@ -34,7 +34,7 @@
 							Width="32" Height="32" Margin="10,5,0,0"
 							DockPanel.Dock="Left"/>
 
-                        <Label Content="{x:Static p:TextResources.WindowTitle_Settings}" Foreground="#707070" 
+                        <Label Content="{x:Static p:TextResources.WindowTitle_Settings}" Foreground="#505050" 
                                FontSize="18" FontWeight="Light" Margin="5,5,0,0" FontFamily="Segoe UI" Height="32" />
                     </DockPanel>
 
@@ -51,14 +51,14 @@
                         <DockPanel Margin="45, 10, 0, 0">
                             <StackPanel>
                                 <DockPanel>
-                                    <Label Foreground="#8c8c8c" Margin="0" FontFamily="Segoe UI" FontSize="13" FontWeight="Light" Padding="0" 
+                                    <Label Foreground="#595959" Margin="0" FontFamily="Segoe UI" FontSize="13" FontWeight="Light" Padding="0" 
 										Content="{Binding VersionLabel}"/>
 
-                                    <Label Foreground="#8c8c8c" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" Padding="0" FontWeight="Light"
+                                    <Label Foreground="#595959" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" Padding="0" FontWeight="Light"
                                         Visibility="{Binding IsLatestVersion, Converter={StaticResource BooleanConverter}}"
 										Content="{Binding NewVersionLabel}"/>
 
-                                    <TextBlock Foreground="#8c8c8c" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" FontWeight="Medium" Padding="0"
+                                    <TextBlock Foreground="#595959" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" FontWeight="Medium" Padding="0"
 										Visibility="{Binding IsNewVersionAvailable, Converter={StaticResource BooleanConverter}}">
                                         
                                         <Hyperlink Command="{Binding OpenUpdatePageCommand}" Foreground="#8c8c8c">
@@ -67,7 +67,7 @@
                                     </TextBlock>
                                 </DockPanel>
 
-                                <Label Foreground="#8c8c8c" Margin="0,2,0,0" FontFamily="Segoe UI" FontSize="13" FontWeight="Light" Padding="0"
+                                <Label Foreground="#595959" Margin="0,2,0,0" FontFamily="Segoe UI" FontSize="13" FontWeight="Light" Padding="0"
 									Content="{Binding CopyrightLabel}"/>
 
                                 <TextBlock Margin="0,10,0,0">
