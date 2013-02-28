@@ -147,11 +147,14 @@
   <data name="Label_HowToStartAsAdmin" xml:space="preserve">
     <value>See here, how to achieve this.</value>
   </data>
+  <data name="Label_IsLatestVersion" xml:space="preserve">
+    <value>(Latest Version)</value>
+  </data>
   <data name="Label_Minutes" xml:space="preserve">
     <value>minutes.</value>
   </data>
   <data name="Label_NewVersion" xml:space="preserve">
-    <value>Version {0} available!</value>
+    <value>(Version {0} available)</value>
   </data>
   <data name="Label_RefreshInterval" xml:space="preserve">
     <value>Search for updates every</value>
@@ -171,6 +174,9 @@ Start with admin privileges and try again.</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Exit</value>
+  </data>
+  <data name="Menu_NewVersion" xml:space="preserve">
+    <value>Version {0} available!</value>
   </data>
   <data name="Menu_NoConnection" xml:space="preserve">
     <value>No Internet-Connection.</value>

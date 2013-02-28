@@ -151,6 +151,15 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (Latest Version).
+        /// </summary>
+        public static string Label_IsLatestVersion {
+            get {
+                return ResourceManager.GetString("Label_IsLatestVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to minutes..
         /// </summary>
         public static string Label_Minutes {
@@ -160,7 +169,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version {0} available!.
+        ///   Looks up a localized string similar to (Version {0} available).
         /// </summary>
         public static string Label_NewVersion {
             get {
@@ -220,6 +229,15 @@ namespace WindowsUpdateNotifier.Resources {
         public static string Menu_Exit {
             get {
                 return ResourceManager.GetString("Menu_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version {0} available!.
+        /// </summary>
+        public static string Menu_NewVersion {
+            get {
+                return ResourceManager.GetString("Menu_NewVersion", resourceCulture);
             }
         }
         

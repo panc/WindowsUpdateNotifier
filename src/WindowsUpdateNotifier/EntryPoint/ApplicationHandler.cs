@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Windows;
 using System.Windows.Threading;
 using WindowsUpdateNotifier.Resources;
 
@@ -8,18 +9,24 @@ namespace WindowsUpdateNotifier
     public class ApplicationHandler : IApplication, IDisposable
     {
         private readonly bool mCloseAfterCheck;
-        private readonly WindowsUpdateTrayIcon mTrayIcon;
+        private readonly SystemTrayIcon mTrayIcon;
         private readonly WindowsUpdateManager mUpdateManager;
+        private readonly VersionHelper mVersionHelper;
         private readonly DispatcherTimer mTimer;
+        
         private int mFailureCount;
         private SettingsView mSettingsView;
+        private AboutView mAboutview;
 
         public ApplicationHandler(bool closeAfterCheck)
         {
             mCloseAfterCheck = closeAfterCheck;
 
-            mTrayIcon = new WindowsUpdateTrayIcon(this);
+            mTrayIcon = new SystemTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
+            
+            mVersionHelper = new VersionHelper();
+            mVersionHelper.SearchForNewVersion(_OnNewVersionAvailable);
 
             AppSettings.Instance.OnSettingsChanged = _OnSettingsChanged;
 
@@ -27,6 +34,9 @@ namespace WindowsUpdateNotifier
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
             mTimer.Tick += (e, s) => SearchForUpdates();
             mTimer.Start();
+
+            Application.Current.Deactivated += (s, e) => _OnApplicationDeactivated();
+            Application.Current.Activated += (s, e) => _OnApplicationActivated();
         }
 
         public bool NotificationsDisabled { get; set; }
@@ -42,7 +52,7 @@ namespace WindowsUpdateNotifier
             }
 
             mSettingsView = new SettingsView();
-            mSettingsView.DataContext = new SettingsViewModel(mSettingsView.Close);
+            mSettingsView.DataContext = new SettingsViewModel(mSettingsView.Close, mVersionHelper);
             mSettingsView.Closed += (s, e) => mSettingsView = null;
             mSettingsView.ShowDialog();
         }
@@ -72,10 +82,50 @@ namespace WindowsUpdateNotifier
             Process.Start("control.exe", "/name Microsoft.WindowsUpdate");
         }
 
+        public void OpenDownloadPage()
+        {
+            Process.Start("http://wun.codeplex.com/releases");
+        }
+
+        public void OpenAboutDialog()
+        {
+            if (mAboutview != null)
+            {
+                mAboutview.Activate();
+                return;
+            }
+
+            mAboutview = new AboutView();
+            mAboutview.DataContext = new AboutViewModel(mVersionHelper, OpenDownloadPage);
+            mAboutview.Deactivated += (s, e) => _OnApplicationDeactivated();
+            mAboutview.Show();
+        }
+
         private void _OnSettingsChanged()
         {
             if (mTimer.IsEnabled)
                 SearchForUpdates();
+        }
+
+        private void _OnNewVersionAvailable()
+        {
+            if (mVersionHelper.IsNewVersionAvailable)
+                mTrayIcon.SetVersionMenuItem(mVersionHelper.LatestVersion.Version);
+        }
+
+        private void _OnApplicationActivated()
+        {
+            if (mAboutview != null)
+                mAboutview.Activate();
+        }
+
+        private void _OnApplicationDeactivated()
+        {
+            if (mAboutview == null)
+                return;
+
+            mAboutview.Close();
+            mAboutview = null;
         }
 
         private void _OnSearchFinished(UpdateResult result)
@@ -119,7 +169,7 @@ namespace WindowsUpdateNotifier
             var interval = state == UpdateState.UpdatesAvailable ? 20 : 1;
 
             var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(interval) };
-            timer.Tick += (s, e) => System.Windows.Application.Current.Shutdown();
+            timer.Tick += (s, e) => Application.Current.Shutdown();
             timer.Start();
         }
 

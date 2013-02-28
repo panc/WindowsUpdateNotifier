@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Drawing;
-using System.Reflection;
 using System.Windows.Forms;
 using WindowsUpdateNotifier.Resources;
 
 namespace WindowsUpdateNotifier
 {
-    public class WindowsUpdateTrayIcon : IDisposable
+    public class SystemTrayIcon : IDisposable
     {
         private readonly NotifyIcon mNotifyIcon;
+        private readonly MenuItem mVersionMenuItem;
         private readonly MenuItem mInfoMenuItem;
         private readonly MenuItem mStartMenuItem;
         private readonly Timer mAnimationTimer;
@@ -16,14 +16,16 @@ namespace WindowsUpdateNotifier
         private int mSearchIconIndex;
         private readonly BalloonTipHelper mBallonTipHelper;
 
-        public WindowsUpdateTrayIcon(IApplication application)
+        public SystemTrayIcon(IApplication application)
         {
+            mVersionMenuItem = new MenuItem("", (s, e) => application.OpenDownloadPage()) { DefaultItem = true, Visible = false };
             mInfoMenuItem = new MenuItem("") { Enabled = false };
             mStartMenuItem = new MenuItem(TextResources.Menu_StartSearch, (s, e) => application.SearchForUpdates());
             mDisableNotificationsMenuItem = new MenuItem(TextResources.Menu_DisableNotification, (e, s) => _DisableNotifications(application));
 
             var contextMenu = new ContextMenu(new[]
             {
+                mVersionMenuItem,
                 mInfoMenuItem, 
                 new MenuItem("-"),
                 mStartMenuItem,
@@ -43,7 +45,7 @@ namespace WindowsUpdateNotifier
                 Visible = true,
             };
 
-            mNotifyIcon.MouseUp += _OnMouseUp;
+            mNotifyIcon.MouseUp += (s, e) => _OnMouseUp(application, e);
             mNotifyIcon.BalloonTipClicked += (s, e) => application.OpenWindowsUpdateControlPanel();
 
             mAnimationTimer = new Timer { Interval = 250 };
@@ -82,6 +84,12 @@ namespace WindowsUpdateNotifier
             mBallonTipHelper.ShowBalloon(1, title, message, 15000, state.GetPopupIcon());
         }
 
+        public void SetVersionMenuItem(string version)
+        {
+            mVersionMenuItem.Text = string.Format(TextResources.Menu_NewVersion, version);
+            mVersionMenuItem.Visible = true;
+        }
+
         private void _OnRefreshSearchIcon()
         {
             var icon = (Icon)ImageResources.ResourceManager.GetObject(string.Format("WindowsUpdateSearching{0}", mSearchIconIndex));
@@ -90,6 +98,12 @@ namespace WindowsUpdateNotifier
             mSearchIconIndex = mSearchIconIndex == 4 ? 1 : ++mSearchIconIndex;
         }
 
+        private void _OnMouseUp(IApplication application, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                application.OpenAboutDialog();
+        }
+        
         private void _OnExitClicked(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
@@ -101,15 +115,6 @@ namespace WindowsUpdateNotifier
             mDisableNotificationsMenuItem.Checked = disabled;
 
             application.NotificationsDisabled = disabled;
-        }
-
-        private void _OnMouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                var mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
-                mi.Invoke(mNotifyIcon, null);
-            }
         }
 
         private string _GetStringWithMaxLength(string text, int length)

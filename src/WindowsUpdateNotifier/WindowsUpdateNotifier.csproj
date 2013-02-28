@@ -67,12 +67,16 @@
     </ApplicationDefinition>
     <Compile Include="AutoStartup\StartupHelper.cs" />
     <Compile Include="EntryPoint\AppSettings.cs" />
+    <Compile Include="Gui\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Helper\UacHelper.cs" />
     <Compile Include="Helper\CommandLineHelper.cs" />
     <Compile Include="EntryPoint\IApplication.cs" />
     <Compile Include="EntryPoint\ISingleInstance.cs" />
     <Compile Include="Helper\SingleInstanceHelper.cs" />
-    <Compile Include="Gui\BalloonTipHelper.cs">
+    <Compile Include="Helper\BalloonTipHelper.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Gui\Behavior\DataTriggerBehavior.cs" />
@@ -81,6 +85,7 @@
     <Compile Include="Gui\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AboutViewModel.cs" />
     <Compile Include="Resources\ImageResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -112,9 +117,16 @@
     </Compile>
     <Compile Include="AutoStartup\ShortcutHelper.cs" />
     <Compile Include="AutoStartup\TaskSchedulerWrapper.cs" />
+    <Compile Include="Versioning\RssVersionItem.cs" />
+    <Compile Include="Versioning\RssVersionReader.cs" />
+    <Compile Include="Versioning\VersionHelper.cs" />
     <Compile Include="WindowsUpdate\UpdateResult.cs" />
     <Compile Include="WindowsUpdate\UpdateState.cs" />
     <Compile Include="WindowsUpdate\WindowsUpdateManager.cs" />
+    <Page Include="Gui\AboutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Gui\SettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -127,7 +139,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Gui\WindowsUpdateTrayIcon.cs" />
+    <Compile Include="Gui\SystemTrayIcon.cs" />
     <Compile Include="EntryPoint\ApplicationHandler.cs" />
     <Compile Include="Gui\PopupView.xaml.cs">
       <DependentUpon>PopupView.xaml</DependentUpon>
