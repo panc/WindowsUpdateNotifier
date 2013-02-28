@@ -86,6 +86,11 @@
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\AboutViewModel.cs" />
+    <Compile Include="Resources\TextResources.it.Designer.cs">
+      <DependentUpon>TextResources.it.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\ImageResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -177,6 +182,11 @@
     <Resource Include="Resources\Images\WindowsUpdate.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\TextResources.it.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextResources.it.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\TextResources.nl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TextResources.nl.Designer.cs</LastGenOutput>
