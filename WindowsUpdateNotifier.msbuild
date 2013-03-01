@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <VersionInfoFile>WindowsUpdateNotifier.version</VersionInfoFile>
+    <SolutionFile>WindowsUpdateNotifier.sln</SolutionFile>
+    <SolutionPlatform>Any CPU</SolutionPlatform>
+    <OutputFolder>$(MSBuildProjectDirectory)\output</OutputFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyInfoFiles Include="src\WindowsUpdateNotifier\Properties\AssemblyInfo.cs"/>
+  </ItemGroup>
+
+
+  <Target Name="BuildDebug">
+    <MSBuild Projects="$(MSBuildProjectFile)"
+             Targets="Compile;CopyToOutputDir"
+             Properties="SolutionConfiguration=Debug"/>
+  </Target>
+
+  <Target Name="BuildRelease">
+    <MSBuild Projects="$(MSBuildProjectFile)"
+             Targets="Compile;CopyToOutputDir"
+             Properties="SolutionConfiguration=Release"/>
+  </Target>
+
+
+  <Target Name="CopyToOutputDir">
+    <!-- Copy from bin folder -->
+    <ItemGroup>
+      <Binaries Include="bin\**"/>
+    </ItemGroup>
+    
+    <Copy SourceFiles="@(Binaries)"
+          DestinationFiles="@(Binaries->'output\bin\%(RecursiveDir)%(Filename)%(Extension)')"/>
+  </Target>
+
+  <Target Name="Compile" DependsOnTargets="CleanOutput;UpdateAssemblyInfo">
+    <MSBuild Projects="$(SolutionFile)"
+             Targets="Rebuild"
+             Properties="Configuration=$(SolutionConfiguration);Platform=$(SolutionPlatform)"
+             BuildInParallel="true"/>
+  </Target>
+
+  <Target Name="UpdateAssemblyInfo" DependsOnTargets="ReadVersion">
+    <ItemGroup>
+        <VersionFileInfo Include="src\WindowsUpdateNotifier\Properties\AssemblyInfo.cs">
+            <Version>$(ProductVersion)</Version>
+        </VersionFileInfo>
+    </ItemGroup>
+    
+    <UpdateAssemblyInfoFile Items="@(VersionFileInfo)" />
+  </Target>
+
+  <Target Name="CleanOutput">
+    <RemoveDir Directories="bin"/>
+    <RemoveDir Directories="output"/>
+  </Target>
+
+  <Target Name="ReadVersion">
+    <ReadLinesFromFile File="$(VersionInfoFile)" > 
+      <Output TaskParameter="Lines" ItemName="ItemsFromFile"/>
+    </ReadLinesFromFile>
+
+    <PropertyGroup>
+      <ProductVersion>@(ItemsFromFile)</ProductVersion>
+    </PropertyGroup>
+  </Target>
+
+  <UsingTask TaskName="UpdateAssemblyInfoFile" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+        <Items ParameterType="Microsoft.Build.Framework.ITaskItem[]" />
+    </ParameterGroup>
+    <Task>
+        <Using Namespace="System.IO" />
+        <Using Namespace="System.Text.RegularExpressions" />
+        <Using Namespace="Microsoft.Build.Framework" />
+        <Code Type="Fragment" Language="cs">
+            <![CDATA[
+        foreach(ITaskItem item in Items) 
+        {
+          string fileName = item.GetMetadata("FullPath");
+          string version = item.GetMetadata("Version");
+              
+          if(!File.Exists(fileName))
+            Log.LogError(null, null, null, null, 0, 0, 0, 0, String.Format("Could not find version file: {0}", fileName), new object[0]);
+        
+          string content = "";
+          using(StreamReader rdr = new StreamReader(fileName))
+          {
+              while (rdr.Peek() >= 0) 
+              {
+                  string line = rdr.ReadLine();
+                  
+                  if (line.Contains("AssemblyVersion"))
+                  {
+                    line = string.Format("[assembly: AssemblyVersion(\"{0}\")]", version);
+                  }
+                  else if (line.Contains("AssemblyFileVersion"))
+                  {
+                    string v = version.Substring(0, version.LastIndexOf("."));
+                    line = string.Format("[assembly: AssemblyFileVersion(\"{0}\")]", v);
+                  }
+                  
+                  if (string.IsNullOrEmpty(content) == false)
+                    content += "\r\n";
+                    
+                  content += line;
+              }
+          }
+          
+          File.WriteAllText(fileName, content);
+        }
+      ]]>
+        </Code>
+    </Task>
+  </UsingTask>
+</Project>
