@@ -1,0 +1,11 @@
+Language Packs
+==============
+
+To install a language pack for the Windows Update Notifier just download the appropriate zip archive and extract the folder for your language (e.g. "de" for german translations) to the location of the WindowsUpdateNotifier.exe. 
+
+The folder structure then looks as follows:
+
+..\InstallPath
+ | --  WindowsUpdateNotifier.exe
+ + --  de
+       | --  WindowsUpdateNotifier.resources.dll
