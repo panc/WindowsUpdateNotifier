@@ -10,9 +10,6 @@
     <SolutionPlatform>Any CPU</SolutionPlatform>
     <OutputFolder>$(MSBuildProjectDirectory)\output</OutputFolder>
   </PropertyGroup>
-  <ItemGroup>
-    <AssemblyInfoFiles Include="src\WindowsUpdateNotifier\Properties\AssemblyInfo.cs"/>
-  </ItemGroup>
 
   <Target Name="BuildDebug">
     <MSBuild Projects="$(MSBuildProjectFile)"
@@ -26,13 +23,6 @@
              Properties="SolutionConfiguration=Release"/>
   </Target>
 
-
-  <Target Name="BuildTest">
-    <MSBuild Projects="$(MSBuildProjectFile)"
-             Targets="ReadVersion"
-             Properties="SolutionConfiguration=Release"/>
-  </Target>
-
   <Target Name="CopyToOutputDir">
     <ItemGroup>
       <Binaries Include="bin\**"/>
@@ -40,10 +30,10 @@
     </ItemGroup>
     
     <Copy SourceFiles="@(Binaries)"
-          DestinationFiles="@(Binaries->'output\%(RecursiveDir)%(Filename)%(Extension)')"/>
+          DestinationFiles="@(Binaries->'$(OutputFolder)\%(RecursiveDir)%(Filename)%(Extension)')"/>
   
     <Copy SourceFiles="@(Docs)"
-          DestinationFiles="@(Docs->'output\%(RecursiveDir)%(Filename)%(Extension)')"/>
+          DestinationFiles="@(Docs->'$(OutputFolder)\%(RecursiveDir)%(Filename)%(Extension)')"/>
   </Target>
   
   <Target Name="CreateZip">
@@ -64,14 +54,14 @@
     </ItemGroup>
     
     <Zip Files="@(Exe)"
-         ZipFileName="output\WindowsUpdateNotifier-v$(ShortProductVersion).zip"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion).zip"
          ZipLevel="9" 
          WorkingDirectory="output"/>
   
     <Zip Files="@(De)"
-         ZipFileName="output\WindowsUpdateNotifier-v$(ShortProductVersion)_de.zip"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_de.zip"
          ZipLevel="9" 
-         WorkingDirectory="output"/>
+         WorkingDirectory="$(OutputFolder)"/>
     
     <Zip Files="@(It)"
          ZipFileName="output\WindowsUpdateNotifier-v$(ShortProductVersion)_it.zip"
@@ -79,14 +69,14 @@
          WorkingDirectory="output"/>
   
     <Zip Files="@(Nl)"
-         ZipFileName="output\WindowsUpdateNotifier-v$(ShortProductVersion)_nl.zip"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_nl.zip"
          ZipLevel="9" 
-         WorkingDirectory="output"/>
+         WorkingDirectory="$(OutputFolder)"/>
              
     <Zip Files="@(Pt)"
-         ZipFileName="output\WindowsUpdateNotifier-v$(ShortProductVersion)_pt.zip"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_pt.zip"
          ZipLevel="9" 
-         WorkingDirectory="output"/>
+         WorkingDirectory="$(OutputFolder)"/>
   </Target>
 
   <Target Name="Compile" DependsOnTargets="CleanOutput;UpdateAssemblyInfo">
