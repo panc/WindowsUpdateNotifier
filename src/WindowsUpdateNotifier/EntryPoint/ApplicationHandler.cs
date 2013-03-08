@@ -33,7 +33,10 @@ namespace WindowsUpdateNotifier
             // wait for 10 seconds (to finish startup), then search for updates
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
             mTimer.Tick += (e, s) => SearchForUpdates();
-            mTimer.Start();
+            //mTimer.Start();
+
+            WmiWatcher w = new WmiWatcher();
+            w.Start();
 
             Application.Current.Deactivated += (s, e) => _OnApplicationDeactivated();
             Application.Current.Activated += (s, e) => _OnApplicationActivated();
