@@ -28,7 +28,7 @@ namespace WindowsUpdateNotifier
             mTrayIcon = new SystemTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
             mWmiWatcher = new WmiWatcher(SearchForUpdates);
-            
+
             mVersionHelper = new VersionHelper();
             mVersionHelper.SearchForNewVersion(_OnNewVersionAvailable);
 
