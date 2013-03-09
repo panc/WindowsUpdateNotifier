@@ -86,6 +86,7 @@
     <Compile Include="Gui\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helper\UiThreadHelper.cs" />
     <Compile Include="Model\AboutViewModel.cs" />
     <Compile Include="Resources\TextResources.it.Designer.cs">
       <DependentUpon>TextResources.it.resx</DependentUpon>

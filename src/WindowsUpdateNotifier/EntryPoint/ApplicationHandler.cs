@@ -13,6 +13,7 @@ namespace WindowsUpdateNotifier
         private readonly WindowsUpdateManager mUpdateManager;
         private readonly VersionHelper mVersionHelper;
         private readonly DispatcherTimer mTimer;
+        private readonly WmiWatcher mWmiWatcher;
         
         private int mFailureCount;
         private SettingsView mSettingsView;
@@ -20,10 +21,13 @@ namespace WindowsUpdateNotifier
 
         public ApplicationHandler(bool closeAfterCheck)
         {
+            UiThreadHelper.InitializeWithCurrentDispatcher();
+
             mCloseAfterCheck = closeAfterCheck;
 
             mTrayIcon = new SystemTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
+            mWmiWatcher = new WmiWatcher(SearchForUpdates);
             
             mVersionHelper = new VersionHelper();
             mVersionHelper.SearchForNewVersion(_OnNewVersionAvailable);
@@ -33,10 +37,7 @@ namespace WindowsUpdateNotifier
             // wait for 10 seconds (to finish startup), then search for updates
             mTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
             mTimer.Tick += (e, s) => SearchForUpdates();
-            //mTimer.Start();
-
-            WmiWatcher w = new WmiWatcher();
-            w.Start();
+            mTimer.Start();
 
             Application.Current.Deactivated += (s, e) => _OnApplicationDeactivated();
             Application.Current.Activated += (s, e) => _OnApplicationActivated();
@@ -62,8 +63,8 @@ namespace WindowsUpdateNotifier
 
         public void SearchForUpdates()
         {
-
             mTimer.Stop();
+            mWmiWatcher.Stop();
 
             var ids = AppSettings.Instance.InstallUpdates && UacHelper.IsRunningAsAdmin()
                 ? AppSettings.Instance.KbIdsToInstall
@@ -77,6 +78,7 @@ namespace WindowsUpdateNotifier
         public void Dispose()
         {
             mTimer.Stop();
+            mWmiWatcher.Stop();
             mTrayIcon.Dispose();
         }
 
@@ -144,6 +146,9 @@ namespace WindowsUpdateNotifier
                 var msg = string.Format("{0} {1}", message, TextResources.Popup_ClickToOpen);
 
                 _ShowPopup(TextResources.Popup_UpdatesAvailableTitle, msg, result.UpdateState);
+
+                // start listening, whether the user has installed the updates manually
+                mWmiWatcher.Start();
             }
             else if (result.UpdateState == UpdateState.UpdatesInstalled)
             {
