@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Management;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WindowsUpdateNotifier
@@ -19,6 +20,8 @@ namespace WindowsUpdateNotifier
         {
             if (mIsRunning && mStopRequested == false)
                 return;
+
+            mStopRequested = false;
 
             Task.Factory.StartNew(() =>
             {
@@ -46,7 +49,7 @@ namespace WindowsUpdateNotifier
                     if (result != null && mStopRequested == false)
                         UiThreadHelper.BeginInvokeInUiThread(mOnStateChanged);
                 }
-            });
+            }, CancellationToken.None, TaskCreationOptions.LongRunning, System.Threading.Tasks.TaskScheduler.Default);
         }
 
         public void Stop()
