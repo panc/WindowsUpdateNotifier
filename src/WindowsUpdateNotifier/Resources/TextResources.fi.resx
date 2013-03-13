@@ -151,7 +151,7 @@
     <value>(Viimeisin versio)</value>
   </data>
   <data name="Label_Minutes" xml:space="preserve">
-    <value>minuutit.</value>
+    <value>minuutti.</value>
   </data>
   <data name="Label_NewVersion" xml:space="preserve">
     <value>(Versio {0} saatavilla)</value>

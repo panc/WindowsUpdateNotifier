@@ -51,6 +51,9 @@
     
       <Pt Include="output\*.txt"/>
       <Pt Include="output\pt\*.dll"/>
+    
+      <Fi Include="output\*.txt"/>
+      <Fi Include="output\fi\*.dll"/>
     </ItemGroup>
     
     <Zip Files="@(Exe)"
@@ -60,6 +63,11 @@
   
     <Zip Files="@(De)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_de.zip"
+         ZipLevel="9" 
+         WorkingDirectory="$(OutputFolder)"/>
+		 
+	<Zip Files="@(Fi)"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_fi.zip"
          ZipLevel="9" 
          WorkingDirectory="$(OutputFolder)"/>
     
