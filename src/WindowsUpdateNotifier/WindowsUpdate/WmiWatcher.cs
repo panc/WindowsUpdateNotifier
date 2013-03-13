@@ -19,9 +19,6 @@ namespace WindowsUpdateNotifier
 
         public void Start()
         {
-            if (UacHelper.IsRunningAsAdmin() == false)
-                return;
-
             if (mIsRunning && mStopRequested == false)
                 return;
 
