@@ -10,6 +10,7 @@ namespace WindowsUpdateNotifier
         private readonly Action mOnStateChanged;
         private bool mStopRequested;
         private bool mIsRunning;
+        private ManagementEventWatcher mWatcher;
 
         public WmiWatcher(Action onStateChanged)
         {
@@ -25,15 +26,16 @@ namespace WindowsUpdateNotifier
 
             Task.Factory.StartNew(() =>
             {
-                using (var watcher = _CreateEventWatcher())
+                try
                 {
+                    mWatcher = _CreateEventWatcher();
                     ManagementBaseObject result = null;
 
                     while (mStopRequested == false)
                     {
                         try
                         {
-                            result = watcher.WaitForNextEvent();
+                            result = mWatcher.WaitForNextEvent();
                             break;
                         }
                         catch (ManagementException)
@@ -43,18 +45,30 @@ namespace WindowsUpdateNotifier
                         }
                     }
 
-                    watcher.Stop();
+                    mWatcher.Stop();
                     mIsRunning = false;
 
                     if (result != null && mStopRequested == false)
                         UiThreadHelper.BeginInvokeInUiThread(mOnStateChanged);
                 }
+                finally
+                {
+                    if (mWatcher != null)
+                        mWatcher.Dispose();
+                }
+
             }, CancellationToken.None, TaskCreationOptions.LongRunning, System.Threading.Tasks.TaskScheduler.Default);
         }
 
         public void Stop()
         {
             mStopRequested = true;
+
+            if (mWatcher != null)
+            {
+                mWatcher.Stop();
+                mWatcher.Dispose();
+            }
         }
 
         private ManagementEventWatcher _CreateEventWatcher()
