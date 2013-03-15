@@ -17,7 +17,7 @@ namespace WindowsUpdateNotifier
 
             AppSettings.Initialize(cmdHelper.UseDefaultSettings);
             mApplicationRuntime = new ApplicationRuntime(cmdHelper.CloseAfterCheck);
-            mApplicationRuntime.Start();
+            mApplicationRuntime.Start();    
         }
 
         protected override void OnExit(ExitEventArgs e)

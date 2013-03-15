@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
 
 namespace WindowsUpdateNotifier
 {
@@ -9,7 +10,10 @@ namespace WindowsUpdateNotifier
             InitializeComponent();
 
             var workingArea = SystemParameters.WorkArea;
-            Left = workingArea.Width + workingArea.Left - Width - 10;
+            Left = CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft
+                ? workingArea.Left + 10
+                : workingArea.Width + workingArea.Left - Width - 10;
+
             Top = workingArea.Height + workingArea.Top - Height - 10;
         }
     }
