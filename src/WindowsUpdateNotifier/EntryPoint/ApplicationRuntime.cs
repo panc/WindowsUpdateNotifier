@@ -6,7 +6,7 @@ using WindowsUpdateNotifier.Resources;
 
 namespace WindowsUpdateNotifier
 {
-    public class ApplicationHandler : IApplication, IDisposable
+    public class ApplicationRuntime : IApplication, IDisposable
     {
         private readonly bool mCloseAfterCheck;
         private readonly SystemTrayIcon mTrayIcon;
@@ -14,12 +14,12 @@ namespace WindowsUpdateNotifier
         private readonly VersionHelper mVersionHelper;
         private readonly DispatcherTimer mTimer;
         private readonly WmiWatcher mWmiWatcher;
-        
+
         private int mFailureCount;
         private SettingsView mSettingsView;
         private AboutView mAboutview;
 
-        public ApplicationHandler(bool closeAfterCheck)
+        public ApplicationRuntime(bool closeAfterCheck)
         {
             UiThreadHelper.InitializeWithCurrentDispatcher();
 
@@ -28,16 +28,20 @@ namespace WindowsUpdateNotifier
             mTrayIcon = new SystemTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
             mWmiWatcher = new WmiWatcher(SearchForUpdates);
-
             mVersionHelper = new VersionHelper();
+            mTimer = new DispatcherTimer();
+        }
+
+        public void Start()
+        {
             mVersionHelper.SearchForNewVersion(_OnNewVersionAvailable);
 
-            AppSettings.Instance.OnSettingsChanged = _OnSettingsChanged;
-
             // wait for 10 seconds (to finish startup), then search for updates
-            mTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
+            mTimer.Interval = TimeSpan.FromSeconds(10);
             mTimer.Tick += (e, s) => SearchForUpdates();
             mTimer.Start();
+
+            AppSettings.Instance.OnSettingsChanged = _OnSettingsChanged;
 
             Application.Current.Deactivated += (s, e) => _OnApplicationDeactivated();
             Application.Current.Activated += (s, e) => _OnApplicationActivated();

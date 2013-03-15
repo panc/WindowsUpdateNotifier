@@ -153,7 +153,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Gui\SystemTrayIcon.cs" />
-    <Compile Include="EntryPoint\ApplicationHandler.cs" />
+    <Compile Include="EntryPoint\ApplicationRuntime.cs" />
     <Compile Include="Gui\PopupView.xaml.cs">
       <DependentUpon>PopupView.xaml</DependentUpon>
       <SubType>Code</SubType>

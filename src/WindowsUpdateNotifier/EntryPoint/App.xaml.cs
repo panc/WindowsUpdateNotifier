@@ -5,7 +5,7 @@ namespace WindowsUpdateNotifier
 {
     public partial class App : ISingleInstance
     {
-        private ApplicationHandler mApplicationHandler;
+        private ApplicationRuntime mApplicationRuntime;
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -16,17 +16,18 @@ namespace WindowsUpdateNotifier
             var cmdHelper = new CommandLineHelper();
 
             AppSettings.Initialize(cmdHelper.UseDefaultSettings);
-            mApplicationHandler = new ApplicationHandler(cmdHelper.CloseAfterCheck);
+            mApplicationRuntime = new ApplicationRuntime(cmdHelper.CloseAfterCheck);
+            mApplicationRuntime.Start();
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
-            mApplicationHandler.Dispose();
+            mApplicationRuntime.Dispose();
         }
 
         public void OnNewInstanceStarted()
         {
-            Dispatcher.BeginInvoke((Action)(() => mApplicationHandler.OpenSettings()), null);            
+            Dispatcher.BeginInvoke((Action)(() => mApplicationRuntime.OpenSettings()), null);            
         }
     }
 }
