@@ -168,7 +168,7 @@ namespace WindowsUpdateNotifier
             mTrayIcon.SetupToolTipAndMenuItems(toolTip, message, result.UpdateState);
             mTrayIcon.SetIcon(result.UpdateState);
 
-            if (mCloseAfterCheck)
+            if (mCloseAfterCheck && (result.UpdateState != UpdateState.UpdatesAvailable || AppSettings.Instance.HideIcon))
                 _CloseAfterCheck(result.UpdateState);
             else
                 _StartTimer(result.UpdateState);
@@ -177,7 +177,7 @@ namespace WindowsUpdateNotifier
         private void _CloseAfterCheck(UpdateState state)
         {
             // wait for the popup to be shown
-            var interval = state == UpdateState.UpdatesAvailable ? 20 : 1;
+            var interval = state == UpdateState.UpdatesInstalled ? 20 : 1;
 
             var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(interval) };
             timer.Tick += (s, e) => Application.Current.Shutdown();
