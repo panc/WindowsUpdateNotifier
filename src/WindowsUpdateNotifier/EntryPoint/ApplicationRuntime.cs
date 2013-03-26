@@ -168,7 +168,7 @@ namespace WindowsUpdateNotifier
             mTrayIcon.SetupToolTipAndMenuItems(toolTip, message, result.UpdateState);
             mTrayIcon.SetIcon(result.UpdateState);
 
-            if (mCloseAfterCheck && (result.UpdateState != UpdateState.UpdatesAvailable || AppSettings.Instance.HideIcon))
+            if (mCloseAfterCheck && (result.UpdateState.CanApplicationBeClosed(mFailureCount) || AppSettings.Instance.HideIcon))
                 _CloseAfterCheck(result.UpdateState);
             else
                 _StartTimer(result.UpdateState);

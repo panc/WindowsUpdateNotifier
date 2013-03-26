@@ -17,6 +17,20 @@ namespace WindowsUpdateNotifier
 
     public static class UpdateStateExtensions
     {
+        public static bool CanApplicationBeClosed(this UpdateState state, int failureCount)
+        {
+            switch (state)
+            {
+                case UpdateState.Failure:
+                    return failureCount >= 10;
+                case UpdateState.Searching:
+                case UpdateState.UpdatesAvailable:
+                    return false;
+                default:
+                    return true;
+            }
+        }
+        
         public static Icon GetIcon(this UpdateState state)
         {
             switch (state)
