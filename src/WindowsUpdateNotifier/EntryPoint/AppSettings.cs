@@ -14,6 +14,9 @@ namespace WindowsUpdateNotifier
         private const string INSTALL_UPDATES = "InstallUpdates";
         private const string KB_IDS_TO_INSTALL = "KbIdsToInstall";
 
+        private const string WINDOWS_7_DEFENDER_KB_ID = "2310138";
+        private const string WINDOWS_8_DEFENDER_KB_ID = "2267602";
+
         public static AppSettings Instance { get; private set; }
 
         public static void Initialize(bool useDefaultSettings)
@@ -117,7 +120,7 @@ namespace WindowsUpdateNotifier
 
             if (mConfig.AppSettings.Contains(DISABLE_NOTIFICATIONS) == false)
                 mConfig.AppSettings.Settings.Add(DISABLE_NOTIFICATIONS, "False");
-            
+
             if (mConfig.AppSettings.Contains(USE_METRO_STYLE) == false)
                 mConfig.AppSettings.Settings.Add(USE_METRO_STYLE, "TRUE");
 
@@ -125,7 +128,30 @@ namespace WindowsUpdateNotifier
                 mConfig.AppSettings.Settings.Add(INSTALL_UPDATES, "False");
 
             if (mConfig.AppSettings.Contains(KB_IDS_TO_INSTALL) == false)
-                mConfig.AppSettings.Settings.Add(KB_IDS_TO_INSTALL, "2267602"); // Id of Windows Defender updates
+                mConfig.AppSettings.Settings.Add(KB_IDS_TO_INSTALL, _GetWindowsDefenderKbId());
+            else
+                _CorrectKbIdsIfNeeded();
+        }
+
+        private void _CorrectKbIdsIfNeeded()
+        {
+            var kbIds = mConfig.AppSettings.Settings[KB_IDS_TO_INSTALL].Value;
+
+            if (kbIds == WINDOWS_8_DEFENDER_KB_ID && IsRunningOnWindows7())
+                _SetSetting(KB_IDS_TO_INSTALL, WINDOWS_7_DEFENDER_KB_ID);
+        }
+
+        private string _GetWindowsDefenderKbId()
+        {
+            return IsRunningOnWindows7()
+                ? WINDOWS_7_DEFENDER_KB_ID
+                : WINDOWS_8_DEFENDER_KB_ID; // use windows 8 kb-id as a default value even if it is not a windows 8 os.
+        }
+
+        private bool IsRunningOnWindows7()
+        {
+            return Environment.OSVersion.Version.Major == 6 &&
+                   Environment.OSVersion.Version.Minor == 1;
         }
     }
 
