@@ -138,6 +138,9 @@
   <data name="Label_CommonSettings" xml:space="preserve">
     <value>Allgemein</value>
   </data>
+  <data name="Label_DisableNotifications" xml:space="preserve">
+    <value>Benachrichtigungen deaktivieren</value>
+  </data>
   <data name="Label_Help" xml:space="preserve">
     <value>Hilfe</value>
   </data>
@@ -168,9 +171,6 @@ Bitte als Administrator starten und erneut versuchen.</value>
   </data>
   <data name="Label_UseMetroStyleForPopup" xml:space="preserve">
     <value>Verwende ein Metro-Style Popup</value>
-  </data>
-  <data name="Menu_DisableNotification" xml:space="preserve">
-    <value>Benachrichtigung deaktivieren</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Beenden</value>
@@ -207,6 +207,9 @@ Bitte als Administrator starten und erneut versuchen.</value>
   </data>
   <data name="Popup_UpdatesInstalledTitle" xml:space="preserve">
     <value>Windows Updates installiert</value>
+  </data>
+  <data name="ToolTip_DisableNotifications" xml:space="preserve">
+    <value>Es werden keine Benachrichtigungen angezeigt, wenn neue Updates verfügbar sind oder Updates automatisch installiert wurden.</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
     <value>Es konnte keine Verbindung zum Windows-Update-Service hergestellt werden.</value>

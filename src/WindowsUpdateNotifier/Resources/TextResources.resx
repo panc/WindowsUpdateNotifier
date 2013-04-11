@@ -138,6 +138,9 @@
   <data name="Label_CommonSettings" xml:space="preserve">
     <value>General</value>
   </data>
+  <data name="Label_DisableNotifications" xml:space="preserve">
+    <value>Disable notification popups</value>
+  </data>
   <data name="Label_Help" xml:space="preserve">
     <value>Help</value>
   </data>
@@ -168,9 +171,6 @@ Start with admin privileges and try again.</value>
   </data>
   <data name="Label_UseMetroStyleForPopup" xml:space="preserve">
     <value>Use metro-style for notification popup</value>
-  </data>
-  <data name="Menu_DisableNotification" xml:space="preserve">
-    <value>Disable Notification</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Exit</value>
@@ -207,6 +207,9 @@ Start with admin privileges and try again.</value>
   </data>
   <data name="Popup_UpdatesInstalledTitle" xml:space="preserve">
     <value>Windows Updates Installed</value>
+  </data>
+  <data name="ToolTip_DisableNotifications" xml:space="preserve">
+    <value>No popups will be shown when new updates are available or updates were installed automatically.</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
     <value>A Connection to the WindowsUpdate-Service can't be established.</value>

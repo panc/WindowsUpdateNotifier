@@ -138,6 +138,9 @@
   <data name="Label_CommonSettings" xml:space="preserve">
     <value>Algemeen</value>
   </data>
+  <data name="Label_DisableNotifications" xml:space="preserve">
+    <value>Waarschuwingen uitschakelen</value>
+  </data>
   <data name="Label_Help" xml:space="preserve">
     <value>Help</value>
   </data>
@@ -168,9 +171,6 @@ Begin met admin privileges en probeer het opnieuw.</value>
   </data>
   <data name="Label_UseMetroStyleForPopup" xml:space="preserve">
     <value>Gebruik de metro stijl voor het waarschuwingsvenster</value>
-  </data>
-  <data name="Menu_DisableNotification" xml:space="preserve">
-    <value>Waarschuwingen uitschakelen</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Afsluiten</value>
@@ -207,6 +207,9 @@ Begin met admin privileges en probeer het opnieuw.</value>
   </data>
   <data name="Popup_UpdatesInstalledTitle" xml:space="preserve">
     <value>Windows-updates geïnstalleerd</value>
+  </data>
+  <data name="ToolTip_DisableNotifications" xml:space="preserve">
+    <value>Geen popups worden getoond wanneer er nieuwe updates beschikbaar zijn of updates zijn automatisch geïnstalleerd.</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
     <value>Er kan geen verbinding worden gemaakt met de Windows Update Service.</value>

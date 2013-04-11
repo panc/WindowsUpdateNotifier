@@ -100,6 +100,10 @@
                 <CheckBox Content="{x:Static p:TextResources.Label_HideIcon}" 
                           IsChecked="{Binding HideIcon}" UseLayoutRounding="False" Margin="0,0,0,10"/>
 
+                <CheckBox Content="{x:Static p:TextResources.Label_DisableNotifications}" 
+                          ToolTip="{x:Static p:TextResources.ToolTip_DisableNotifications}" 
+                          IsChecked="{Binding DisableNotifications}" UseLayoutRounding="False" Margin="0,0,0,10"/>
+
                 <CheckBox Content="{x:Static p:TextResources.Label_UseMetroStyleForPopup}" 
                           ToolTip="{x:Static p:TextResources.ToolTip_UseMetroStyleForPopup}" 
                           IsChecked="{Binding UseMetroStyle}" UseLayoutRounding="False" Margin="0,0,0,10"/>

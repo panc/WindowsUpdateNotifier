@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Reflection;
 using System.Windows.Input;
 
 namespace WindowsUpdateNotifier
@@ -23,6 +22,7 @@ namespace WindowsUpdateNotifier
             var settings = AppSettings.Instance;
             RefreshInterval = settings.RefreshInterval;
             HideIcon = settings.HideIcon;
+            DisableNotifications = settings.DisableNotifications;
             UseMetroStyle = settings.UseMetroStyle;
             InstallUpdates = settings.InstallUpdates && CanInstallUpdates;
 
@@ -48,6 +48,8 @@ namespace WindowsUpdateNotifier
         public bool IsSetAsAutoStartup { get; set; }
 
         public bool HideIcon { get; set; }
+        
+        public bool DisableNotifications { get; set; }
 
         public bool UseMetroStyle { get; set; }
 
@@ -90,7 +92,7 @@ namespace WindowsUpdateNotifier
             try
             {
                 SaveFailed = false;
-                AppSettings.Instance.Save(RefreshInterval, HideIcon, UseMetroStyle, InstallUpdates);
+                AppSettings.Instance.Save(RefreshInterval, HideIcon, DisableNotifications, UseMetroStyle, InstallUpdates);
                 StartupHelper.UpdateStartupSettings(IsSetAsAutoStartup);
 
                 close();

@@ -124,6 +124,15 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disable notification popups.
+        /// </summary>
+        public static string Label_DisableNotifications {
+            get {
+                return ResourceManager.GetString("Label_DisableNotifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string Label_Help {
@@ -211,15 +220,6 @@ namespace WindowsUpdateNotifier.Resources {
         public static string Label_UseMetroStyleForPopup {
             get {
                 return ResourceManager.GetString("Label_UseMetroStyleForPopup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disable Notification.
-        /// </summary>
-        public static string Menu_DisableNotification {
-            get {
-                return ResourceManager.GetString("Menu_DisableNotification", resourceCulture);
             }
         }
         
@@ -328,6 +328,15 @@ namespace WindowsUpdateNotifier.Resources {
         public static string Popup_UpdatesInstalledTitle {
             get {
                 return ResourceManager.GetString("Popup_UpdatesInstalledTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No popups will be shown when new updates are available or updates were installed automatically..
+        /// </summary>
+        public static string ToolTip_DisableNotifications {
+            get {
+                return ResourceManager.GetString("ToolTip_DisableNotifications", resourceCulture);
             }
         }
         

@@ -138,6 +138,9 @@
   <data name="Label_CommonSettings" xml:space="preserve">
     <value>Genel</value>
   </data>
+  <data name="Label_DisableNotifications" xml:space="preserve">
+    <value>Bildirimi Kapat</value>
+  </data>
   <data name="Label_Help" xml:space="preserve">
     <value>Yardım</value>
   </data>
@@ -168,9 +171,6 @@ Yönetici olarak çalıştırın ve yeniden deneyin.</value>
   </data>
   <data name="Label_UseMetroStyleForPopup" xml:space="preserve">
     <value>Bildirim penceresi için metro stili kullan</value>
-  </data>
-  <data name="Menu_DisableNotification" xml:space="preserve">
-    <value>Bildirimi Kapat</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Çıkış</value>
@@ -207,6 +207,9 @@ Yönetici olarak çalıştırın ve yeniden deneyin.</value>
   </data>
   <data name="Popup_UpdatesInstalledTitle" xml:space="preserve">
     <value>Windows Güncellemeleri Yüklendi</value>
+  </data>
+  <data name="ToolTip_DisableNotifications" xml:space="preserve">
+    <value>Yeni güncelleştirmeler kullanılabilir olduğunda veya güncelleştirmeler otomatik olarak yüklenir edildiğinde hiçbir pop-up gösterilir.</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
     <value>Windows Update Hizmetine bağlantı kurulamıyor.</value>

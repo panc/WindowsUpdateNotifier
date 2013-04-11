@@ -47,8 +47,6 @@ namespace WindowsUpdateNotifier
             Application.Current.Activated += (s, e) => _OnApplicationActivated();
         }
 
-        public bool NotificationsDisabled { get; set; }
-
         public void OpenSettings()
         {
             if (mSettingsView != null)
@@ -199,7 +197,7 @@ namespace WindowsUpdateNotifier
 
         private void _ShowPopup(string title, string message, UpdateState state)
         {
-            if (NotificationsDisabled)
+            if (AppSettings.Instance.DisableNotifications)
                 return;
 
             if (AppSettings.Instance.UseMetroStyle)

@@ -138,6 +138,9 @@
   <data name="Label_CommonSettings" xml:space="preserve">
     <value>Allmänt</value>
   </data>
+  <data name="Label_DisableNotifications" xml:space="preserve">
+    <value>Inaktivera påminnelser</value>
+  </data>
   <data name="Label_Help" xml:space="preserve">
     <value>Hjälp</value>
   </data>
@@ -168,9 +171,6 @@ Starta om programmet med administratörsrättigheter och försök igen.</value>
   </data>
   <data name="Label_UseMetroStyleForPopup" xml:space="preserve">
     <value>Använd metro-utseende för påminnelser</value>
-  </data>
-  <data name="Menu_DisableNotification" xml:space="preserve">
-    <value>Inaktivera påminnelser</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Avsluta</value>
@@ -207,6 +207,9 @@ Starta om programmet med administratörsrättigheter och försök igen.</value>
   </data>
   <data name="Popup_UpdatesInstalledTitle" xml:space="preserve">
     <value>Uppdateringar har installerats</value>
+  </data>
+  <data name="ToolTip_DisableNotifications" xml:space="preserve">
+    <value>Inga popups visas när nya uppdateringar finns tillgängliga eller uppdateringar har installerats automatiskt.</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
     <value>Anslutningsförsöket till Windows Update-tjänsten misslyckades.</value>

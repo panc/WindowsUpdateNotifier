@@ -138,6 +138,9 @@
   <data name="Label_CommonSettings" xml:space="preserve">
     <value>Yleinen</value>
   </data>
+  <data name="Label_DisableNotifications" xml:space="preserve">
+    <value>Poista ilmoitus</value>
+  </data>
   <data name="Label_Help" xml:space="preserve">
     <value>Apua</value>
   </data>
@@ -167,9 +170,6 @@
   </data>
   <data name="Label_UseMetroStyleForPopup" xml:space="preserve">
     <value>Käytä Metro-tyylistä Popup-ilmoitusta</value>
-  </data>
-  <data name="Menu_DisableNotification" xml:space="preserve">
-    <value>Poista ilmoitus</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Poistu</value>
@@ -206,6 +206,9 @@
   </data>
   <data name="Popup_UpdatesInstalledTitle" xml:space="preserve">
     <value>Windows päivitykset asennettu</value>
+  </data>
+  <data name="ToolTip_DisableNotifications" xml:space="preserve">
+    <value>Ei ponnahdusikkunoita näytetään kun uusia päivityksiä on saatavilla tai päivitysten asentamisen automaattisesti.</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
     <value>Yhteys WindowsUpdate-Palveluun ei onnistu.</value>

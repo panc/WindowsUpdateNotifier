@@ -12,7 +12,6 @@ namespace WindowsUpdateNotifier
         private readonly MenuItem mInfoMenuItem;
         private readonly MenuItem mStartMenuItem;
         private readonly Timer mAnimationTimer;
-        private readonly MenuItem mDisableNotificationsMenuItem;
         private int mSearchIconIndex;
         private readonly BalloonTipHelper mBallonTipHelper;
 
@@ -21,8 +20,7 @@ namespace WindowsUpdateNotifier
             mVersionMenuItem = new MenuItem("", (s, e) => application.OpenDownloadPage()) { DefaultItem = true, Visible = false };
             mInfoMenuItem = new MenuItem("") { Enabled = false };
             mStartMenuItem = new MenuItem(TextResources.Menu_StartSearch, (s, e) => application.SearchForUpdates());
-            mDisableNotificationsMenuItem = new MenuItem(TextResources.Menu_DisableNotification, (e, s) => _DisableNotifications(application));
-
+            
             var contextMenu = new ContextMenu(new[]
             {
                 mVersionMenuItem,
@@ -31,8 +29,6 @@ namespace WindowsUpdateNotifier
                 mStartMenuItem,
                 new MenuItem("-"),
                 new MenuItem(TextResources.Menu_Settings, (s, e) => application.OpenSettings()),
-                mDisableNotificationsMenuItem, 
-                new MenuItem("-"),
                 new MenuItem(TextResources.Menu_WindowsUpdates, (s, e) => application.OpenWindowsUpdateControlPanel()),
                 new MenuItem("-"),
                 new MenuItem(TextResources.Menu_Exit, _OnExitClicked)
@@ -107,14 +103,6 @@ namespace WindowsUpdateNotifier
         private void _OnExitClicked(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
-        }
-
-        private void _DisableNotifications(IApplication application)
-        {
-            var disabled = !mDisableNotificationsMenuItem.Checked;
-            mDisableNotificationsMenuItem.Checked = disabled;
-
-            application.NotificationsDisabled = disabled;
         }
 
         private string _GetStringWithMaxLength(string text, int length)

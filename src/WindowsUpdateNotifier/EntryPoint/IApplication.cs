@@ -7,7 +7,5 @@ namespace WindowsUpdateNotifier
         void OpenDownloadPage();
         void OpenAboutDialog(); 
         void SearchForUpdates();
-        
-        bool NotificationsDisabled { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace WindowsUpdateNotifier
     {
         private const string REFRESH_INTERVAL = "RefreshInterval";
         private const string HIDE_ICON = "HideIcon";
+        private const string DISABLE_NOTIFICATIONS = "DisableNotifications";
         private const string USE_METRO_STYLE = "UseMetroStyle";
         private const string INSTALL_UPDATES = "InstallUpdates";
         private const string KB_IDS_TO_INSTALL = "KbIdsToInstall";
@@ -34,6 +35,7 @@ namespace WindowsUpdateNotifier
 
             RefreshInterval = int.Parse(mConfig.AppSettings.Settings[REFRESH_INTERVAL].Value);
             HideIcon = bool.Parse(mConfig.AppSettings.Settings[HIDE_ICON].Value);
+            DisableNotifications = bool.Parse(mConfig.AppSettings.Settings[DISABLE_NOTIFICATIONS].Value);
             UseMetroStyle = bool.Parse(mConfig.AppSettings.Settings[USE_METRO_STYLE].Value);
             InstallUpdates = bool.Parse(mConfig.AppSettings.Settings[INSTALL_UPDATES].Value);
 
@@ -46,6 +48,8 @@ namespace WindowsUpdateNotifier
 
         public bool HideIcon { get; private set; }
 
+        public bool DisableNotifications { get; set; }
+
         public bool UseMetroStyle { get; private set; }
 
         public bool InstallUpdates { get; private set; }
@@ -54,11 +58,12 @@ namespace WindowsUpdateNotifier
 
         public Action OnSettingsChanged { get; set; }
 
-        public void Save(int refreshInterval, bool hideIcon, bool useMetroStyle, bool installUpdates/*, string[] kbIdsToInstall */)
+        public void Save(int refreshInterval, bool hideIcon, bool disableNotifications, bool useMetroStyle, bool installUpdates/*, string[] kbIdsToInstall */)
         {
             var hasChanged = _SetSetting(REFRESH_INTERVAL, refreshInterval.ToString(CultureInfo.InvariantCulture));
             hasChanged = _SetSetting(HIDE_ICON, hideIcon.ToString()) || hasChanged;
             hasChanged = _SetSetting(USE_METRO_STYLE, useMetroStyle.ToString()) || hasChanged;
+            hasChanged = _SetSetting(DISABLE_NOTIFICATIONS, disableNotifications.ToString()) || hasChanged;
             hasChanged = _SetSetting(INSTALL_UPDATES, installUpdates.ToString()) || hasChanged;
             //hasChanged = _SetSetting(KB_IDS_TO_INSTALL, string.Join(";", kbIdsToInstall)) || hasChanged;
 
@@ -68,6 +73,7 @@ namespace WindowsUpdateNotifier
 
                 RefreshInterval = refreshInterval;
                 HideIcon = hideIcon;
+                DisableNotifications = disableNotifications;
                 UseMetroStyle = useMetroStyle;
                 InstallUpdates = installUpdates;
                 //KbIdsToInstall = kbIdsToInstall;
@@ -109,6 +115,9 @@ namespace WindowsUpdateNotifier
             if (mConfig.AppSettings.Contains(HIDE_ICON) == false)
                 mConfig.AppSettings.Settings.Add(HIDE_ICON, "False");
 
+            if (mConfig.AppSettings.Contains(DISABLE_NOTIFICATIONS) == false)
+                mConfig.AppSettings.Settings.Add(DISABLE_NOTIFICATIONS, "False");
+            
             if (mConfig.AppSettings.Contains(USE_METRO_STYLE) == false)
                 mConfig.AppSettings.Settings.Add(USE_METRO_STYLE, "TRUE");
 
