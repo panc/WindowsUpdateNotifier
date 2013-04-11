@@ -55,6 +55,9 @@
       <Fi Include="output\*.txt"/>
       <Fi Include="output\fi\*.dll"/>
       
+	  <Sv Include="output\*.txt"/>
+      <Sv Include="output\sv\*.dll"/>
+	  
 	  <Tr Include="output\*.txt"/>
       <Tr Include="output\tr\*.dll"/>
     </ItemGroup>
@@ -67,32 +70,37 @@
     <Zip Files="@(De)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_de.zip"
          ZipLevel="9" 
-         WorkingDirectory="$(OutputFolder)"/>
+         WorkingDirectory="output"/>
 		 
 	<Zip Files="@(Fi)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_fi.zip"
          ZipLevel="9" 
-         WorkingDirectory="$(OutputFolder)"/>
+         WorkingDirectory="output"/>
     
     <Zip Files="@(It)"
-         ZipFileName="output\WindowsUpdateNotifier-v$(ShortProductVersion)_it.zip"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_it.zip"
          ZipLevel="9" 
          WorkingDirectory="output"/>
   
     <Zip Files="@(Nl)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_nl.zip"
          ZipLevel="9" 
-         WorkingDirectory="$(OutputFolder)"/>
+         WorkingDirectory="output"/>
              
     <Zip Files="@(Pt)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_pt.zip"
          ZipLevel="9" 
-         WorkingDirectory="$(OutputFolder)"/>
+         WorkingDirectory="output"/>
+	
+	<Zip Files="@(Sv)"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_sv.zip"
+         ZipLevel="9" 
+         WorkingDirectory="output"/>
 	
 	<Zip Files="@(Tr)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_tr.zip"
          ZipLevel="9" 
-         WorkingDirectory="$(OutputFolder)"/>
+         WorkingDirectory="output"/>
   </Target>
 
   <Target Name="Compile" DependsOnTargets="CleanOutput;UpdateAssemblyInfo">

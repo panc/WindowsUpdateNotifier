@@ -88,6 +88,11 @@
     </Compile>
     <Compile Include="Helper\UiThreadHelper.cs" />
     <Compile Include="Model\AboutViewModel.cs" />
+    <Compile Include="Resources\TextResources.sv.Designer.cs">
+      <DependentUpon>TextResources.sv.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\TextResources.tr.Designer.cs">
       <DependentUpon>TextResources.tr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -195,6 +200,11 @@
     <Resource Include="Resources\Images\WindowsUpdate.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\TextResources.sv.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextResources.sv.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\TextResources.tr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TextResources.tr.Designer.cs</LastGenOutput>
