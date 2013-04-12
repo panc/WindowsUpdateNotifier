@@ -14,7 +14,7 @@ namespace WindowsUpdateNotifier
         private const string INSTALL_UPDATES = "InstallUpdates";
         private const string KB_IDS_TO_INSTALL = "KbIdsToInstall";
 
-        private const string WINDOWS_7_DEFENDER_KB_ID = "2310138";
+        private const string WINDOWS_7_DEFENDER_KB_ID = "2310138;915597";
         private const string WINDOWS_8_DEFENDER_KB_ID = "2267602";
 
         public static AppSettings Instance { get; private set; }
