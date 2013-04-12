@@ -124,7 +124,7 @@
     <value>Ok</value>
   </data>
   <data name="Label_AutoInstallComment" xml:space="preserve">
-    <value>Deze functie downloadt automatisch en installeert de updates voor de Windows Defender (updates voor KB2267602). Geen enkele andere update zal worden beïnvloed door enabeling deze functie.</value>
+    <value>Deze functie downloadt automatisch en installeert de updates voor de Windows Defender (updates voor KB{0}). Geen enkele andere update zal worden beïnvloed door enabeling deze functie.</value>
   </data>
   <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
     <value>Om automatische installatie van de updates voor de Windows Defender, moet de Windows Update Notifier worden ingesteld om te draaien als beheerder.</value>

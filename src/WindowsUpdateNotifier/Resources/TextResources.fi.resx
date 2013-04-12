@@ -124,7 +124,7 @@
     <value>Ok</value>
   </data>
   <data name="Label_AutoInstallComment" xml:space="preserve">
-    <value>Tämä ominaisuus automaattisesti lataa ja asentaa päivitykset Windows Defenderille (KB2267602 päivitykset). Tämän asetuksen käyttöönotto ei vaikuta muihin päivitysasetuksiin järjestelmässä.</value>
+    <value>Tämä ominaisuus automaattisesti lataa ja asentaa päivitykset Windows Defenderille (KB{0} päivitykset). Tämän asetuksen käyttöönotto ei vaikuta muihin päivitysasetuksiin järjestelmässä.</value>
   </data>
   <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
     <value>Automaattinen Windows Defenderin päivitys vaatii, että Windows Update Notifier on käynnistetty Järjestelmänvalvojan oikeuksilla.</value>

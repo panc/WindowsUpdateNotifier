@@ -124,7 +124,7 @@
     <value>OK</value>
   </data>
   <data name="Label_AutoInstallComment" xml:space="preserve">
-    <value>Detta kommer automatiskt att hämta och installera uppdateringar för Windows Defender (ENDAST uppdateringar för KB2267602). Detta påverkar inte andra tillgängliga uppdateringar.</value>
+    <value>Detta kommer automatiskt att hämta och installera uppdateringar för Windows Defender (ENDAST uppdateringar för KB{0}). Detta påverkar inte andra tillgängliga uppdateringar.</value>
   </data>
   <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
     <value>För att automatiskt kunna installera definitionsuppdateringar för Windows Defender måste detta program köras med administratörsrättigheter.</value>

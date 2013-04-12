@@ -144,7 +144,7 @@
 
                 <TextBlock MaxWidth="418" TextWrapping="WrapWithOverflow" Margin="21,0,0,0" TextAlignment="Justify"
                     IsEnabled="{Binding CanInstallUpdates}" HorizontalAlignment="Left"
-                    Text="{x:Static p:TextResources.Label_AutoInstallComment}" />
+                    Text="{Binding AutoInstallComment}" />
             </StackPanel>
         </GroupBox>
     </DockPanel>

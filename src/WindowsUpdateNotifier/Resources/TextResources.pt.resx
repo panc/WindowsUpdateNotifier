@@ -124,7 +124,7 @@
     <value>OK</value>
   </data>
   <data name="Label_AutoInstallComment" xml:space="preserve">
-    <value>Este recurso automaticamente baixa e instala as atualizações do Windows Defender (atualizações para KB2267602). Nenhuma outra atualização é afetada ao habilitar esta função.</value>
+    <value>Este recurso automaticamente baixa e instala as atualizações do Windows Defender (atualizações para KB{0}). Nenhuma outra atualização é afetada ao habilitar esta função.</value>
   </data>
   <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
     <value>Para automaticamente instalar as atualizações do Windows Defender, o Windows Update Notifier deve estar configurado para ser executado como administrador.</value>

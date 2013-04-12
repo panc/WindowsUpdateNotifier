@@ -124,7 +124,7 @@
     <value>Tamam</value>
   </data>
   <data name="Label_AutoInstallComment" xml:space="preserve">
-    <value>Bu özellik, Windows Defender (KB2267602) güncellemelerini otomatik olarak indirir ve yükler. Başka hiçbir güncelleme bu özellikten etkilenmeyecektir.</value>
+    <value>Bu özellik, Windows Defender (KB{0}) güncellemelerini otomatik olarak indirir ve yükler. Başka hiçbir güncelleme bu özellikten etkilenmeyecektir.</value>
   </data>
   <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
     <value>Windows Defender güncellemelerini otomatik olarak yüklemek için Windows Update Bildirim Aracı yönetici olarak  kurulmalıdır.</value>

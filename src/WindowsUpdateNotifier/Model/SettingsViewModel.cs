@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Input;
+using WindowsUpdateNotifier.Resources;
 
 namespace WindowsUpdateNotifier
 {
@@ -31,6 +32,7 @@ namespace WindowsUpdateNotifier
             HowToStartAsAdminLink = "http://wun.codeplex.com/wikipage?title=HowToStartAsAdmin";
 
             Version = string.Format("Version {0}  © Christoph Pangerl", versionHelper.CurrentVersion);
+            AutoInstallComment = string.Format(TextResources.Label_AutoInstallComment, string.Join(", KB", settings.KbIdsToInstall));
 
             SaveAndCloseCommand = new SimpleCommand(() => _SaveAndClose(closeWindowCallback));
             ShowHelpCommand = new SimpleCommand(_ShowHelp);
@@ -64,6 +66,8 @@ namespace WindowsUpdateNotifier
         public bool CanInstallUpdates { get; set; }
 
         public bool CanNotInstallUpdates { get; set; }
+
+        public string AutoInstallComment { get; set; }
 
         public int RefreshInterval
         {
