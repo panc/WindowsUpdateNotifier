@@ -34,6 +34,8 @@ namespace WindowsUpdateNotifier
 
         public void Start()
         {
+            StartupHelper.UpdateExecPath();
+
             mVersionHelper.SearchForNewVersion(_OnNewVersionAvailable);
 
             // wait for 10 seconds (to finish startup), then search for updates

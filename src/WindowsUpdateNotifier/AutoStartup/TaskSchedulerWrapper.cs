@@ -64,6 +64,16 @@ namespace WindowsUpdateNotifier
             return mRootFolder.GetTasks(1).Cast<S.IRegisteredTask>().Any(task => task.Name == APP_NAME);
         }
 
+        public bool CheckExecPathIsCorrect()
+        {
+            var exePath = Assembly.GetExecutingAssembly().Location;
+
+            return mRootFolder.GetTasks(1)
+                .Cast<S.IRegisteredTask>()
+                .Any(task => task.Name == APP_NAME &&
+                     task.Definition.Actions.OfType<S.IExecAction>().Any(action => action.Path == exePath));
+        }
+
         public void Dispose()
         {
             if (mService != null)
