@@ -139,7 +139,7 @@
     <value>Geral</value>
   </data>
   <data name="Label_DisableNotifications" xml:space="preserve">
-    <value>Desativar notificações</value>
+    <value>Desativar janelas de notificação</value>
   </data>
   <data name="Label_Help" xml:space="preserve">
     <value>Ajuda</value>
@@ -151,7 +151,7 @@
     <value>Veja aqui como fazer isto.</value>
   </data>
   <data name="Label_IsLatestVersion" xml:space="preserve">
-    <value>(Última versão)</value>
+    <value>(Versão Atual)</value>
   </data>
   <data name="Label_Minutes" xml:space="preserve">
     <value>minutos.</value>
@@ -163,8 +163,8 @@
     <value>Verificar atualizações a cada</value>
   </data>
   <data name="Label_SavingSettingsFailed" xml:space="preserve">
-    <value>Salvando falhou!
-Comece com privilégios de administrador e tente novamente.</value>
+    <value>Falha ao salvar.
+Inicie como administrador e tente novamente.</value>
   </data>
   <data name="Label_SetAsAutoStartup" xml:space="preserve">
     <value>Iniciar o Windows Update Notifier com o sistema</value>
@@ -209,7 +209,7 @@ Comece com privilégios de administrador e tente novamente.</value>
     <value>Atualizações do Windows Instaladas</value>
   </data>
   <data name="ToolTip_DisableNotifications" xml:space="preserve">
-    <value>Não popups será mostrado quando há novas atualizações disponíveis ou atualizações foram instaladas automaticamente.</value>
+    <value>Nenhuma notificação será mostrada quando novas atualizações estiverem disponíveis ou quando forem instaladas automaticamente.</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
     <value>Não foi possível conectar ao serviço do Windows Update.</value>
@@ -221,7 +221,7 @@ Comece com privilégios de administrador e tente novamente.</value>
     <value>Verificando atualizações ...</value>
   </data>
   <data name="ToolTip_UseMetroStyleForPopup" xml:space="preserve">
-    <value>Se marcado, uma notificação no estilo Metro será usada.
+    <value>Se marcado, uma notificação no estilo Metro será usada. 
 Caso contrário, o balão de notificação do Windows 7 será usado.</value>
   </data>
   <data name="WindowTitle_Settings" xml:space="preserve">
