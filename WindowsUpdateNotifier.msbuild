@@ -55,6 +55,9 @@
       <Fi Include="output\*.txt"/>
       <Fi Include="output\fi\*.dll"/>
       
+	  <Ru Include="output\*.txt"/>
+      <Ru Include="output\ru\*.dll"/>
+	  
 	  <Sv Include="output\*.txt"/>
       <Sv Include="output\sv\*.dll"/>
 	  
@@ -92,7 +95,12 @@
          ZipLevel="9" 
          WorkingDirectory="output"/>
 	
-	<Zip Files="@(Sv)"
+	<Zip Files="@(Ru)"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_ru.zip"
+         ZipLevel="9" 
+         WorkingDirectory="output"/>
+		 
+	 <Zip Files="@(Sv)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_sv.zip"
          ZipLevel="9" 
          WorkingDirectory="output"/>
