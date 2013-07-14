@@ -63,6 +63,9 @@
 	  
 	  <Tr Include="output\*.txt"/>
       <Tr Include="output\tr\*.dll"/>
+	  
+	  <Cs Include="output\*.txt"/>
+      <Cs Include="output\cs\*.dll"/>
     </ItemGroup>
     
     <Zip Files="@(Exe)"
@@ -107,6 +110,11 @@
 	
 	<Zip Files="@(Tr)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_tr.zip"
+         ZipLevel="9" 
+         WorkingDirectory="output"/>
+		 
+	<Zip Files="@(Cs)"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_cs.zip"
          ZipLevel="9" 
          WorkingDirectory="output"/>
   </Target>
