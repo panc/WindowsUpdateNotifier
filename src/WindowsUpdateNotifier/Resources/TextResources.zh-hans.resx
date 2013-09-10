@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Button_Ok" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="Label_AutoInstallComment" xml:space="preserve">
+    <value>這個功能自動下載和安裝 Windows Defender 的更新 (更新 KB{0})。開啟這個功能不會造成其他更新自動安裝。</value>
+  </data>
+  <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
+    <value>若要為 Windows Defender 自動安裝更新，Windows Update 通知程式必須以管理員身份運行。</value>
+  </data>
+  <data name="Label_AutoInstallSettings" xml:space="preserve">
+    <value>自動安裝</value>
+  </data>
+  <data name="Label_AutoInstallWindowsDefenderUpdates" xml:space="preserve">
+    <value>自動安裝 Windows Defender 更新</value>
+  </data>
+  <data name="Label_CommonSettings" xml:space="preserve">
+    <value>常規</value>
+  </data>
+  <data name="Label_DisableNotifications" xml:space="preserve">
+    <value>禁用快顯視窗通知</value>
+  </data>
+  <data name="Label_Help" xml:space="preserve">
+    <value>幫助</value>
+  </data>
+  <data name="Label_HideIcon" xml:space="preserve">
+    <value>在沒有更新可用時隱藏託盤圖示</value>
+  </data>
+  <data name="Label_HowToStartAsAdmin" xml:space="preserve">
+    <value>點擊這裡查看如何操作。</value>
+  </data>
+  <data name="Label_IsLatestVersion" xml:space="preserve">
+    <value>(最新版本)</value>
+  </data>
+  <data name="Label_Minutes" xml:space="preserve">
+    <value>分鐘搜索更新。</value>
+  </data>
+  <data name="Label_NewVersion" xml:space="preserve">
+    <value>(版本 {0} 可用)</value>
+  </data>
+  <data name="Label_RefreshInterval" xml:space="preserve">
+    <value>每</value>
+  </data>
+  <data name="Label_SavingSettingsFailed" xml:space="preserve">
+    <value>保存失敗！
+使用管理員權限啟動此程式試試。</value>
+  </data>
+  <data name="Label_SetAsAutoStartup" xml:space="preserve">
+    <value>在系統啟動時啟動 Windows 更新通知程式</value>
+  </data>
+  <data name="Label_UseMetroStyleForPopup" xml:space="preserve">
+    <value>使用 Metro 風格的快顯視窗</value>
+  </data>
+  <data name="Menu_Exit" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="Menu_NewVersion" xml:space="preserve">
+    <value>版本 {0} 可用！</value>
+  </data>
+  <data name="Menu_NoConnection" xml:space="preserve">
+    <value>沒有互聯網連接。</value>
+  </data>
+  <data name="Menu_Settings" xml:space="preserve">
+    <value>設置</value>
+  </data>
+  <data name="Menu_StartSearch" xml:space="preserve">
+    <value>搜索更新</value>
+  </data>
+  <data name="Menu_WindowsUpdates" xml:space="preserve">
+    <value>Windows Update 控制台</value>
+  </data>
+  <data name="Popup_ClickToOpen" xml:space="preserve">
+    <value>按一下以打開更新面板。</value>
+  </data>
+  <data name="Popup_OneUpdateAvailableMessage" xml:space="preserve">
+    <value>一個更新可用。</value>
+  </data>
+  <data name="Popup_UpdatesAvailableMessage" xml:space="preserve">
+    <value>{0} 個更新可用。</value>
+  </data>
+  <data name="Popup_UpdatesAvailableTitle" xml:space="preserve">
+    <value>Windows 更新可用</value>
+  </data>
+  <data name="Popup_UpdatesInstalledMessage" xml:space="preserve">
+    <value>已安裝新的 Windows 更新。</value>
+  </data>
+  <data name="Popup_UpdatesInstalledTitle" xml:space="preserve">
+    <value>已經安裝 Windows 更新</value>
+  </data>
+  <data name="ToolTip_DisableNotifications" xml:space="preserve">
+    <value>當有可用的新更新或自動安裝更新後，不顯示快顯視窗。</value>
+  </data>
+  <data name="ToolTip_NoConnection" xml:space="preserve">
+    <value>不能建立到 Windows Update 服務的連接。</value>
+  </data>
+  <data name="ToolTip_NothingFound" xml:space="preserve">
+    <value>沒有可用的更新。</value>
+  </data>
+  <data name="ToolTip_Searching" xml:space="preserve">
+    <value>正在搜索更新 ...</value>
+  </data>
+  <data name="ToolTip_UseMetroStyleForPopup" xml:space="preserve">
+    <value>如果選中它，將以 Metro 風格顯示更新通知。
+否則將以 Windows 7 風格顯示更新通知。</value>
+  </data>
+  <data name="WindowTitle_Settings" xml:space="preserve">
+    <value>Windows Update 通知程式</value>
+  </data>
+</root>
