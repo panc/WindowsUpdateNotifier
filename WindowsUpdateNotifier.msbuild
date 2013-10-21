@@ -40,10 +40,22 @@
     <ItemGroup>
       <Exe Include="output\*.exe"/>
     
-      <De Include="output\*.txt"/>
+      <Cs Include="output\*.txt"/>
+      <Cs Include="output\cs\*.dll"/>
+	  
+	  <De Include="output\*.txt"/>
       <De Include="output\de\*.dll"/>
       
-      <It Include="output\*.txt"/>
+      <Es Include="output\*.txt"/>
+      <Es Include="output\es\*.dll"/>
+      
+      <Fi Include="output\*.txt"/>
+      <Fi Include="output\fi\*.dll"/>
+      
+	  <Fr Include="output\*.txt"/>
+      <Fr Include="output\fr\*.dll"/>
+	  
+	  <It Include="output\*.txt"/>
       <It Include="output\it\*.dll"/>
     
       <Nl Include="output\*.txt"/>
@@ -52,10 +64,7 @@
       <Pt Include="output\*.txt"/>
       <Pt Include="output\pt\*.dll"/>
     
-      <Fi Include="output\*.txt"/>
-      <Fi Include="output\fi\*.dll"/>
-      
-	  <Ru Include="output\*.txt"/>
+      <Ru Include="output\*.txt"/>
       <Ru Include="output\ru\*.dll"/>
 	  
 	  <Sv Include="output\*.txt"/>
@@ -63,12 +72,6 @@
 	  
 	  <Tr Include="output\*.txt"/>
       <Tr Include="output\tr\*.dll"/>
-	  
-	  <Cs Include="output\*.txt"/>
-      <Cs Include="output\cs\*.dll"/>
-	  
-	  <Fr Include="output\*.txt"/>
-      <Fr Include="output\fr\*.dll"/>
 	  
 	  <ZhHans Include="output\*.txt"/>
       <ZhHans Include="output\zh-hans\*.dll"/>
@@ -82,8 +85,18 @@
          ZipLevel="9" 
          WorkingDirectory="output"/>
   
-    <Zip Files="@(De)"
+    <Zip Files="@(Cs)"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_cs.zip"
+         ZipLevel="9" 
+         WorkingDirectory="output"/>
+		 
+	<Zip Files="@(De)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_de.zip"
+         ZipLevel="9" 
+         WorkingDirectory="output"/>
+		 
+	<Zip Files="@(Es)"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_es.zip"
          ZipLevel="9" 
          WorkingDirectory="output"/>
 		 
@@ -92,7 +105,12 @@
          ZipLevel="9" 
          WorkingDirectory="output"/>
     
-    <Zip Files="@(It)"
+    <Zip Files="@(Fr)"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_fr.zip"
+         ZipLevel="9" 
+         WorkingDirectory="output"/>
+		 
+	<Zip Files="@(It)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_it.zip"
          ZipLevel="9" 
          WorkingDirectory="output"/>
@@ -112,7 +130,7 @@
          ZipLevel="9" 
          WorkingDirectory="output"/>
 		 
-	 <Zip Files="@(Sv)"
+	<Zip Files="@(Sv)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_sv.zip"
          ZipLevel="9" 
          WorkingDirectory="output"/>
@@ -122,22 +140,12 @@
          ZipLevel="9" 
          WorkingDirectory="output"/>
 		 
-	<Zip Files="@(Cs)"
-         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_cs.zip"
-         ZipLevel="9" 
-         WorkingDirectory="output"/>
-		 
-	 <Zip Files="@(Fr)"
-         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_fr.zip"
-         ZipLevel="9" 
-         WorkingDirectory="output"/>
-		 
-	 <Zip Files="@(ZhHans)"
+	<Zip Files="@(ZhHans)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_zh-hans.zip"
          ZipLevel="9" 
          WorkingDirectory="output"/>
 		 
-	 <Zip Files="@(ZhHant)"
+	<Zip Files="@(ZhHant)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_zh-hant.zip"
          ZipLevel="9" 
          WorkingDirectory="output"/>
