@@ -121,19 +121,19 @@
     <value>Annuleren</value>
   </data>
   <data name="Button_Ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
   </data>
   <data name="Label_AutoInstallComment" xml:space="preserve">
-    <value>Deze functie downloadt automatisch en installeert de updates voor de Windows Defender (updates voor KB{0}). Geen enkele andere update zal worden beïnvloed door enabeling deze functie.</value>
+    <value>Deze funktie download en installeert automatisch Windows Defender updates (updates voor KB{0}). Andere updates worden niet beïnvloed door instelling van deze funktie.</value>
   </data>
   <data name="Label_AutoInstallNotAvailable" xml:space="preserve">
-    <value>Om automatische installatie van de updates voor de Windows Defender, moet de Windows Update Notifier worden ingesteld om te draaien als beheerder.</value>
+    <value>Om automatisch Windows Defender updates te installeren, dient dit programma te worden uitgevoerd als administrator.</value>
   </data>
   <data name="Label_AutoInstallSettings" xml:space="preserve">
-    <value>Automatische Installatie</value>
+    <value>Automatische installatie</value>
   </data>
   <data name="Label_AutoInstallWindowsDefenderUpdates" xml:space="preserve">
-    <value>Automatisch installeren updates voor Windows Defender</value>
+    <value>Automatisch Windows Defender updates installeren</value>
   </data>
   <data name="Label_CommonSettings" xml:space="preserve">
     <value>Algemeen</value>
@@ -145,13 +145,13 @@
     <value>Help</value>
   </data>
   <data name="Label_HideIcon" xml:space="preserve">
-    <value>Systeemvakpictogram verbergen wanneer er geen updates beschikbaar zijn.</value>
+    <value>Systeemvak-pictogram verbergen indien geen updates beschikbaar</value>
   </data>
   <data name="Label_HowToStartAsAdmin" xml:space="preserve">
-    <value>Zie hier, hoe dit te bereiken.</value>
+    <value>Kijk hier, hoe dat bereikt kan worden.</value>
   </data>
   <data name="Label_IsLatestVersion" xml:space="preserve">
-    <value>(Laatste versie)</value>
+    <value>(Nieuwste versie)</value>
   </data>
   <data name="Label_Minutes" xml:space="preserve">
     <value>minuten.</value>
@@ -160,17 +160,17 @@
     <value>(Versie {0} beschikbaar)</value>
   </data>
   <data name="Label_RefreshInterval" xml:space="preserve">
-    <value>Controleer updates elke</value>
+    <value>Zoek naar updates elke</value>
   </data>
   <data name="Label_SavingSettingsFailed" xml:space="preserve">
     <value>Opslaan mislukt!
 Begin met admin privileges en probeer het opnieuw.</value>
   </data>
   <data name="Label_SetAsAutoStartup" xml:space="preserve">
-    <value>Windows Update waarschuwingen starten bij systeemstart.</value>
+    <value>Start Windows Update waarschuwingen bij opstarten systeem</value>
   </data>
   <data name="Label_UseMetroStyleForPopup" xml:space="preserve">
-    <value>Gebruik de metro stijl voor het waarschuwingsvenster</value>
+    <value>Gebruik Metro-stijl berichtenvenster</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Afsluiten</value>
@@ -179,19 +179,19 @@ Begin met admin privileges en probeer het opnieuw.</value>
     <value>Versie {0} beschikbaar!</value>
   </data>
   <data name="Menu_NoConnection" xml:space="preserve">
-    <value>Geen internetverbinding</value>
+    <value>Geen internet-verbinding.</value>
   </data>
   <data name="Menu_Settings" xml:space="preserve">
     <value>Instellingen</value>
   </data>
   <data name="Menu_StartSearch" xml:space="preserve">
-    <value>Zoek updates</value>
+    <value>Zoek naar updates</value>
   </data>
   <data name="Menu_WindowsUpdates" xml:space="preserve">
-    <value>Venster voor Windows Update instellingen.</value>
+    <value>Configuratiescherm - Windows Update</value>
   </data>
   <data name="Popup_ClickToOpen" xml:space="preserve">
-    <value>Klik om het update venster te openen.</value>
+    <value>Klik om naar Windows Update te gaan.</value>
   </data>
   <data name="Popup_OneUpdateAvailableMessage" xml:space="preserve">
     <value>Een update is beschikbaar.</value>
@@ -200,28 +200,29 @@ Begin met admin privileges en probeer het opnieuw.</value>
     <value>{0} updates zijn beschikbaar.</value>
   </data>
   <data name="Popup_UpdatesAvailableTitle" xml:space="preserve">
-    <value>Er zijn Windows updates beschikbaar</value>
+    <value>Windows Updates zijn beschikbaar.</value>
   </data>
   <data name="Popup_UpdatesInstalledMessage" xml:space="preserve">
     <value>Nieuwe Windows Updates zijn geïnstalleerd.</value>
   </data>
   <data name="Popup_UpdatesInstalledTitle" xml:space="preserve">
-    <value>Windows-updates geïnstalleerd</value>
+    <value>Windows Updates zijn geïnstalleerd.</value>
   </data>
   <data name="ToolTip_DisableNotifications" xml:space="preserve">
-    <value>Geen popups worden getoond wanneer er nieuwe updates beschikbaar zijn of updates zijn automatisch geïnstalleerd.</value>
+    <value>Geen waarschuwingen worden getoond wanneer nieuwe updates beschikbaar zijn, of automatisch zijn geïnstalleerd.</value>
   </data>
   <data name="ToolTip_NoConnection" xml:space="preserve">
-    <value>Er kan geen verbinding worden gemaakt met de Windows Update Service.</value>
+    <value>Er kan geen verbinding worden gemaakt met de WindowsUpdate-service.</value>
   </data>
   <data name="ToolTip_NothingFound" xml:space="preserve">
-    <value>Er zijn geen Windows updates beschikbaar.</value>
+    <value>Geen updates beschikbaar.</value>
   </data>
   <data name="ToolTip_Searching" xml:space="preserve">
-    <value>Updates zoeken ...</value>
+    <value>Zoeken naar updates …</value>
   </data>
   <data name="ToolTip_UseMetroStyleForPopup" xml:space="preserve">
-    <value>Indien aangevinkt wordt een venster in metro stijl gebruikt voor update waarschuwingen. Anders zal een Windows 7 ballontip gebruikt worden.</value>
+    <value>Indien aangevinkt, wordt een Metro-stijl venster gebruikt voor update-waarschuwingen.
+Anders wordt een Windows 7 ballon-tip gebruikt.</value>
   </data>
   <data name="WindowTitle_Settings" xml:space="preserve">
     <value>Windows Update waarschuwingen</value>
