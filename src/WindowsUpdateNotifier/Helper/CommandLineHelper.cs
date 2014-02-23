@@ -6,9 +6,12 @@ namespace WindowsUpdateNotifier
     public class CommandLineHelper
     {
         public CommandLineHelper()
+            : this(Environment.GetCommandLineArgs())
         {
-            var args = Environment.GetCommandLineArgs();
+        }
 
+        public CommandLineHelper(string[] args)
+        {
             UseDefaultSettings = args.Any(x => _CheckArgument(x, "-defaultSettings", "-d"));
             CloseAfterCheck = args.Any(x => _CheckArgument(x, "-closeAfterCheck", "-c"));
         }

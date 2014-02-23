@@ -333,13 +333,13 @@
     <Resource Include="Resources\Images\Help.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="WindowsUpdateNotifier.snk" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\Warning.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\SecurityShieldGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WindowsUpdateNotifier.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
