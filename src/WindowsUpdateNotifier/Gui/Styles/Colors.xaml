@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:d="http://schemas.microsoft.com/expression/interactivedesigner/2006" 
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="d">
+
+    <!-- Control colors -->
+    <SolidColorBrush x:Key="WindowColor">#FEFAF9F9</SolidColorBrush>
+    <SolidColorBrush x:Key="ContentAreaColorDark">#FFEFF3FD</SolidColorBrush>
+
+    <Color x:Key="DisabledControlDarkColor">#FFC5CBF9</Color>
+    <Color x:Key="DisabledForegroundColor">#FF848484</Color>
+
+    <Color x:Key="ControlLightColor">#EFF3FD</Color>
+    <Color x:Key="ControlMediumColor">#EFF3FD</Color>
+
+    <Color x:Key="ControlMouseOverColor">#E1E5EF</Color>
+    <Color x:Key="ControlPressedColor">#D3D8E4</Color>
+
+    <SolidColorBrush x:Key="LabelForegroundColor">#FF595959</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="ErrorColor">#FFE14C4C</SolidColorBrush>
+
+    <LinearGradientBrush x:Key="SeparatorColor" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+        <GradientStop Color="#FFCCD9EA"/>
+        <GradientStop Color="#FFF1F5FB" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Border colors -->
+    <Color x:Key="BorderLightColor">#FFCCCCCC</Color>
+    <Color x:Key="BorderDarkColor">#FF444444</Color>
+
+    <Color x:Key="PressedBorderLightColor">#FF888888</Color>
+    <Color x:Key="PressedBorderDarkColor">#FF444444</Color>
+
+    <Color x:Key="DisabledBorderDarkColor">#FF888888</Color>
+    <Color x:Key="DefaultBorderBrushDarkColor">Black</Color>
+
+    <Color x:Key="WindowBorderColor">Black</Color>
+
+    <SolidColorBrush x:Key="WindowBorderOuter">#FF5284BC</SolidColorBrush>
+    <SolidColorBrush x:Key="WindowBorderMiddle">#FF6BADF6</SolidColorBrush>
+    <SolidColorBrush x:Key="WindowBorderInner">#FF5B93D1</SolidColorBrush>
+    
+</ResourceDictionary>

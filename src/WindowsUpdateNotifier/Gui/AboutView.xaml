@@ -1,19 +1,21 @@
-﻿<Window
+﻿<Window x:Class="WindowsUpdateNotifier.AboutView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:WindowsUpdateNotifier"
-        xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" xmlns:Converter="clr-namespace:WindowsUpdateNotifier.Converter" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="WindowsUpdateNotifier.AboutView"
-        Title="AboutWindow" WindowStartupLocation="Manual"
-        Width="300" Left="0" Top="0" 
+        xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" 
+        xmlns:Converter="clr-namespace:WindowsUpdateNotifier.Converter" 
+        Title="AboutWindow" 
+        WindowStartupLocation="Manual"
+        Left="0" Top="0" 
+        Width="300"
         SizeToContent="Height"
         ShowInTaskbar="False" Topmost="True"
-        Background="#FEFAF9F9" WindowStyle="None" AllowsTransparency="True" Loaded="_OnWindowLoaded">
+        Background="{StaticResource WindowColor}" WindowStyle="None" AllowsTransparency="True" Loaded="_OnWindowLoaded">
 
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/ResourceDictionary.xaml"/>
-                <ResourceDictionary Source="Styles/Button.xaml"/>
+                <ResourceDictionary Source="Styles/Controls.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         
             <Converter:BooleanToVisibilityConverter x:Key="BooleanConverter"/>
@@ -28,9 +30,10 @@
                               IsNewVersionAvailable="True"/>
     </Window.DataContext>
 
-    <Border BorderBrush="#5284BC" BorderThickness="1">
-        <Border BorderBrush="#6BADF6" BorderThickness="5">
-            <Border BorderBrush="#5B93D1" BorderThickness="1">
+    <Border BorderBrush="{StaticResource WindowBorderOuter}" BorderThickness="1">
+        <Border BorderBrush="{StaticResource WindowBorderMiddle}" BorderThickness="5">
+            <Border BorderBrush="{StaticResource WindowBorderInner}" BorderThickness="1">
+                
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60"/>
@@ -40,55 +43,56 @@
 
                     <DockPanel Grid.Row="0">
                         <Image Source="../Resources/Images/WindowsUpdate.ico" 
-							Width="32" Height="32" Margin="10,5,0,0"
-							DockPanel.Dock="Left"/>
+							Width="32" Height="32" Margin="10,5,0,0" DockPanel.Dock="Left"/>
 
-                        <Label Content="{x:Static p:TextResources.WindowTitle_Settings}" Foreground="#505050" 
-							FontSize="18" FontWeight="Light" Margin="5,5,0,0" FontFamily="Segoe UI" Height="32" />
+                        <Label Content="{x:Static p:TextResources.WindowTitle_Settings}" FontSize="18" Margin="5,5,0,0" Height="32" />
                     </DockPanel>
 
-                    <DockPanel Grid.Row="1">
-                        <DockPanel.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                                <GradientStop Color="#FFCCD9EA"/>
-                                <GradientStop Color="#FFF1F5FB" Offset="1"/>
-                            </LinearGradientBrush>
-                        </DockPanel.Background>
-                    </DockPanel>
+                    <DockPanel Grid.Row="1" Background="{StaticResource SeparatorColor}" />
 
-                    <DockPanel Grid.Row="2" Background="#EFF3FD">
+                    <DockPanel Grid.Row="2" Background="{StaticResource ContentAreaColorDark}">
                         <DockPanel>
                             <StackPanel>
 
-                                <Button Style="{DynamicResource MenuButtonStyle}" Content="Search for updates"/>
-                                <Button Style="{DynamicResource MenuButtonStyle}" Content="Settings"/>
+                                <Button Style="{DynamicResource MenuButtonStyle}" Content="{x:Static p:TextResources.Menu_StartSearch}"/>
+                                <Button Style="{DynamicResource MenuButtonStyle}" Content="{x:Static p:TextResources.Menu_Settings}"/>
+                                <Button Style="{DynamicResource MenuButtonStyle}" Content="{x:Static p:TextResources.Menu_WindowsUpdates}"/>
+                                <Button Style="{DynamicResource MenuButtonStyle}" Content="{x:Static p:TextResources.Menu_Exit}"/>
                                 
-                                <StackPanel Margin="20, 20, 0, 10">
-                                    <DockPanel>
-                                        <Label Foreground="#595959" Margin="0" FontFamily="Segoe UI" FontSize="13" FontWeight="Light" Padding="0" 
-											Content="{Binding VersionLabel}"/>
+                                <StackPanel Margin="20, 20, 20, 10" HorizontalAlignment="Center">
+                                    <DockPanel HorizontalAlignment="Center">
+                                        <Label Margin="0" Content="{Binding VersionLabel}"/>
 
-                                        <Label Foreground="#595959" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" Padding="0" FontWeight="Light"
-											Visibility="{Binding IsLatestVersion, Converter={StaticResource BooleanConverter}}"
-											Content="{Binding NewVersionLabel}"/>
+                                        <Label Margin="10,0,0,0" Content="{Binding NewVersionLabel}"
+											Visibility="{Binding IsLatestVersion, Converter={StaticResource BooleanConverter}}" />
 
-                                        <TextBlock Foreground="#595959" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" FontWeight="Medium" Padding="0"
-											Visibility="{Binding IsNewVersionAvailable, Converter={StaticResource BooleanConverter}}"><Hyperlink Command="{Binding OpenUpdatePageCommand}" Foreground="#8c8c8c"><InlineUIContainer>
-													<TextBlock Text="{Binding NewVersionLabel}" />
-												</InlineUIContainer></Hyperlink></TextBlock>
+                                        <Label Margin="10,0,0,0" FontWeight="Medium"
+                                               Visibility="{Binding IsNewVersionAvailable, Converter={StaticResource BooleanConverter}}">
+                                            <Hyperlink Command="{Binding OpenUpdatePageCommand}" Foreground="{StaticResource LabelForegroundColor}">
+                                                <InlineUIContainer>
+                                                    <TextBlock Text="{Binding NewVersionLabel}" />
+                                                </InlineUIContainer>
+                                            </Hyperlink>
+                                        </Label>
                                     </DockPanel>
 
-                                    <Label Foreground="#595959" Margin="0,2,0,0" FontFamily="Segoe UI" FontSize="13" FontWeight="Light" Padding="0"
-										Content="{Binding CopyrightLabel}"/>
+                                    <Label Margin="0,2,0,0" Content="{Binding CopyrightLabel}" HorizontalAlignment="Center"/>
 
-                                    <TextBlock Margin="0,10,0,0"><Hyperlink Command="{Binding OpenHomepageCommand}"><InlineUIContainer>
-												<TextBlock Text="{Binding HomepageLink}" />
-											</InlineUIContainer></Hyperlink></TextBlock>
+                                    <Label Margin="0,5,0,0" HorizontalAlignment="Center">
+                                        <Hyperlink Command="{Binding OpenHomepageCommand}">
+                                            <InlineUIContainer>
+                                                <TextBlock Text="{Binding HomepageLink}" />
+                                            </InlineUIContainer>
+                                        </Hyperlink>
+                                    </Label>
+
                                 </StackPanel>
                             </StackPanel>
                         </DockPanel>
                     </DockPanel>
+                
                 </Grid>
+                
             </Border>
         </Border>
     </Border>
