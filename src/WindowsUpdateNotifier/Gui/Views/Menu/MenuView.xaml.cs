@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace WindowsUpdateNotifier
 {
-    public partial class AboutView
+    public partial class MenuView
     {
-        public AboutView()
+        public MenuView()
         {
             InitializeComponent();
         }

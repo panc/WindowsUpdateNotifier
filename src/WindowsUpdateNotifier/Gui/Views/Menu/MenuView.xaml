@@ -1,4 +1,4 @@
-﻿<Window x:Class="WindowsUpdateNotifier.AboutView"
+﻿<Window x:Class="WindowsUpdateNotifier.MenuView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:WindowsUpdateNotifier"
@@ -15,7 +15,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Controls.xaml"/>
+                <ResourceDictionary Source="../../Styles/Controls.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         
             <Converter:BooleanToVisibilityConverter x:Key="BooleanConverter"/>
@@ -23,7 +23,7 @@
     </Window.Resources>
 
     <Window.DataContext>
-        <local:AboutViewModel VersionLabel="Version 1.1.0" 
+        <local:MenuViewModel VersionLabel="Version 1.1.0" 
                               CopyrightLabel="Copyright © Christoph Pangerl 2013" 
                               HomepageLink="wun.codeplex.com"
                               NewVersionLabel="(Version 9.9.9 available)"
@@ -42,7 +42,7 @@
                     </Grid.RowDefinitions>
 
                     <DockPanel Grid.Row="0">
-                        <Image Source="../Resources/Images/WindowsUpdate.ico" 
+                        <Image Source="../../../Resources/Images/WindowsUpdate.ico" 
 							Width="32" Height="32" Margin="10,5,0,0" DockPanel.Dock="Left"/>
 
                         <Label Content="{x:Static p:TextResources.WindowTitle_Settings}" FontSize="18" Margin="5,5,0,0" Height="32" />
@@ -54,10 +54,10 @@
                         <DockPanel>
                             <StackPanel>
 
-                                <Button Style="{DynamicResource MenuButtonStyle}" Content="{x:Static p:TextResources.Menu_StartSearch}"/>
-                                <Button Style="{DynamicResource MenuButtonStyle}" Content="{x:Static p:TextResources.Menu_Settings}"/>
-                                <Button Style="{DynamicResource MenuButtonStyle}" Content="{x:Static p:TextResources.Menu_WindowsUpdates}"/>
-                                <Button Style="{DynamicResource MenuButtonStyle}" Content="{x:Static p:TextResources.Menu_Exit}"/>
+                                <Button Style="{DynamicResource MenuButtonStyle}" Content="{x:Static p:TextResources.Menu_StartSearch}" Command="{Binding SearchForUpdatesCommand}"/>
+                                <Button Style="{DynamicResource MenuButtonStyle}" Content="{x:Static p:TextResources.Menu_Settings}" Command="{Binding OpenSettingsCommand}"/>
+                                <Button Style="{DynamicResource MenuButtonStyle}" Content="{x:Static p:TextResources.Menu_WindowsUpdates}" Command="{Binding OpenWindowsUpdateControlPanelCommand}"/>
+                                <Button Style="{DynamicResource MenuButtonStyle}" Content="{x:Static p:TextResources.Menu_Exit}" Command="{Binding ShutdownCommand}"/>
                                 
                                 <StackPanel Margin="20, 20, 20, 10" HorizontalAlignment="Center">
                                     <DockPanel HorizontalAlignment="Center">

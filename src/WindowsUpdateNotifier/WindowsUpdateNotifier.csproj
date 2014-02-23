@@ -69,8 +69,8 @@
     </ApplicationDefinition>
     <Compile Include="AutoStartup\StartupHelper.cs" />
     <Compile Include="EntryPoint\AppSettings.cs" />
-    <Compile Include="Gui\AboutView.xaml.cs">
-      <DependentUpon>AboutView.xaml</DependentUpon>
+    <Compile Include="Gui\Views\Menu\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gui\Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Helper\UacHelper.cs" />
@@ -84,11 +84,11 @@
     <Compile Include="Gui\Behavior\DataTriggerBehavior.cs" />
     <Compile Include="Gui\Behavior\WindowBehavior.cs" />
     <Compile Include="Gui\Command\SimpleCommand.cs" />
-    <Compile Include="Gui\SettingsView.xaml.cs">
+    <Compile Include="Gui\Views\Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helper\UiThreadHelper.cs" />
-    <Compile Include="Model\AboutViewModel.cs" />
+    <Compile Include="Gui\Views\Menu\MenuViewModel.cs" />
     <Compile Include="Resources\TextResources.ja.Designer.cs">
       <DependentUpon>TextResources.ja.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -165,8 +165,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="AutoStartup\FileIcon.cs" />
-    <Compile Include="Model\PopupViewModel.cs" />
-    <Compile Include="Model\SettingsViewModel.cs" />
+    <Compile Include="Gui\Views\Popup\PopupViewModel.cs" />
+    <Compile Include="Gui\Views\Settings\SettingsViewModel.cs" />
     <Compile Include="AutoStartup\ShellLink.cs" />
     <Compile Include="Resources\TextResources.Designer.cs">
       <DependentUpon>TextResources.resx</DependentUpon>
@@ -187,7 +187,7 @@
     <Compile Include="WindowsUpdate\UpdateState.cs" />
     <Compile Include="WindowsUpdate\WindowsUpdateManager.cs" />
     <Compile Include="WindowsUpdate\WmiWatcher.cs" />
-    <Page Include="Gui\AboutView.xaml">
+    <Page Include="Gui\Views\Menu\MenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -199,11 +199,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Gui\SettingsView.xaml">
+    <Page Include="Gui\Views\Settings\SettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Gui\PopupView.xaml">
+    <Page Include="Gui\Views\Popup\PopupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -213,7 +213,7 @@
     </Compile>
     <Compile Include="Gui\SystemTrayIcon.cs" />
     <Compile Include="EntryPoint\ApplicationRuntime.cs" />
-    <Compile Include="Gui\PopupView.xaml.cs">
+    <Compile Include="Gui\Views\Popup\PopupView.xaml.cs">
       <DependentUpon>PopupView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -350,6 +350,7 @@
   <ItemGroup>
     <None Include="WindowsUpdateNotifier.snk" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
