@@ -2,13 +2,22 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:WindowsUpdateNotifier"
-        xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" xmlns:Converter="clr-namespace:WindowsUpdateNotifier.Converter" x:Class="WindowsUpdateNotifier.AboutView"
+        xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" xmlns:Converter="clr-namespace:WindowsUpdateNotifier.Converter" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="WindowsUpdateNotifier.AboutView"
         Title="AboutWindow" WindowStartupLocation="Manual"
-        Height="160" Width="300" Left="0" Top="0" ShowInTaskbar="False" Topmost="True"
+        Width="300" Left="0" Top="0" 
+        SizeToContent="Height"
+        ShowInTaskbar="False" Topmost="True"
         Background="#FEFAF9F9" WindowStyle="None" AllowsTransparency="True" Loaded="_OnWindowLoaded">
 
     <Window.Resources>
-        <Converter:BooleanToVisibilityConverter x:Key="BooleanConverter"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/ResourceDictionary.xaml"/>
+                <ResourceDictionary Source="Styles/Button.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        
+            <Converter:BooleanToVisibilityConverter x:Key="BooleanConverter"/>
+        </ResourceDictionary>
     </Window.Resources>
 
     <Window.DataContext>
@@ -35,7 +44,7 @@
 							DockPanel.Dock="Left"/>
 
                         <Label Content="{x:Static p:TextResources.WindowTitle_Settings}" Foreground="#505050" 
-                               FontSize="18" FontWeight="Light" Margin="5,5,0,0" FontFamily="Segoe UI" Height="32" />
+							FontSize="18" FontWeight="Light" Margin="5,5,0,0" FontFamily="Segoe UI" Height="32" />
                     </DockPanel>
 
                     <DockPanel Grid.Row="1">
@@ -48,33 +57,34 @@
                     </DockPanel>
 
                     <DockPanel Grid.Row="2" Background="#EFF3FD">
-                        <DockPanel Margin="45, 10, 0, 0">
+                        <DockPanel>
                             <StackPanel>
-                                <DockPanel>
-                                    <Label Foreground="#595959" Margin="0" FontFamily="Segoe UI" FontSize="13" FontWeight="Light" Padding="0" 
-										Content="{Binding VersionLabel}"/>
 
-                                    <Label Foreground="#595959" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" Padding="0" FontWeight="Light"
-                                        Visibility="{Binding IsLatestVersion, Converter={StaticResource BooleanConverter}}"
-										Content="{Binding NewVersionLabel}"/>
+                                <Button Style="{DynamicResource MenuButtonStyle}" Content="Search for updates"/>
+                                <Button Style="{DynamicResource MenuButtonStyle}" Content="Settings"/>
+                                
+                                <StackPanel Margin="20, 20, 0, 10">
+                                    <DockPanel>
+                                        <Label Foreground="#595959" Margin="0" FontFamily="Segoe UI" FontSize="13" FontWeight="Light" Padding="0" 
+											Content="{Binding VersionLabel}"/>
 
-                                    <TextBlock Foreground="#595959" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" FontWeight="Medium" Padding="0"
-										Visibility="{Binding IsNewVersionAvailable, Converter={StaticResource BooleanConverter}}">
-                                        
-                                        <Hyperlink Command="{Binding OpenUpdatePageCommand}" Foreground="#8c8c8c">
-										    <TextBlock Text="{Binding NewVersionLabel}" />
-                                        </Hyperlink>
-                                    </TextBlock>
-                                </DockPanel>
+                                        <Label Foreground="#595959" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" Padding="0" FontWeight="Light"
+											Visibility="{Binding IsLatestVersion, Converter={StaticResource BooleanConverter}}"
+											Content="{Binding NewVersionLabel}"/>
 
-                                <Label Foreground="#595959" Margin="0,2,0,0" FontFamily="Segoe UI" FontSize="13" FontWeight="Light" Padding="0"
-									Content="{Binding CopyrightLabel}"/>
+                                        <TextBlock Foreground="#595959" Margin="10,0,0,0" FontFamily="Segoe UI" FontSize="13" FontWeight="Medium" Padding="0"
+											Visibility="{Binding IsNewVersionAvailable, Converter={StaticResource BooleanConverter}}"><Hyperlink Command="{Binding OpenUpdatePageCommand}" Foreground="#8c8c8c"><InlineUIContainer>
+													<TextBlock Text="{Binding NewVersionLabel}" />
+												</InlineUIContainer></Hyperlink></TextBlock>
+                                    </DockPanel>
 
-                                <TextBlock Margin="0,10,0,0">
-                                    <Hyperlink Command="{Binding OpenHomepageCommand}">
-										<TextBlock Text="{Binding HomepageLink}" />
-                                    </Hyperlink>
-                                </TextBlock>
+                                    <Label Foreground="#595959" Margin="0,2,0,0" FontFamily="Segoe UI" FontSize="13" FontWeight="Light" Padding="0"
+										Content="{Binding CopyrightLabel}"/>
+
+                                    <TextBlock Margin="0,10,0,0"><Hyperlink Command="{Binding OpenHomepageCommand}"><InlineUIContainer>
+												<TextBlock Text="{Binding HomepageLink}" />
+											</InlineUIContainer></Hyperlink></TextBlock>
+                                </StackPanel>
                             </StackPanel>
                         </DockPanel>
                     </DockPanel>

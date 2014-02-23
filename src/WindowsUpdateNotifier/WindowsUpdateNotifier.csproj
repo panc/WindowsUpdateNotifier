@@ -47,6 +47,7 @@
     <AssemblyOriginatorKeyFile>WindowsUpdateNotifier.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Drawing" />
@@ -187,6 +188,14 @@
     <Compile Include="WindowsUpdate\WindowsUpdateManager.cs" />
     <Compile Include="WindowsUpdate\WmiWatcher.cs" />
     <Page Include="Gui\AboutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\Styles\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\Styles\ResourceDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
