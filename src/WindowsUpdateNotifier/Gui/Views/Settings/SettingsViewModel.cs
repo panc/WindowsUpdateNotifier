@@ -6,7 +6,7 @@ using WindowsUpdateNotifier.Resources;
 
 namespace WindowsUpdateNotifier
 {
-    public class SettingsViewModel : IDataErrorInfo, INotifyPropertyChanged
+    public class SettingsViewModel : ViewModel, IDataErrorInfo
     {
         private int mRefreshInterval;
         private bool mSaveFailed;
@@ -75,7 +75,7 @@ namespace WindowsUpdateNotifier
             set
             {
                 mRefreshInterval = value;
-                OnPropertyChanged("RefreshInterval");
+                RaisePropertyChanged(() => RefreshInterval);
             }
         }
 
@@ -85,7 +85,7 @@ namespace WindowsUpdateNotifier
             set
             {
                 mSaveFailed = value;
-                OnPropertyChanged("SaveFailed");
+                RaisePropertyChanged(() => SaveFailed);
             }
         }
         
@@ -125,14 +125,6 @@ namespace WindowsUpdateNotifier
         }
 
         public string Error { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         #endregion
     }

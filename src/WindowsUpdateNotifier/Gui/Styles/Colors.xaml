@@ -8,7 +8,7 @@
     <SolidColorBrush x:Key="WindowColor">#FEFAF9F9</SolidColorBrush>
     <SolidColorBrush x:Key="ContentAreaColorDark">#FFEFF3FD</SolidColorBrush>
 
-    <Color x:Key="DisabledControlDarkColor">#FFC5CBF9</Color>
+    <Color x:Key="DisabledControlDarkColor">#FFEFF3FD</Color>
     <Color x:Key="DisabledForegroundColor">#FF848484</Color>
 
     <Color x:Key="ControlLightColor">#EFF3FD</Color>

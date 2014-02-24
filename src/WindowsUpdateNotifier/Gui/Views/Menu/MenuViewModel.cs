@@ -1,11 +1,15 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Input;
 using WindowsUpdateNotifier.Resources;
 
 namespace WindowsUpdateNotifier
 {
-    public class MenuViewModel
+    public class MenuViewModel : ViewModel
     {
+        private string mUpdateStateText;
+        private bool mIsSearchForUpdatesEnabled;
+
         public MenuViewModel()
         {
         }
@@ -13,6 +17,7 @@ namespace WindowsUpdateNotifier
         public MenuViewModel(IApplication application, VersionHelper versionHelper)
         {
             HomepageLink = "http://wun.codeplex.com";
+            UpdateStateText = TextResources.ToolTip_NothingFound;
             SetVersionInfo(versionHelper);
 
             OpenUpdatePageCommand = new SimpleCommand(application.OpenDownloadPage);
@@ -65,8 +70,24 @@ namespace WindowsUpdateNotifier
 
         public string HomepageLink { get; set; }
 
-        public bool IsSearchForUpdatesEnabled { get; set; }
+        public bool IsSearchForUpdatesEnabled
+        {
+            get { return mIsSearchForUpdatesEnabled; }
+            set
+            {
+                mIsSearchForUpdatesEnabled = value;
+                RaisePropertyChanged(() => IsSearchForUpdatesEnabled);
+            }
+        }
 
-        public string UpdateStateText { get; set; }
+        public string UpdateStateText
+        {
+            get { return mUpdateStateText; }
+            set
+            {
+                mUpdateStateText = value;
+                RaisePropertyChanged(() => UpdateStateText);
+            }
+        }
     }
 }

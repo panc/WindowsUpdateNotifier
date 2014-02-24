@@ -69,6 +69,7 @@
     </ApplicationDefinition>
     <Compile Include="AutoStartup\StartupHelper.cs" />
     <Compile Include="EntryPoint\AppSettings.cs" />
+    <Compile Include="Gui\BaseTypes\ViewModel.cs" />
     <Compile Include="Gui\Views\Menu\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>

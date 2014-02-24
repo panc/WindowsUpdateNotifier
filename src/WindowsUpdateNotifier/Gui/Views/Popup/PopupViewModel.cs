@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace WindowsUpdateNotifier
 {
-    public class PopupViewModel
+    public class PopupViewModel : ViewModel
     {
         public PopupViewModel()
         {

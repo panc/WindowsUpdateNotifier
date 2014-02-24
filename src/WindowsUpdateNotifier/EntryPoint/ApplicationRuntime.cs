@@ -81,11 +81,8 @@ namespace WindowsUpdateNotifier
             mTrayIcon.SetupToolTip(TextResources.ToolTip_Searching);
             mTrayIcon.SetIcon(UpdateState.Searching);
 
-            if (mMenuViewModel != null)
-            {
-                mMenuViewModel.IsSearchForUpdatesEnabled = false;
-                mMenuViewModel.UpdateStateText = TextResources.ToolTip_Searching;
-            }
+            mMenuViewModel.IsSearchForUpdatesEnabled = false;
+            mMenuViewModel.UpdateStateText = TextResources.ToolTip_Searching;
         }
 
         public void Shutdown()
