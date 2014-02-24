@@ -90,6 +90,12 @@ namespace WindowsUpdateNotifier
 
         public void Shutdown()
         {
+            var view = mMenuView;
+            mMenuView = null;
+
+            if (view != null)
+                view.Close();
+            
             Application.Current.Shutdown();
         }
 
@@ -180,7 +186,7 @@ namespace WindowsUpdateNotifier
             }
 
             mTrayIcon.SetupToolTip(toolTip);
-            mTrayIcon.SetIcon(result.UpdateState);
+            mTrayIcon.SetIcon(result.UpdateState, result.AvailableUpdates);
 
             mMenuViewModel.IsSearchForUpdatesEnabled = result.UpdateState != UpdateState.Searching;
             mMenuViewModel.UpdateStateText = message;

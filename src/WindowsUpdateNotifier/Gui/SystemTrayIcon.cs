@@ -9,22 +9,23 @@ namespace WindowsUpdateNotifier
     {
         private readonly NotifyIcon mNotifyIcon;
         private readonly Timer mAnimationTimer;
-        private int mSearchIconIndex;
         private readonly BalloonTipHelper mBallonTipHelper;
+
+        private int mSearchIconIndex;
 
         public SystemTrayIcon(IApplication application)
         {
             mNotifyIcon = new NotifyIcon
             {
                 Icon = UpdateState.NoUpdatesAvailable.GetIcon(),
-                Visible = true,
+                Visible = true
             };
 
             mNotifyIcon.MouseUp += (s, e) => application.OpenMenuDialog();
             mNotifyIcon.BalloonTipClicked += (s, e) => application.OpenWindowsUpdateControlPanel();
 
             mAnimationTimer = new Timer { Interval = 250 };
-            mAnimationTimer.Tick += (x, y) => _OnRefreshSearchIcon();
+            mAnimationTimer.Tick += (x, y) => _RefreshSearchIcon();
 
             mBallonTipHelper = new BalloonTipHelper(mNotifyIcon);
         }
@@ -48,10 +49,10 @@ namespace WindowsUpdateNotifier
             return text.Length > length ? text.Substring(0, length) : text;
         }
 
-        public void SetIcon(UpdateState state)
+        public void SetIcon(UpdateState state, int availableUpdates = 0)
         {
             mSearchIconIndex = 1;
-            mNotifyIcon.Icon = state.GetIcon();
+            mNotifyIcon.Icon = state.GetIcon(availableUpdates);
 
             mNotifyIcon.Visible = (state != UpdateState.UpdatesAvailable && AppSettings.Instance.HideIcon) == false;
             mAnimationTimer.Enabled = state == UpdateState.Searching && AppSettings.Instance.HideIcon == false;
@@ -59,10 +60,10 @@ namespace WindowsUpdateNotifier
 
         public void ShowBallonTip(string title, string message, UpdateState state)
         {
-            mBallonTipHelper.ShowBalloon(1, title, message, 15000, state.GetPopupIcon());
+            mBallonTipHelper.ShowBalloon(title, message, 15000, state.GetPopupIcon());
         }
 
-        private void _OnRefreshSearchIcon()
+        private void _RefreshSearchIcon()
         {
             var icon = (Icon)ImageResources.ResourceManager.GetObject(string.Format("WindowsUpdateSearching{0}", mSearchIconIndex));
             mNotifyIcon.Icon = icon;

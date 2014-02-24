@@ -31,7 +31,7 @@ namespace WindowsUpdateNotifier
             }
         }
         
-        public static Icon GetIcon(this UpdateState state)
+        public static Icon GetIcon(this UpdateState state, int availableUpdates = 0)
         {
             switch (state)
             {
@@ -42,8 +42,16 @@ namespace WindowsUpdateNotifier
                 case UpdateState.Failure:
                     return ImageResources.WindowsUpdateNoConnection;
                 default:
-                    return ImageResources.WindowsUpdateNothing;
+                    return _CreateIconWithNumber(availableUpdates);
             }
+        }
+
+        private static Icon _CreateIconWithNumber(int availableUpdates)
+        {
+            if (availableUpdates == 0)
+                return ImageResources.WindowsUpdateNothing;
+
+            return null;
         }
 
         public static Icon GetPopupIcon(this UpdateState state)
