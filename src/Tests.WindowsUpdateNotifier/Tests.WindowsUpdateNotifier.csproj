@@ -68,8 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\Test_CommandLineHelper.cs" />
+    <Compile Include="Mock\MockVersionHelper.cs" />
+    <Compile Include="Views\Test_MenuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mock\MockApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -105,6 +108,7 @@
       <Name>WindowsUpdateNotifier</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

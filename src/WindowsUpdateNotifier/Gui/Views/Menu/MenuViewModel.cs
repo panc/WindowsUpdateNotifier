@@ -13,13 +13,13 @@ namespace WindowsUpdateNotifier
         {
         }
 
-        public MenuViewModel(IApplication application, VersionHelper versionHelper)
+        public MenuViewModel(IApplication application, IVersionHelper versionHelper)
         {
             HomepageLink = "http://wun.codeplex.com";
             UpdateStateText = TextResources.ToolTip_NothingFound;
             SetVersionInfo(versionHelper);
 
-            OpenUpdatePageCommand = new SimpleCommand(application.OpenDownloadPage);
+            OpenDownloadPageCommand = new SimpleCommand(application.OpenDownloadPage);
             OpenHomepageCommand = new SimpleCommand(_OpenHomepage);
             OpenSettingsCommand = new SimpleCommand(application.OpenSettings);
             OpenWindowsUpdateControlPanelCommand = new SimpleCommand(application.OpenWindowsUpdateControlPanel);
@@ -27,7 +27,7 @@ namespace WindowsUpdateNotifier
             ShutdownCommand = new SimpleCommand(application.Shutdown);
         }
 
-        public void SetVersionInfo(VersionHelper versionHelper)
+        public void SetVersionInfo(IVersionHelper versionHelper)
         {
             CopyrightLabel = versionHelper.Copyright;
             VersionLabel = string.Format("Version {0}", versionHelper.CurrentVersion);
@@ -45,7 +45,7 @@ namespace WindowsUpdateNotifier
             Process.Start(HomepageLink);
         }
 
-        public ICommand OpenUpdatePageCommand { get; set; }
+        public ICommand OpenDownloadPageCommand { get; set; }
 
         public ICommand OpenHomepageCommand { get; set; }
 

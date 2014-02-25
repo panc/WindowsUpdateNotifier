@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:WindowsUpdateNotifier"
         xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" 
         xmlns:Converter="clr-namespace:WindowsUpdateNotifier.Converter" 
-        Title="AboutWindow" 
+        Title="MenuWindow" 
         WindowStartupLocation="Manual"
         Left="0" Top="0" 
         Width="300"
@@ -78,7 +78,7 @@
 
                                         <Label Margin="10,0,0,0" FontWeight="Medium"
                                                Visibility="{Binding IsNewVersionAvailable, Converter={StaticResource BooleanConverter}}">
-                                            <Hyperlink Command="{Binding OpenUpdatePageCommand}" Foreground="{StaticResource LabelForegroundColor}">
+                                            <Hyperlink Command="{Binding OpenDownloadPageCommand}" Foreground="{StaticResource LabelForegroundColor}">
                                                 <InlineUIContainer>
                                                     <TextBlock Text="{Binding NewVersionLabel}" />
                                                 </InlineUIContainer>

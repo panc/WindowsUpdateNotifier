@@ -35,6 +35,9 @@ namespace WindowsUpdateNotifier
                 length = RSS_TITLE.Length;
             }
 
+            if (index < 0)
+                return "0";
+
             var version = title.Substring(index + length);
 
             return version.Substring(0, version.IndexOf(' '));

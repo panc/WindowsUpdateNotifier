@@ -181,6 +181,7 @@
     </Compile>
     <Compile Include="AutoStartup\ShortcutHelper.cs" />
     <Compile Include="AutoStartup\TaskSchedulerWrapper.cs" />
+    <Compile Include="Versioning\IVersionHelper.cs" />
     <Compile Include="Versioning\RssVersionItem.cs" />
     <Compile Include="Versioning\RssVersionReader.cs" />
     <Compile Include="Versioning\VersionHelper.cs" />
