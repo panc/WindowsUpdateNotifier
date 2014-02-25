@@ -351,7 +351,21 @@
   <ItemGroup>
     <None Include="WindowsUpdateNotifier.snk" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\ShieldGreen.ico" />
+    <Resource Include="Resources\Images\ShieldYellow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\WindowsUpdateNoConnection.ico" />
+    <Resource Include="Resources\Images\WindowsUpdateNothing.ico" />
+    <Resource Include="Resources\Images\WindowsUpdateSearching1.ico" />
+    <Resource Include="Resources\Images\WindowsUpdateSearching2.ico" />
+    <Resource Include="Resources\Images\WindowsUpdateSearching3.ico" />
+    <Resource Include="Resources\Images\WindowsUpdateSearching4.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\WindowsUpdateWithNumber.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
