@@ -105,12 +105,26 @@ namespace WindowsUpdateNotifier
 
         public void OpenWindowsUpdateControlPanel()
         {
-            Process.Start("control.exe", "/name Microsoft.WindowsUpdate");
+            try
+            {
+                Process.Start("control.exe", "/name Microsoft.WindowsUpdate");
+            }
+            catch (Exception)
+            {
+                // do nothing
+            }
         }
 
         public void OpenDownloadPage()
         {
-            Process.Start("http://wun.codeplex.com/releases");
+            try
+            {
+                Process.Start("http://wun.codeplex.com/releases");
+            }
+            catch (Exception)
+            {
+                // do nothing
+            }
         }
 
         public void OpenMenuDialog()

@@ -35,8 +35,8 @@ namespace WindowsUpdateNotifier
             AutoInstallComment = string.Format(TextResources.Label_AutoInstallComment, string.Join(", KB", settings.KbIdsToInstall));
 
             SaveAndCloseCommand = new SimpleCommand(() => _SaveAndClose(closeWindowCallback));
-            ShowHelpCommand = new SimpleCommand(_ShowHelp);
-            ShowHowToStartAsAdminCommand = new SimpleCommand(_ShowHowToStartAsAdmin);
+            ShowHelpCommand = new SimpleCommand(() => _OpenLink(HelpLink));
+            ShowHowToStartAsAdminCommand = new SimpleCommand(() => _OpenLink(HowToStartAsAdminLink));
         }
 
         #region Properties
@@ -107,14 +107,16 @@ namespace WindowsUpdateNotifier
             }
         }
 
-        private void _ShowHelp()
+        private void _OpenLink(string link)
         {
-            Process.Start(HelpLink);
-        }
-
-        private void _ShowHowToStartAsAdmin()
-        {
-            Process.Start(HowToStartAsAdminLink);
+            try
+            {
+                Process.Start(link);
+            }
+            catch (Exception)
+            {
+                // do nothing
+            }
         }
 
         #region IDataError interface

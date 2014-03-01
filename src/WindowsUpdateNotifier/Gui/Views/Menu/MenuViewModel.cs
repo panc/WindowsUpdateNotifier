@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Windows.Input;
 using WindowsUpdateNotifier.Resources;
 
@@ -42,7 +43,14 @@ namespace WindowsUpdateNotifier
 
         private void _OpenHomepage()
         {
-            Process.Start(HomepageLink);
+            try
+            {
+                Process.Start(HomepageLink);
+            }
+            catch(Exception)
+            {
+                // do nothing
+            }
         }
 
         public ICommand OpenDownloadPageCommand { get; set; }
