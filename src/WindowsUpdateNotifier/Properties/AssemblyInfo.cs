@@ -7,7 +7,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Christoph Pangerl")]
 [assembly: AssemblyProduct("WindowsUpdateNotifier")]
-[assembly: AssemblyCopyright("Copyright © Christoph Pangerl 2013")]
+[assembly: AssemblyCopyright("Copyright © Christoph Pangerl 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
