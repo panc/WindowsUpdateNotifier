@@ -794,7 +794,7 @@ namespace WindowsUpdateNotifier
         /// <param name="linkFile">The shortcut file (.lnk) to load</param>
         public void Open(string linkFile)
         {
-            Open(linkFile, IntPtr.Zero, (EShellLinkResolveFlags.SLR_ANY_MATCH | EShellLinkResolveFlags.SLR_NO_UI), 1);
+            Open(linkFile, IntPtr.Zero, (EShellLinkResolveFlags.SLR_ANY_MATCH | EShellLinkResolveFlags.SLR_NO_UI), 2);
         }
 
         /// <summary>
@@ -806,7 +806,7 @@ namespace WindowsUpdateNotifier
         /// <param name="resolveFlags">Flags controlling resolution behaviour</param>
         public void Open(string linkFile, IntPtr hWnd, EShellLinkResolveFlags resolveFlags)
         {
-            Open(linkFile, hWnd, resolveFlags, 1);
+            Open(linkFile, hWnd, resolveFlags, 2);
         }
 
         /// <summary>

@@ -25,12 +25,16 @@
 
   <Target Name="CopyToOutputDir">
     <ItemGroup>
-      <Binaries Include="bin\**"/>
+      <Binaries Include="bin\*\*.dll"/>
+	  <Executables Include="bin\*.exe"/>
       <Docs Include="doc\*.txt"/>
     </ItemGroup>
     
     <Copy SourceFiles="@(Binaries)"
           DestinationFiles="@(Binaries->'$(OutputFolder)\%(RecursiveDir)%(Filename)%(Extension)')"/>
+  
+	<Copy SourceFiles="@(Executables)"
+          DestinationFiles="@(Executables->'$(OutputFolder)\%(RecursiveDir)%(Filename)%(Extension)')"/>
   
     <Copy SourceFiles="@(Docs)"
           DestinationFiles="@(Docs->'$(OutputFolder)\%(RecursiveDir)%(Filename)%(Extension)')"/>
@@ -181,7 +185,7 @@
       AssemblyDescription=""
       AssemblyCompany="Christoph Pangerl"
       AssemblyProduct="WindowsUpdateNotifier"
-      AssemblyCopyright="Copyright © Christoph Pangerl 2013"     
+      AssemblyCopyright="Copyright © Christoph Pangerl 2014"     
       ComVisible="false"
       AssemblyVersion="$(ProductVersion)"
       AssemblyFileVersion="$(ShortProductVersion)"/> 

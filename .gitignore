@@ -1,6 +1,7 @@
 /bin
-/src/WindowsUpdateNotifier/obj
+obj
 *.DotSettings
 *.suo
 *.user
 /output
+/packages

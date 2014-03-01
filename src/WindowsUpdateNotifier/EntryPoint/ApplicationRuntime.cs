@@ -10,6 +10,7 @@ namespace WindowsUpdateNotifier
     {
         private readonly bool mCloseAfterCheck;
         private readonly SystemTrayIcon mTrayIcon;
+        private readonly MenuViewModel mMenuViewModel;
         private readonly WindowsUpdateManager mUpdateManager;
         private readonly VersionHelper mVersionHelper;
         private readonly DispatcherTimer mTimer;
@@ -17,7 +18,7 @@ namespace WindowsUpdateNotifier
 
         private int mFailureCount;
         private SettingsView mSettingsView;
-        private AboutView mAboutview;
+        private MenuView mMenuView;
 
         public ApplicationRuntime(bool closeAfterCheck)
         {
@@ -25,11 +26,13 @@ namespace WindowsUpdateNotifier
 
             mCloseAfterCheck = closeAfterCheck;
 
-            mTrayIcon = new SystemTrayIcon(this);
             mUpdateManager = new WindowsUpdateManager(_OnSearchFinished);
             mWmiWatcher = new WmiWatcher(SearchForUpdates);
             mVersionHelper = new VersionHelper();
             mTimer = new DispatcherTimer();
+
+            mTrayIcon = new SystemTrayIcon(this);
+            mMenuViewModel = new MenuViewModel(this, mVersionHelper);
         }
 
         public void Start()
@@ -75,8 +78,22 @@ namespace WindowsUpdateNotifier
                 : new string[0];
 
             mUpdateManager.StartSearchForUpdates(ids);
-            mTrayIcon.SetupToolTipAndMenuItems(TextResources.ToolTip_Searching, TextResources.ToolTip_Searching, UpdateState.Searching);
+            mTrayIcon.SetupToolTip(TextResources.ToolTip_Searching);
             mTrayIcon.SetIcon(UpdateState.Searching);
+
+            mMenuViewModel.IsSearchForUpdatesEnabled = false;
+            mMenuViewModel.UpdateStateText = TextResources.ToolTip_Searching;
+        }
+
+        public void Shutdown()
+        {
+            var view = mMenuView;
+            mMenuView = null;
+
+            if (view != null)
+                view.Close();
+            
+            Application.Current.Shutdown();
         }
 
         public void Dispose()
@@ -88,25 +105,39 @@ namespace WindowsUpdateNotifier
 
         public void OpenWindowsUpdateControlPanel()
         {
-            Process.Start("control.exe", "/name Microsoft.WindowsUpdate");
+            try
+            {
+                Process.Start("control.exe", "/name Microsoft.WindowsUpdate");
+            }
+            catch (Exception)
+            {
+                // do nothing
+            }
         }
 
         public void OpenDownloadPage()
         {
-            Process.Start("http://wun.codeplex.com/releases");
+            try
+            {
+                Process.Start("http://wun.codeplex.com/releases");
+            }
+            catch (Exception)
+            {
+                // do nothing
+            }
         }
 
-        public void OpenAboutDialog()
+        public void OpenMenuDialog()
         {
-            if (mAboutview != null)
+            if (mMenuView != null)
             {
-                mAboutview.Activate();
+                mMenuView.Activate();
                 return;
             }
 
-            mAboutview = new AboutView();
-            mAboutview.DataContext = new AboutViewModel(mVersionHelper, OpenDownloadPage);
-            mAboutview.Show();
+            mMenuView = new MenuView();
+            mMenuView.DataContext = mMenuViewModel;
+            mMenuView.Show();
         }
 
         private void _OnSettingsChanged()
@@ -118,22 +149,22 @@ namespace WindowsUpdateNotifier
         private void _OnNewVersionAvailable()
         {
             if (mVersionHelper.IsNewVersionAvailable)
-                mTrayIcon.SetVersionMenuItem(mVersionHelper.LatestVersion.Version);
+                mMenuViewModel.SetVersionInfo(mVersionHelper);
         }
 
         private void _OnApplicationActivated()
         {
-            if (mAboutview != null)
-                mAboutview.Activate();
+            if (mMenuView != null)
+                mMenuView.Activate();
         }
 
         private void _OnApplicationDeactivated()
         {
-            if (mAboutview == null)
+            if (mMenuView == null)
                 return;
 
-            mAboutview.Close();
-            mAboutview = null;
+            mMenuView.Close();
+            mMenuView = null;
         }
 
         private void _OnSearchFinished(UpdateResult result)
@@ -165,8 +196,11 @@ namespace WindowsUpdateNotifier
                 toolTip = TextResources.ToolTip_NoConnection;
             }
 
-            mTrayIcon.SetupToolTipAndMenuItems(toolTip, message, result.UpdateState);
-            mTrayIcon.SetIcon(result.UpdateState);
+            mTrayIcon.SetupToolTip(toolTip);
+            mTrayIcon.SetIcon(result.UpdateState, result.AvailableUpdates);
+
+            mMenuViewModel.IsSearchForUpdatesEnabled = result.UpdateState != UpdateState.Searching;
+            mMenuViewModel.UpdateStateText = message;
 
             if (mCloseAfterCheck && (result.UpdateState.CanApplicationBeClosed(mFailureCount) || AppSettings.Instance.HideIcon))
                 _CloseAfterCheck(result.UpdateState);

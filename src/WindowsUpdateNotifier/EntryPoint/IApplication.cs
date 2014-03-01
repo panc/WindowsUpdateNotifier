@@ -5,7 +5,8 @@ namespace WindowsUpdateNotifier
         void OpenWindowsUpdateControlPanel();
         void OpenSettings();
         void OpenDownloadPage();
-        void OpenAboutDialog(); 
+        void OpenMenuDialog(); 
         void SearchForUpdates();
+        void Shutdown();
     }
 }

@@ -25,7 +25,7 @@ namespace WindowsUpdateNotifier
                 : nativeWindow.Handle;
         }
 
-        public void ShowBalloon(uint iconId, string title, string text, uint timeout, Icon icon)
+        public void ShowBalloon(string title, string text, uint timeout, Icon icon)
         {
             // show the balloon
             var data = new NotifyIconData

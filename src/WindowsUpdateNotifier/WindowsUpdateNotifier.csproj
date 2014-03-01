@@ -47,6 +47,7 @@
     <AssemblyOriginatorKeyFile>WindowsUpdateNotifier.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Drawing" />
@@ -68,8 +69,9 @@
     </ApplicationDefinition>
     <Compile Include="AutoStartup\StartupHelper.cs" />
     <Compile Include="EntryPoint\AppSettings.cs" />
-    <Compile Include="Gui\AboutView.xaml.cs">
-      <DependentUpon>AboutView.xaml</DependentUpon>
+    <Compile Include="Gui\BaseTypes\ViewModel.cs" />
+    <Compile Include="Gui\Views\Menu\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gui\Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Helper\UacHelper.cs" />
@@ -83,11 +85,11 @@
     <Compile Include="Gui\Behavior\DataTriggerBehavior.cs" />
     <Compile Include="Gui\Behavior\WindowBehavior.cs" />
     <Compile Include="Gui\Command\SimpleCommand.cs" />
-    <Compile Include="Gui\SettingsView.xaml.cs">
+    <Compile Include="Gui\Views\Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helper\UiThreadHelper.cs" />
-    <Compile Include="Model\AboutViewModel.cs" />
+    <Compile Include="Gui\Views\Menu\MenuViewModel.cs" />
     <Compile Include="Resources\TextResources.ja.Designer.cs">
       <DependentUpon>TextResources.ja.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -164,8 +166,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="AutoStartup\FileIcon.cs" />
-    <Compile Include="Model\PopupViewModel.cs" />
-    <Compile Include="Model\SettingsViewModel.cs" />
+    <Compile Include="Gui\Views\Popup\PopupViewModel.cs" />
+    <Compile Include="Gui\Views\Settings\SettingsViewModel.cs" />
     <Compile Include="AutoStartup\ShellLink.cs" />
     <Compile Include="Resources\TextResources.Designer.cs">
       <DependentUpon>TextResources.resx</DependentUpon>
@@ -179,6 +181,7 @@
     </Compile>
     <Compile Include="AutoStartup\ShortcutHelper.cs" />
     <Compile Include="AutoStartup\TaskSchedulerWrapper.cs" />
+    <Compile Include="Versioning\IVersionHelper.cs" />
     <Compile Include="Versioning\RssVersionItem.cs" />
     <Compile Include="Versioning\RssVersionReader.cs" />
     <Compile Include="Versioning\VersionHelper.cs" />
@@ -186,15 +189,23 @@
     <Compile Include="WindowsUpdate\UpdateState.cs" />
     <Compile Include="WindowsUpdate\WindowsUpdateManager.cs" />
     <Compile Include="WindowsUpdate\WmiWatcher.cs" />
-    <Page Include="Gui\AboutView.xaml">
+    <Page Include="Gui\Views\Menu\MenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Gui\SettingsView.xaml">
+    <Page Include="Gui\Styles\Controls.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Gui\PopupView.xaml">
+    <Page Include="Gui\Styles\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\Views\Settings\SettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gui\Views\Popup\PopupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -204,7 +215,7 @@
     </Compile>
     <Compile Include="Gui\SystemTrayIcon.cs" />
     <Compile Include="EntryPoint\ApplicationRuntime.cs" />
-    <Compile Include="Gui\PopupView.xaml.cs">
+    <Compile Include="Gui\Views\Popup\PopupView.xaml.cs">
       <DependentUpon>PopupView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -333,13 +344,28 @@
     <Resource Include="Resources\Images\Help.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="WindowsUpdateNotifier.snk" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\Warning.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\SecurityShieldGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WindowsUpdateNotifier.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ShieldGreen.ico" />
+    <Resource Include="Resources\Images\ShieldYellow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\WindowsUpdateNoConnection.ico" />
+    <Resource Include="Resources\Images\WindowsUpdateNothing.ico" />
+    <Resource Include="Resources\Images\WindowsUpdateSearching1.ico" />
+    <Resource Include="Resources\Images\WindowsUpdateSearching2.ico" />
+    <Resource Include="Resources\Images\WindowsUpdateSearching3.ico" />
+    <Resource Include="Resources\Images\WindowsUpdateSearching4.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\WindowsUpdateWithNumber.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

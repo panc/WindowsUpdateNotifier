@@ -5,12 +5,10 @@ using System.Drawing;
 namespace WindowsUpdateNotifier
 {
     /// <summary>
-    /// Enables extraction of icons for any file type from
-    /// the Shell.
+    /// Enables extraction of icons for any file type from the Shell.
     /// </summary>
     public class FileIcon
     {
-
         #region UnmanagedCode
         private const int MAX_PATH = 260;
 

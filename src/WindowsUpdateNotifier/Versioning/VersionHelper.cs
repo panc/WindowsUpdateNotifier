@@ -6,7 +6,7 @@ using WindowsUpdateNotifier.Versioning;
 
 namespace WindowsUpdateNotifier
 {
-    public class VersionHelper
+    public class VersionHelper : IVersionHelper
     {
         public VersionHelper()
         {
