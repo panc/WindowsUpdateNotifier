@@ -19,7 +19,7 @@
         <Style TargetType="{x:Type CheckBox}">
             <Style.Triggers>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Foreground" Value="{StaticResource DisabledForegroundColor}" />
+                    <Setter Property="Foreground" Value="#FF848484" />
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -27,7 +27,7 @@
         <Style TargetType="{x:Type TextBlock}">
             <Style.Triggers>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Foreground" Value="{StaticResource DisabledForegroundColor}" />
+                    <Setter Property="Foreground" Value="#FF848484"/>
                 </Trigger>
             </Style.Triggers>
         </Style>

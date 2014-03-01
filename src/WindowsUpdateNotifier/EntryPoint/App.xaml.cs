@@ -15,7 +15,7 @@ namespace WindowsUpdateNotifier
 
             var cmdHelper = new CommandLineHelper();
 
-            AppSettings.Initialize(cmdHelper.UseDefaultSettings);
+            AppSettings.Initialize(cmdHelper.UseDefaultSettings, cmdHelper.SettingsFile);
             mApplicationRuntime = new ApplicationRuntime(cmdHelper.CloseAfterCheck);
             mApplicationRuntime.Start();    
         }

@@ -19,20 +19,20 @@ namespace WindowsUpdateNotifier
 
         public static AppSettings Instance { get; private set; }
 
-        public static void Initialize(bool useDefaultSettings)
+        public static void Initialize(bool useDefaultSettings, string settingsFile)
         {
             if (Instance != null)
                 throw new InvalidOperationException("AppSettings are already initialzed!");
 
-            Instance = new AppSettings(useDefaultSettings);
+            Instance = new AppSettings(useDefaultSettings, settingsFile);
         }
 
 
         private readonly Configuration mConfig;
 
-        private AppSettings(bool useDefaultSettings)
+        private AppSettings(bool useDefaultSettings, string settingsFile)
         {
-            mConfig = _LoadConfigurationFile();
+            mConfig = _LoadConfigurationFile(settingsFile);
 
             _AddDefaultValues(useDefaultSettings);
 
@@ -97,14 +97,49 @@ namespace WindowsUpdateNotifier
             return false;
         }
 
-        private Configuration _LoadConfigurationFile()
+        private Configuration _LoadConfigurationFile(string configFile)
         {
-            var configFile = Path.Combine(
+            Configuration config = null;
+
+            if (!string.IsNullOrEmpty(configFile) && _TryLoadConfigurationFile(configFile, out config))
+                return config;
+
+            configFile = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "WindowsUpdateNotifier", "WindowsUpdateNotifier.config");
 
-            var c = new ExeConfigurationFileMap { ExeConfigFilename = configFile };
-            return ConfigurationManager.OpenMappedExeConfiguration(c, ConfigurationUserLevel.None);
+            if (_TryLoadConfigurationFile(configFile, out config))
+                return config;
+
+            // fallback - recreate the config file
+            File.Delete(configFile);
+            _TryLoadConfigurationFile(configFile, out config);
+            
+            return config;
+        }
+
+        private bool _TryLoadConfigurationFile(string configFile, out Configuration config)
+        {
+            config = null;
+
+            try
+            {
+                if (!File.Exists(configFile))
+                {
+                    Console.WriteLine("Can not find configuration file {0}!", configFile);
+                    return false;
+                }
+
+                var c = new ExeConfigurationFileMap { ExeConfigFilename = configFile };
+                config = ConfigurationManager.OpenMappedExeConfiguration(c, ConfigurationUserLevel.None);
+                
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("The file {0} is not a valid configuration file!", configFile);
+                return false;
+            }
         }
 
         private void _AddDefaultValues(bool useDefaultSettings)
