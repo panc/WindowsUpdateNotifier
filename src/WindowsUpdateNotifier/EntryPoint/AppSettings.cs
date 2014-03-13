@@ -112,7 +112,9 @@ namespace WindowsUpdateNotifier
                 return config;
 
             // fallback - recreate the config file
-            File.Delete(configFile);
+            if (File.Exists(configFile))
+                File.Delete(configFile);
+            
             _TryLoadConfigurationFile(configFile, out config);
             
             return config;
@@ -124,12 +126,6 @@ namespace WindowsUpdateNotifier
 
             try
             {
-                if (!File.Exists(configFile))
-                {
-                    Console.WriteLine("Can not find configuration file {0}!", configFile);
-                    return false;
-                }
-
                 var c = new ExeConfigurationFileMap { ExeConfigFilename = configFile };
                 config = ConfigurationManager.OpenMappedExeConfiguration(c, ConfigurationUserLevel.None);
                 
