@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using System.Windows.Forms;
+﻿using System.Globalization;
+using System.Windows;
 
 namespace WindowsUpdateNotifier
 {
@@ -12,11 +12,12 @@ namespace WindowsUpdateNotifier
 
         private void _OnWindowLoaded(object sender, RoutedEventArgs e)
         {
-            var l = Control.MousePosition;
-            var location = PointFromScreen(new Point(l.X, l.Y));
+            var workingArea = SystemParameters.WorkArea;
+            Left = CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft
+                ? workingArea.Left + 10
+                : workingArea.Width + workingArea.Left - Width - 10;
 
-            Left = location.X - (Width / 2);
-            Top = location.Y - Height - 25;
+            Top = workingArea.Height + workingArea.Top - ActualHeight - 10;
         }
     }
 }
