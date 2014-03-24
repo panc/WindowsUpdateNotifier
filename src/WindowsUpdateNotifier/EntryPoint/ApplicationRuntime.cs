@@ -62,6 +62,9 @@ namespace WindowsUpdateNotifier
                 return;
             }
 
+            if (mMenuView != null)
+                mMenuView.Hide();
+
             mSettingsView = new SettingsView();
             mSettingsView.DataContext = new SettingsViewModel(mSettingsView.Close, mVersionHelper);
             mSettingsView.Closed += (s, e) => mSettingsView = null;
