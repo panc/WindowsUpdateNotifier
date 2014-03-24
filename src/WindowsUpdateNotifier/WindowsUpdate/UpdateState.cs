@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using WindowsUpdateNotifier.Resources;
@@ -17,7 +19,7 @@ namespace WindowsUpdateNotifier
 
     public static class UpdateStateExtensions
     {
-        private static readonly Font FONT = new Font("Tahoma", 9);
+        private static readonly Font FONT = new Font("Arial", 16, FontStyle.Bold, GraphicsUnit.Pixel);
         private static readonly SolidBrush BRUSH = new SolidBrush(System.Drawing.Color.White);
         private static readonly StringFormat FORMAT = new StringFormat
         {
@@ -61,6 +63,9 @@ namespace WindowsUpdateNotifier
             {
                 var x = bitmap.Width / 2;
                 var y = bitmap.Height / 2;
+
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
                 graphics.DrawString(availableUpdates.ToString(), FONT, BRUSH, x, y, FORMAT);
             }
 
