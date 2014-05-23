@@ -105,6 +105,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Resources\TextResources.pl.Designer.cs">
+      <DependentUpon>TextResources.pl.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\TextResources.zh-hant.Designer.cs">
       <DependentUpon>TextResources.zh-hant.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -264,6 +269,11 @@
     <EmbeddedResource Include="Resources\TextResources.es.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TextResources.es.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\TextResources.pl.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextResources.pl.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\TextResources.zh-hant.resx">

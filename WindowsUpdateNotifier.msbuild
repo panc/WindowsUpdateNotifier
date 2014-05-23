@@ -71,6 +71,9 @@
       <Nl Include="output\*.txt"/>
       <Nl Include="output\nl\*.dll"/>
     
+      <Pl Include="output\*.txt"/>
+      <Pl Include="output\pl\*.dll"/>
+    
       <Pt Include="output\*.txt"/>
       <Pt Include="output\pt\*.dll"/>
     
@@ -137,6 +140,11 @@
   
     <Zip Files="@(Nl)"
          ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_nl.zip"
+         ZipLevel="9" 
+         WorkingDirectory="output"/>
+             
+    <Zip Files="@(Pl)"
+         ZipFileName="$(OutputFolder)\WindowsUpdateNotifier-v$(ShortProductVersion)_pl.zip"
          ZipLevel="9" 
          WorkingDirectory="output"/>
              
