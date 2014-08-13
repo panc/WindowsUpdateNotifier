@@ -2,7 +2,7 @@
 
 Windows 8 (and Windows 8.1) do not offer a desktop notification about new available Windows Updates. You can choose the option "Check for updates but let me choose whether to download them" within the Windows Update Settings, but you will not be informed about new updates via a popup on the desktop (as it was in windows 7). Only on the logon screen you can see a hint in the bottom right corner. 
 
-Microsoft’s official http://social.technet.microsoft.com/Forums/en-US/w8itprogeneral/thread/d964be4c-6619-473a-a45d-27c2c85e721c on that matter is that it is a design choice:
+Microsoft’s official [answer](http://social.technet.microsoft.com/Forums/en-US/w8itprogeneral/thread/d964be4c-6619-473a-a45d-27c2c85e721c) on that matter is that it is a design choice:
 
 > "The reason of removing this feature is based on most of the users’ feedbacks. If a notification were to be displayed, this is suppressed if the user is doing something important, especially when a user watching a movie or playing a game, or in the business environment being interrupted during a PowerPoint presentation."
 
