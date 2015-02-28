@@ -43,8 +43,11 @@ namespace WindowsUpdateNotifier
             InstallUpdates = bool.Parse(mConfig.AppSettings.Settings[INSTALL_UPDATES].Value);
 
             var kbIds = mConfig.AppSettings.Settings[KB_IDS_TO_INSTALL].Value;
-            var ids = kbIds.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
-            KbIdsToInstall = ids;
+            KbIdsToInstall = _ParseKbIds(kbIds);
+
+            var windowsDefenderIds = _GetWindowsDefenderKbId();
+            AdditionalKbIds = kbIds.Replace(windowsDefenderIds + ";", "");
+            WindowsDefenderKbIds = _ParseKbIds(windowsDefenderIds);
         }
 
         public int RefreshInterval { get; private set; }
@@ -57,7 +60,11 @@ namespace WindowsUpdateNotifier
 
         public bool InstallUpdates { get; private set; }
 
+        public string AdditionalKbIds { get; private set; }
+
         public string[] KbIdsToInstall { get; private set; }
+
+        public string[] WindowsDefenderKbIds { get; private set; }
 
         public Action OnSettingsChanged { get; set; }
 
@@ -82,7 +89,8 @@ namespace WindowsUpdateNotifier
                 DisableNotifications = disableNotifications;
                 UseMetroStyle = useMetroStyle;
                 InstallUpdates = installUpdates;
-                //KbIdsToInstall = kbIdsToInstall;
+                KbIdsToInstall = _ParseKbIds(kbIdsToInstall);
+                AdditionalKbIds = additionalKbIds;
 
                 if (OnSettingsChanged != null)
                     OnSettingsChanged();
@@ -171,21 +179,26 @@ namespace WindowsUpdateNotifier
         {
             var kbIds = mConfig.AppSettings.Settings[KB_IDS_TO_INSTALL].Value;
 
-            if (kbIds == WINDOWS_8_DEFENDER_KB_ID && IsRunningOnWindows7())
+            if (kbIds == WINDOWS_8_DEFENDER_KB_ID && _IsRunningOnWindows7())
                 _SetSetting(KB_IDS_TO_INSTALL, WINDOWS_7_DEFENDER_KB_ID);
         }
 
         private string _GetWindowsDefenderKbId()
         {
-            return IsRunningOnWindows7()
+            return _IsRunningOnWindows7()
                 ? WINDOWS_7_DEFENDER_KB_ID
                 : WINDOWS_8_DEFENDER_KB_ID; // use windows 8 kb-id as a default value even if it is not a windows 8 os.
         }
 
-        private bool IsRunningOnWindows7()
+        private bool _IsRunningOnWindows7()
         {
             return Environment.OSVersion.Version.Major == 6 &&
                    Environment.OSVersion.Version.Minor == 1;
+        }
+
+        private static string[] _ParseKbIds(string kbIds)
+        {
+            return kbIds.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 

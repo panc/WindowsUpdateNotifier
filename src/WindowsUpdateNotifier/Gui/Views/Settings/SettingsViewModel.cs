@@ -26,13 +26,14 @@ namespace WindowsUpdateNotifier
             DisableNotifications = settings.DisableNotifications;
             UseMetroStyle = settings.UseMetroStyle;
             InstallUpdates = settings.InstallUpdates && CanInstallUpdates;
+            AdditionalKbIds = settings.AdditionalKbIds;
 
             IsSetAsAutoStartup = StartupHelper.IsSetAsAutoStartup();
             HelpLink = "http://wun.codeplex.com/";
             HowToStartAsAdminLink = "http://wun.codeplex.com/wikipage?title=HowToStartAsAdmin";
 
             Version = string.Format("Version {0}  © Christoph Pangerl", versionHelper.CurrentVersion);
-            AutoInstallComment = string.Format(TextResources.Label_AutoInstallComment, string.Join(", KB", settings.KbIdsToInstall));
+            AutoInstallComment = string.Format(TextResources.Label_AutoInstallComment, string.Join(", KB", settings.WindowsDefenderKbIds));
 
             SaveAndCloseCommand = new SimpleCommand(() => _SaveAndClose(closeWindowCallback));
             ShowHelpCommand = new SimpleCommand(() => _OpenLink(HelpLink));
