@@ -123,6 +123,9 @@
   <data name="Button_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="Label_AdditionalKbIdsToInstall" xml:space="preserve">
+    <value>Additional KB Ids to install automatically (e.g. 12345;43211)</value>
+  </data>
   <data name="Label_AutoInstallComment" xml:space="preserve">
     <value>This feature automatically downloads and installs the updates for the Windows Defender (updates for KB{0}). No other update will be affected by enabling this feature.</value>
   </data>

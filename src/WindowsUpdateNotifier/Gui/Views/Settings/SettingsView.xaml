@@ -5,7 +5,7 @@
         xmlns:WindowsUpdateNotifier="clr-namespace:WindowsUpdateNotifier"
         Title="{x:Static p:TextResources.WindowTitle_Settings}" ResizeMode="NoResize" SizeToContent="WidthAndHeight" MinWidth="400"
         Icon="/WindowsUpdateNotifier;component/Resources\Images\WindowsUpdate.ico"
-        WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
+        WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" Height="534.4">
 
     <Window.Resources>
         <Style TargetType="{x:Type TextBox}">
@@ -37,7 +37,7 @@
     
     <Window.DataContext>
         <WindowsUpdateNotifier:SettingsViewModel CanNotInstallUpdates="True" CanInstallUpdates="False" Version="Version 9.9.9.9  © Christoph Pangerl"
-                                                 SaveFailed="True"/>
+                                                 SaveFailed="True" AutoInstallComment="This feature automatically downloads and installs the updates for the Windows Defender (updates for KB{0}). No other update will be affected by enabling this feature."/>
     </Window.DataContext>
     
     <DockPanel x:Name="MainContent">
@@ -145,6 +145,13 @@
                 <TextBlock MaxWidth="418" TextWrapping="WrapWithOverflow" Margin="21,0,0,0" TextAlignment="Justify"
                     IsEnabled="{Binding CanInstallUpdates}" HorizontalAlignment="Left"
                     Text="{Binding AutoInstallComment}" />
+
+                <TextBlock Text="{x:Static p:TextResources.Label_AdditionalKbIdsToInstall}" 
+                	UseLayoutRounding="False" Margin="20,20,0,10"
+                	IsEnabled="{Binding CanInstallUpdates}" />
+
+                <TextBox Text="{Binding AdditionalKbIds}" Margin="20,0,0,0" 
+                         IsEnabled="{Binding CanInstallUpdates}" UseLayoutRounding="False"/>
             </StackPanel>
         </GroupBox>
     </DockPanel>

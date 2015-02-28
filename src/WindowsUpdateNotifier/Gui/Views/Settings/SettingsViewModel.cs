@@ -69,6 +69,8 @@ namespace WindowsUpdateNotifier
 
         public string AutoInstallComment { get; set; }
 
+        public string AdditionalKbIds { get; set; }
+
         public int RefreshInterval
         {
             get { return mRefreshInterval; }
@@ -96,7 +98,7 @@ namespace WindowsUpdateNotifier
             try
             {
                 SaveFailed = false;
-                AppSettings.Instance.Save(RefreshInterval, HideIcon, DisableNotifications, UseMetroStyle, InstallUpdates);
+                AppSettings.Instance.Save(RefreshInterval, HideIcon, DisableNotifications, UseMetroStyle, InstallUpdates, AdditionalKbIds);
                 StartupHelper.UpdateStartupSettings(IsSetAsAutoStartup);
 
                 close();

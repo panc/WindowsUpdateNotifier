@@ -61,14 +61,17 @@ namespace WindowsUpdateNotifier
 
         public Action OnSettingsChanged { get; set; }
 
-        public void Save(int refreshInterval, bool hideIcon, bool disableNotifications, bool useMetroStyle, bool installUpdates/*, string[] kbIdsToInstall */)
+        public void Save(int refreshInterval, bool hideIcon, bool disableNotifications, bool useMetroStyle, bool installUpdates, string additionalKbIds)
         {
+            var windowsDefenderKbIds = _GetWindowsDefenderKbId();
+            var kbIdsToInstall = string.Format("{0};{1}", windowsDefenderKbIds, additionalKbIds);
+
             var hasChanged = _SetSetting(REFRESH_INTERVAL, refreshInterval.ToString(CultureInfo.InvariantCulture));
             hasChanged = _SetSetting(HIDE_ICON, hideIcon.ToString()) || hasChanged;
             hasChanged = _SetSetting(USE_METRO_STYLE, useMetroStyle.ToString()) || hasChanged;
             hasChanged = _SetSetting(DISABLE_NOTIFICATIONS, disableNotifications.ToString()) || hasChanged;
             hasChanged = _SetSetting(INSTALL_UPDATES, installUpdates.ToString()) || hasChanged;
-            //hasChanged = _SetSetting(KB_IDS_TO_INSTALL, string.Join(";", kbIdsToInstall)) || hasChanged;
+            hasChanged = _SetSetting(KB_IDS_TO_INSTALL, kbIdsToInstall) || hasChanged;
 
             if (hasChanged)
             {
