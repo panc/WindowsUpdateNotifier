@@ -7,17 +7,17 @@ namespace WindowsUpdateNotifier
 {
     public static class DataTriggerBehavior
     {
-        public static readonly DependencyProperty StoryCompletedCommandProperty =
-          DependencyProperty.RegisterAttached("StoryCompletedCommand", typeof(ICommand), typeof(DataTriggerBehavior), new PropertyMetadata(_AttachOrRemoveCompletedEvent));
+        public static readonly DependencyProperty StoryboardCompletedCommandProperty =
+          DependencyProperty.RegisterAttached("StoryboardCompletedCommand", typeof(ICommand), typeof(DataTriggerBehavior), new PropertyMetadata(_AttachOrRemoveCompletedEvent));
 
-        public static ICommand GetStoryCompletedCommand(Storyboard story)
+        public static ICommand GetStoryboardCompletedCommand(Storyboard story)
         {
-            return (ICommand)story.GetValue(StoryCompletedCommandProperty);
+            return (ICommand)story.GetValue(StoryboardCompletedCommandProperty);
         }
 
-        public static void SetStoryCompletedCommand(Storyboard story, ICommand value)
+        public static void SetStoryboardCompletedCommand(Storyboard story, ICommand value)
         {
-            story.SetValue(StoryCompletedCommandProperty, value);
+            story.SetValue(StoryboardCompletedCommandProperty, value);
         }
 
         private static void _AttachOrRemoveCompletedEvent(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
@@ -50,7 +50,7 @@ namespace WindowsUpdateNotifier
             if (storyboard == null)
                 return;
 
-            var cmd = storyboard.GetValue(StoryCompletedCommandProperty) as ICommand;
+            var cmd = storyboard.GetValue(StoryboardCompletedCommandProperty) as ICommand;
             if (cmd != null && cmd.CanExecute(storyboard))
                 cmd.Execute(storyboard);
         }

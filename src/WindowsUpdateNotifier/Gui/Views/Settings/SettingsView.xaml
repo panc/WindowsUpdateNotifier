@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources"
-        xmlns:WindowsUpdateNotifier="clr-namespace:WindowsUpdateNotifier"
+        xmlns:app="clr-namespace:WindowsUpdateNotifier"
         Title="{x:Static p:TextResources.WindowTitle_Settings}" ResizeMode="NoResize" SizeToContent="WidthAndHeight" MinWidth="400"
         Icon="/WindowsUpdateNotifier;component/Resources\Images\WindowsUpdate.ico"
         WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" Height="534.4">
@@ -15,7 +15,19 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
+
+        <Style x:Key="SaveButtonStyle" TargetType="{x:Type Button}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=RefreshInterval, Path=(Validation.HasError)}" Value="True">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding ElementName=AdditionalKbIds, Path=(Validation.HasError)}" Value="True">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
         <Style TargetType="{x:Type CheckBox}">
             <Style.Triggers>
                 <Trigger Property="IsEnabled" Value="False">
@@ -31,12 +43,12 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
+
         <BooleanToVisibilityConverter x:Key="BooleanConverter" />
     </Window.Resources>
     
     <Window.DataContext>
-        <WindowsUpdateNotifier:SettingsViewModel CanNotInstallUpdates="True" CanInstallUpdates="False" Version="Version 9.9.9.9  © Christoph Pangerl"
+        <app:SettingsViewModel CanNotInstallUpdates="True" CanInstallUpdates="False" Version="Version 9.9.9.9  © Christoph Pangerl"
                                                  SaveFailed="True" AutoInstallComment="This feature automatically downloads and installs the updates for the Windows Defender (updates for KB{0}). No other update will be affected by enabling this feature."/>
     </Window.DataContext>
     
@@ -68,7 +80,8 @@
                     Margin="0,5,10,5" MinWidth="75" MinHeight="25" Padding="5,2"/>
 
                 <Button x:Name="SaveButton" Content="{x:Static p:TextResources.Button_Ok}" DockPanel.Dock="Right"
-                    Margin="0,5,10,5" MinWidth="75" MinHeight="25" Padding="5,2" Command="{Binding SaveAndCloseCommand}"/>
+                    Margin="0,5,10,5" MinWidth="75" MinHeight="25" Padding="5,2" 
+                    Command="{Binding SaveAndCloseCommand}" Style="{StaticResource SaveButtonStyle}"/>
 
                 <Image Source="/WindowsUpdateNotifier;component/Resources/Images/Help.png" 
                        Width="20" Height="20" Margin="10,0,0,0" DockPanel.Dock="Left" x:Name="HelpIcon"/>
@@ -110,7 +123,7 @@
                 
                 <DockPanel Margin="0,10,0,0">
                     <TextBlock Text="{x:Static p:TextResources.Label_RefreshInterval}"/>
-                    <TextBox Text="{Binding RefreshInterval, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="40" Margin="10,0,0,0" HorizontalContentAlignment="Right" />
+                    <TextBox Name="RefreshInterval" Text="{Binding RefreshInterval, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="40" Margin="10,0,0,0" HorizontalContentAlignment="Right" />
                     <TextBlock Text="{x:Static p:TextResources.Label_Minutes}" Margin="10,0,0,0"/>
                 </DockPanel>
             </StackPanel>
@@ -150,8 +163,8 @@
                 	UseLayoutRounding="False" Margin="20,20,0,10"
                 	IsEnabled="{Binding CanInstallUpdates}" />
 
-                <TextBox Text="{Binding AdditionalKbIds}" Margin="20,0,0,0" 
-                         IsEnabled="{Binding CanInstallUpdates}" UseLayoutRounding="False"/>
+                <TextBox Name="AdditionalKbIds" IsEnabled="{Binding CanInstallUpdates}" UseLayoutRounding="False" Margin="20,0,0,0"
+                         Text="{Binding AdditionalKbIds, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
             </StackPanel>
         </GroupBox>
     </DockPanel>

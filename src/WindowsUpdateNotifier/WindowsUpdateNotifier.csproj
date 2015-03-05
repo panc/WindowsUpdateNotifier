@@ -73,7 +73,6 @@
     <Compile Include="Gui\Views\Menu\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Helper\UacHelper.cs" />
     <Compile Include="Helper\CommandLineHelper.cs" />
     <Compile Include="EntryPoint\IApplication.cs" />

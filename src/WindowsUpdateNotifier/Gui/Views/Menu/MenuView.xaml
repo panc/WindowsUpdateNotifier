@@ -1,9 +1,8 @@
 ﻿<Window x:Class="WindowsUpdateNotifier.MenuView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:WindowsUpdateNotifier"
+        xmlns:app="clr-namespace:WindowsUpdateNotifier"
         xmlns:p="clr-namespace:WindowsUpdateNotifier.Resources" 
-        xmlns:Converter="clr-namespace:WindowsUpdateNotifier.Converter" 
         Title="MenuWindow" 
         WindowStartupLocation="Manual"
         Left="0" Top="0" 
@@ -18,12 +17,12 @@
                 <ResourceDictionary Source="../../Styles/Controls.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         
-            <Converter:BooleanToVisibilityConverter x:Key="BooleanConverter"/>
+            <BooleanToVisibilityConverter x:Key="BooleanConverter"/>
         </ResourceDictionary>
     </Window.Resources>
 
     <Window.DataContext>
-        <local:MenuViewModel VersionLabel="Version 1.1.0" 
+        <app:MenuViewModel VersionLabel="Version 1.1.0" 
                              CopyrightLabel="Copyright © Christoph Pangerl 2013" 
                              HomepageLink="wun.codeplex.com"
                              NewVersionLabel="(Version 9.9.9 available)"

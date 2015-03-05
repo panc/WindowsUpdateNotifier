@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Input;
 using WindowsUpdateNotifier.Resources;
 
@@ -10,6 +11,7 @@ namespace WindowsUpdateNotifier
     {
         private int mRefreshInterval;
         private bool mSaveFailed;
+        private string mAdditionalKbIds;
 
         public SettingsViewModel()
         {
@@ -70,7 +72,25 @@ namespace WindowsUpdateNotifier
 
         public string AutoInstallComment { get; set; }
 
-        public string AdditionalKbIds { get; set; }
+        public string AdditionalKbIds
+        {
+            get { return mAdditionalKbIds; }
+            set
+            {
+                var values = value.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+                int temp;
+
+                if (values.Any(x => !int.TryParse(x, out temp)))
+                {
+                    Error = TextResources.Label_AdditionalKbIdsToInstall_InvalidFormat;
+                }
+                else
+                {
+                    Error = string.Empty;
+                    mAdditionalKbIds = value;
+                }
+            }
+        }
 
         public int RefreshInterval
         {
@@ -126,7 +146,13 @@ namespace WindowsUpdateNotifier
 
         public string this[string columnName]
         {
-            get { return columnName == "RefreshInterval" ? Error : string.Empty; }
+            get
+            {
+                if (columnName == "AdditionalKbIds")
+                    return Error;
+                
+                return string.Empty;
+            }
         }
 
         public string Error { get; set; }
