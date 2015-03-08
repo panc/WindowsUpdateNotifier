@@ -15,7 +15,10 @@ namespace WindowsUpdateNotifier
             Image = state.GetPopupImage();
             Title = title;
             Message = message;
+            BackgroundColor = new SolidColorBrush(ColorHelper.GetWindowsThemeBackgroundColor());
+
             OnCloseCommand = new SimpleCommand(onCloseCallback);
+            
             OnOpenWindowsUpdateControlPanelCommand= new SimpleCommand(() =>
             {
                 openWindowsUpdateControlPanel();
@@ -33,6 +36,8 @@ namespace WindowsUpdateNotifier
 
         public ImageSource Image { get; set; }
 
-        public Boolean StartHiding { get; set; }
+        public bool StartHiding { get; set; }
+
+        public Brush BackgroundColor { get; set; }
     }
 }

@@ -73,6 +73,7 @@
     <Compile Include="Gui\Views\Menu\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ColorHelper.cs" />
     <Compile Include="Helper\UacHelper.cs" />
     <Compile Include="Helper\CommandLineHelper.cs" />
     <Compile Include="EntryPoint\IApplication.cs" />
