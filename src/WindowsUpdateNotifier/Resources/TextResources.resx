@@ -124,7 +124,7 @@
     <value>Ok</value>
   </data>
   <data name="Label_AdditionalKbIdsToInstall" xml:space="preserve">
-    <value>Additional KB Ids to install automatically (e.g. 12345;43211)</value>
+    <value>Additional KB Ids to install automatically (';' seperated e.g. 2881553;890830)</value>
   </data>
   <data name="Label_AdditionalKbIdsToInstall_InvalidFormat" xml:space="preserve">
     <value>Invalid Format!</value>

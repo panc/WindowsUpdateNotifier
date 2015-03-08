@@ -5,7 +5,7 @@
         xmlns:app="clr-namespace:WindowsUpdateNotifier"
         Title="{x:Static p:TextResources.WindowTitle_Settings}" ResizeMode="NoResize" SizeToContent="WidthAndHeight" MinWidth="400"
         Icon="/WindowsUpdateNotifier;component/Resources\Images\WindowsUpdate.ico"
-        WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" Height="534.4">
+        WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
 
     <Window.Resources>
         <Style TargetType="{x:Type TextBox}">
@@ -160,7 +160,8 @@
                     Text="{Binding AutoInstallComment}" />
 
                 <TextBlock Text="{x:Static p:TextResources.Label_AdditionalKbIdsToInstall}" 
-                	UseLayoutRounding="False" Margin="20,20,0,10"
+                	UseLayoutRounding="False" Margin="20,20,0,10" 
+                    MaxWidth="418" TextAlignment="Justify" TextWrapping="WrapWithOverflow" 
                 	IsEnabled="{Binding CanInstallUpdates}" />
 
                 <TextBox Name="AdditionalKbIds" IsEnabled="{Binding CanInstallUpdates}" UseLayoutRounding="False" Margin="20,0,0,0"

@@ -79,7 +79,7 @@ namespace WindowsUpdateNotifier.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Additional KB Ids to install automatically (e.g. 12345;43211).
+        ///   Looks up a localized string similar to Additional KB Ids to install automatically (&apos;;&apos; seperated e.g. 2881553;890830).
         /// </summary>
         public static string Label_AdditionalKbIdsToInstall {
             get {
