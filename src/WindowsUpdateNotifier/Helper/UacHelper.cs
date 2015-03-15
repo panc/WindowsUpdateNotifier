@@ -1,4 +1,5 @@
-﻿using System.Security.Principal;
+﻿using System;
+using System.Security.Principal;
 
 namespace WindowsUpdateNotifier
 {
@@ -9,6 +10,12 @@ namespace WindowsUpdateNotifier
             var identity = WindowsIdentity.GetCurrent();
             var principal = new WindowsPrincipal(identity);
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+
+        public static bool IsRunningOnWindows7()
+        {
+            return Environment.OSVersion.Version.Major == 6 &&
+                   Environment.OSVersion.Version.Minor == 1;
         }
     }
 }

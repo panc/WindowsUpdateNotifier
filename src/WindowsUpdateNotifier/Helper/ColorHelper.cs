@@ -8,6 +8,9 @@ namespace WindowsUpdateNotifier
     {
         public static Color GetWindowsThemeBackgroundColor()
         {
+            if (UacHelper.IsRunningOnWindows7())
+                return Color.FromArgb(255, 35, 38, 39);
+
             var colourset = GetImmersiveUserColorSetPreference(false, false);
             var pElementName = Marshal.StringToHGlobalUni("ImmersiveStartBackground");
             Marshal.FreeCoTaskMem(pElementName);

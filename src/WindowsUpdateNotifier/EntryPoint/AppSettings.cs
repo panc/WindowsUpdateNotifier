@@ -179,21 +179,15 @@ namespace WindowsUpdateNotifier
         {
             var kbIds = mConfig.AppSettings.Settings[KB_IDS_TO_INSTALL].Value;
 
-            if (kbIds == WINDOWS_8_DEFENDER_KB_ID && _IsRunningOnWindows7())
+            if (kbIds == WINDOWS_8_DEFENDER_KB_ID && UacHelper.IsRunningOnWindows7())
                 _SetSetting(KB_IDS_TO_INSTALL, WINDOWS_7_DEFENDER_KB_ID);
         }
 
         private string _GetWindowsDefenderKbId()
         {
-            return _IsRunningOnWindows7()
+            return UacHelper.IsRunningOnWindows7()
                 ? WINDOWS_7_DEFENDER_KB_ID
                 : WINDOWS_8_DEFENDER_KB_ID; // use windows 8 kb-id as a default value even if it is not a windows 8 os.
-        }
-
-        private bool _IsRunningOnWindows7()
-        {
-            return Environment.OSVersion.Version.Major == 6 &&
-                   Environment.OSVersion.Version.Minor == 1;
         }
 
         private static string[] _ParseKbIds(string kbIds)
