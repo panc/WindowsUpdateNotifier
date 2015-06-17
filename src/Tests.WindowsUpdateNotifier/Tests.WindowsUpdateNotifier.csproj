@@ -67,6 +67,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\Test_ColorHelper.cs" />
     <Compile Include="Helper\Test_CommandLineHelper.cs" />
     <Compile Include="Mock\MockVersionHelper.cs" />
     <Compile Include="Views\Test_MenuViewModel.cs" />
