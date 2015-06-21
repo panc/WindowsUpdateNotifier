@@ -12,7 +12,7 @@ namespace WindowsUpdateNotifier
 
         public PopupViewModel(string title, string message, UpdateState state, Action onCloseCallback, Action openWindowsUpdateControlPanel)
         {
-            Image = state.GetPopupImage();
+            ShowUpdateIcon = state == UpdateState.UpdatesAvailable;
             Title = title;
             Message = message;
             BackgroundColor = new SolidColorBrush(ColorHelper.GetWindowsThemeBackgroundColor());
@@ -34,7 +34,7 @@ namespace WindowsUpdateNotifier
 
         public string Message { get; set; }
 
-        public ImageSource Image { get; set; }
+        public bool ShowUpdateIcon { get; set; }
 
         public bool StartHiding { get; set; }
 

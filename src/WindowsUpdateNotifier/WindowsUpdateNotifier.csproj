@@ -70,6 +70,8 @@
     <Compile Include="AutoStartup\StartupHelper.cs" />
     <Compile Include="EntryPoint\AppSettings.cs" />
     <Compile Include="Gui\BaseTypes\ViewModel.cs" />
+    <Compile Include="Gui\Converter\VisibleWhenFalseConverter.cs" />
+    <Compile Include="Gui\Converter\VisibleWhenTrueConverter.cs" />
     <Compile Include="Gui\Views\Menu\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
@@ -252,7 +254,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Close.png" />
     <Resource Include="Resources\Images\WindowsUpdate.ico" />
   </ItemGroup>
   <ItemGroup>
