@@ -58,37 +58,39 @@
                       Visibility="{Binding ShowUpdateIcon, Converter={StaticResource VisibleWhenTrueConverter}}"/>
             </Grid>
 
-            <Button Grid.Column="1" Width="20" Height="20" BorderThickness="0" Margin="0,5,5,0"
-                    Command="{Binding OnCloseCommand}" HorizontalAlignment="Right" VerticalAlignment="Top">
-
-                <Path Data="F1 M 26.9166,22.1667L 37.9999,33.25L 49.0832,22.1668L 53.8332,26.9168L 42.7499,38L 53.8332,49.0834L 49.0833,53.8334L 37.9999,42.75L 26.9166,53.8334L 22.1666,49.0833L 33.25,38L 22.1667,26.9167L 26.9166,22.1667 Z"
-                          Stretch="Uniform" Fill="#FFFFFF" Width="11" Height="11"
-                          Visibility="{Binding IsMouseOver, ElementName=Root, Converter={StaticResource VisibleWhenTrueConverter}}"/>
-
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" BorderThickness="0" Background="#00000000" BorderBrush="#C3C3C3">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Content" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Button.Opacity" Value="0.2" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-
             <DockPanel Grid.Column="1" Margin="10" LastChildFill="True">
                 <Label Content="{Binding Title}" Foreground="#FFFFFF" FontSize="14" FontWeight="Bold" FontFamily="Calibri" Padding="0"
                        DockPanel.Dock="Top"/>
 
                 <Label Foreground="#FFFFFF" FontFamily="Calibri" FontSize="14" FontWeight="Light" Opacity="0.6" 
                        VerticalContentAlignment="Top" Padding="0" DockPanel.Dock="Top">
-                    <TextBlock Text="33 updates are available. " 
-                               TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    
+                    <TextBlock Text="{Binding Message}" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Label>
             </DockPanel>
+
+            <Button Grid.Column="1" Width="20" Height="20" BorderThickness="0" Margin="0,5,5,0" 
+                    Command="{Binding OnCloseCommand}" HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Visibility="{Binding IsMouseOver, ElementName=Root, Converter={StaticResource VisibleWhenTrueConverter}}">
+
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderThickness="0" Background="#00000000" BorderBrush="#C3C3C3">
+                            <Path Data="F1 M 26.9166,22.1667L 37.9999,33.25L 49.0832,22.1668L 53.8332,26.9168L 42.7499,38L 53.8332,49.0834L 49.0833,53.8334L 37.9999,42.75L 26.9166,53.8334L 22.1666,49.0833L 33.25,38L 22.1667,26.9167L 26.9166,22.1667 Z"
+                                            Stretch="Uniform" Fill="#FFFFFF" Width="11" Height="11" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Opacity" Value="0.2" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
     </Border>
 </Window>
