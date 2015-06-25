@@ -181,17 +181,15 @@ namespace WindowsUpdateNotifier
                 // but we ignore this case and only show the information that updates are available
 
                 toolTip = message = _GetMessage(result.AvailableUpdates);
-                var msg = string.Format("{0} {1}", message, TextResources.Popup_ClickToOpen);
 
-                _ShowPopup(TextResources.Popup_UpdatesAvailableTitle, msg, result.UpdateState);
+                _ShowPopup(TextResources.Popup_UpdatesAvailableTitle, message, result.UpdateState);
 
                 // start listening, whether the user has installed the updates manually
                 mWmiWatcher.Start();
             }
             else if (result.UpdateState == UpdateState.UpdatesInstalled)
             {
-                var msg = string.Format("{0} {1}", TextResources.Popup_UpdatesInstalledMessage, TextResources.Popup_ClickToOpen);
-                _ShowPopup(TextResources.Popup_UpdatesInstalledTitle, msg, result.UpdateState);
+                _ShowPopup(TextResources.Popup_UpdatesInstalledTitle, TextResources.Popup_UpdatesInstalledMessage, result.UpdateState);
             }
             else if (result.UpdateState == UpdateState.Failure)
             {

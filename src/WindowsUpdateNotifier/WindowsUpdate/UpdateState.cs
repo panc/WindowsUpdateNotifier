@@ -83,42 +83,5 @@ namespace WindowsUpdateNotifier
                     return ImageResources.ShieldGreen;
             }
         }
-
-        public static ImageSource GetPopupImage(this UpdateState state)
-        {
-            switch (state)
-            {
-                case UpdateState.UpdatesAvailable:
-                    return _GetUpdateIcon();
-                default:
-                    return _GetShieldIcon();
-            }
-        }
-
-        private static ImageSource sUpdateIcon;
-
-        private static ImageSource _GetUpdateIcon()
-        {
-            if (sUpdateIcon == null)
-            {
-                sUpdateIcon = new BitmapImage(new Uri(@"pack://application:,,,/Resources/Images/Update.png", UriKind.RelativeOrAbsolute));
-                sUpdateIcon.Freeze();
-            }
-            
-            return sUpdateIcon;
-        }
-
-        private static ImageSource sShieldIcon;
-        
-        private static ImageSource _GetShieldIcon()
-        {
-            if (sShieldIcon == null)
-            {
-                sShieldIcon = new BitmapImage(new Uri(@"pack://application:,,,/Resources/Images/SecurityShieldGreen.png", UriKind.RelativeOrAbsolute));
-                sShieldIcon.Freeze();
-            }
-
-            return sShieldIcon;
-        }
     }
 }
