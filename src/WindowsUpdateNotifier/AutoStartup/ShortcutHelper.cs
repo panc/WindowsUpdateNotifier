@@ -41,7 +41,7 @@ namespace WindowsUpdateNotifier
                     continue;
 
                 var link = new ShellLink(file);
-                if (link.Target == exePath)
+                if (link.Target.Equals(exePath, StringComparison.OrdinalIgnoreCase)) 
                     return link.ShortCutFile;
             }
 

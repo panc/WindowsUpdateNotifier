@@ -71,7 +71,7 @@ namespace WindowsUpdateNotifier
             return mRootFolder.GetTasks(1)
                 .Cast<S.IRegisteredTask>()
                 .Any(task => task.Name == APP_NAME &&
-                     task.Definition.Actions.OfType<S.IExecAction>().Any(action => action.Path == exePath));
+                     task.Definition.Actions.OfType<S.IExecAction>().Any(action => action.Path.Trim('"').Equals(exePath, StringComparison.OrdinalIgnoreCase)));
         }
 
         public void Dispose()
