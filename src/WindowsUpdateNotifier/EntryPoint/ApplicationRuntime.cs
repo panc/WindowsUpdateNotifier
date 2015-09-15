@@ -80,7 +80,7 @@ namespace WindowsUpdateNotifier
                 ? AppSettings.Instance.KbIdsToInstall
                 : new string[0];
 
-            mUpdateManager.StartSearchForUpdates(ids);
+            mUpdateManager.StartSearchForUpdates(ids, AppSettings.Instance.KbIdsToIgnore);
             mTrayIcon.SetupToolTip(TextResources.ToolTip_Searching);
             mTrayIcon.SetIcon(UpdateState.Searching);
 

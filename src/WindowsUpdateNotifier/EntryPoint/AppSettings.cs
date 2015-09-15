@@ -13,10 +13,12 @@ namespace WindowsUpdateNotifier
         private const string USE_METRO_STYLE = "UseMetroStyle";
         private const string INSTALL_UPDATES = "InstallUpdates";
         private const string KB_IDS_TO_INSTALL = "KbIdsToInstall";
+        private const string KB_IDS_TO_IGNORE = "KbIdsToIgnore";
 
         private const string WINDOWS_7_DEFENDER_KB_ID = "2310138;915597";
         private const string WINDOWS_8_DEFENDER_KB_ID = "2267602";
-
+        private const string WINDOWS_10_UPGRADE_KB_ID = "3012973";
+        
         public static AppSettings Instance { get; private set; }
 
         public static void Initialize(bool useDefaultSettings, string settingsFile)
@@ -48,6 +50,8 @@ namespace WindowsUpdateNotifier
             var windowsDefenderIds = _GetWindowsDefenderKbId();
             AdditionalKbIds = kbIds.Replace(windowsDefenderIds + ";", "");
             WindowsDefenderKbIds = _ParseKbIds(windowsDefenderIds);
+
+            KbIdsToIgnore = _ParseKbIds(mConfig.AppSettings.Settings[KB_IDS_TO_IGNORE].Value);
         }
 
         public int RefreshInterval { get; private set; }
@@ -64,6 +68,8 @@ namespace WindowsUpdateNotifier
 
         public string[] KbIdsToInstall { get; private set; }
 
+        public string[] KbIdsToIgnore { get; private set; }
+        
         public string[] WindowsDefenderKbIds { get; private set; }
 
         public Action OnSettingsChanged { get; set; }
@@ -173,6 +179,9 @@ namespace WindowsUpdateNotifier
                 mConfig.AppSettings.Settings.Add(KB_IDS_TO_INSTALL, _GetWindowsDefenderKbId());
             else
                 _CorrectKbIdsIfNeeded();
+
+            if (mConfig.AppSettings.Contains(KB_IDS_TO_IGNORE) == false)
+                mConfig.AppSettings.Settings.Add(KB_IDS_TO_IGNORE, WINDOWS_10_UPGRADE_KB_ID);
         }
 
         private void _CorrectKbIdsIfNeeded()
